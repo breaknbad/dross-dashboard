@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-02-01T10:26:49.172Z",
+    "generated_at": "2026-02-01T12:00:05.195Z",
     "total_days": 8,
     "date_range": {
       "start": "2025-07-11",
@@ -9,8 +9,8 @@
     "totals": {
       "tasks_completed": 22,
       "reports_generated": 48,
-      "key_actions": 137,
-      "todoist_activity": 45
+      "key_actions": 153,
+      "todoist_activity": 49
     }
   },
   "days": [
@@ -2241,10 +2241,104 @@
           "rawText": []
         },
         {
-          "name": "5:25 AM Collect Scrape",
+          "name": "5:30 AM Dashboard Deployment (Heartbeat)",
           "items": [
-            "Pages 1-7 complete per state file. Several recent subagent spawns had 0 tokens (failed to start).",
-            "Spawned new subagent (bf83cff0) to continue from page 8."
+            "Created private repo: `breaknbad/dross-dashboard` on GitHub",
+            "Deployed Dross Daily Activity Dashboard to GitHub Pages",
+            "URL: https://breaknbad.github.io/dross-dashboard/ (private, requires GitHub login with repo access)",
+            "`public: false` — only team with repo access can view",
+            "Build type: legacy (static files from main branch)",
+            "Deploy script: `scripts/deploy-dashboard.sh` — regenerates data + pushes",
+            "Dashboard has 8 days of data, 22 tasks, 48 reports, 137 actions tracked",
+            "Still need: auto-deploy cron, revenue analytics dashboard (separate task 9973134432)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Fort Knox Security Hardening (5:33 AM)",
+          "items": [
+            "Matthew wants a full security lockdown — P1 priority",
+            "Todoist task: 9973222549",
+            "Full assessment: memory/security-fort-knox.md"
+          ],
+          "subsections": [
+            {
+              "name": "Phase 1 DONE (immediate fixes):",
+              "items": [
+                "**CRITICAL FIX**: Session transcripts were 644 (world-readable!) — contain ALL conversation data including API keys, bank info, passwords. Fixed to 600.",
+                "Memory files were 644 → fixed to 600 (contain bank info, personal data)",
+                "Data files were 644 → fixed to 600 (contain customer order data)",
+                "All sensitive directories locked to 700",
+                "Built `scripts/security-check.sh` — automated permission drift detector",
+                "Verified: config 600, credentials 600, no public ports, firewall on, no SSH keys"
+              ]
+            },
+            {
+              "name": "Phase 2 STARTED (credential encryption):",
+              "items": [
+                "Installed `age` encryption, generated keypair",
+                "Private key in ~/.dross-vault/age.key (400 perms, 700 dir)",
+                "Built `scripts/vault.sh` CLI + `scripts/lib/vault.js` Node helper",
+                "Encrypted 12 credential files (.age versions)",
+                "Both encrypted + plaintext exist side by side (scripts still read plaintext)",
+                "vault.js handles both formats transparently with in-memory cache",
+                "Next: migrate scripts to vault.js, then remove plaintext copies"
+              ]
+            },
+            {
+              "name": "Phase 3 DONE (network & access hardening):",
+              "items": [
+                "Added bearer token auth to dashboard server (token in ~/.dross-vault/dashboard-token.txt)",
+                "Supports query param, Authorization header, and cookie auth (24h cookie)",
+                "Tailscale audit: CLEAN — only 2 devices (Mac mini + Matthew's iPhone), ALL routes tailnet-only, NOTHING funneled",
+                "Serve routes: / (gateway w/own auth), /drafts (relay, no auth but POST-only low risk), /dashboard (now token-authed)",
+                "Telegram bot audit: SOLID — dmPolicy=pairing, groupPolicy=allowlist, allowFrom has ONLY Matthew's ID (8247529666)",
+                "No pending pairing requests, credential files 600",
+                "Fort Knox security check cron set: daily 3 AM (ID: 9a84347f)"
+              ]
+            },
+            {
+              "name": "Still TODO:",
+              "items": [
+                "Phase 2 continued: Migrate scripts to vault.js, remove plaintext credential copies, token rotation schedule",
+                "Phase 3 remaining: Rate limiting on gateway, auth on drafts relay",
+                "Phase 4: Intrusion detection, anomaly alerting, incident response plan",
+                "Phase 5: Ongoing automated scans (weekly/monthly/quarterly)"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Platform Report Reviews (5:22 AM)",
+          "items": [
+            "Matthew reviewed TikTok Shop, eBay, and Whatnot reports — gave his top 5 action items from each",
+            "Closed 3 review tasks: New Platforms Research (9967458266), Whatnot EOY (9972049225), Platform Comparison v2 (9967458572)",
+            "Archived 7 PDFs from Dross Reports → Reviewed folder in Drive",
+            "Updated 5 rows in Master Index spreadsheet to \"Reviewed\"",
+            "Gave Matthew 3 action items from Fanatics Live Algorithm Update report",
+            "Created 3 Todoist tasks in Operations (9973221314, 9973221323, 9973221330): follow CTAs, front-load engagement, track week-over-week"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Dashboard Auto-Deploy",
+          "items": [
+            "Cron set: daily 7 AM (ID: 2da1aea4) runs scripts/deploy-dashboard.sh"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Collect Scrape COMPLETE (6:00 AM)",
+          "items": [
+            "All 19 pages processed! 427 orders, $55,305.78 total, 4,475 card rows",
+            "Date range: Dec 26 2024 → Jan 20 2026",
+            "Watchdog cron disabled, daily sync cron handles new orders going forward",
+            "Some known issues: ~600 row gap between Incoming/Tracking, placeholder names on some multi-item orders",
+            "Full state: memory/fanatics-collect-scrape-state.md"
           ],
           "subsections": [],
           "rawText": []
@@ -2389,6 +2483,70 @@
         {
           "description": "Competitor Email Marketing + Competitor SMS Marketing reports — I know the content, Matthew doesn't need to review. Will apply insights when we build marketing tools.",
           "category": "email"
+        },
+        {
+          "description": "Deploy script: `scripts/deploy-dashboard.sh` — regenerates data + pushes",
+          "category": "integration"
+        },
+        {
+          "description": "Still need: auto-deploy cron, revenue analytics dashboard (separate task 9973134432)",
+          "category": "automation"
+        },
+        {
+          "description": "CRITICAL FIX: Session transcripts were 644 (world-readable!) — contain ALL conversation data including API keys, bank info, passwords. Fixed to 600.",
+          "category": "integration"
+        },
+        {
+          "description": "Built `scripts/security-check.sh` — automated permission drift detector",
+          "category": "integration"
+        },
+        {
+          "description": "Built `scripts/vault.sh` CLI + `scripts/lib/vault.js` Node helper",
+          "category": "integration"
+        },
+        {
+          "description": "Both encrypted + plaintext exist side by side (scripts still read plaintext)",
+          "category": "integration"
+        },
+        {
+          "description": "Next: migrate scripts to vault.js, then remove plaintext copies",
+          "category": "integration"
+        },
+        {
+          "description": "Tailscale audit: CLEAN — only 2 devices (Mac mini + Matthew's iPhone), ALL routes tailnet-only, NOTHING funneled",
+          "category": "security"
+        },
+        {
+          "description": "Fort Knox security check cron set: daily 3 AM (ID: 9a84347f)",
+          "category": "automation"
+        },
+        {
+          "description": "Phase 2 continued: Migrate scripts to vault.js, remove plaintext credential copies, token rotation schedule",
+          "category": "calendar"
+        },
+        {
+          "description": "Matthew reviewed TikTok Shop, eBay, and Whatnot reports — gave his top 5 action items from each",
+          "category": "general"
+        },
+        {
+          "description": "Closed 3 review tasks: New Platforms Research (9967458266), Whatnot EOY (9972049225), Platform Comparison v2 (9967458572)",
+          "category": "general"
+        },
+        {
+          "description": "Gave Matthew 3 action items from Fanatics Live Algorithm Update report",
+          "category": "general"
+        },
+        {
+          "description": "Cron set: daily 7 AM (ID: 2da1aea4) runs scripts/deploy-dashboard.sh",
+          "category": "integration"
+        },
+        {
+          "description": "Watchdog cron disabled, daily sync cron handles new orders going forward",
+          "category": "automation"
+        },
+        {
+          "description": "Full state: memory/fanatics-collect-scrape-state.md",
+          "category": "general"
         }
       ],
       "interactions": [
@@ -2414,6 +2572,10 @@
         },
         {
           "description": "Matthew wants smarter prioritization on Todoist tasks going forward (priority by urgency/impact, meaningful due dates)",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew wants a full security lockdown — P1 priority",
           "type": "matthew"
         }
       ],
@@ -2473,6 +2635,22 @@
         {
           "action": "updated",
           "description": "Retail bot research task exists (9972676472) — not started yet"
+        },
+        {
+          "action": "updated",
+          "description": "Todoist task: 9973222549"
+        },
+        {
+          "action": "updated",
+          "description": "Telegram bot audit: SOLID — dmPolicy=pairing, groupPolicy=allowlist, allowFrom has ONLY Matthew's ID (8247529666)"
+        },
+        {
+          "action": "closed",
+          "description": "Closed 3 review tasks: New Platforms Research (9967458266), Whatnot EOY (9972049225), Platform Comparison v2 (9967458572)"
+        },
+        {
+          "action": "created",
+          "description": "Created 3 Todoist tasks in Operations (9973221314, 9973221323, 9973221330): follow CTAs, front-load engagement, track week-over-week"
         }
       ],
       "infrastructure": [
@@ -2494,14 +2672,17 @@
         "No SSH authorized_keys (no rogue keys) ✅",
         ".credentials in .gitignore ✅",
         "No new issues found — clean sweep",
-        "Bumped security review due date to Feb 3"
+        "Bumped security review due date to Feb 3",
+        "Matthew wants a full security lockdown — P1 priority",
+        "Todoist task: 9973222549",
+        "Full assessment: memory/security-fort-knox.md"
       ],
       "stats": {
-        "sections_count": 19,
+        "sections_count": 23,
         "tasks_completed_count": 8,
         "reports_count": 0,
-        "key_actions_count": 24,
-        "todoist_count": 14
+        "key_actions_count": 40,
+        "todoist_count": 18
       }
     }
   ]
