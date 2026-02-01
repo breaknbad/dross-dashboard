@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BnB Dashboard — Dross</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f14; color: #e0e0e0; min-height: 100vh; }
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 20px 24px; border-bottom: 2px solid #7c3aed; display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { font-size: 22px; color: #fff; }
+  .header h1 span { color: #7c3aed; }
+  .header .date { color: #888; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; padding: 20px; max-width: 1400px; margin: 0 auto; }
+  .card { background: #1a1a2e; border-radius: 12px; padding: 20px; border: 1px solid #2a2a3e; }
+  .card h2 { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .metric { font-size: 36px; font-weight: 700; color: #fff; }
+  .metric.purple { color: #7c3aed; }
+  .metric.green { color: #22c55e; }
+  .metric.yellow { color: #eab308; }
+  .metric.red { color: #ef4444; }
+  .metric-sub { font-size: 13px; color: #666; margin-top: 4px; }
+  .card-wide { grid-column: span 2; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  th { text-align: left; font-size: 11px; color: #666; text-transform: uppercase; padding: 8px 12px; border-bottom: 1px solid #2a2a3e; }
+  td { padding: 8px 12px; font-size: 14px; border-bottom: 1px solid #1f1f30; }
+  tr:hover { background: #1f1f35; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .badge-green { background: #22c55e20; color: #22c55e; }
+  .badge-yellow { background: #eab30820; color: #eab308; }
+  .badge-red { background: #ef444420; color: #ef4444; }
+  .badge-purple { background: #7c3aed20; color: #7c3aed; }
+  .bar-container { background: #2a2a3e; border-radius: 6px; height: 8px; margin-top: 6px; overflow: hidden; }
+  .bar { height: 100%; border-radius: 6px; transition: width 0.5s; }
+  .bar-purple { background: #7c3aed; }
+  .bar-green { background: #22c55e; }
+  .section-title { font-size: 18px; color: #fff; padding: 20px 20px 0; max-width: 1400px; margin: 0 auto; }
+  .footer { text-align: center; padding: 20px; color: #444; font-size: 12px; }
+  @media (max-width: 640px) {
+    .card-wide { grid-column: span 1; }
+    .metric { font-size: 28px; }
+    .grid { padding: 12px; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Break'n Bad <span>💜 Dross Dashboard</span></h1>
+  <div class="date" id="lastUpdated">Loading...</div>
+</div>
+
+<div class="grid">
+  <!-- KPI Cards -->
+  <div class="card">
+    <h2>Today's GMV</h2>
+    <div class="metric purple" id="todayGmv">$0</div>
+    <div class="metric-sub" id="todayGmvSub">No data loaded</div>
+  </div>
+  <div class="card">
+    <h2>Unique Customers</h2>
+    <div class="metric" id="uniqueCustomers">0</div>
+    <div class="metric-sub" id="newCustomers">0 new</div>
+  </div>
+  <div class="card">
+    <h2>Avg Order Value</h2>
+    <div class="metric green" id="avgOrder">$0</div>
+    <div class="metric-sub" id="totalOrders">0 orders</div>
+  </div>
+  <div class="card">
+    <h2>Refund Rate</h2>
+    <div class="metric" id="refundRate">0%</div>
+    <div class="metric-sub" id="refundCount">0 refunds</div>
+  </div>
+</div>
+
+<h3 class="section-title">Top Customers</h3>
+<div class="grid">
+  <div class="card card-wide">
+    <h2>Highest Spenders</h2>
+    <table>
+      <thead><tr><th>Customer</th><th>Spent</th><th>Orders</th><th>Teams</th><th>Status</th></tr></thead>
+      <tbody id="topCustomers"><tr><td colspan="5" style="color:#666">Load a CSV to see data</td></tr></tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Revenue Concentration</h2>
+    <div id="concentration" style="margin-top:8px">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+        <span>Top 10% of customers</span>
+        <span id="concPct" style="color:#7c3aed;font-weight:600">0%</span>
+      </div>
+      <div class="bar-container"><div class="bar bar-purple" id="concBar" style="width:0%"></div></div>
+      <div style="margin-top:16px;display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+        <span>Repeat buyers</span>
+        <span id="repeatPct" style="color:#22c55e;font-weight:600">0%</span>
+      </div>
+      <div class="bar-container"><div class="bar bar-green" id="repeatBar" style="width:0%"></div></div>
+    </div>
+  </div>
+</div>
+
+<h3 class="section-title">Breaks Performance</h3>
+<div class="grid">
+  <div class="card card-wide">
+    <h2>Break Revenue</h2>
+    <table>
+      <thead><tr><th>Break</th><th>Revenue</th><th>Spots</th><th>$/Spot</th><th>Buyers</th></tr></thead>
+      <tbody id="breakTable"><tr><td colspan="5" style="color:#666">Load a CSV to see data</td></tr></tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Top Teams by Revenue</h2>
+    <div id="teamList" style="margin-top:8px;font-size:13px;color:#666">Load a CSV to see data</div>
+  </div>
+</div>
+
+<h3 class="section-title">Geography</h3>
+<div class="grid">
+  <div class="card card-wide">
+    <h2>Top States</h2>
+    <div id="stateGrid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px">
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  💜 Built by Dross · Data from Fanatics Live exports · <span id="dataRange"></span>
+</div>
+
+<script>
+// CSV Parser
+function parseCSV(text) {
+  const rows = [];
+  for (const line of text.split('\n')) {
+    if (!line.trim()) continue;
+    const row = []; let field = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      if (line[i] === '"') inQ = !inQ;
+      else if (line[i] === ',' && !inQ) { row.push(field.trim()); field = ''; }
+      else field += line[i];
+    }
+    row.push(field.trim());
+    rows.push(row);
+  }
+  return rows;
+}
+
+function loadData(csvText) {
+  const rows = parseCSV(csvText);
+  const headers = rows[0];
+  const data = rows.slice(1).filter(r => r.length >= 10);
+
+  // KPIs
+  const values = data.map(r => parseFloat((r[13]||'0').replace(/[$,]/g,''))).filter(v => !isNaN(v));
+  const total = values.reduce((a,b) => a+b, 0);
+  const users = {};
+  data.forEach(r => {
+    const u = r[1];
+    if (!users[u]) users[u] = {count:0, value:0, teams:new Set(), isNew:false};
+    users[u].count++;
+    users[u].value += parseFloat((r[13]||'0').replace(/[$,]/g,'')) || 0;
+    users[u].teams.add(r[3]);
+    if (r[14] === 'true') users[u].isNew = true;
+  });
+  const userList = Object.entries(users);
+  const refunded = data.filter(r => r[12] === 'true').length;
+  const newCust = data.filter(r => r[14] === 'true').length;
+  const dates = data.map(r => r[11]?.split(' ')[0]).filter(Boolean).sort();
+
+  document.getElementById('todayGmv').textContent = '$' + total.toLocaleString('en-US', {minimumFractionDigits:0});
+  document.getElementById('todayGmvSub').textContent = data.length + ' orders across ' + new Set(data.map(r=>r[2])).size + ' breaks';
+  document.getElementById('uniqueCustomers').textContent = userList.length;
+  document.getElementById('newCustomers').textContent = newCust + ' new customers';
+  document.getElementById('avgOrder').textContent = '$' + (total/values.length).toFixed(0);
+  document.getElementById('totalOrders').textContent = values.length + ' total orders';
+  document.getElementById('refundRate').textContent = (refunded/data.length*100).toFixed(1) + '%';
+  document.getElementById('refundRate').className = 'metric ' + (refunded/data.length > 0.05 ? 'red' : 'green');
+  document.getElementById('refundCount').textContent = refunded + ' refunds';
+  document.getElementById('dataRange').textContent = dates[0] + ' to ' + dates[dates.length-1];
+  document.getElementById('lastUpdated').textContent = 'Data: ' + dates[0] + (dates[0]!==dates[dates.length-1] ? ' → '+dates[dates.length-1] : '') + ' · Updated ' + new Date().toLocaleString();
+
+  // Concentration
+  const sorted = userList.sort((a,b) => b[1].value - a[1].value);
+  const top10n = Math.ceil(userList.length * 0.1);
+  const top10rev = sorted.slice(0, top10n).reduce((a,[_,v]) => a+v.value, 0);
+  const concPct = (top10rev/total*100).toFixed(0);
+  document.getElementById('concPct').textContent = concPct + '% of revenue';
+  document.getElementById('concBar').style.width = concPct + '%';
+  const repeatBuyers = userList.filter(([_,v]) => v.count > 1);
+  const rPct = (repeatBuyers.length/userList.length*100).toFixed(0);
+  document.getElementById('repeatPct').textContent = rPct + '%';
+  document.getElementById('repeatBar').style.width = rPct + '%';
+
+  // Top customers
+  const tbody = document.getElementById('topCustomers');
+  tbody.innerHTML = sorted.slice(0,10).map(([name, d]) => {
+    const status = d.isNew ? '<span class="badge badge-green">New</span>' : 
+      d.count >= 10 ? '<span class="badge badge-purple">VIP</span>' : 
+      d.count >= 3 ? '<span class="badge badge-yellow">Regular</span>' : '';
+    return '<tr><td><strong>'+name+'</strong></td><td>$'+d.value.toLocaleString('en-US',{minimumFractionDigits:0})+'</td><td>'+d.count+'</td><td>'+d.teams.size+'</td><td>'+status+'</td></tr>';
+  }).join('');
+
+  // Breaks
+  const breaks = {};
+  data.forEach(r => {
+    const b = r[2];
+    if (!breaks[b]) breaks[b] = {count:0, value:0, buyers:new Set()};
+    breaks[b].count++;
+    breaks[b].value += parseFloat((r[13]||'0').replace(/[$,]/g,'')) || 0;
+    breaks[b].buyers.add(r[1]);
+  });
+  const breakList = Object.entries(breaks).sort((a,b) => b[1].value - a[1].value);
+  document.getElementById('breakTable').innerHTML = breakList.map(([name, d]) => {
+    const short = name.length > 60 ? name.slice(0,57)+'...' : name;
+    return '<tr><td title="'+name.replace(/"/g,'&quot;')+'">'+short+'</td><td>$'+d.value.toLocaleString('en-US',{minimumFractionDigits:0})+'</td><td>'+d.count+'</td><td>$'+(d.value/d.count).toFixed(0)+'</td><td>'+d.buyers.size+'</td></tr>';
+  }).join('');
+
+  // Teams
+  const teams = {};
+  data.forEach(r => {
+    const t = r[3]; const v = parseFloat((r[13]||'0').replace(/[$,]/g,'')) || 0;
+    teams[t] = (teams[t]||0) + v;
+  });
+  const topTeams = Object.entries(teams).sort((a,b) => b[1]-a[1]).slice(0,10);
+  const maxTeamVal = topTeams[0]?.[1] || 1;
+  document.getElementById('teamList').innerHTML = topTeams.map(([t,v]) => 
+    '<div style="display:flex;align-items:center;margin-bottom:6px"><span style="width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#ccc">'+t+'</span><div class="bar-container" style="flex:1;margin:0 8px"><div class="bar bar-purple" style="width:'+(v/maxTeamVal*100)+'%"></div></div><span style="color:#7c3aed;font-weight:600;min-width:50px;text-align:right">$'+v.toFixed(0)+'</span></div>'
+  ).join('');
+
+  // States
+  const states = {};
+  data.forEach(r => { states[r[9]] = (states[r[9]]||0) + 1; });
+  const topStates = Object.entries(states).sort((a,b) => b[1]-a[1]).slice(0,15);
+  document.getElementById('stateGrid').innerHTML = topStates.map(([s,c]) =>
+    '<div style="background:#1f1f35;padding:10px;border-radius:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:#7c3aed">'+s+'</div><div style="font-size:12px;color:#888;margin-top:2px">'+c+' orders</div></div>'
+  ).join('');
+}
+
+// Auto-load from API or file
+async function init() {
+  try {
+    const resp = await fetch('/api/data');
+    if (resp.ok) { loadData(await resp.text()); return; }
+  } catch(e) {}
+  // Try loading embedded data
+  if (window.__CSV_DATA__) { loadData(window.__CSV_DATA__); return; }
+  document.getElementById('todayGmv').textContent = 'No Data';
+  document.getElementById('todayGmvSub').textContent = 'Drop a CSV file anywhere to load';
+}
+
+// Drag and drop CSV
+document.addEventListener('dragover', e => { e.preventDefault(); document.body.style.outline = '3px solid #7c3aed'; });
+document.addEventListener('dragleave', () => { document.body.style.outline = 'none'; });
+document.addEventListener('drop', e => {
+  e.preventDefault(); document.body.style.outline = 'none';
+  const file = e.dataTransfer.files[0];
+  if (file) { const reader = new FileReader(); reader.onload = ev => loadData(ev.target.result); reader.readAsText(file); }
+});
+
+init();
+</script>
+</body>
+</html>
