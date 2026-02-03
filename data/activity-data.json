@@ -1,16 +1,16 @@
 {
   "_meta": {
-    "generated_at": "2026-02-01T12:00:05.195Z",
-    "total_days": 8,
+    "generated_at": "2026-02-03T01:01:49.070Z",
+    "total_days": 9,
     "date_range": {
       "start": "2025-07-11",
-      "end": "2026-02-01"
+      "end": "2026-02-02"
     },
     "totals": {
       "tasks_completed": 22,
       "reports_generated": 48,
-      "key_actions": 153,
-      "todoist_activity": 49
+      "key_actions": 188,
+      "todoist_activity": 58
     }
   },
   "days": [
@@ -2332,6 +2332,99 @@
           "rawText": []
         },
         {
+          "name": "Weekly Email Deep Dive (9 AM cron)",
+          "items": [
+            "Auto labels working: Newsletters (1), Notifications (5) caught this week",
+            "30 emails in inbox that bypassed filters — need new filters for:",
+            "**US Bank wire alerts**: 5 wires totaling $38,073 (Jan 28-30) — $6,088 + $1,685 + $10,000 + $11,300 + $9,000. All \"no approver required.\" Likely supplier payments but flagging.",
+            "No fraud alerts, no payment failures, no security breaches"
+          ],
+          "subsections": [],
+          "rawText": [
+            "- Todoist notifications (3) → Auto/Notifications",
+            "- Amazon orders (4) → Auto/Shopping",
+            "- Venmo promos → Auto/Newsletters",
+            "- WeTheHobby (2) → Auto/Newsletters",
+            "- Audible promos → Auto/Newsletters",
+            "- Google promos → Auto/Newsletters",
+            "- Old National eStatements → Auto/Banking"
+          ]
+        },
+        {
+          "name": "Homebase API Connected",
+          "items": [
+            "Matthew provided API key, saved to `~/.credentials/homebase-api-key.txt`",
+            "Base: `api.joinhomebase.com`, Bearer auth",
+            "Location: Break 'N Bad SB (ab1219c2-ee31-435d-aa3d-fb1ae56bf634)",
+            "77 employees, shifts endpoint works with date range",
+            "Shift data includes role (Whatnot, Fanatics - Baseball, etc.), department, clock in/out times",
+            "Can cross-reference with Fanatics break data to identify who ran which breaks",
+            "Key breaker employees: Sam Ouhaj (Whatnot), Erick Valdez (Whatnot), wilhelm forstinger (Whatnot), Isaiah Coley (Fanatics - Baseball), Angel Morrow (Fanatics - Baseball), Alex Mohs (Fanatics - Baseball/Director), Michael Muñoz Moreno (Fanatics-IR), thomas philson (Fanatics-IR), Daquan Ross (Fanatics - Baseball/GM)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Homebase-Fanatics Cross-Reference Complete",
+          "items": [
+            "Matched 63/83 Fanatics streams to breakers using sheet data + Homebase shifts",
+            "309 breaker shifts in January (Fanatics Baseball 110, IR 71, Whatnot 97, Basketball 8, TikTok 21)",
+            "Top profit: Michael Muñoz ($15.9K MLB), Miles ($7K NBA), Josef ($6.7K Football/NBA)",
+            "20 Football streams ($421K sales, $16K profit) completely unattributed — no Football breaker role in Homebase",
+            "\"ND\" and \"MN\" appear as breaker codes in sheet — unclear if people or placeholders",
+            "Sheet stopped filling breaker names around 1/19",
+            "Full report: `~/clawd/reports/fanatics-breaker-crossref-jan2026.md`",
+            "Matthew asked if CSVs could help identify remaining breakers — yes, pending him sending files"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "SMS Strategy Report Complete",
+          "items": [
+            "SimpleTexting analysis: 268 contacts (202 active), 3 lists",
+            "Strategy: 10 keywords, 7 automations, goal 202→2,500 subs by Q2 2026",
+            "Report + PDF uploaded to Drive, review task in Todoist",
+            "Full report: `~/clawd/reports/simpletexting-sms-strategy.md`"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Model Switching / Token Management",
+          "items": [
+            "Matthew hit 100% Claude weekly \"all models\" limit, 63% of extra usage ($22.14/$35, resets Mar 1)",
+            "Switched to Gemini 2.5 Flash to preserve Claude tokens",
+            "Patched gateway config to set Gemini as default — BUT this triggered setup wizard re-run (bad move, use session override next time)",
+            "Reminder set for 2/2 4pm to switch back to Opus (cron: switch-dross-back-to-claude)",
+            "Lesson: use session_status model override for temporary switches, don't touch gateway config"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Homebase API Limitations",
+          "items": [
+            "API is READ-ONLY — no clock in/out endpoints",
+            "Can pull: locations, employees, shifts (with date range)",
+            "Cannot: clock in/out, create shifts, modify schedules",
+            "Matthew asked about clocking in/out — not possible via API"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Skincare Routine",
+          "items": [
+            "Recommended CeraVe Foaming Facial Cleanser + AM Moisturizing Lotion SPF 30",
+            "Links shared: amazon.com/dp/B01N1LL62W (cleanser), amazon.com/dp/B00F97FHAW (AM moisturizer)",
+            "Also suggested CeraVe PM Moisturizing Lotion for nighttime: amazon.com/dp/B00365DABC",
+            "Todoist task exists for Matthew to buy these (due tomorrow)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
           "name": "Collect Scrape COMPLETE (6:00 AM)",
           "items": [
             "All 19 pages processed! 427 orders, $55,305.78 total, 4,475 card rows",
@@ -2541,6 +2634,54 @@
           "category": "integration"
         },
         {
+          "description": "30 emails in inbox that bypassed filters — need new filters for:",
+          "category": "email"
+        },
+        {
+          "description": "Matthew provided API key, saved to `~/.credentials/homebase-api-key.txt`",
+          "category": "integration"
+        },
+        {
+          "description": "Base: `api.joinhomebase.com`, Bearer auth",
+          "category": "integration"
+        },
+        {
+          "description": "Shift data includes role (Whatnot, Fanatics - Baseball, etc.), department, clock in/out times",
+          "category": "general"
+        },
+        {
+          "description": "Can cross-reference with Fanatics break data to identify who ran which breaks",
+          "category": "general"
+        },
+        {
+          "description": "Key breaker employees: Sam Ouhaj (Whatnot), Erick Valdez (Whatnot), wilhelm forstinger (Whatnot), Isaiah Coley (Fanatics - Baseball), Angel Morrow (Fanatics - Baseball), Alex Mohs (Fanatics - Baseball",
+          "category": "general"
+        },
+        {
+          "description": "Matched 63/83 Fanatics streams to breakers using sheet data + Homebase shifts",
+          "category": "general"
+        },
+        {
+          "description": "309 breaker shifts in January (Fanatics Baseball 110, IR 71, Whatnot 97, Basketball 8, TikTok 21)",
+          "category": "general"
+        },
+        {
+          "description": "Full report: `~/clawd/reports/fanatics-breaker-crossref-jan2026.md`",
+          "category": "general"
+        },
+        {
+          "description": "Reminder set for 2/2 4pm to switch back to Opus (cron: switch-dross-back-to-claude)",
+          "category": "automation"
+        },
+        {
+          "description": "API is READ-ONLY — no clock in/out endpoints",
+          "category": "integration"
+        },
+        {
+          "description": "Matthew asked about clocking in/out — not possible via API",
+          "category": "integration"
+        },
+        {
           "description": "Watchdog cron disabled, daily sync cron handles new orders going forward",
           "category": "automation"
         },
@@ -2576,6 +2717,14 @@
         },
         {
           "description": "Matthew wants a full security lockdown — P1 priority",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew asked if CSVs could help identify remaining breakers — yes, pending him sending files",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew asked about clocking in/out — not possible via API",
           "type": "matthew"
         }
       ],
@@ -2651,6 +2800,14 @@
         {
           "action": "created",
           "description": "Created 3 Todoist tasks in Operations (9973221314, 9973221323, 9973221330): follow CTAs, front-load engagement, track week-over-week"
+        },
+        {
+          "action": "updated",
+          "description": "Report + PDF uploaded to Drive, review task in Todoist"
+        },
+        {
+          "action": "updated",
+          "description": "Todoist task exists for Matthew to buy these (due tomorrow)"
         }
       ],
       "infrastructure": [
@@ -2675,14 +2832,546 @@
         "Bumped security review due date to Feb 3",
         "Matthew wants a full security lockdown — P1 priority",
         "Todoist task: 9973222549",
-        "Full assessment: memory/security-fort-knox.md"
+        "Full assessment: memory/security-fort-knox.md",
+        "Auto labels working: Newsletters (1), Notifications (5) caught this week",
+        "30 emails in inbox that bypassed filters — need new filters for:",
+        "US Bank wire alerts: 5 wires totaling $38,073 (Jan 28-30) — $6,088 + $1,685 + $10,000 + $11,300 + $9,000. All \"no approver required.\" Likely supplier payments but flagging.",
+        "No fraud alerts, no payment failures, no security breaches"
       ],
       "stats": {
-        "sections_count": 23,
+        "sections_count": 30,
         "tasks_completed_count": 8,
         "reports_count": 0,
-        "key_actions_count": 40,
-        "todoist_count": 18
+        "key_actions_count": 52,
+        "todoist_count": 20
+      }
+    },
+    {
+      "date": "2026-02-02",
+      "title": "02 Daily Log",
+      "sections": [
+        {
+          "name": "Token Optimization Implemented",
+          "items": [
+            "Heartbeats: back to 30min (Matthew wants overnight work too)",
+            "Heartbeat model: Sonnet 4 (saves significant tokens vs Opus for routine checks)",
+            "Opus cache TTL: 1 hour (heartbeats every 30min keep cache warm = cheaper reads)",
+            "Sub-agents: claude-sonnet-4",
+            "Compaction: softThresholdTokens bumped from 60K → 90K (60K was causing too frequent compactions)",
+            "Context pruning: cache-ttl mode, 20m TTL, aggressive trim ratios",
+            "Main session stays on Opus for conversations with Matthew",
+            "Gemini API key kept available but NOT used as default — Matthew's preference",
+            "Matthew also added a \"google\" agent (gemini-3-pro-preview) in agents.list — his own experiment, leave it alone",
+            "NOTE: Use config.patch going forward, not direct file edits"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Config Changes Need Re-verification",
+          "items": [
+            "After doctor run, some config changes may have been reverted",
+            "Need to verify: heartbeat interval, subagent model, compaction threshold",
+            "Use `gateway config.get` to check, then `config.patch` for any fixes"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Gemini Experiment Failed",
+          "items": [
+            "Switched to Gemini 2.5 Flash on Feb 1 to save Claude tokens",
+            "Gemini performed poorly — slow, verbose, not following instructions well",
+            "Free tier API hit 20 req/day limit quickly",
+            "Matthew: \"gemini just isn't working well at all\" — switched back to Claude",
+            "Decision: Stay on Anthropic models (Opus for chat, Sonnet for automation)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Session Context Issue",
+          "items": [
+            "Session hit 151K/200K (75%) with zero compactions",
+            "Causing slow responses — every message reads full context",
+            "Reset session to start fresh"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Homebase API",
+          "items": [
+            "Connected yesterday, API key in ~/.credentials/homebase-api-key.txt",
+            "Base: api.joinhomebase.com, Bearer auth",
+            "Shifts endpoint works for cross-referencing breaker assignments",
+            "API is READ-ONLY (no clock in/out)",
+            "Cross-ref report done: ~/clawd/reports/fanatics-breaker-crossref-jan2026.md"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Fanatics Live CSVs",
+          "items": [
+            "Matthew sent 4 CSVs covering partial January (9 days, 3,602 orders, $75,518 revenue)",
+            "Saved to ~/clawd/data/fanatics-live-orders/",
+            "Successfully matched orders to Isaiah's Homebase shifts: 1,170 orders, $26,195 during his shifts",
+            "Proof of concept works — need full month CSVs for complete analysis",
+            "Matthew wants this data stored for dashboard, CRM, etc."
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "BnB App Priorities (from app doc review)",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "1. Financial Analytics / Per-Breaker P&L",
+            "2. Unified Cross-Platform Dashboard",
+            "3. Customer CRM",
+            "4. Shipping/Fulfillment Tracking",
+            "5. Break Scheduling + Breaker Performance"
+          ]
+        },
+        {
+          "name": "Matthew asked about \"niki2.5\"",
+          "items": [
+            "Unclear what model he's referring to — possibly Qwen 2.5 or DeepSeek",
+            "Need to follow up and clarify"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Token Optimization Final Config (applied this session)",
+          "items": [
+            "Heartbeats: 30min on Sonnet 4 (Matthew wants 24/7 work, no dormancy)",
+            "Opus cache TTL: 1 hour (heartbeats keep cache warm)",
+            "Sub-agents: Sonnet 4",
+            "All 6 daily crons converted to isolated sessions on Sonnet 4 with Telegram delivery",
+            "Opus reserved ONLY for direct conversations with Matthew",
+            "Gemini API key kept available but not used as default"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Cron Changes",
+          "items": [
+            "Removed stale \"switch back to Claude\" reminder",
+            "Topps remittance sync moved to 7pm EST (Matthew pays invoices in the afternoon)",
+            "All \"now\" crons converted from main session → isolated session + Sonnet model:",
+            "Morning brief task closed, token efficiency overhaul task closed"
+          ],
+          "subsections": [],
+          "rawText": [
+            "- Morning triage (8am), Email scan (9am), Topps invoice (9:15am)",
+            "- Drafts triage (9:15am), Topps remittance (7pm), Fanatics Collect sync (6am)"
+          ]
+        },
+        {
+          "name": "BnB App Top 5 Priorities (confirmed with Matthew)",
+          "items": [
+            "Deep dive report generated: ~/clawd/reports/bnb-app-top5-features.pdf"
+          ],
+          "subsections": [],
+          "rawText": [
+            "1. 💰 Finances / Per-Breaker P&L",
+            "2. 👥 Customer CRM",
+            "3. 📦 Shipping & Fulfillment",
+            "4. 📋 Inventory / Product Tracking",
+            "5. 📅 Break Scheduling + Calendar"
+          ]
+        },
+        {
+          "name": "Personal Purchase Reports",
+          "items": [
+            "Product research (joggers, pillow covers, pillows): reports/product-research-jan27.pdf",
+            "Bedsheets research: reports/amazon-queen-bedsheets-2026-01-27.pdf",
+            "Matthew asked to review these to make purchases"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Config Fix: Sonnet Model Registration",
+          "items": [
+            "Sub-agents were failing with \"Unknown model: anthropic/claude-sonnet-4\"",
+            "Root cause: Sonnet wasn't in the models registry, only Opus and Gemini were",
+            "Fixed: Added anthropic/claude-sonnet-4 with alias \"sonnet\" to agents.defaults.models",
+            "Note: sessions_spawn still shows \"model not allowed\" warning even after registration — sub-agents fall back to subagents.model config which works",
+            "Second fix: Changed heartbeats, sub-agents, and all 6 crons to use \"sonnet\" alias instead of full \"anthropic/claude-sonnet-4\" — model resolver chokes on full name in certain contexts",
+            "All model references now use aliases consistently (opus, sonnet, gemini)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Security Audit (Feb 2)",
+          "items": [
+            "Fort Knox check: all clear, no urgent issues",
+            "Auto-fixed 3 session transcript file permissions (644→600)",
+            "All credentials locked down, gateway auth confirmed",
+            "Minor: podcast-server.js on port 3457 binds to all interfaces (low risk)",
+            "Report: ~/clawd/reports/security-check-2026-02-02.md"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "QuickBooks OAuth Debug — Resolved",
+          "items": [
+            "Root cause: saved credentials are Development/Sandbox keys, but BnB's QBO account is production (under \"Reva\")",
+            "Dev keys can only connect to sandbox companies → \"undefined didn't connect\" error",
+            "Built: scripts/quickbooks-oauth.js (full OAuth flow, callback server on :8765, token exchange, refresh, API test)",
+            "Blocking: Need production keys from Intuit Developer Portal",
+            "Matthew must: developer.intuit.com → Dross app → Production Settings → fill compliance questionnaire → get production Client ID + Secret → set redirect URI to http://localhost:8765/callback",
+            "Full docs: memory/quickbooks-oauth-debug.md"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "RBX Joggers Purchase",
+          "items": [
+            "Matthew reviewing RBX Active Men's Fleece Joggers ($18.90 each)",
+            "Recommended colors: Black Bonded, Bonded Navy, Bonded Stone, F20 Bonded Charcoal",
+            "Advised skipping cargo/ankle zip variants (zipper quality issues in reviews)",
+            "4.3 stars, 532 reviews, fleece lined, tapered fit, 30\" inseam"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Fort Knox Security Task Closed",
+          "items": [
+            "Completed full security audit, closed Todoist task 9973222549",
+            "Matthew confirmed closure"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Fanatics Collect Cron Safeguards",
+          "items": [
+            "Killed weekend runs: now Mon-Fri only (was daily)",
+            "Added short-circuit rule: check first (newest) order on page 1, if already logged → stop immediately",
+            "Added date check: before opening browser, check last logged date — skip run entirely if nothing new",
+            "Updated pipeline doc: ~/clawd/memory/fanatics-collect-pipeline.md"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Kimi K2.5 Discussion",
+          "items": [
+            "Matthew asked about Kimi K2.5 as Claude alternative (people on X switching between them)",
+            "Explained: those users cherry-pick best model per task in coding IDEs, not running 24/7 assistant",
+            "For token preservation: already have tiered model strategy (Opus for conversation, Sonnet for everything else)",
+            "DeepSeek V3/R1 identified as best budget alternative if needed"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Refund Security — CRITICAL FAILURE & FIX",
+          "items": [
+            "Matthew asked \"can you refund a fanatics spot\" and I almost did it without checking password",
+            "Compaction had wiped my awareness of the refund security rules from yesterday",
+            "**FIX:** Added HARD SECURITY RULES to AGENTS.md (injected into every session, survives compaction)",
+            "Trigger words: \"refund\", \"cancel order\", \"reverse charge\" → STOP and check rules before doing anything",
+            "Matthew tested me again minutes later (\"Can you refund a spot on fanatics?\") — asked for password correctly",
+            "P1 task created: Build refund safety net (DOM blocker + dual confirmation) — task 9979002606"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "BnB Mission Control Architecture",
+          "items": [
+            "Matthew wants hybrid App + AI architecture for BnB",
+            "App = team-facing dashboard (shipping, scheduling, inventory, CRM, P&L)",
+            "AI (Clawdbot) = brain behind the scenes (DMs, camera monitoring, scraping, SMS, graphics, shipping monitoring)",
+            "\"Mission Control\" framing — Matthew commands a fleet of AI agents from one interface",
+            "Multi-agent discussion: one lead Dross + specialized sub-agents (shipping, CS, data, marketing, content)",
+            "Report generated: bnb-hybrid-architecture.pdf uploaded to Dross Reports Drive folder",
+            "Also generated earlier: bnb-app-top5-features.pdf (feature spec for core 5 modules)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Goodreads → Hardcover Migration",
+          "items": [
+            "Matthew wants to switch from Goodreads",
+            "My Jan 30 research recommended Hardcover.app (best UI, open GraphQL API, Goodreads import, free)",
+            "P1 task created: Migrate to Hardcover — task 9979022883",
+            "Matthew needs to export Goodreads CSV and create Hardcover account, I handle the rest"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Text to Kris Priemer",
+          "items": [
+            "Matthew had Todoist task to text Kris Priemer",
+            "Message: \"Hey been a minute hope you're doing well! Would love to find a time to catch up\"",
+            "Context: Last convo Oct 13, he was offering project work (projections/finance), invited Matthew to investor talk",
+            "Kris Priemer NOT in contacts cache — Matthew sent the text himself"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Browser Token Optimization",
+          "items": [
+            "Full page snapshots (like Amazon product page) eat 50K+ tokens and cause rapid compaction",
+            "New rule: use targeted JS extraction (evaluate) instead of full snapshots",
+            "Example: extracted Amazon color variant URLs via JS DOM query instead of scanning full page"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Stale Tasks Closed",
+          "items": [
+            "\"Go through Fanatics Collect and add CSV items [NEEDS MATTHEW]\" (9963232006) — pipeline fully automated now"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Pending",
+          "items": [
+            "Matthew asked about full month Fanatics CSVs — still needs to send rest",
+            "SMS strategy report in Todoist for review",
+            "Personal purchases (bedsheets, pillow covers, joggers) — Matthew reviewing reports",
+            "QuickBooks: waiting on Matthew to complete Intuit production questionnaire",
+            "Refund safety net (DOM blocker + dual confirmation) — P1 due today, not yet built",
+            "Hardcover migration — P1 due today, needs Matthew's Goodreads export"
+          ],
+          "subsections": [],
+          "rawText": []
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Gemini API key kept available but NOT used as default — Matthew's preference",
+          "category": "integration"
+        },
+        {
+          "description": "Matthew also added a \"google\" agent (gemini-3-pro-preview) in agents.list — his own experiment, leave it alone",
+          "category": "general"
+        },
+        {
+          "description": "Free tier API hit 20 req/day limit quickly",
+          "category": "integration"
+        },
+        {
+          "description": "Connected yesterday, API key in ~/.credentials/homebase-api-key.txt",
+          "category": "integration"
+        },
+        {
+          "description": "Base: api.joinhomebase.com, Bearer auth",
+          "category": "integration"
+        },
+        {
+          "description": "API is READ-ONLY (no clock in/out)",
+          "category": "integration"
+        },
+        {
+          "description": "Cross-ref report done: ~/clawd/reports/fanatics-breaker-crossref-jan2026.md",
+          "category": "general"
+        },
+        {
+          "description": "Saved to ~/clawd/data/fanatics-live-orders/",
+          "category": "general"
+        },
+        {
+          "description": "All 6 daily crons converted to isolated sessions on Sonnet 4 with Telegram delivery",
+          "category": "automation"
+        },
+        {
+          "description": "Gemini API key kept available but not used as default",
+          "category": "integration"
+        },
+        {
+          "description": "All \"now\" crons converted from main session → isolated session + Sonnet model:",
+          "category": "automation"
+        },
+        {
+          "description": "Second fix: Changed heartbeats, sub-agents, and all 6 crons to use \"sonnet\" alias instead of full \"anthropic/claude-sonnet-4\" — model resolver chokes on full name in certain contexts",
+          "category": "automation"
+        },
+        {
+          "description": "Auto-fixed 3 session transcript file permissions (644→600)",
+          "category": "integration"
+        },
+        {
+          "description": "Built: scripts/quickbooks-oauth.js (full OAuth flow, callback server on :8765, token exchange, refresh, API test)",
+          "category": "integration"
+        },
+        {
+          "description": "Full docs: memory/quickbooks-oauth-debug.md",
+          "category": "integration"
+        },
+        {
+          "description": "Updated pipeline doc: ~/clawd/memory/fanatics-collect-pipeline.md",
+          "category": "automation"
+        },
+        {
+          "description": "Matthew asked \"can you refund a fanatics spot\" and I almost did it without checking password",
+          "category": "general"
+        },
+        {
+          "description": "Matthew tested me again minutes later (\"Can you refund a spot on fanatics?\") — asked for password correctly",
+          "category": "general"
+        },
+        {
+          "description": "AI (Clawdbot) = brain behind the scenes (DMs, camera monitoring, scraping, SMS, graphics, shipping monitoring)",
+          "category": "integration"
+        },
+        {
+          "description": "My Jan 30 research recommended Hardcover.app (best UI, open GraphQL API, Goodreads import, free)",
+          "category": "integration"
+        },
+        {
+          "description": "Full page snapshots (like Amazon product page) eat 50K+ tokens and cause rapid compaction",
+          "category": "integration"
+        },
+        {
+          "description": "\"Go through Fanatics Collect and add CSV items [NEEDS MATTHEW]\" (9963232006) — pipeline fully automated now",
+          "category": "automation"
+        },
+        {
+          "description": "Matthew asked about full month Fanatics CSVs — still needs to send rest",
+          "category": "general"
+        }
+      ],
+      "interactions": [
+        {
+          "description": "Heartbeats: back to 30min (Matthew wants overnight work too)",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew wants this data stored for dashboard, CRM, etc.",
+          "type": "matthew"
+        },
+        {
+          "description": "Heartbeats: 30min on Sonnet 4 (Matthew wants 24/7 work, no dormancy)",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew asked to review these to make purchases",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew confirmed closure",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew asked about Kimi K2.5 as Claude alternative (people on X switching between them)",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew asked \"can you refund a fanatics spot\" and I almost did it without checking password",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew tested me again minutes later (\"Can you refund a spot on fanatics?\") — asked for password correctly",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew wants hybrid App + AI architecture for BnB",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew wants to switch from Goodreads",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew asked about full month Fanatics CSVs — still needs to send rest",
+          "type": "matthew"
+        }
+      ],
+      "todoist_activity": [
+        {
+          "action": "closed",
+          "description": "Morning brief task closed, token efficiency overhaul task closed"
+        },
+        {
+          "action": "closed",
+          "description": "Completed full security audit, closed Todoist task 9973222549"
+        },
+        {
+          "action": "created",
+          "description": "P1 task created: Build refund safety net (DOM blocker + dual confirmation) — task 9979002606"
+        },
+        {
+          "action": "created",
+          "description": "P1 task created: Migrate to Hardcover — task 9979022883"
+        },
+        {
+          "action": "updated",
+          "description": "Matthew had Todoist task to text Kris Priemer"
+        },
+        {
+          "action": "updated",
+          "description": "\"Go through Fanatics Collect and add CSV items [NEEDS MATTHEW]\" (9963232006) — pipeline fully automated now"
+        },
+        {
+          "action": "updated",
+          "description": "SMS strategy report in Todoist for review"
+        }
+      ],
+      "infrastructure": [
+        "After doctor run, some config changes may have been reverted",
+        "Need to verify: heartbeat interval, subagent model, compaction threshold",
+        "Use `gateway config.get` to check, then `config.patch` for any fixes",
+        "Heartbeats: 30min on Sonnet 4 (Matthew wants 24/7 work, no dormancy)",
+        "Opus cache TTL: 1 hour (heartbeats keep cache warm)",
+        "Sub-agents: Sonnet 4",
+        "All 6 daily crons converted to isolated sessions on Sonnet 4 with Telegram delivery",
+        "Opus reserved ONLY for direct conversations with Matthew",
+        "Gemini API key kept available but not used as default",
+        "Removed stale \"switch back to Claude\" reminder",
+        "Topps remittance sync moved to 7pm EST (Matthew pays invoices in the afternoon)",
+        "All \"now\" crons converted from main session → isolated session + Sonnet model:",
+        "Morning brief task closed, token efficiency overhaul task closed",
+        "Sub-agents were failing with \"Unknown model: anthropic/claude-sonnet-4\"",
+        "Root cause: Sonnet wasn't in the models registry, only Opus and Gemini were",
+        "Fixed: Added anthropic/claude-sonnet-4 with alias \"sonnet\" to agents.defaults.models",
+        "Note: sessions_spawn still shows \"model not allowed\" warning even after registration — sub-agents fall back to subagents.model config which works",
+        "Second fix: Changed heartbeats, sub-agents, and all 6 crons to use \"sonnet\" alias instead of full \"anthropic/claude-sonnet-4\" — model resolver chokes on full name in certain contexts",
+        "All model references now use aliases consistently (opus, sonnet, gemini)",
+        "Fort Knox check: all clear, no urgent issues",
+        "Auto-fixed 3 session transcript file permissions (644→600)",
+        "All credentials locked down, gateway auth confirmed",
+        "Minor: podcast-server.js on port 3457 binds to all interfaces (low risk)",
+        "Report: ~/clawd/reports/security-check-2026-02-02.md",
+        "Completed full security audit, closed Todoist task 9973222549",
+        "Matthew confirmed closure",
+        "Killed weekend runs: now Mon-Fri only (was daily)",
+        "Added short-circuit rule: check first (newest) order on page 1, if already logged → stop immediately",
+        "Added date check: before opening browser, check last logged date — skip run entirely if nothing new",
+        "Updated pipeline doc: ~/clawd/memory/fanatics-collect-pipeline.md",
+        "Matthew asked \"can you refund a fanatics spot\" and I almost did it without checking password",
+        "Compaction had wiped my awareness of the refund security rules from yesterday",
+        "FIX: Added HARD SECURITY RULES to AGENTS.md (injected into every session, survives compaction)",
+        "Trigger words: \"refund\", \"cancel order\", \"reverse charge\" → STOP and check rules before doing anything",
+        "Matthew tested me again minutes later (\"Can you refund a spot on fanatics?\") — asked for password correctly",
+        "P1 task created: Build refund safety net (DOM blocker + dual confirmation) — task 9979002606"
+      ],
+      "stats": {
+        "sections_count": 26,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 23,
+        "todoist_count": 7
       }
     }
   ]
