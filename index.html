@@ -8,20 +8,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bnb-dark: #0a0e27;
+            --bnb-dark: #080c1f;
+            --bnb-deep: #0d1130;
             --bnb-primary: #1a237e;
-            --bnb-card: #151a3d;
-            --bnb-card-hover: #1e2555;
+            --bnb-card: rgba(18,22,56,0.85);
+            --bnb-card-hover: rgba(28,34,72,0.95);
             --bnb-accent: #ff6b35;
+            --bnb-accent-light: #ff8a50;
             --bnb-gold: #ffc107;
-            --bnb-border: rgba(57,73,171,0.25);
-            --text: #ffffff;
-            --text-muted: #8892b0;
-            --hot-red: #ff4444;
-            --hot-orange: #ff6b35;
+            --bnb-gold-light: #ffd54f;
+            --bnb-border: rgba(57,73,171,0.2);
+            --bnb-border-hover: rgba(57,73,171,0.45);
+            --text: #f0f0f8;
+            --text-muted: #7b85a4;
+            --hot-red: #ff4757;
             --grail-purple: #b388ff;
+            --grail-glow: rgba(179,136,255,0.25);
             --chase-blue: #40c4ff;
-            --green: #4caf50;
+            --chase-glow: rgba(64,196,255,0.25);
+            --green: #26de81;
+            --green-glow: rgba(38,222,129,0.3);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,274 +37,501 @@
             background: var(--bnb-dark);
             color: var(--text);
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-glow::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            top: -200px; right: -100px;
+            background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+            animation: float1 20s ease-in-out infinite;
+        }
+        .bg-glow::after {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            bottom: -150px; left: -100px;
+            background: radial-gradient(circle, rgba(179,136,255,0.06) 0%, transparent 70%);
+            animation: float2 25s ease-in-out infinite;
+        }
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-60px, 80px); }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, -70px); }
         }
 
         .page {
-            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
             margin: 0 auto;
-            padding: 20px 16px 40px;
+            padding: 24px 16px 60px;
         }
 
-        /* Header */
+        /* ─── Header ─── */
         .header {
             text-align: center;
-            margin-bottom: 32px;
-            padding: 24px 0;
+            margin-bottom: 40px;
+            padding: 32px 0 24px;
+        }
+
+        .logo-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
+            border-radius: 16px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 32px rgba(255,107,53,0.25);
+            letter-spacing: -0.5px;
         }
 
         .header h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
-            letter-spacing: -0.5px;
-            margin-bottom: 4px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 8px;
         }
 
-        .header h1 .accent { color: var(--bnb-accent); }
+        .header h1 .accent {
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         .header .subtitle {
             color: var(--text-muted);
             font-size: 0.9rem;
             font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .header .live-dot {
-            display: inline-block;
-            width: 8px; height: 8px;
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(38,222,129,0.12);
+            border: 1px solid rgba(38,222,129,0.25);
+            color: var(--green);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .live-dot {
+            width: 6px; height: 6px;
             background: var(--green);
             border-radius: 50%;
-            margin-right: 6px;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 8px var(--green-glow);
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
         }
 
-        /* Pack Cards */
+        /* ─── Pack Cards ─── */
         .pack-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .pack-card {
             background: var(--bnb-card);
             border: 1px solid var(--bnb-border);
-            border-radius: 16px;
-            padding: 20px 24px;
+            border-radius: 20px;
+            padding: 22px 26px;
             display: grid;
             grid-template-columns: 1fr auto;
-            gap: 16px;
+            gap: 20px;
             align-items: center;
-            transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(16px);
+            animation: cardIn 0.5s ease forwards;
+        }
+
+        .pack-card:nth-child(1) { animation-delay: 0.05s; }
+        .pack-card:nth-child(2) { animation-delay: 0.1s; }
+        .pack-card:nth-child(3) { animation-delay: 0.15s; }
+        .pack-card:nth-child(4) { animation-delay: 0.2s; }
+        .pack-card:nth-child(5) { animation-delay: 0.25s; }
+        .pack-card:nth-child(6) { animation-delay: 0.3s; }
+        .pack-card:nth-child(7) { animation-delay: 0.35s; }
+        .pack-card:nth-child(8) { animation-delay: 0.4s; }
+        .pack-card:nth-child(9) { animation-delay: 0.45s; }
+        .pack-card:nth-child(10) { animation-delay: 0.5s; }
+
+        @keyframes cardIn {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .pack-card:hover {
             background: var(--bnb-card-hover);
-            border-color: rgba(57,73,171,0.5);
-            transform: translateY(-1px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            border-color: var(--bnb-border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
         }
 
+        /* Featured top-3 glow */
         .pack-card.featured {
-            border-color: var(--bnb-accent);
-            border-width: 2px;
+            border-color: rgba(255,107,53,0.35);
         }
 
         .pack-card.featured::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold));
+            height: 2px;
+            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold), var(--bnb-accent));
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .pack-card.featured:hover {
+            box-shadow: 0 12px 48px rgba(255,107,53,0.15), 0 4px 24px rgba(0,0,0,0.3);
+        }
+
+        /* Rank badge */
+        .rank-badge {
+            position: absolute;
+            top: 14px; left: 14px;
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 800;
+            z-index: 2;
+        }
+
+        .rank-1 { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000; }
+        .rank-2 { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000; }
+        .rank-3 { background: linear-gradient(135deg, #cd7f32, #a0652f); color: #fff; }
+        .rank-n { background: rgba(255,255,255,0.08); color: var(--text-muted); }
+
+        /* Sport icon */
+        .sport-icon {
+            position: absolute;
+            top: 14px; right: 14px;
+            font-size: 1.3rem;
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+        /* Pack info */
+        .pack-info {
+            padding-left: 36px;
         }
 
         .pack-info h3 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             line-height: 1.3;
+            letter-spacing: -0.3px;
         }
 
+        /* Tags */
         .pack-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 10px;
+            margin-bottom: 14px;
         }
 
         .tag {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.4px;
         }
 
         .tag.grail {
-            background: rgba(179,136,255,0.15);
+            background: rgba(179,136,255,0.12);
             color: var(--grail-purple);
-            border: 1px solid rgba(179,136,255,0.3);
+            border: 1px solid rgba(179,136,255,0.25);
         }
 
         .tag.chase {
-            background: rgba(64,196,255,0.15);
+            background: rgba(64,196,255,0.12);
             color: var(--chase-blue);
-            border: 1px solid rgba(64,196,255,0.3);
+            border: 1px solid rgba(64,196,255,0.25);
         }
 
         .tag.hot {
-            background: rgba(255,68,68,0.15);
+            background: rgba(255,71,87,0.12);
             color: var(--hot-red);
-            border: 1px solid rgba(255,68,68,0.3);
+            border: 1px solid rgba(255,71,87,0.25);
         }
 
         .tag.scarce {
-            background: rgba(255,193,7,0.15);
+            background: rgba(255,193,7,0.12);
             color: var(--bnb-gold);
-            border: 1px solid rgba(255,193,7,0.3);
+            border: 1px solid rgba(255,193,7,0.25);
         }
 
-        .pack-meta {
+        /* Odds visual bars */
+        .odds-row {
             display: flex;
-            gap: 16px;
-            color: var(--text-muted);
-            font-size: 0.8rem;
+            gap: 20px;
+            align-items: flex-end;
         }
 
-        .pack-meta span {
+        .odd-block {
+            flex: 1;
+            max-width: 160px;
+        }
+
+        .odd-block .label {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 4px;
+            margin-bottom: 5px;
         }
 
-        /* Right side stats */
-        .pack-stats {
-            text-align: right;
-            min-width: 100px;
-        }
-
-        .pack-price {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--bnb-accent);
-            margin-bottom: 4px;
-        }
-
-        .pack-remaining {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .pack-remaining.low {
-            color: var(--hot-red);
-            font-weight: 600;
-        }
-
-        /* Odds display */
-        .odds-bar {
-            display: flex;
-            gap: 12px;
-            margin-top: 8px;
-        }
-
-        .odd-item {
-            font-size: 0.8rem;
-        }
-
-        .odd-item .label {
+        .odd-block .label span:first-child {
             color: var(--text-muted);
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
-        .odd-item .value {
-            font-weight: 700;
-            font-size: 0.95rem;
+        .odd-block .label .pct {
+            font-weight: 800;
+            font-size: 0.85rem;
         }
 
-        .odd-item .value.grail-color { color: var(--grail-purple); }
-        .odd-item .value.chase-color { color: var(--chase-blue); }
+        .odd-block .label .pct.grail-color { color: var(--grail-purple); }
+        .odd-block .label .pct.chase-color { color: var(--chase-blue); }
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
+        .bar-track {
+            width: 100%;
+            height: 5px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        .bar-fill.grail {
+            background: linear-gradient(90deg, var(--grail-purple), #d1c4e9);
+            box-shadow: 0 0 8px var(--grail-glow);
+        }
+
+        .bar-fill.chase {
+            background: linear-gradient(90deg, var(--chase-blue), #80d8ff);
+            box-shadow: 0 0 8px var(--chase-glow);
+        }
+
+        .cards-left {
             color: var(--text-muted);
             font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 4px;
         }
 
-        .footer a {
-            color: var(--bnb-accent);
-            text-decoration: none;
+        /* Right side */
+        .pack-stats {
+            text-align: right;
+            min-width: 90px;
+        }
+
+        .pack-price {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pack-remaining {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .pack-remaining.low {
+            color: var(--hot-red);
+            font-weight: 700;
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            text-align: center;
+            margin-top: 44px;
         }
 
         .shop-link {
-            display: inline-block;
-            margin-top: 24px;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, var(--bnb-accent), #ff8a50);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
             color: white;
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: 700;
+            border-radius: 14px;
+            font-weight: 800;
             font-size: 1rem;
-            transition: all 0.2s;
-            box-shadow: 0 4px 16px rgba(255,107,53,0.3);
+            letter-spacing: -0.3px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 24px rgba(255,107,53,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shop-link::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; right: 0; bottom: 0;
+            width: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            animation: btnShine 4s ease-in-out infinite;
+        }
+
+        @keyframes btnShine {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(50%); }
         }
 
         .shop-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255,107,53,0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(255,107,53,0.4);
         }
 
-        /* Mobile */
+        /* ─── Footer ─── */
+        .footer {
+            text-align: center;
+            margin-top: 36px;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            line-height: 1.6;
+        }
+
+        .footer .timestamp {
+            font-weight: 600;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ─── Empty state ─── */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
+        .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--text); }
+
+        /* ─── Mobile ─── */
         @media (max-width: 600px) {
+            .page { padding: 16px 12px 40px; }
+            .header h1 { font-size: 1.7rem; }
+            .header { margin-bottom: 28px; padding: 20px 0 16px; }
+
             .pack-card {
                 grid-template-columns: 1fr;
-                gap: 12px;
-                padding: 16px;
+                gap: 14px;
+                padding: 18px 16px;
+                border-radius: 16px;
             }
+
+            .pack-info { padding-left: 32px; }
+
             .pack-stats {
                 text-align: left;
                 display: flex;
                 align-items: center;
-                gap: 16px;
+                gap: 12px;
+                padding-left: 32px;
             }
-            .header h1 { font-size: 1.6rem; }
-            .odds-bar { gap: 8px; }
+
+            .pack-price { font-size: 1.3rem; }
+
+            .odds-row { gap: 12px; }
+            .odd-block { max-width: none; }
+
+            .rank-badge { top: 12px; left: 12px; width: 24px; height: 24px; font-size: 0.65rem; }
+            .sport-icon { top: 12px; right: 12px; font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
+    <div class="bg-glow"></div>
+
     <div class="page">
         <div class="header">
-            <h1>Break'n <span class="accent">Bad</span> 🔥</h1>
-            <p class="subtitle"><span class="live-dot"></span>Hot Packs Right Now</p>
+            <div class="logo-mark">B'B</div>
+            <h1>Hot Packs <span class="accent">Right Now</span></h1>
+            <p class="subtitle">
+                <span class="live-badge"><span class="live-dot"></span> Live</span>
+                Updated every 30 min
+            </p>
         </div>
 
-        <div class="pack-list" id="packList">
-            <!-- Injected by JS -->
-        </div>
+        <div class="pack-list" id="packList"></div>
 
-        <div style="text-align:center; margin-top: 32px;">
+        <div class="cta-section">
             <a href="https://get.fanatics.live/X8WW/hsobapek" class="shop-link">
-                Open in Fanatics Live →
+                Open in Fanatics Live <span style="font-size:1.1rem">→</span>
             </a>
         </div>
 
         <div class="footer">
-            <p>Updated <span id="timestamp"></span></p>
-            <p style="margin-top:4px;">Odds based on remaining cards in pool. Data refreshes every 30 min.</p>
+            <p>Last update: <span class="timestamp" id="timestamp"></span></p>
+            <p>Odds based on remaining cards in pool · Break'n Bad IR Intelligence</p>
         </div>
     </div>
 
@@ -498,11 +731,43 @@
   ]
 };
 
+        const SPORT_ICONS = {
+            'baseball': '⚾',
+            'basketball': '🏀',
+            'football': '🏈',
+            'pokemon': '⚡',
+            'mixed': '🎯',
+            'og pokemon': '✨',
+            'other': '🃏'
+        };
+
+        function getSport(title) {
+            const t = title.toLowerCase();
+            if (t.includes('og pokemon')) return 'og pokemon';
+            if (t.includes('pokemon')) return 'pokemon';
+            if (t.includes('basketball')) return 'basketball';
+            if (t.includes('football')) return 'football';
+            if (t.includes('baseball')) return 'baseball';
+            if (t.includes('mixed')) return 'mixed';
+            return 'other';
+        }
+
         function render() {
             const container = document.getElementById('packList');
             const packs = PACK_DATA.packs || [];
 
-            document.getElementById('timestamp').textContent = 
+            if (!packs.length) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">📦</div>
+                        <h3>No hot packs right now</h3>
+                        <p>Check back soon — we refresh every 30 minutes</p>
+                    </div>
+                `;
+                return;
+            }
+
+            document.getElementById('timestamp').textContent =
                 new Date(PACK_DATA.timestamp).toLocaleString('en-US', {
                     month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
                 });
@@ -516,35 +781,57 @@
                 const remaining = pack.remaining || 0;
                 const lowClass = remaining < 50 ? 'low' : '';
                 const featured = i < 3 ? 'featured' : '';
-
-                const grailPct = pack.grailPct || '0';
-                const chasePct = pack.chasePct || '0';
+                const grailPct = parseFloat(pack.grailPct) || 0;
+                const chasePct = parseFloat(pack.chasePct) || 0;
                 const price = pack.price || 0;
+                const sport = getSport(pack.title);
+                const icon = SPORT_ICONS[sport] || '🃏';
+
+                // Rank badge
+                let rankClass = 'rank-n';
+                if (i === 0) rankClass = 'rank-1';
+                else if (i === 1) rankClass = 'rank-2';
+                else if (i === 2) rankClass = 'rank-3';
+
+                // Scale bars: grail max ~5%, chase max ~20%
+                const grailWidth = Math.min(grailPct / 5 * 100, 100);
+                const chaseWidth = Math.min(chasePct / 20 * 100, 100);
 
                 return `
                     <div class="pack-card ${featured}">
+                        <div class="rank-badge ${rankClass}">${i + 1}</div>
+                        <div class="sport-icon">${icon}</div>
+
                         <div class="pack-info">
                             <h3>${pack.title}</h3>
                             <div class="pack-tags">${tags}</div>
-                            <div class="odds-bar">
-                                <div class="odd-item">
-                                    <div class="label">Grail Odds</div>
-                                    <div class="value grail-color">${grailPct}%</div>
+                            <div class="odds-row">
+                                <div class="odd-block">
+                                    <div class="label">
+                                        <span>Grail</span>
+                                        <span class="pct grail-color">${grailPct}%</span>
+                                    </div>
+                                    <div class="bar-track">
+                                        <div class="bar-fill grail" style="width:${grailWidth}%"></div>
+                                    </div>
                                 </div>
-                                <div class="odd-item">
-                                    <div class="label">Chase Odds</div>
-                                    <div class="value chase-color">${chasePct}%</div>
-                                </div>
-                                <div class="odd-item">
-                                    <div class="label">Cards Left</div>
-                                    <div class="value">${remaining}</div>
+                                <div class="odd-block">
+                                    <div class="label">
+                                        <span>Chase</span>
+                                        <span class="pct chase-color">${chasePct}%</span>
+                                    </div>
+                                    <div class="bar-track">
+                                        <div class="bar-fill chase" style="width:${chaseWidth}%"></div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="cards-left">${remaining.toLocaleString()} cards in pool</div>
                         </div>
+
                         <div class="pack-stats">
                             <div class="pack-price">$${price}</div>
                             <div class="pack-remaining ${lowClass}">
-                                ${remaining < 50 ? '⚡ Running low' : remaining + ' remaining'}
+                                ${remaining < 50 ? '⚡ Low stock' : ''}
                             </div>
                         </div>
                     </div>
