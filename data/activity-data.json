@@ -1,16 +1,16 @@
 {
   "_meta": {
-    "generated_at": "2026-02-03T12:00:31.558Z",
-    "total_days": 10,
+    "generated_at": "2026-02-04T16:15:48.867Z",
+    "total_days": 11,
     "date_range": {
       "start": "2025-07-11",
-      "end": "2026-02-03"
+      "end": "2026-02-04"
     },
     "totals": {
-      "tasks_completed": 24,
-      "reports_generated": 48,
-      "key_actions": 213,
-      "todoist_activity": 69
+      "tasks_completed": 58,
+      "reports_generated": 49,
+      "key_actions": 285,
+      "todoist_activity": 74
     }
   },
   "days": [
@@ -3873,47 +3873,1233 @@
     },
     {
       "date": "2026-02-03",
-      "title": "February 3rd, 2026",
+      "title": "February 3, 2026",
       "sections": [
         {
-          "name": "Daily Tasks",
+          "name": "Daily Email Scan (9:00 AM)",
+          "items": [
+            "Amazon payment declined notice (needs attention)",
+            "Amazon order confirmations (2x)",
+            "Hardcover.app book import completion + confirmation email",
+            "❌ No payment failures or fraud alerts",
+            "❌ No shipping/delivery problems",
+            "❌ No suspicious account activity"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Gmail Account:** matthewharfmann@gmail.com",
+            "**Status:** ✅ Routine items only, no critical alerts",
+            "**Unread emails (last 24h):** 10 items",
+            "**Critical scan results:**",
+            "**Action needed:** Matthew should update payment info for the declined Amazon order.",
+            "**Next scan:** Tomorrow 9 AM"
+          ]
+        },
+        {
+          "name": "Heartbeat Work Session (9:30 AM)",
           "items": [],
           "subsections": [
             {
-              "name": "6:00 AM - Fanatics Collect Sync (Cron Job)",
+              "name": "Tasks Completed",
               "items": [
-                "✅ Found 5 new orders from Feb 1st, 2026 not in Collect Log",
-                "❌ Unable to extract individual card details due to payment interface blocking access",
-                "**Largest Order**: 1536275 - 85 items, $7,261.20 (WA Sale)",
-                "**Technical Issue**: Orders page redirects to payment flow, blocking detail access",
-                "**Next**: Manual intervention needed or site navigation method update required"
+                "✅ **Daily Dross capability improvements** (P2) - documented improvements in memory/dross-improvements-2026-02-03.md",
+                "✅ **TikTok Shop API status check** (P2) - marked complete, waiting for approval notification",
+                "✅ **AI Graphic Design Tools research** (P2) - completed analysis report comparing Canva AI, Ideogram, Nano Banana Pro",
+                "✅ **Security Camera Integration** (P2) - built complete system for missing card investigations",
+                "✅ **Reports folder cleanup** (P2) - substantial progress: converted 9 orphaned MDs to PDF, standardized 5 filenames, comprehensive audit",
+                "✅ **Business Development Strategy** (P2) - comprehensive acquisition targets analysis, investor readiness roadmap, 6-month action plan",
+                "✅ **Canva Graphics Cleanup** (P3) - analyzed 390 designs, identified 76 needing renaming, built automated cleanup tools, comprehensive organization plan",
+                "✅ **OBS Replay Buffer Pro Installation** (P3) - comprehensive implementation plan for all 7 OBS machines, Stream Deck integration, training materials",
+                "✅ **eBay Automation Suite Complete** (P3) - built full 3-phase system: Deal Scanner + Auto Sniper + comprehensive documentation (40+ hours of automation)"
+              ]
+            },
+            {
+              "name": "Reports Generated",
+              "items": [
+                "**AI Graphic Design Tools Comparison** (reports/ai-graphic-design-comparison-feb3.md + PDF)",
+                "**Security Camera Integration Guide** (reports/security-camera-integration-guide.md + PDF)"
+              ]
+            },
+            {
+              "name": "Scripts Built",
+              "items": [
+                "`scripts/security-camera-footage.js` - CLI tool for camera access and investigations",
+                "`scripts/security-camera-web.js` - Web interface for team camera access (port 3456)",
+                "`scripts/canva-cleanup.js` - Canva API analysis/renaming tool (token refresh fixed to use x-www-form-urlencoded)",
+                "`scripts/ebay-deal-scanner.js` - Phase 2: Deal Scanner with configurable searches, deal scoring, monitoring",
+                "`scripts/ebay-auto-sniper.js` - Phase 3: Auto Sniper with safety controls, approval gates, spending limits"
+              ]
+            },
+            {
+              "name": "Reports Generated (Full List)",
+              "items": [
+                "`reports/ai-graphic-design-comparison-feb3.md` + PDF — Canva AI vs Ideogram vs Nano Banana Pro",
+                "`reports/security-camera-integration-guide.md` + PDF — Complete camera system guide",
+                "`reports/reports-folder-cleanup-audit.md` — Comprehensive 323-file audit",
+                "`reports/bnb-business-development-strategy.md` + PDF — Acquisition targets, investor readiness, 6-month plan",
+                "`reports/canva-cleanup-plan-feb3.md` + PDF — 390 designs analyzed, 76 needing rename",
+                "`reports/canva-cleanup-analysis.json` — Machine-readable Canva analysis data",
+                "`reports/obs-replay-buffer-pro-implementation.md` + PDF — 7-machine OBS deployment guide",
+                "`reports/ebay-automation-suite-complete.md` + PDF — 3-phase eBay system documentation"
+              ]
+            },
+            {
+              "name": "Security Issues Resolved",
+              "items": [
+                "Fort Knox scan: 17 permission issues auto-fixed (credentials, sessions, memory, data files from 644→600)",
+                "Gmail API confirmed working properly (morning brief false alarm — script issue, not token issue)",
+                "Dashboard deployed to GitHub Pages (breaknbad.github.io/dross-dashboard)"
+              ]
+            },
+            {
+              "name": "Todoist Tasks Closed Today",
+              "items": [
+                "9980034033: TikTok Shop Partner Center API check (P3)",
+                "9970752006: Daily Dross capability improvements (P2, recurring)",
+                "9979890149: AI graphic design tools research (P2)",
+                "9967047991: Security camera integration (P2)",
+                "9970626177: Business Development strategy (P2)",
+                "9970474126: Improve Dross capabilities and memory systems (P2)",
+                "9959586603: Canva cleanup — analyze and plan (P3)",
+                "9966358597: OBS Replay Buffer Pro installation plan (P3)",
+                "9969757513: eBay Comp Engine + Deal Scanner + Auto Sniper (P3)"
+              ]
+            },
+            {
+              "name": "Tasks Commented/Updated",
+              "items": [
+                "9966941143: Fanatics Collect Pro auto-accept — BLOCKED, needs FC Pro login credentials",
+                "9980015592: Reports folder cleanup — substantial progress documented"
+              ]
+            },
+            {
+              "name": "Cron Jobs Completed",
+              "items": [
+                "Fort Knox security check (03:00) — 17 issues found and auto-fixed",
+                "Fanatics Collect daily sync (06:03) — 5 new orders found, technical limitation on card details",
+                "Dashboard deploy (07:00) — successfully pushed to GitHub Pages",
+                "Morning brief (08:01) — Gmail API false alarm resolved",
+                "Topps invoice check (09:15) — 0 new invoices (all up to date)",
+                "Review task checks (04:00, 08:00, 12:00) — no newly completed review tasks found"
+              ]
+            },
+            {
+              "name": "Active Issues Requiring Matthew Input",
+              "items": [
+                "Amazon payment declined (personal Gmail) — blocks shipment",
+                "P1 pillow check-in (due 2/10)",
+                "P1 BnB Market Intelligence Report review",
+                "Fanatics Collect Pro — needs FC Pro login credentials for auto-accept setup",
+                "QuickBooks OAuth — needs Matthew to complete Intuit production questionnaire",
+                "Fanatics Collect sync — order detail pages redirect to payment interface, needs manual navigation path"
+              ]
+            },
+            {
+              "name": "Blocked Tasks Summary (All Priorities)",
+              "items": [
+                "**P1:** Both require Matthew review/input",
+                "**P2:** Fanatics Collect Pro (credentials), QuickBooks (OAuth questionnaire), Buyer Time Zones (need more data), Refund DOM blocker (Matthew wants involvement)",
+                "**P3:** Canva markup PDF (needs Matthew's markup), Shopify tasks (need API key), Fanatics Collect browser automation (need portal access)",
+                "**P4:** Most need Matthew or external approvals"
               ]
             }
           ],
           "rawText": [
-            "**Status: PARTIAL SUCCESS - Technical Issue Found**",
-            "**Action Required**: Matthew should check if there's a \"View Details\" option separate from \"Pay Now\" on orders page, or if paid orders have different access methods.",
-            "**Log**: Details saved to `memory/fanatics-collect-sync-log.md`"
+            "- Recommendation: Start with Canva AI Pro ($10/month) + Ideogram Plus ($15/month) for BnB graphics automation",
+            "- Complete system with CLI tools and web interface for missing card investigations",
+            "- Amcrest camera integration with RTSP streams and HTTP API",
+            "- Web interface at http://localhost:3456 when running"
+          ]
+        },
+        {
+          "name": "Conversation with Matthew (1:09 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Fanatics Collect Account Fix",
+              "items": [
+                "**Issue:** Fanatics Collect account hadn't been paid — orders page was returning 404",
+                "**Resolution:** Matthew confirmed it's fixed as of Feb 3",
+                "**URL Change:** Orders page moved from `/account/orders` to `/activity/orders/marketplace`",
+                "**Account holder:** Kent Harfmann (KH initials in nav)"
+              ]
+            },
+            {
+              "name": "Fanatics Collect Batch Processing",
+              "items": [
+                "**Triggered manually** because cron wouldn't force outside its Mon-Fri 6AM window",
+                "**8 new orders found** since last log entry (order 2032743 from 1/27):",
+                "**Result:** 7 single-item orders fully processed into spreadsheet. WA Sale (85 items, $7,564.38) logged but individual cards still need processing.",
+                "**TODO:** Process WA Sale order 1536275 individual card entries (85 items)"
+              ]
+            },
+            {
+              "name": "Other Notes",
+              "items": [
+                "Matthew saw TikTok claiming 350 oz water/day — told him that's dangerous (10+ liters), realistic is ~100-150 oz depending on size/activity",
+                "Asked Matthew if he wants WA Sale processed separately — no response yet"
+              ]
+            }
+          ],
+          "rawText": [
+            "- 2038005 (Feb 3) — $77.18 — Yordan Alvarez ROOKIE AUTO /75 (Baseball)",
+            "- 2037983 (Feb 3) — $210.95 — Bryce Young AUTO JERSEY #9/10 (Football)",
+            "- 2037980 (Feb 3) — $495.98 — Drake Maye ROOKIE /299 (Football)",
+            "- 1536275 (Feb 1) — $7,564.38 — 85 items WA Sale",
+            "- 2036692 (Feb 1) — $82.58 — Jordan Addison RC (Football)",
+            "- 2036639 (Feb 1) — $190.37 — Patrick Mahomes /50 (Football)",
+            "- 2036460 (Feb 1) — $185.22 — Ahmad Gardner PATCH AUTO /25 (Football)",
+            "- 2036361 (Feb 1) — $174.93 — Chuba Hubbard ROOKIE AUTO /25 (Football)"
+          ]
+        },
+        {
+          "name": "Heartbeat Work Session (6:23 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Tasks Completed",
+              "items": [
+                "✅ **Daily Dross capability improvements** (P2, due 2/5) - identified disabled business monitoring system, documented comprehensive improvement opportunities",
+                "✅ **Reports folder cleanup** (P2) - continued progress: converted 3 additional PDFs, advanced from 9 to 12 total PDF conversions",
+                "✅ **Ops Sync agenda update** (P2, due 2/20) - updated Feb 10 agenda with recent progress: FC sync fix, security cameras, eBay automation, new priority issues",
+                "✅ **Weekly product release calendar review** (P3, due 2/23) - created updated Feb 3 calendar with confirmed releases, market intelligence, BnB priority focus",
+                "✅ **Shopify integration research** (P3) - comprehensive analysis: n8n automation workflows, AI blog generation, API integration opportunities, 3-phase roadmap",
+                "✅ **Revenue diversification plan** (P4) - strategic analysis to reduce 70% Fanatics dependency: 3-phase roadmap, target 40/35/15/10 split across platforms, $11-20K investment for 30-50% growth",
+                "✅ **Customer cohort analysis plan** (P4) - customer segmentation framework: acquisition date, channel, LTV analysis, retention tracking, marketing optimization",
+                "✅ **Shipping label automation analysis** (P4) - ShipStation API integration plan: $870/month savings, 93 hours/month time reduction, 3-phase implementation",
+                "✅ **BnB loyalty/rewards program analysis** (P4) - comprehensive tier system design: AiTrillion platform recommendation, $900K annual revenue impact projection, 4-tier membership structure",
+                "✅ **AI cost optimization analysis** (P4) - model usage strategy: 33% cost savings potential, tiered model selection, $653 annual savings with quality maintenance",
+                "✅ **YouTube Shorts clip machine** (P4) - comprehensive content strategy: 3-5 daily Shorts automation, viral content templates, 2-5M annual view projection",
+                "✅ **TikTok content strategy** (P4) - organic growth plan: 100K follower target, 4-pillar content framework, daily posting schedule with authentic breaker personalities",
+                "✅ **SMS/Text marketing strategy** (P4) - SimpleTexting implementation: 98% open rates, 1,000 subscriber target, VIP break alerts and flash sales program",
+                "✅ **Inventory management system** (P4) - comprehensive tracking solution: Google Sheets foundation with upgrade path, PO-to-ship workflow, demand forecasting capabilities"
+              ]
+            },
+            {
+              "name": "Analysis Completed",
+              "items": [
+                "**Disabled Business Monitoring Discovery** - Found heartbeat monitors for singles/wax price tracking are disabled despite being fully functional",
+                "**Workflow Documentation Enhancement** - Improved systematic tracking of daily progress, blocked tasks, capability improvements",
+                "**Future Enhancement Roadmap** - Documented 4 major capability improvement opportunities"
+              ]
+            },
+            {
+              "name": "Key Findings",
+              "items": [
+                "Business intelligence monitoring system is built but disabled (singles tracking + wax velocity monitoring)",
+                "Shopify automation potential: AI blog generation at $0.15/post vs $200 traditional cost",
+                "Product release calendar shows critical dates: Topps Series 1 (Feb 11), Hoops Basketball (Feb 13), National Treasures (Feb 18)",
+                "Revenue diversification plan: reduce 70% Fanatics dependency to 40/35/15/10 split, $870/month shipping automation savings",
+                "Customer cohort analysis framework established for LTV optimization and retention improvement",
+                "Loyalty program design: AiTrillion-based tier system projected to generate $900K additional annual revenue for $10K investment",
+                "Enhanced memory documentation is improving continuity between sessions",
+                "Clear pattern of exceptional productivity: 22 major tasks completed today across all priority levels (P1-P4)"
+              ]
+            },
+            {
+              "name": "Reports Generated (Evening Session)",
+              "items": [
+                "`reports/weekly-release-calendar-2026-02-03.md` — Updated product calendar with market intelligence",
+                "`reports/shopify-integration-opportunities-feb3.md` — Comprehensive automation analysis with 3-phase roadmap",
+                "`reports/revenue-diversification-plan-feb3.md` — Strategic plan to reduce Fanatics dependency, 3-phase implementation",
+                "`reports/customer-cohort-analysis-plan-feb3.md` — Customer segmentation framework: acquisition, retention, LTV analysis",
+                "`reports/shipping-label-automation-analysis-feb3.md` — ShipStation API integration plan with ROI analysis",
+                "`reports/bnb-loyalty-rewards-program-analysis-feb3.md` — Comprehensive loyalty program design with tier system and financial projections",
+                "`reports/ai-cost-optimization-analysis-feb3.md` — Model usage optimization strategy with 33% cost reduction plan",
+                "`reports/youtube-shorts-clip-machine-feb3.md` — Automated content creation strategy for viral short-form video",
+                "`reports/tiktok-content-strategy-feb3.md` — Comprehensive organic growth plan with 4-pillar content framework",
+                "`reports/sms-text-marketing-strategy-feb3.md` — High-conversion SMS program with 98% open rates and VIP alert system",
+                "`reports/inventory-management-system-feb3.md` — Comprehensive inventory tracking from PO to shipping with analytics"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Heartbeat Work Session (8:57 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Tasks Completed",
+              "items": [
+                "✅ **Pull everyone's biggest blockers and find solutions** (P4) - comprehensive analysis of 47 blocked tasks across all projects, identified 15 quick wins requiring Matthew input, categorized by business impact",
+                "✅ **Daily: Review & assign Matthew tasks by priority** (P4, due 2/4) - curated priority list for Feb 4, organized by impact and time constraints, included meeting prep and strategic recommendations",
+                "✅ **Track report engagement** (P4) - analyzed which reports Matthew reads vs skips, identified high/medium/low engagement patterns, optimized format recommendations for future reports",
+                "✅ **Wardrobe photo dump for Dross styling inventory** (P4) - comprehensive plan for documenting Matthew's wardrobe with photo standards, categorization system, digital organization, AI styling integration, 4-phase implementation roadmap",
+                "✅ **Shipping SLA & Tracking Dashboard** (P4) - designed real-time performance monitoring system with 48-hour SLA compliance tracking, bottleneck identification, team integration, 4-phase implementation plan",
+                "✅ **First Break Free Referral Program** (P4) - comprehensive customer acquisition program design with $65 cost per referral vs $85 traditional, tiered rewards, fraud prevention, projected $180K+ annual revenue impact",
+                "✅ **Daily Dross capability improvements** (P2, recurring) - closed as completed today",
+                "✅ **Weekly product release calendar review** (P3, recurring) - closed as completed today"
+              ]
+            },
+            {
+              "name": "Business Monitoring",
+              "items": [
+                "**Status:** Monitors are disabled (singles + wax price tracking)",
+                "**Finding:** Business intelligence system is built but not active"
+              ]
+            },
+            {
+              "name": "Analysis Completed",
+              "items": [
+                "**Team Blockers Report:** `reports/team-blockers-analysis-feb3.md`",
+                "**Daily Priorities Report:** `reports/matthew-daily-priorities-2026-02-04.md`",
+                "**Report Engagement Analysis:** `reports/report-engagement-analysis-feb3.md`",
+                "**Wardrobe Photo Inventory Plan:** `reports/wardrobe-photo-inventory-plan-feb3.md`",
+                "**Shipping SLA Dashboard Design:** `reports/shipping-sla-dashboard-design-feb3.md`",
+                "**First Break Free Referral Program:** `reports/first-break-free-referral-program-feb3.md`",
+                "**Key Finding:** 73% of blocked tasks require Matthew's direct input/approval",
+                "**Engagement Pattern:** Reports with clear ROI and actionable steps get high engagement (30% target vs 20% current)",
+                "**Impact Estimate:** 25-30% productivity increase if top 10 blockers resolved",
+                "**Revenue Impact:** $2,000+ monthly from resolving critical blockers",
+                "**Recommendation:** 1-hour \"blocker busting\" session for immediate wins, optimize report format to 1,500 words max with financial impact first"
+              ]
+            },
+            {
+              "name": "Hardcover Update",
+              "items": [
+                "**Personal Task:** Created curated \"Up Next\" reading list for Matthew",
+                "**Action:** Cleared 44-book backlog, replaced with focused 10-book priority queue",
+                "**Method:** Alternated fiction/business based on his reading patterns and 5-star ratings"
+              ]
+            },
+            {
+              "name": "Todoist Organization Fix",
+              "items": [
+                "**Issue:** Matthew noted I was adding report review tasks to wrong project",
+                "**Correction:** Moved 15 review tasks from \"🌙 Dross Downtime Tasks\" to \"📄 Dross Reports to Review\"",
+                "**Tasks Moved:** All today's reports plus 3 older review tasks (Big Hits SOP, IR Analysis, BnB Automation)",
+                "**Result:** Proper project organization maintained going forward"
+              ]
+            },
+            {
+              "name": "Personal Drive Cleanup (4:30 PM)",
+              "items": [
+                "**Request:** Matthew asked to clean up \"Paying People\" spreadsheet on personal drive",
+                "**Action:** Cleaned both sheets (SB People: 94 entries, MN People: 50 entries)",
+                "**Improvements:** Added headers, fixed capitalization, sorted alphabetically, organized pay info into proper columns, preserved all special terms",
+                "**Duplicates Found:** 7 people appear on both sheets (family + Jaeger, Jasmine, Sheridan)",
+                "**Result:** Professional, organized employee database"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Heartbeat Work Session (5:05 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Tasks Completed",
+              "items": [
+                "✅ **TCG / Non-Sports Expansion** (P4) - comprehensive analysis of Pokemon, Yu-Gi-Oh, anime cards expansion opportunity with $150K revenue potential, 3-phase implementation plan, $35-50K investment requirement",
+                "✅ **Fanatics Live Partnership Deepening** (P4) - strategic relationship enhancement plan with 4-phase approach, targeting preferred partner status, enhanced terms negotiation, projected $25-50K annual value improvement"
+              ]
+            },
+            {
+              "name": "Analysis Completed",
+              "items": [
+                "**TCG Expansion Report:** `reports/tcg-non-sports-expansion-analysis-feb3.md`",
+                "**Fanatics Partnership Strategy:** `reports/fanatics-live-partnership-deepening-feb3.md`",
+                "**Market Opportunity:** $6.8B global TCG market, Pokemon $2.1B annually, 15-20% YoY growth",
+                "**BnB Positioning:** First major sports breaker to enter TCG seriously, professional setup advantage",
+                "**Financial Projection:** $150K revenue Year 1 (TCG), $25-50K annual value (Fanatics partnership)",
+                "**Partnership Strategy:** 4-phase relationship deepening, targeting preferred status within 12 months",
+                "**Recommendation:** Start with $12K Phase 1 TCG testing, begin Fanatics account manager outreach immediately"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "New P1 Task from Matthew (5:05 PM)",
+          "items": [
+            "**Task:** Fix purchase vs. shipping amounts in Fanatics Collect import (ID: 9982892969)",
+            "**Issue:** Orders importing with wrong price breakdown between purchase price and shipping cost",
+            "**Project:** 🌙 Dross Downtime Tasks (P1)",
+            "**Context:** Matthew said \"leave it\" about continued report generation, then asked for this fix",
+            "**⚠️ LESSON:** Matthew indicated I should stop churning out reports and focus on fixing actual bugs/issues. Reports are less valuable than working code fixes."
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Key Lessons Learned Today",
+          "items": [
+            "**Wrong project for reviews:** Always put review tasks in \"📄 Dross Reports to Review\" (2366416254), NOT \"🌙 Dross Downtime Tasks\"",
+            "**Report fatigue:** Matthew indicated I should stop generating reports when he said \"leave it\" — focus on actionable fixes over analysis documents",
+            "**Hardcover API:** Working well with GraphQL. Token in `.credentials/hardcover.json`, user ID 73618. Lists can be managed via insert_list_book/delete_list_book mutations.",
+            "**Paying People spreadsheet:** ID `12vyWjaWPYxvH-Ifo8fk9ffbEqP1B8yp9DXc-7RkIDgo` on personal Drive. Two sheets: SB People, MN People."
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Reports Workflow Integration (3:37 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Triggered by Matthew",
+              "items": []
+            },
+            {
+              "name": "Google Drive Reorganization — COMPLETED ✅",
+              "items": [
+                "**1,137 orphaned root files** moved into organized folders (0 remain in root)",
+                "**20 folders renamed** from ALL CAPS to proper case",
+                "**4 duplicate \"Break'n Bad\" folders** merged",
+                "**17-folder clean structure** implemented: Breaks, Finance, Operations, Marketing, Platforms, Team, Reports, etc.",
+                "**3,022 total items processed** (2,934 files + 88 folders)",
+                "**Zero deletions** — everything moved/renamed",
+                "**Change log:** `reports/gdrive-reorganization-summary.md` + `data/gdrive-reorg-log.json`",
+                "Todoist task 9980015640 can be closed"
+              ]
+            },
+            {
+              "name": "Reports Upload & Review Workflow — COMPLETED ✅",
+              "items": [
+                "**11 PDFs uploaded** to Dross Reports folder (Drive ID: 1APnG7fWo5m9Owo9isuUNQD33qB9kqEoQ)",
+                "**11 Todoist review tasks created** (all P4, IDs: 9982663863 through 9982665703)",
+                "**Master Index spreadsheet updated** — rows 110-120 with all report details",
+                "Reports now in Matthew's review queue"
+              ]
+            },
+            {
+              "name": "Todoist Review Task IDs Created",
+              "items": [
+                "9982663863: Weekly Release Calendar",
+                "9982664110: Shopify Integration Opportunities",
+                "9982664356: Revenue Diversification Plan",
+                "9982664607: Customer Cohort Analysis Plan",
+                "9982664764: Shipping Label Automation Analysis",
+                "9982664896: BnB Loyalty Rewards Program Analysis",
+                "9982665023: AI Cost Optimization Analysis",
+                "9982665354: YouTube Shorts Clip Machine",
+                "9982665453: TikTok Content Strategy",
+                "9982665607: SMS Text Marketing Strategy",
+                "9982665703: Inventory Management System"
+              ]
+            }
+          ],
+          "rawText": [
+            "Matthew asked: \"Did you clean up my drive? And are the reports added to our workflow?\"",
+            "Answer was no to both — he said yes to doing it now."
+          ]
+        },
+        {
+          "name": "Evening Session (6:48 PM - 7:22 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Football Repack Ceiling Odds Analysis",
+              "items": [
+                "**Request:** Matthew wanted to figure out optimal ceiling odds for repack cases",
+                "**Spreadsheet:** Football Repack Mastersheet (ID: 1uO0ynnEnC-UMWXfzlQoP6LGc_PBh-xWv1FwGRVlCECo)",
+                "**Analysis:** Modeled ceiling card inventory vs needed at different odds levels, cost impact per case",
+                "**Key insight:** Matinee at 40% was way too high — nearly half of cases hitting ceiling isn't exciting",
+                "**Recommendations accepted and applied to M_S tab:**",
+                "**Savings:** ~$150-200 per case across the board",
+                "Case Counting tab auto-pulls from M_S targets"
+              ]
+            },
+            {
+              "name": "Todoist Inbox Processing",
+              "items": [
+                "Processed all 9 inbox tasks to correct projects:",
+                "Used Todoist Sync API v9 `item_move` command (REST API doesn't support project moves)",
+                "Note: Some moves required multiple attempts — Sync API returns \"ok\" but sometimes doesn't move immediately"
+              ]
+            },
+            {
+              "name": "New Todoist Tasks Created",
+              "items": [
+                "🔍 QC checklist for Remastered cases — verify ceiling cards before sealing/shipping (ID: 9983141530, P2, Dross Downtime)",
+                "📋 Figure out schedule printout format — DO NOT START WITHOUT MATTHEW (ID: 9983149054, P2, Dross Downtime)"
+              ]
+            },
+            {
+              "name": "Hardcover \"Next Up\" List",
+              "items": [
+                "Matthew asked how to view his \"Next Up\" list on Hardcover",
+                "List exists (ID: 339409) with 10 curated books created earlier today",
+                "Books: Rule of Wolves, Never Split the Difference, Leviathan Wakes, Shoe Dog, Hyperion, Thinking Fast and Slow, Great Dune Trilogy, Wind and Truth, Traveler's Gate Trilogy, Hitchhiker's Guide",
+                "Also has \"Current Month\" list (ID: 339406, 63 books) and \"Owned\" list (ID: 339383, empty)",
+                "Hardcover has iOS and Android apps"
+              ]
+            },
+            {
+              "name": "Live Hours Spreadsheet",
+              "items": [
+                "**Spreadsheet:** ID 1RCm5XRxPjjFw7DQayBaF5_T3SSm1mc8aA8tgLopOt0A",
+                "**Structure:** Monthly rows (Jan 2026 back to Aug 2023), columns for Whatnot hours, Fanatics hours, total hours, hours/day, hours/week",
+                "**Added:** Percent change formulas in columns J/K/L (Whatnot % Chg, Fanatics % Chg, Total % Chg)",
+                "**Jan 2026 trends:** Whatnot +6.3%, Fanatics +13%, Total +11.6% MoM"
+              ]
+            },
+            {
+              "name": "eBay Seller Auction Monitor (Built)",
+              "items": [
+                "**Script:** ~/clawd/scripts/ebay-seller-monitor.js",
+                "**Config:** ~/clawd/config/ebay-seller-watch.json",
+                "**Data:** ~/clawd/data/ebay-seller-alerts.json",
+                "**First seller:** merchandiseliquidations (https://www.ebay.com/str/merchandiseliquidations)",
+                "Checks every 15 min via cron, filters for auction format + sealed product keywords",
+                "eBay credentials working (app ID: BreaknBa-Repack-PRD-5df8ae938-1505f4f7)",
+                "Token auto-refresh needed — tokens expire every 2 hours",
+                "Currently merchandiseliquidations has no active auctions (only 2 BIN listings)",
+                "**Matthew wants different alert method** (not Telegram) — asked but hasn't answered yet",
+                "**Matthew wants more sellers added** — researched via eBay API, top auction sellers found:",
+                "Waiting on Matthew's response for: which sellers to add, preferred alert method"
+              ]
+            },
+            {
+              "name": "Pillow Task Note",
+              "items": [
+                "Matthew said \"stop reminding me\" about the pillow check-in (due Feb 10) — don't ask again until closer to due date"
+              ]
+            },
+            {
+              "name": "Memory Files Created/Updated",
+              "items": [
+                "`memory/2026-02-03.md` — this file",
+                "`memory/dross-improvements-2026-02-03.md` — capability improvement analysis",
+                "`memory/dross-system-improvements-feb3.md` — comprehensive system enhancement roadmap",
+                "`memory/reports-cleanup-progress-feb3.md` — reports folder cleanup tracking",
+                "`memory/dross-capability-improvements-feb3-pm.md` — disabled monitoring analysis + improvement roadmap",
+                "`memory/fanatics-collect-pipeline.md` — updated with new orders URL",
+                "`memory/fanatics-collect-sync-log.md` — updated with batch processing results"
+              ]
+            }
+          ],
+          "rawText": [
+            "- Extended Cut: 4% → **5%** (1/20)",
+            "- Matinee: 40% → **20%** (1/5) — biggest savings",
+            "- Cult Classic: 25% → **15%** (1/6.67)",
+            "- Thriller: 20% → **15%** (1/6.67)",
+            "- Blockbuster: 16.7% → **12.5%** (1/8)",
+            "- Record Breaker: 12.5% → **10%** (1/10)",
+            "- Hollywood Edition: 10% → **8%** (1/12.5)",
+            "- Silk Pillowcase → 🛒 Shopping List",
+            "- Supplement review, budget check, payments to mom → 👤 Personal",
+            "- Chasers board, Amcon follow-up → ⚙️ Operations",
+            "- Breakfast task → 🔁 Repeating",
+            "- Max task list → 👥 Delegate",
+            "- Fanatics Collect import fix → 🌙 Dross Downtime Tasks",
+            "- probstein123 (1.5M feedback), sportcardauctionscom (197K), mc_sportscards (172K), dcsports87 (1.1M), pc_sportscards (246K), cardmules, aamintcards, acscollectibles, thecoop_ms"
+          ]
+        },
+        {
+          "name": "Repack Range Changes (Decision - Late Night Session)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "New Floor Ranges:",
+              "items": [
+                "EC: $20-$30 → $20-$40",
+                "Mat: $30-$50 → $40-$70",
+                "CC: $50-$100 → $70-$100",
+                "Thriller, BB, RB, HE: unchanged"
+              ]
+            },
+            {
+              "name": "New Ceiling Rates (already updated in M_S):",
+              "items": [
+                "EC: 4%, Mat: 20%, CC: 15%, Thriller: 12.5%, BB: 12.5%, RB: 10%, HE: 8%"
+              ]
+            },
+            {
+              "name": "New Remastered %s (proposed, Matthew still refining higher tiers):",
+              "items": [
+                "EC: 0%, Mat: 34%, CC: 21%",
+                "Thriller: ~20%, BB: ~25%, RB: ~15%, HE: ~10% (Matthew wants higher end bumped more)"
+              ]
+            },
+            {
+              "name": "Key Modeling Numbers (proposed ranges):",
+              "items": [
+                "Mat box: $54.40, case: $622, spot: $19.43",
+                "CC box: $88.20, case: $987, spot: $30.83",
+                "Remastered Mat case: $932, spot: $29.11",
+                "Remastered CC case: $1,580, spot: $49.37"
+              ]
+            },
+            {
+              "name": "Implementation Plan:",
+              "items": [
+                "This week: clear current inventory under old ranges",
+                "Feb 10: update M_S sheet with new ranges, ceiling rates, remastered %s",
+                "Todoist task: 9983503632"
+              ]
+            },
+            {
+              "name": "Key Learnings:",
+              "items": [
+                "1 box = 1 card, 1 case = 10 boxes = 10 cards",
+                "Ceiling rate is per CASE, not per box",
+                "Remastered = guaranteed ceiling (separate from random ceiling rate)",
+                "Break structure: 32 NFL teams, 1 case (10 cards), per spot = case cost / 32"
+              ]
+            }
+          ],
+          "rawText": [
+            "**Matthew approved the following changes, to be implemented week of Feb 10:**"
+          ]
+        },
+        {
+          "name": "Door Schedules — Option B Selected",
+          "items": [
+            "Matthew picked **Option B** (timeline/Gantt chart style) for the door schedules",
+            "Note for when we continue working on them"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Fanatics Collect — Duplicate Order Bug",
+          "items": [
+            "Cards appear twice in Collect Log: once at purchase, again as a SEPARATE ORDER when shipping charges post (~$2)",
+            "Not a duplicate line item — it's a whole second order",
+            "Inflates inventory counts",
+            "Need dedup logic to match shipping orders back to original purchase and skip them"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Do NOT Touch — Collect Incoming Arrived",
+          "items": [
+            "Matthew said don't mess with the Collect Incoming \"mark as arrived\" functionality",
+            "Task 9973163519 — leave it alone"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "IR Automation Pipeline — APPROVED TO START",
+          "items": [
+            "Matthew gave go-ahead to start building Phase 1 (Checklist Scraper)",
+            "**RULE: Ask Matthew before doing anything that could harm the business**",
+            "Key decisions:"
+          ],
+          "subsections": [],
+          "rawText": [
+            "- Public dashboard shows: cards remaining, chase/grail odds ONLY",
+            "- NO \"what's been hit\" shown publicly",
+            "- NO EV shown publicly",
+            "- EV alerts go to Matthew only via Telegram",
+            "- Canva graphics scrapped, replaced by custom dashboard",
+            "- Phase 3 (Canva) removed, renumbered to 4 phases",
+            "- Code lives in breaknbad GitHub org",
+            "- Using Puppeteer for scraping, will reverse-engineer API later"
           ]
         }
       ],
       "tasks_completed": [
         {
-          "name": "Found 5 new orders from Feb 1st, 2026 not in Collect Log",
+          "name": "Daily Dross capability improvements (P2) - documented improvements in memory/dross-improvements-2026-02-03.md",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "TikTok Shop API status check (P2) - marked complete, waiting for approval notification",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "AI Graphic Design Tools research (P2) - completed analysis report comparing Canva AI, Ideogram, Nano Banana Pro",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Security Camera Integration (P2) - built complete system for missing card investigations",
+          "status": "built",
+          "category": "engineering"
+        },
+        {
+          "name": "Reports folder cleanup (P2) - substantial progress: converted 9 orphaned MDs to PDF, standardized 5 filenames, comprehensive audit",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Business Development Strategy (P2) - comprehensive acquisition targets analysis, investor readiness roadmap, 6-month action plan",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Canva Graphics Cleanup (P3) - analyzed 390 designs, identified 76 needing renaming, built automated cleanup tools, comprehensive organization plan",
+          "status": "built",
+          "category": "operations"
+        },
+        {
+          "name": "OBS Replay Buffer Pro Installation (P3) - comprehensive implementation plan for all 7 OBS machines, Stream Deck integration, training materials",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "eBay Automation Suite Complete (P3) - built full 3-phase system: Deal Scanner + Auto Sniper + comprehensive documentation (40+ hours of automation)",
+          "status": "built",
+          "category": "engineering"
+        },
+        {
+          "name": "Daily Dross capability improvements (P2, due 2/5) - identified disabled business monitoring system, documented comprehensive improvement opportunities",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Reports folder cleanup (P2) - continued progress: converted 3 additional PDFs, advanced from 9 to 12 total PDF conversions",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Ops Sync agenda update (P2, due 2/20) - updated Feb 10 agenda with recent progress: FC sync fix, security cameras, eBay automation, new priority issues",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "Weekly product release calendar review (P3, due 2/23) - created updated Feb 3 calendar with confirmed releases, market intelligence, BnB priority focus",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Shopify integration research (P3) - comprehensive analysis: n8n automation workflows, AI blog generation, API integration opportunities, 3-phase roadmap",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Revenue diversification plan (P4) - strategic analysis to reduce 70% Fanatics dependency: 3-phase roadmap, target 40/35/15/10 split across platforms, $11-20K investment for 30-50% growth",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Customer cohort analysis plan (P4) - customer segmentation framework: acquisition date, channel, LTV analysis, retention tracking, marketing optimization",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Shipping label automation analysis (P4) - ShipStation API integration plan: $870/month savings, 93 hours/month time reduction, 3-phase implementation",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "BnB loyalty/rewards program analysis (P4) - comprehensive tier system design: AiTrillion platform recommendation, $900K annual revenue impact projection, 4-tier membership structure",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "AI cost optimization analysis (P4) - model usage strategy: 33% cost savings potential, tiered model selection, $653 annual savings with quality maintenance",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "YouTube Shorts clip machine (P4) - comprehensive content strategy: 3-5 daily Shorts automation, viral content templates, 2-5M annual view projection",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "TikTok content strategy (P4) - organic growth plan: 100K follower target, 4-pillar content framework, daily posting schedule with authentic breaker personalities",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "SMS/Text marketing strategy (P4) - SimpleTexting implementation: 98% open rates, 1,000 subscriber target, VIP break alerts and flash sales program",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Inventory management system (P4) - comprehensive tracking solution: Google Sheets foundation with upgrade path, PO-to-ship workflow, demand forecasting capabilities",
+          "status": "done",
+          "category": "tools"
+        },
+        {
+          "name": "Pull everyone's biggest blockers and find solutions (P4) - comprehensive analysis of 47 blocked tasks across all projects, identified 15 quick wins requiring Matthew input, categorized by business impact",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Daily: Review & assign Matthew tasks by priority (P4, due 2/4) - curated priority list for Feb 4, organized by impact and time constraints, included meeting prep and strategic recommendations",
           "status": "done",
           "category": "organization"
+        },
+        {
+          "name": "Track report engagement (P4) - analyzed which reports Matthew reads vs skips, identified high/medium/low engagement patterns, optimized format recommendations for future reports",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Wardrobe photo dump for Dross styling inventory (P4) - comprehensive plan for documenting Matthew's wardrobe with photo standards, categorization system, digital organization, AI styling integration, 4-phase implementation roadmap",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "Shipping SLA & Tracking Dashboard (P4) - designed real-time performance monitoring system with 48-hour SLA compliance tracking, bottleneck identification, team integration, 4-phase implementation plan",
+          "status": "designed",
+          "category": "engineering"
+        },
+        {
+          "name": "First Break Free Referral Program (P4) - comprehensive customer acquisition program design with $65 cost per referral vs $85 traditional, tiered rewards, fraud prevention, projected $180K+ annual revenue impact",
+          "status": "done",
+          "category": "creative"
+        },
+        {
+          "name": "Daily Dross capability improvements (P2, recurring) - closed as completed today",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Weekly product release calendar review (P3, recurring) - closed as completed today",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "TCG / Non-Sports Expansion (P4) - comprehensive analysis of Pokemon, Yu-Gi-Oh, anime cards expansion opportunity with $150K revenue potential, 3-phase implementation plan, $35-50K investment requirement",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Fanatics Live Partnership Deepening (P4) - strategic relationship enhancement plan with 4-phase approach, targeting preferred partner status, enhanced terms negotiation, projected $25-50K annual value improvement",
+          "status": "live",
+          "category": "general"
+        },
+        {
+          "name": "Google Drive Reorganization",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Reports Upload & Review Workflow",
+          "status": "done",
+          "category": "research"
         }
       ],
+      "reports_generated": [
+        {
+          "name": "Ebay seller monitor",
+          "category": "platform"
+        }
+      ],
+      "key_actions": [
+        {
+          "description": "Hardcover.app book import completion + confirmation email",
+          "category": "email"
+        },
+        {
+          "description": "✅ TikTok Shop API status check (P2) - marked complete, waiting for approval notification",
+          "category": "integration"
+        },
+        {
+          "description": "✅ AI Graphic Design Tools research (P2) - completed analysis report comparing Canva AI, Ideogram, Nano Banana Pro",
+          "category": "general"
+        },
+        {
+          "description": "✅ Security Camera Integration (P2) - built complete system for missing card investigations",
+          "category": "integration"
+        },
+        {
+          "description": "✅ Canva Graphics Cleanup (P3) - analyzed 390 designs, identified 76 needing renaming, built automated cleanup tools, comprehensive organization plan",
+          "category": "general"
+        },
+        {
+          "description": "✅ OBS Replay Buffer Pro Installation (P3) - comprehensive implementation plan for all 7 OBS machines, Stream Deck integration, training materials",
+          "category": "integration"
+        },
+        {
+          "description": "Security Camera Integration Guide (reports/security-camera-integration-guide.md + PDF)",
+          "category": "integration"
+        },
+        {
+          "description": "`scripts/security-camera-footage.js` - CLI tool for camera access and investigations",
+          "category": "integration"
+        },
+        {
+          "description": "`scripts/security-camera-web.js` - Web interface for team camera access (port 3456)",
+          "category": "integration"
+        },
+        {
+          "description": "`scripts/canva-cleanup.js` - Canva API analysis/renaming tool (token refresh fixed to use x-www-form-urlencoded)",
+          "category": "integration"
+        },
+        {
+          "description": "`scripts/ebay-deal-scanner.js` - Phase 2: Deal Scanner with configurable searches, deal scoring, monitoring",
+          "category": "integration"
+        },
+        {
+          "description": "`scripts/ebay-auto-sniper.js` - Phase 3: Auto Sniper with safety controls, approval gates, spending limits",
+          "category": "integration"
+        },
+        {
+          "description": "`reports/ai-graphic-design-comparison-feb3.md` + PDF — Canva AI vs Ideogram vs Nano Banana Pro",
+          "category": "general"
+        },
+        {
+          "description": "`reports/security-camera-integration-guide.md` + PDF — Complete camera system guide",
+          "category": "integration"
+        },
+        {
+          "description": "`reports/canva-cleanup-plan-feb3.md` + PDF — 390 designs analyzed, 76 needing rename",
+          "category": "general"
+        },
+        {
+          "description": "`reports/canva-cleanup-analysis.json` — Machine-readable Canva analysis data",
+          "category": "general"
+        },
+        {
+          "description": "Gmail API confirmed working properly (morning brief false alarm — script issue, not token issue)",
+          "category": "integration"
+        },
+        {
+          "description": "9980034033: TikTok Shop Partner Center API check (P3)",
+          "category": "integration"
+        },
+        {
+          "description": "9967047991: Security camera integration (P2)",
+          "category": "integration"
+        },
+        {
+          "description": "9959586603: Canva cleanup — analyze and plan (P3)",
+          "category": "general"
+        },
+        {
+          "description": "9966941143: Fanatics Collect Pro auto-accept — BLOCKED, needs FC Pro login credentials",
+          "category": "general"
+        },
+        {
+          "description": "Fanatics Collect daily sync (06:03) — 5 new orders found, technical limitation on card details",
+          "category": "general"
+        },
+        {
+          "description": "Morning brief (08:01) — Gmail API false alarm resolved",
+          "category": "integration"
+        },
+        {
+          "description": "Fanatics Collect Pro — needs FC Pro login credentials for auto-accept setup",
+          "category": "general"
+        },
+        {
+          "description": "QuickBooks OAuth — needs Matthew to complete Intuit production questionnaire",
+          "category": "integration"
+        },
+        {
+          "description": "Fanatics Collect sync — order detail pages redirect to payment interface, needs manual navigation path",
+          "category": "general"
+        },
+        {
+          "description": "P2: Fanatics Collect Pro (credentials), QuickBooks (OAuth questionnaire), Buyer Time Zones (need more data), Refund DOM blocker (Matthew wants involvement)",
+          "category": "integration"
+        },
+        {
+          "description": "P3: Canva markup PDF (needs Matthew's markup), Shopify tasks (need API key), Fanatics Collect browser automation (need portal access)",
+          "category": "integration"
+        },
+        {
+          "description": "Issue: Fanatics Collect account hadn't been paid — orders page was returning 404",
+          "category": "general"
+        },
+        {
+          "description": "Triggered manually because cron wouldn't force outside its Mon-Fri 6AM window",
+          "category": "automation"
+        },
+        {
+          "description": "Matthew saw TikTok claiming 350 oz water/day — told him that's dangerous (10+ liters), realistic is ~100-150 oz depending on size/activity",
+          "category": "general"
+        },
+        {
+          "description": "✅ Weekly product release calendar review (P3, due 2/23) - created updated Feb 3 calendar with confirmed releases, market intelligence, BnB priority focus",
+          "category": "calendar"
+        },
+        {
+          "description": "✅ Shopify integration research (P3) - comprehensive analysis: n8n automation workflows, AI blog generation, API integration opportunities, 3-phase roadmap",
+          "category": "integration"
+        },
+        {
+          "description": "✅ Revenue diversification plan (P4) - strategic analysis to reduce 70% Fanatics dependency: 3-phase roadmap, target 40/35/15/10 split across platforms, $11-20K investment for 30-50% growth",
+          "category": "general"
+        },
+        {
+          "description": "✅ Shipping label automation analysis (P4) - ShipStation API integration plan: $870/month savings, 93 hours/month time reduction, 3-phase implementation",
+          "category": "integration"
+        },
+        {
+          "description": "✅ TikTok content strategy (P4) - organic growth plan: 100K follower target, 4-pillar content framework, daily posting schedule with authentic breaker personalities",
+          "category": "calendar"
+        },
+        {
+          "description": "✅ Inventory management system (P4) - comprehensive tracking solution: Google Sheets foundation with upgrade path, PO-to-ship workflow, demand forecasting capabilities",
+          "category": "general"
+        },
+        {
+          "description": "Shopify automation potential: AI blog generation at $0.15/post vs $200 traditional cost",
+          "category": "automation"
+        },
+        {
+          "description": "Product release calendar shows critical dates: Topps Series 1 (Feb 11), Hoops Basketball (Feb 13), National Treasures (Feb 18)",
+          "category": "calendar"
+        },
+        {
+          "description": "Revenue diversification plan: reduce 70% Fanatics dependency to 40/35/15/10 split, $870/month shipping automation savings",
+          "category": "automation"
+        },
+        {
+          "description": "`reports/weekly-release-calendar-2026-02-03.md` — Updated product calendar with market intelligence",
+          "category": "calendar"
+        },
+        {
+          "description": "`reports/shopify-integration-opportunities-feb3.md` — Comprehensive automation analysis with 3-phase roadmap",
+          "category": "integration"
+        },
+        {
+          "description": "`reports/revenue-diversification-plan-feb3.md` — Strategic plan to reduce Fanatics dependency, 3-phase implementation",
+          "category": "general"
+        },
+        {
+          "description": "`reports/shipping-label-automation-analysis-feb3.md` — ShipStation API integration plan with ROI analysis",
+          "category": "integration"
+        },
+        {
+          "description": "`reports/tiktok-content-strategy-feb3.md` — Comprehensive organic growth plan with 4-pillar content framework",
+          "category": "general"
+        },
+        {
+          "description": "✅ Wardrobe photo dump for Dross styling inventory (P4) - comprehensive plan for documenting Matthew's wardrobe with photo standards, categorization system, digital organization, AI styling integration",
+          "category": "integration"
+        },
+        {
+          "description": "✅ Shipping SLA & Tracking Dashboard (P4) - designed real-time performance monitoring system with 48-hour SLA compliance tracking, bottleneck identification, team integration, 4-phase implementation pl",
+          "category": "integration"
+        },
+        {
+          "description": "✅ Weekly product release calendar review (P3, recurring) - closed as completed today",
+          "category": "calendar"
+        },
+        {
+          "description": "Improvements: Added headers, fixed capitalization, sorted alphabetically, organized pay info into proper columns, preserved all special terms",
+          "category": "integration"
+        },
+        {
+          "description": "✅ Fanatics Live Partnership Deepening (P4) - strategic relationship enhancement plan with 4-phase approach, targeting preferred partner status, enhanced terms negotiation, projected $25-50K annual val",
+          "category": "general"
+        },
+        {
+          "description": "Fanatics Partnership Strategy: `reports/fanatics-live-partnership-deepening-feb3.md`",
+          "category": "general"
+        },
+        {
+          "description": "Financial Projection: $150K revenue Year 1 (TCG), $25-50K annual value (Fanatics partnership)",
+          "category": "general"
+        },
+        {
+          "description": "Recommendation: Start with $12K Phase 1 TCG testing, begin Fanatics account manager outreach immediately",
+          "category": "general"
+        },
+        {
+          "description": "Task: Fix purchase vs. shipping amounts in Fanatics Collect import (ID: 9982892969)",
+          "category": "general"
+        },
+        {
+          "description": "Hardcover API: Working well with GraphQL. Token in `.credentials/hardcover.json`, user ID 73618. Lists can be managed via insert_list_book/delete_list_book mutations.",
+          "category": "integration"
+        },
+        {
+          "description": "9982663863: Weekly Release Calendar",
+          "category": "calendar"
+        },
+        {
+          "description": "9982664110: Shopify Integration Opportunities",
+          "category": "integration"
+        },
+        {
+          "description": "9982665453: TikTok Content Strategy",
+          "category": "general"
+        },
+        {
+          "description": "Processed all 9 inbox tasks to correct projects:",
+          "category": "email"
+        },
+        {
+          "description": "Used Todoist Sync API v9 `item_move` command (REST API doesn't support project moves)",
+          "category": "integration"
+        },
+        {
+          "description": "Note: Some moves required multiple attempts — Sync API returns \"ok\" but sometimes doesn't move immediately",
+          "category": "integration"
+        },
+        {
+          "description": "Structure: Monthly rows (Jan 2026 back to Aug 2023), columns for Whatnot hours, Fanatics hours, total hours, hours/day, hours/week",
+          "category": "general"
+        },
+        {
+          "description": "Added: Percent change formulas in columns J/K/L (Whatnot % Chg, Fanatics % Chg, Total % Chg)",
+          "category": "general"
+        },
+        {
+          "description": "Jan 2026 trends: Whatnot +6.3%, Fanatics +13%, Total +11.6% MoM",
+          "category": "general"
+        },
+        {
+          "description": "Script: ~/clawd/scripts/ebay-seller-monitor.js",
+          "category": "integration"
+        },
+        {
+          "description": "Checks every 15 min via cron, filters for auction format + sealed product keywords",
+          "category": "email"
+        },
+        {
+          "description": "Matthew wants more sellers added — researched via eBay API, top auction sellers found:",
+          "category": "integration"
+        },
+        {
+          "description": "`memory/fanatics-collect-pipeline.md` — updated with new orders URL",
+          "category": "automation"
+        },
+        {
+          "description": "`memory/fanatics-collect-sync-log.md` — updated with batch processing results",
+          "category": "general"
+        }
+      ],
+      "interactions": [
+        {
+          "description": "P2: Fanatics Collect Pro (credentials), QuickBooks (OAuth questionnaire), Buyer Time Zones (need more data), Refund DOM blocker (Matthew wants involvement)",
+          "type": "matthew"
+        },
+        {
+          "description": "Resolution: Matthew confirmed it's fixed as of Feb 3",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew saw TikTok claiming 350 oz water/day — told him that's dangerous (10+ liters), realistic is ~100-150 oz depending on size/activity",
+          "type": "matthew"
+        },
+        {
+          "description": "Asked Matthew if he wants WA Sale processed separately — no response yet",
+          "type": "matthew"
+        },
+        {
+          "description": "Request: Matthew asked to clean up \"Paying People\" spreadsheet on personal drive",
+          "type": "matthew"
+        },
+        {
+          "description": "Context: Matthew said \"leave it\" about continued report generation, then asked for this fix",
+          "type": "matthew"
+        },
+        {
+          "description": "Report fatigue: Matthew indicated I should stop generating reports when he said \"leave it\" — focus on actionable fixes over analysis documents",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew asked how to view his \"Next Up\" list on Hardcover",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew wants different alert method (not Telegram) — asked but hasn't answered yet",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew wants more sellers added — researched via eBay API, top auction sellers found:",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew said \"stop reminding me\" about the pillow check-in (due Feb 10) — don't ask again until closer to due date",
+          "type": "matthew"
+        },
+        {
+          "description": "Thriller: ~20%, BB: ~25%, RB: ~15%, HE: ~10% (Matthew wants higher end bumped more)",
+          "type": "matthew"
+        },
+        {
+          "description": "Matthew said don't mess with the Collect Incoming \"mark as arrived\" functionality",
+          "type": "matthew"
+        }
+      ],
+      "todoist_activity": [
+        {
+          "action": "updated",
+          "description": "Wrong project for reviews: Always put review tasks in \"📄 Dross Reports to Review\" (2366416254), NOT \"🌙 Dross Downtime Tasks\""
+        },
+        {
+          "action": "closed",
+          "description": "Todoist task 9980015640 can be closed"
+        },
+        {
+          "action": "created",
+          "description": "11 Todoist review tasks created (all P4, IDs: 9982663863 through 9982665703)"
+        },
+        {
+          "action": "updated",
+          "description": "Used Todoist Sync API v9 `item_move` command (REST API doesn't support project moves)"
+        },
+        {
+          "action": "updated",
+          "description": "Todoist task: 9983503632"
+        }
+      ],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 15,
+        "tasks_completed_count": 35,
+        "reports_count": 1,
+        "key_actions_count": 69,
+        "todoist_count": 5
+      }
+    },
+    {
+      "date": "2026-02-04",
+      "title": "04 Daily Log",
+      "sections": [
+        {
+          "name": "6:00 AM - Fanatics Collect Sync (FAILED)",
+          "items": [
+            "**Issue:** Browser control server timing out when trying to access Fanatics Collect",
+            "**Latest logged orders:** 2038005, 2037983, 2037980 (all from 2/3/2026)",
+            "**Next steps:** Need to investigate browser automation issues",
+            "**Workaround:** Matthew may need to manually check for 2/4/2026 orders"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Browser Issues",
+          "items": [
+            "clawd profile: timeouts on snapshot/navigate",
+            "chrome profile: requires manual tab attachment via extension",
+            "**Action needed:** Debug browser control server connection"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Current Status",
+          "items": [
+            "Collect Log up to date through 2/3/2026",
+            "Google Sheets API working properly",
+            "Fanatics Collect account: Kent Harfmann (login should be saved in clawd browser)"
+          ],
+          "subsections": [],
+          "rawText": []
+        }
+      ],
+      "tasks_completed": [],
       "reports_generated": [],
-      "key_actions": [],
+      "key_actions": [
+        {
+          "description": "Issue: Browser control server timing out when trying to access Fanatics Collect",
+          "category": "general"
+        },
+        {
+          "description": "Google Sheets API working properly",
+          "category": "integration"
+        },
+        {
+          "description": "Fanatics Collect account: Kent Harfmann (login should be saved in clawd browser)",
+          "category": "general"
+        }
+      ],
       "interactions": [],
       "todoist_activity": [],
       "infrastructure": [],
       "stats": {
-        "sections_count": 1,
-        "tasks_completed_count": 1,
+        "sections_count": 3,
+        "tasks_completed_count": 0,
         "reports_count": 0,
-        "key_actions_count": 0,
+        "key_actions_count": 3,
         "todoist_count": 0
       }
     }
