@@ -3,304 +3,525 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IR Pack Dashboard — Fanatics Live</title>
+<title>Break'n Bad | IR Pack Intelligence Dashboard</title>
 <style>
   :root {
-    --bg: #0d1117;
-    --card: #161b22;
-    --border: #30363d;
-    --text: #e6edf3;
-    --muted: #8b949e;
-    --green: #3fb950;
-    --red: #f85149;
-    --gold: #d29922;
-    --purple: #bc8cff;
-    --blue: #58a6ff;
-    --teal: #39d2c0;
+    /* Break'n Bad Brand Colors */
+    --bnb-primary: #1a237e;     /* Deep blue */
+    --bnb-secondary: #3949ab;   /* Medium blue */
+    --bnb-accent: #ff6b35;      /* Break'n Bad orange */
+    --bnb-gold: #ffc107;        /* Gold highlights */
+    --bnb-dark: #0a0e27;        /* Dark navy background */
+    --bnb-card: #1e2555;        /* Card background */
+    --bnb-border: #3949ab40;    /* Border with opacity */
+    
+    /* Status Colors */
+    --green: #4caf50;
+    --red: #f44336;
+    --gold: var(--bnb-gold);
+    --text: #ffffff;
+    --text-muted: #b0bec5;
   }
+  
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    background: var(--bg);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, var(--bnb-dark) 0%, var(--bnb-primary) 100%);
     color: var(--text);
-    padding: 16px;
+    padding: 12px;
+    min-height: 100vh;
+  }
+  
+  .container {
     max-width: 1400px;
     margin: 0 auto;
   }
+  
   .header {
+    background: var(--bnb-card);
+    border: 1px solid var(--bnb-border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
   }
-  .header h1 {
-    font-size: 1.5rem;
+  
+  .brand {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
   }
-  .header h1 span { font-size: 1.8rem; }
-  .meta {
-    color: var(--muted);
+  
+  .brand-logo {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(45deg, var(--bnb-accent), var(--bnb-gold));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+  
+  .brand-text h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+  }
+  
+  .brand-text .subtitle {
     font-size: 0.85rem;
+    color: var(--bnb-accent);
+    font-weight: 500;
+    margin: 0;
   }
-  .stats-row {
+  
+  .header-meta {
+    text-align: right;
+  }
+  
+  .header-meta .timestamp {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  
+  .header-meta .status {
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin: 2px 0 0 0;
+  }
+  
+  .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
+  
   .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
+    background: var(--bnb-card);
+    border: 1px solid var(--bnb-border);
+    border-radius: 12px;
+    padding: 16px;
     text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .stat-card .label {
-    font-size: 0.75rem;
-    color: var(--muted);
+  
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+    font-weight: 600;
   }
-  .stat-card .value {
-    font-size: 1.4rem;
+  
+  .stat-value {
+    font-size: 1.5rem;
     font-weight: 700;
+    line-height: 1;
   }
-  .stat-card .value.green { color: var(--green); }
-  .stat-card .value.red { color: var(--red); }
-  .stat-card .value.gold { color: var(--gold); }
-  .stat-card .value.purple { color: var(--purple); }
-  .stat-card .value.blue { color: var(--blue); }
+  
+  .stat-value.green { color: var(--green); }
+  .stat-value.red { color: var(--red); }
+  .stat-value.gold { color: var(--gold); }
+  .stat-value.orange { color: var(--bnb-accent); }
+  .stat-value.blue { color: var(--bnb-secondary); }
 
-  .filters {
+  .controls {
     display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 12px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
+    align-items: center;
   }
-  .filter-btn {
-    background: var(--card);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .filter-btn:hover, .filter-btn.active {
-    border-color: var(--purple);
-    color: var(--text);
-    background: rgba(188,140,255,0.1);
-  }
-  .sort-row {
+  
+  .control-group {
     display: flex;
     gap: 8px;
-    margin-bottom: 16px;
     align-items: center;
     flex-wrap: wrap;
   }
-  .sort-row span { color: var(--muted); font-size: 0.8rem; }
-  .sort-btn {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 4px 10px;
-    border-radius: 6px;
+  
+  .control-label {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  
+  .filter-btn, .sort-btn {
+    background: var(--bnb-card);
+    border: 1px solid var(--bnb-border);
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 20px;
     font-size: 0.75rem;
     cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
   }
-  .sort-btn:hover, .sort-btn.active {
-    border-color: var(--blue);
-    color: var(--blue);
+  
+  .filter-btn:hover, .sort-btn:hover,
+  .filter-btn.active, .sort-btn.active {
+    background: var(--bnb-accent);
+    border-color: var(--bnb-accent);
+    color: white;
+    transform: translateY(-1px);
   }
 
-  .pack-grid {
+  .packs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
   }
+  
   .pack-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    transition: border-color 0.2s;
+    background: var(--bnb-card);
+    border: 1px solid var(--bnb-border);
+    border-radius: 16px;
+    padding: 20px;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   }
+  
   .pack-card:hover {
-    border-color: var(--purple);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    border-color: var(--bnb-accent);
   }
+  
   .pack-card.negative {
     opacity: 0.6;
+    border-color: var(--red);
   }
-  .pack-card .ev-badge {
+  
+  .ev-badge {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    padding: 3px 10px;
-    border-radius: 12px;
+    top: 16px;
+    right: 16px;
+    padding: 6px 12px;
+    border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
+  
   .ev-badge.positive {
-    background: rgba(63,185,80,0.15);
-    color: var(--green);
-    border: 1px solid rgba(63,185,80,0.3);
+    background: var(--green);
+    color: white;
   }
-  .ev-badge.neg {
-    background: rgba(248,81,73,0.15);
-    color: var(--red);
-    border: 1px solid rgba(248,81,73,0.3);
+  
+  .ev-badge.negative {
+    background: var(--red);
+    color: white;
   }
+  
   .pack-title {
     font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 4px;
-    padding-right: 70px;
+    margin-bottom: 8px;
+    padding-right: 80px;
+    line-height: 1.3;
   }
+  
   .pack-price {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-  .pack-ev {
-    font-size: 0.85rem;
-    color: var(--muted);
+    color: var(--bnb-accent);
     margin-bottom: 12px;
   }
+  
+  .pack-ev {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  
   .pack-ev strong {
     color: var(--text);
   }
+  
   .odds-row {
     display: flex;
-    gap: 6px;
-    margin-bottom: 10px;
+    gap: 8px;
+    margin-bottom: 12px;
   }
+  
   .odds-pill {
     flex: 1;
     text-align: center;
-    padding: 6px 4px;
+    padding: 8px 6px;
     border-radius: 8px;
     font-size: 0.7rem;
+    font-weight: 500;
+    border: 1px solid transparent;
   }
+  
   .odds-pill .pct {
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     display: block;
+    margin-bottom: 2px;
   }
+  
   .odds-pill.base {
-    background: rgba(139,148,158,0.15);
-    color: var(--muted);
+    background: rgba(176,190,197,0.1);
+    color: var(--text-muted);
+    border-color: rgba(176,190,197,0.2);
   }
+  
   .odds-pill.chase {
-    background: rgba(88,166,255,0.15);
-    color: var(--blue);
+    background: rgba(57,73,171,0.2);
+    color: var(--bnb-secondary);
+    border-color: rgba(57,73,171,0.3);
   }
+  
   .odds-pill.grail {
-    background: rgba(210,153,34,0.15);
+    background: rgba(255,193,7,0.2);
     color: var(--gold);
+    border-color: rgba(255,193,7,0.3);
   }
+  
   .value-bar {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 6px;
-    font-size: 0.75rem;
-    color: var(--muted);
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
   }
+  
   .value-bar .bar {
     flex: 1;
     height: 6px;
-    background: var(--border);
+    background: var(--bnb-dark);
     border-radius: 3px;
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--bnb-border);
   }
+  
   .value-bar .bar .fill {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     border-radius: 3px;
-    background: linear-gradient(90deg, var(--teal), var(--green));
+    background: linear-gradient(90deg, var(--bnb-secondary), var(--green));
   }
+  
   .value-bar .bar .price-marker {
     position: absolute;
-    top: -3px;
+    top: -2px;
     width: 2px;
-    height: 12px;
-    background: var(--red);
+    height: 10px;
+    background: var(--bnb-accent);
     border-radius: 1px;
+    box-shadow: 0 0 4px rgba(255,107,53,0.5);
   }
+  
   .pack-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--bnb-border);
     font-size: 0.75rem;
-    color: var(--muted);
   }
-  .pack-footer .tier {
-    padding: 2px 8px;
-    border-radius: 4px;
+  
+  .tier-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
     font-weight: 600;
+    font-size: 0.7rem;
   }
-  .tier-1 { background: rgba(139,148,158,0.2); color: var(--muted); }
-  .tier-2 { background: rgba(88,166,255,0.2); color: var(--blue); }
-  .tier-3 { background: rgba(188,140,255,0.2); color: var(--purple); }
-  .tier-4 { background: rgba(210,153,34,0.2); color: var(--gold); }
+  
+  .tier-1 { background: rgba(176,190,197,0.2); color: var(--text-muted); }
+  .tier-2 { background: rgba(57,73,171,0.2); color: var(--bnb-secondary); }
+  .tier-3 { background: rgba(255,107,53,0.2); color: var(--bnb-accent); }
+  .tier-4 { background: rgba(255,193,7,0.2); color: var(--gold); }
+  
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+  }
+  
   .status-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     display: inline-block;
-    margin-right: 4px;
   }
+  
   .status-dot.available { background: var(--green); }
   .status-dot.sold { background: var(--red); }
-  .status-dot.ready { background: var(--green); }
+  
+  .footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+  
+  .footer a {
+    color: var(--bnb-accent);
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
 
-  @media (max-width: 600px) {
-    body { padding: 10px; }
-    .header h1 { font-size: 1.2rem; }
-    .pack-grid { grid-template-columns: 1fr; }
-    .stats-row { grid-template-columns: repeat(2, 1fr); }
+  /* Mobile Optimizations */
+  @media (max-width: 768px) {
+    body { padding: 8px; }
+    
+    .header {
+      padding: 16px;
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+    
+    .brand-text h1 { font-size: 1.2rem; }
+    
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    
+    .stat-card {
+      padding: 12px;
+    }
+    
+    .stat-value {
+      font-size: 1.2rem;
+    }
+    
+    .controls {
+      justify-content: center;
+    }
+    
+    .filter-btn, .sort-btn {
+      padding: 6px 12px;
+      font-size: 0.7rem;
+    }
+    
+    .packs-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    
+    .pack-card {
+      padding: 16px;
+    }
+    
+    .pack-title {
+      font-size: 0.9rem;
+      padding-right: 70px;
+    }
+    
+    .pack-price {
+      font-size: 1.2rem;
+    }
+    
+    .odds-row {
+      gap: 4px;
+    }
+    
+    .odds-pill {
+      padding: 6px 4px;
+      font-size: 0.65rem;
+    }
+  }
+
+  /* Small mobile */
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .header {
+      padding: 12px;
+    }
+    
+    .pack-card {
+      padding: 12px;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1><span>⚡</span> IR Pack Dashboard</h1>
-  <div class="meta">
-    <div id="timestamp">Loading...</div>
-    <div id="refresh-info">Auto-scrapes every 30 min</div>
+<div class="container">
+  <div class="header">
+    <div class="brand">
+      <div class="brand-logo">B'B</div>
+      <div class="brand-text">
+        <h1>Break'n Bad</h1>
+        <p class="subtitle">IR Pack Intelligence Dashboard</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <p class="timestamp" id="timestamp">Loading...</p>
+      <p class="status">● Live Data • Auto-refreshes every 30min</p>
+    </div>
+  </div>
+
+  <div class="stats-grid" id="stats-grid"></div>
+
+  <div class="controls">
+    <div class="control-group">
+      <span class="control-label">Filter:</span>
+      <div id="filters"></div>
+    </div>
+    <div class="control-group">
+      <span class="control-label">Sort:</span>
+      <button class="sort-btn active" data-sort="ev-ratio">EV Ratio</button>
+      <button class="sort-btn" data-sort="price-low">Price ↑</button>
+      <button class="sort-btn" data-sort="price-high">Price ↓</button>
+      <button class="sort-btn" data-sort="chase">Chase %</button>
+      <button class="sort-btn" data-sort="grail">Grail %</button>
+    </div>
+  </div>
+
+  <div class="packs-grid" id="packs-grid"></div>
+
+  <div class="footer">
+    <p>Powered by Break'n Bad Intelligence • Data sourced from <a href="https://get.fanatics.live/X8WW/hsobapek">Fanatics Live</a></p>
   </div>
 </div>
-
-<div class="stats-row" id="stats-row"></div>
-
-<div class="filters" id="filters"></div>
-
-<div class="sort-row">
-  <span>Sort:</span>
-  <button class="sort-btn active" data-sort="ev-ratio">EV Ratio</button>
-  <button class="sort-btn" data-sort="price-low">Price ↑</button>
-  <button class="sort-btn" data-sort="price-high">Price ↓</button>
-  <button class="sort-btn" data-sort="chase">Chase %</button>
-  <button class="sort-btn" data-sort="grail">Grail %</button>
-</div>
-
-<div class="pack-grid" id="pack-grid"></div>
 
 <script>
 let packData = null;
@@ -1974,7 +2195,14 @@ function init() {
 function renderTimestamp() {
   const ts = new Date(packData.timestamp);
   document.getElementById('timestamp').textContent = 
-    `Last scrape: ${ts.toLocaleString('en-US', { timeZone: 'America/Indiana/Indianapolis', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true })}`;
+    `Last Update: ${ts.toLocaleString('en-US', { 
+      timeZone: 'America/Indiana/Indianapolis', 
+      month: 'short', 
+      day: 'numeric', 
+      hour: 'numeric', 
+      minute: '2-digit', 
+      hour12: true 
+    })} EST`;
 }
 
 function renderStats() {
@@ -1983,21 +2211,21 @@ function renderStats() {
   const negEV = packs.length - posEV;
   const avgRatio = (packs.reduce((s, p) => s + p.odds.evRatio, 0) / packs.length).toFixed(2);
   const bestPack = packs.reduce((best, p) => p.odds.evRatio > best.odds.evRatio ? p : best);
-  const totalCards = packs.reduce((s, p) => s + p.odds.totalCards, 0);
+  const totalValue = packs.reduce((s, p) => s + p.averageValue.amount, 0) / 100;
 
   const stats = [
-    { label: 'Total Packs', value: packs.length, cls: 'purple' },
+    { label: 'Total Packs', value: packs.length, cls: 'blue' },
     { label: '+EV Packs', value: posEV, cls: 'green' },
     { label: '-EV Packs', value: negEV, cls: 'red' },
-    { label: 'Avg EV Ratio', value: avgRatio + 'x', cls: 'blue' },
+    { label: 'Avg EV Ratio', value: avgRatio + 'x', cls: 'orange' },
     { label: 'Best Ratio', value: bestPack.odds.evRatio.toFixed(2) + 'x', cls: 'gold' },
-    { label: 'Total Cards', value: totalCards.toLocaleString(), cls: 'purple' },
+    { label: 'Total Value', value: '$' + totalValue.toLocaleString(), cls: 'blue' },
   ];
 
-  document.getElementById('stats-row').innerHTML = stats.map(s => `
+  document.getElementById('stats-grid').innerHTML = stats.map(s => `
     <div class="stat-card">
-      <div class="label">${s.label}</div>
-      <div class="value ${s.cls}">${s.value}</div>
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-value ${s.cls}">${s.value}</div>
     </div>
   `).join('');
 }
@@ -2019,9 +2247,10 @@ function getTierName(tier) {
 
 function renderFilters() {
   const sports = [...new Set(packData.packs.map(p => getSportFromTitle(p.title)))].sort();
-  const html = [`<button class="filter-btn active" data-filter="all">All</button>`];
+  const html = [`<button class="filter-btn active" data-filter="all">All Packs</button>`];
   sports.forEach(s => {
-    html.push(`<button class="filter-btn" data-filter="${s}">${s}</button>`);
+    const count = packData.packs.filter(p => getSportFromTitle(p.title) === s).length;
+    html.push(`<button class="filter-btn" data-filter="${s}">${s} (${count})</button>`);
   });
   html.push(`<button class="filter-btn" data-filter="+ev">+EV Only</button>`);
   
@@ -2037,7 +2266,7 @@ function renderFilters() {
 }
 
 function setupSortButtons() {
-  document.querySelector('.sort-row').addEventListener('click', e => {
+  document.querySelector('.controls').addEventListener('click', e => {
     if (!e.target.classList.contains('sort-btn')) return;
     document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
     e.target.classList.add('active');
@@ -2067,7 +2296,7 @@ function sortPacks(packs) {
 function renderPacks() {
   const packs = sortPacks(filterPacks(packData.packs));
   
-  document.getElementById('pack-grid').innerHTML = packs.map(p => {
+  document.getElementById('packs-grid').innerHTML = packs.map(p => {
     const ev = p.odds;
     const isPos = ev.isPositiveEV;
     const tierNum = p.packTier;
@@ -2082,11 +2311,11 @@ function renderPacks() {
 
     return `
       <div class="pack-card ${isPos ? '' : 'negative'}">
-        <div class="ev-badge ${isPos ? 'positive' : 'neg'}">${ev.evRatio.toFixed(2)}x</div>
+        <div class="ev-badge ${isPos ? 'positive' : 'negative'}">${ev.evRatio.toFixed(2)}x</div>
         <div class="pack-title">${cleanTitle}</div>
         <div class="pack-price">${p.price.amountDisplay}</div>
         <div class="pack-ev">
-          EV: <strong>${ev.evDisplay}</strong> · ${ev.totalCards} cards
+          Expected Value: <strong>${ev.evDisplay}</strong> • ${ev.totalCards} cards
         </div>
         
         <div class="odds-row">
@@ -2112,16 +2341,13 @@ function renderPacks() {
           </div>
           <span>$${(p.ceilingValue.amount/100).toLocaleString()}</span>
         </div>
-        <div style="text-align:center;font-size:0.65rem;color:var(--muted);margin-bottom:4px;">
-          Floor → Ceiling · <span style="color:var(--red)">|</span> = Pack Price
-        </div>
 
         <div class="pack-footer">
-          <span class="tier tier-${tierNum}">${getTierName(tierNum)}</span>
-          <span>
+          <span class="tier-badge tier-${tierNum}">${getTierName(tierNum)}</span>
+          <div class="status-indicator">
             <span class="status-dot ${p.spotsAvailable > 0 ? 'available' : 'sold'}"></span>
-            ${p.spotsAvailable > 0 ? 'Available' : 'Sold Out'}
-          </span>
+            ${p.spotsAvailable > 0 ? `${p.spotsAvailable} Available` : 'Sold Out'}
+          </div>
           <span>${sport}</span>
         </div>
       </div>
