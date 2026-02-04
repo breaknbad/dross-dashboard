@@ -1,2361 +1,648 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Break'n Bad | IR Pack Intelligence Dashboard</title>
-<style>
-  :root {
-    /* Break'n Bad Brand Colors */
-    --bnb-primary: #1a237e;     /* Deep blue */
-    --bnb-secondary: #3949ab;   /* Medium blue */
-    --bnb-accent: #ff6b35;      /* Break'n Bad orange */
-    --bnb-gold: #ffc107;        /* Gold highlights */
-    --bnb-dark: #0a0e27;        /* Dark navy background */
-    --bnb-card: #1e2555;        /* Card background */
-    --bnb-border: #3949ab40;    /* Border with opacity */
-    
-    /* Status Colors */
-    --green: #4caf50;
-    --red: #f44336;
-    --gold: var(--bnb-gold);
-    --text: #ffffff;
-    --text-muted: #b0bec5;
-  }
-  
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bnb-dark) 0%, var(--bnb-primary) 100%);
-    color: var(--text);
-    padding: 12px;
-    min-height: 100vh;
-  }
-  
-  .container {
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  
-  .header {
-    background: var(--bnb-card);
-    border: 1px solid var(--bnb-border);
-    border-radius: 16px;
-    padding: 20px 24px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  }
-  
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .brand-logo {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(45deg, var(--bnb-accent), var(--bnb-gold));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 1.2rem;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-  }
-  
-  .brand-text h1 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0;
-  }
-  
-  .brand-text .subtitle {
-    font-size: 0.85rem;
-    color: var(--bnb-accent);
-    font-weight: 500;
-    margin: 0;
-  }
-  
-  .header-meta {
-    text-align: right;
-  }
-  
-  .header-meta .timestamp {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    margin: 0;
-  }
-  
-  .header-meta .status {
-    color: var(--green);
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin: 2px 0 0 0;
-  }
-  
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  
-  .stat-card {
-    background: var(--bnb-card);
-    border: 1px solid var(--bnb-border);
-    border-radius: 12px;
-    padding: 16px;
-    text-align: center;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-  }
-  
-  .stat-label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 6px;
-    font-weight: 600;
-  }
-  
-  .stat-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-  
-  .stat-value.green { color: var(--green); }
-  .stat-value.red { color: var(--red); }
-  .stat-value.gold { color: var(--gold); }
-  .stat-value.orange { color: var(--bnb-accent); }
-  .stat-value.blue { color: var(--bnb-secondary); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break'n Bad | Instant Rips Pack Dashboard</title>
+    <style>
+        :root {
+            /* Break'n Bad Brand Colors */
+            --bnb-primary: #1a237e;     /* Deep blue */
+            --bnb-secondary: #3949ab;   /* Medium blue */
+            --bnb-accent: #ff6b35;      /* Break'n Bad orange */
+            --bnb-gold: #ffc107;        /* Gold highlights */
+            --bnb-dark: #0a0e27;        /* Dark navy background */
+            --bnb-card: #1e2555;        /* Card background */
+            --bnb-border: #3949ab40;    /* Border with opacity */
+            
+            /* Status Colors */
+            --green: #4caf50;
+            --red: #f44336;
+            --orange: #ff9800;
+            --gold: var(--bnb-gold);
+            --text: #ffffff;
+            --text-muted: #b0bec5;
+            --hot: #ff5722;
+            --cold: #607d8b;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bnb-dark) 0%, var(--bnb-primary) 100%);
+            color: var(--text);
+            padding: 12px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: var(--bnb-card);
+            border: 1px solid var(--bnb-border);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(45deg, var(--bnb-accent), var(--bnb-gold));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .brand-text h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0;
+        }
+        
+        .brand-text .subtitle {
+            font-size: 0.85rem;
+            color: var(--bnb-accent);
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        .header-meta {
+            text-align: right;
+        }
+        
+        .header-meta .timestamp {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        
+        .header-meta .status {
+            color: var(--green);
+            font-size: 0.75rem;
+            margin: 4px 0 0 0;
+        }
 
-  .controls {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  
-  .control-group {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .control-label {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-right: 4px;
-  }
-  
-  .filter-btn, .sort-btn {
-    background: var(--bnb-card);
-    border: 1px solid var(--bnb-border);
-    color: var(--text-muted);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-weight: 500;
-  }
-  
-  .filter-btn:hover, .sort-btn:hover,
-  .filter-btn.active, .sort-btn.active {
-    background: var(--bnb-accent);
-    border-color: var(--bnb-accent);
-    color: white;
-    transform: translateY(-1px);
-  }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: var(--bnb-card);
+            border: 1px solid var(--bnb-border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        
+        .stat-card .value {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        
+        .stat-card .value.green { color: var(--green); }
+        .stat-card .value.orange { color: var(--orange); }
+        .stat-card .value.gold { color: var(--gold); }
+        .stat-card .value.blue { color: var(--bnb-secondary); }
 
-  .packs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
-  }
-  
-  .pack-card {
-    background: var(--bnb-card);
-    border: 1px solid var(--bnb-border);
-    border-radius: 16px;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  }
-  
-  .pack-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-    border-color: var(--bnb-accent);
-  }
-  
-  .pack-card.negative {
-    opacity: 0.6;
-    border-color: var(--red);
-  }
-  
-  .ev-badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
-  
-  .ev-badge.positive {
-    background: var(--green);
-    color: white;
-  }
-  
-  .ev-badge.negative {
-    background: var(--red);
-    color: white;
-  }
-  
-  .pack-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    padding-right: 80px;
-    line-height: 1.3;
-  }
-  
-  .pack-price {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--bnb-accent);
-    margin-bottom: 12px;
-  }
-  
-  .pack-ev {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-  }
-  
-  .pack-ev strong {
-    color: var(--text);
-  }
-  
-  .odds-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  
-  .odds-pill {
-    flex: 1;
-    text-align: center;
-    padding: 8px 6px;
-    border-radius: 8px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    border: 1px solid transparent;
-  }
-  
-  .odds-pill .pct {
-    font-weight: 700;
-    font-size: 0.9rem;
-    display: block;
-    margin-bottom: 2px;
-  }
-  
-  .odds-pill.base {
-    background: rgba(176,190,197,0.1);
-    color: var(--text-muted);
-    border-color: rgba(176,190,197,0.2);
-  }
-  
-  .odds-pill.chase {
-    background: rgba(57,73,171,0.2);
-    color: var(--bnb-secondary);
-    border-color: rgba(57,73,171,0.3);
-  }
-  
-  .odds-pill.grail {
-    background: rgba(255,193,7,0.2);
-    color: var(--gold);
-    border-color: rgba(255,193,7,0.3);
-  }
-  
-  .value-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-  }
-  
-  .value-bar .bar {
-    flex: 1;
-    height: 6px;
-    background: var(--bnb-dark);
-    border-radius: 3px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--bnb-border);
-  }
-  
-  .value-bar .bar .fill {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    border-radius: 3px;
-    background: linear-gradient(90deg, var(--bnb-secondary), var(--green));
-  }
-  
-  .value-bar .bar .price-marker {
-    position: absolute;
-    top: -2px;
-    width: 2px;
-    height: 10px;
-    background: var(--bnb-accent);
-    border-radius: 1px;
-    box-shadow: 0 0 4px rgba(255,107,53,0.5);
-  }
-  
-  .pack-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid var(--bnb-border);
-    font-size: 0.75rem;
-  }
-  
-  .tier-badge {
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.7rem;
-  }
-  
-  .tier-1 { background: rgba(176,190,197,0.2); color: var(--text-muted); }
-  .tier-2 { background: rgba(57,73,171,0.2); color: var(--bnb-secondary); }
-  .tier-3 { background: rgba(255,107,53,0.2); color: var(--bnb-accent); }
-  .tier-4 { background: rgba(255,193,7,0.2); color: var(--gold); }
-  
-  .status-indicator {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: var(--text-muted);
-    font-size: 0.7rem;
-  }
-  
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  
-  .status-dot.available { background: var(--green); }
-  .status-dot.sold { background: var(--red); }
-  
-  .footer {
-    margin-top: 40px;
-    padding: 20px;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-  }
-  
-  .footer a {
-    color: var(--bnb-accent);
-    text-decoration: none;
-  }
-  
-  .footer a:hover {
-    text-decoration: underline;
-  }
+        .controls {
+            background: var(--bnb-card);
+            border: 1px solid var(--bnb-border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
 
-  /* Mobile Optimizations */
-  @media (max-width: 768px) {
-    body { padding: 8px; }
-    
-    .header {
-      padding: 16px;
-      flex-direction: column;
-      text-align: center;
-    }
-    
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      font-size: 1rem;
-    }
-    
-    .brand-text h1 { font-size: 1.2rem; }
-    
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
-    
-    .stat-card {
-      padding: 12px;
-    }
-    
-    .stat-value {
-      font-size: 1.2rem;
-    }
-    
-    .controls {
-      justify-content: center;
-    }
-    
-    .filter-btn, .sort-btn {
-      padding: 6px 12px;
-      font-size: 0.7rem;
-    }
-    
-    .packs-grid {
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    
-    .pack-card {
-      padding: 16px;
-    }
-    
-    .pack-title {
-      font-size: 0.9rem;
-      padding-right: 70px;
-    }
-    
-    .pack-price {
-      font-size: 1.2rem;
-    }
-    
-    .odds-row {
-      gap: 4px;
-    }
-    
-    .odds-pill {
-      padding: 6px 4px;
-      font-size: 0.65rem;
-    }
-  }
+        .filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: var(--bnb-primary);
+            border: 1px solid var(--bnb-border);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--bnb-accent);
+            color: var(--text);
+            background: var(--bnb-accent);
+        }
 
-  /* Small mobile */
-  @media (max-width: 480px) {
-    .stats-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .header {
-      padding: 12px;
-    }
-    
-    .pack-card {
-      padding: 12px;
-    }
-  }
-</style>
+        .sort-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .sort-row span {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        
+        .sort-btn {
+            background: none;
+            border: 1px solid var(--bnb-border);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .sort-btn:hover, .sort-btn.active {
+            border-color: var(--bnb-accent);
+            color: var(--bnb-accent);
+        }
+
+        .pack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 16px;
+        }
+        
+        .pack-card {
+            background: var(--bnb-card);
+            border: 1px solid var(--bnb-border);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        
+        .pack-card:hover {
+            border-color: var(--bnb-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .pack-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .pack-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            flex: 1;
+            padding-right: 12px;
+        }
+
+        .pack-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--bnb-gold);
+            text-align: right;
+        }
+
+        .sport-category {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .cards-info {
+            background: var(--bnb-primary);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .cards-total {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .cards-breakdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .card-type {
+            text-align: center;
+            padding: 6px 4px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+        }
+
+        .card-type .count {
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .card-type.base {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-muted);
+        }
+
+        .card-type.chase {
+            background: rgba(57,73,171,0.3);
+            color: var(--bnb-secondary);
+        }
+
+        .card-type.grail {
+            background: rgba(255,193,7,0.3);
+            color: var(--gold);
+        }
+
+        .odds-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .odds-pill {
+            flex: 1;
+            text-align: center;
+            padding: 8px 4px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            border: 1px solid;
+        }
+
+        .odds-pill .pct {
+            font-weight: 700;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .odds-pill.chase {
+            background: rgba(57,73,171,0.2);
+            border-color: var(--bnb-secondary);
+            color: var(--bnb-secondary);
+        }
+
+        .odds-pill.grail {
+            background: rgba(255,193,7,0.2);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hot-indicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hot-indicator.hot {
+            background: linear-gradient(45deg, var(--hot), var(--bnb-accent));
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .hot-indicator.cold {
+            background: var(--cold);
+            color: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .pack-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--bnb-border);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .tier-badge {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-1 { background: rgba(139,148,158,0.2); color: var(--text-muted); }
+        .tier-2 { background: rgba(57,73,171,0.2); color: var(--bnb-secondary); }
+        .tier-3 { background: rgba(188,140,255,0.2); color: #bc8cff; }
+        .tier-4 { background: rgba(255,193,7,0.2); color: var(--gold); }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-dot.ready { background: var(--green); }
+        .status-dot.sold { background: var(--red); }
+        
+        @media (max-width: 768px) {
+            body { padding: 8px; }
+            .header { padding: 16px; }
+            .pack-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .sort-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .filters { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
-
-<div class="container">
-  <div class="header">
-    <div class="brand">
-      <div class="brand-logo">B'B</div>
-      <div class="brand-text">
-        <h1>Break'n Bad</h1>
-        <p class="subtitle">IR Pack Intelligence Dashboard</p>
-      </div>
-    </div>
-    <div class="header-meta">
-      <p class="timestamp" id="timestamp">Loading...</p>
-      <p class="status">● Live Data • Auto-refreshes every 30min</p>
-    </div>
-  </div>
-
-  <div class="stats-grid" id="stats-grid"></div>
-
-  <div class="controls">
-    <div class="control-group">
-      <span class="control-label">Filter:</span>
-      <div id="filters"></div>
-    </div>
-    <div class="control-group">
-      <span class="control-label">Sort:</span>
-      <button class="sort-btn active" data-sort="ev-ratio">EV Ratio</button>
-      <button class="sort-btn" data-sort="price-low">Price ↑</button>
-      <button class="sort-btn" data-sort="price-high">Price ↓</button>
-      <button class="sort-btn" data-sort="chase">Chase %</button>
-      <button class="sort-btn" data-sort="grail">Grail %</button>
-    </div>
-  </div>
-
-  <div class="packs-grid" id="packs-grid"></div>
-
-  <div class="footer">
-    <p>Powered by Break'n Bad Intelligence • Data sourced from <a href="https://get.fanatics.live/X8WW/hsobapek">Fanatics Live</a></p>
-  </div>
-</div>
-
-<script>
-let packData = null;
-let currentFilter = 'all';
-let currentSort = 'ev-ratio';
-
-// Embedded data (updated by deploy script)
-const EMBEDDED_DATA = {
-  "timestamp": "2026-02-04T20:30:06.158Z",
-  "showId": "ea3309c9-9295-40df-812f-9438b177e4f7",
-  "totalBreaks": 41,
-  "repackCount": 35,
-  "packs": [
-    {
-      "breakId": "cb664efb-99c6-4a65-abe4-38effd94e49e",
-      "title": "Mixed Sport: Infinity Pack $1,000",
-      "status": "READY",
-      "productId": "db3982e3-5e20-47a6-acfb-48ea25039a10",
-      "repackId": "a0d95ad0-590a-4b61-be6d-41453a00b061",
-      "packTier": 4,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 40000,
-        "amountDisplay": "$400"
-      },
-      "averageValue": {
-        "amount": 80154,
-        "amountDisplay": "$801.54"
-      },
-      "ceilingValue": {
-        "amount": 516000,
-        "amountDisplay": "$5,160"
-      },
-      "description": "The ultimate chase. A premium blend of stars, legends, and rising icons across every sport—this drop delivers pure adrenaline in every rip. Expect autos, ultra-low-numbered hits, and refractors that shine like championship gold. Every pack is a shot at true hobby heat, instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 80000,
-      "odds": {
-        "totalCards": 779,
-        "baseCount": 667,
-        "chaseCount": 98,
-        "grailCount": 14,
-        "chaseOddsPct": 12.58,
-        "grailOddsPct": 1.8,
-        "baseOddsPct": 85.62,
-        "evCents": 115886,
-        "evDisplay": "$1158.86",
-        "packPriceCents": 80000,
-        "evRatio": 1.45,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 100000,
-        "amountDisplay": "$1,000",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "4489412a-ff3c-484f-b078-7545a981d89b",
-      "title": "Basketball: Infinity Pack $1,000",
-      "status": "READY",
-      "productId": "e47a164a-0c3a-4ca9-a14a-d460434d3719",
-      "repackId": "bd8407c5-e834-4837-b8f1-fc489c4ce383",
-      "packTier": 4,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 40000,
-        "amountDisplay": "$400"
-      },
-      "averageValue": {
-        "amount": 78040,
-        "amountDisplay": "$780.40"
-      },
-      "ceilingValue": {
-        "amount": 599400,
-        "amountDisplay": "$5,994"
-      },
-      "description": "The elite chase. A premium mix of hardwood greatness—iconic signatures, ultra-low-numbered cards, and refractors that define the modern hobby. Every rip delivers top-tier energy and collector prestige. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 80000,
-      "odds": {
-        "totalCards": 247,
-        "baseCount": 208,
-        "chaseCount": 35,
-        "grailCount": 4,
-        "chaseOddsPct": 14.17,
-        "grailOddsPct": 1.62,
-        "baseOddsPct": 84.21,
-        "evCents": 114260,
-        "evDisplay": "$1142.60",
-        "packPriceCents": 80000,
-        "evRatio": 1.43,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 100000,
-        "amountDisplay": "$1,000",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "172babf5-ded0-4373-b431-7d0e412dd615",
-      "title": "Football: Ultra Pack $500",
-      "status": "READY",
-      "productId": "39f78c3d-30e1-411b-9aac-ae21dc1b6798",
-      "repackId": "01ae9ffd-060f-461c-9e1e-b917eaf47b7a",
-      "packTier": 3,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 20000,
-        "amountDisplay": "$200"
-      },
-      "averageValue": {
-        "amount": 40660,
-        "amountDisplay": "$406.60"
-      },
-      "ceilingValue": {
-        "amount": 282000,
-        "amountDisplay": "$2,820"
-      },
-      "description": "Gridiron heat unleashed. A powerhouse blend of stars and rookies ready to make plays in your collection. Loaded with autos, numbered parallels, and refractors that hit as hard as the pros. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 40000,
-      "odds": {
-        "totalCards": 647,
-        "baseCount": 551,
-        "chaseCount": 84,
-        "grailCount": 12,
-        "chaseOddsPct": 12.98,
-        "grailOddsPct": 1.85,
-        "baseOddsPct": 85.16,
-        "evCents": 56007,
-        "evDisplay": "$560.07",
-        "packPriceCents": 40000,
-        "evRatio": 1.4,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 50000,
-        "amountDisplay": "$500",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "860e3c9a-1d8a-4ef6-9ec1-8a6f9faf8b45",
-      "title": "Football: Ultra Pack $500",
-      "status": "READY",
-      "productId": "39f78c3d-30e1-411b-9aac-ae21dc1b6798",
-      "repackId": "01ae9ffd-060f-461c-9e1e-b917eaf47b7a",
-      "packTier": 3,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 20000,
-        "amountDisplay": "$200"
-      },
-      "averageValue": {
-        "amount": 40660,
-        "amountDisplay": "$406.60"
-      },
-      "ceilingValue": {
-        "amount": 282000,
-        "amountDisplay": "$2,820"
-      },
-      "description": "Gridiron heat unleashed. A powerhouse blend of stars and rookies ready to make plays in your collection. Loaded with autos, numbered parallels, and refractors that hit as hard as the pros. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 40000,
-      "odds": {
-        "totalCards": 647,
-        "baseCount": 551,
-        "chaseCount": 84,
-        "grailCount": 12,
-        "chaseOddsPct": 12.98,
-        "grailOddsPct": 1.85,
-        "baseOddsPct": 85.16,
-        "evCents": 56007,
-        "evDisplay": "$560.07",
-        "packPriceCents": 40000,
-        "evRatio": 1.4,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 50000,
-        "amountDisplay": "$500",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "4c76818e-b1ff-4509-af4b-37ecf1a66160",
-      "title": "Baseball: Super Pack $150",
-      "status": "READY",
-      "productId": "ea8baf37-b603-4fbd-8db8-4862be9ad050",
-      "repackId": "74589cb1-b791-4edd-ad34-4ba71980a5ec",
-      "packTier": 1,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 6000,
-        "amountDisplay": "$60"
-      },
-      "averageValue": {
-        "amount": 11431,
-        "amountDisplay": "$114.31"
-      },
-      "ceilingValue": {
-        "amount": 86000,
-        "amountDisplay": "$860"
-      },
-      "description": "The chase builds. A loaded lineup of today’s elite and tomorrow’s stars, all in one rip. Look for autos, low-numbered parallels, and refractors that capture the thrill of the game. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 12000,
-      "odds": {
-        "totalCards": 4381,
-        "baseCount": 3760,
-        "chaseCount": 540,
-        "grailCount": 79,
-        "chaseOddsPct": 12.33,
-        "grailOddsPct": 1.8,
-        "baseOddsPct": 85.83,
-        "evCents": 16088,
-        "evDisplay": "$160.88",
-        "packPriceCents": 12000,
-        "evRatio": 1.34,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 15000,
-        "amountDisplay": "$150",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "3ae36363-ecbc-4eb8-892d-41590df5e4e5",
-      "title": "Baseball: Infinity Pack $1,000",
-      "status": "READY",
-      "productId": "eee3ae1d-8d3a-494e-8120-ad2473a61079",
-      "repackId": "d3f9111d-c4a0-4cbe-94ce-7091c0a71bc2",
-      "packTier": 4,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 40000,
-        "amountDisplay": "$400"
-      },
-      "averageValue": {
-        "amount": 75672,
-        "amountDisplay": "$756.72"
-      },
-      "ceilingValue": {
-        "amount": 594800,
-        "amountDisplay": "$5,948"
-      },
-      "description": "The pinnacle of the diamond. A high-end chase built for serious collectors—loaded with superstar autos, low-numbered heat, and refractors that shimmer like stadium lights. Every rip brings the chance to uncover the game’s biggest moments in card form. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 80000,
-      "odds": {
-        "totalCards": 885,
-        "baseCount": 751,
-        "chaseCount": 119,
-        "grailCount": 15,
-        "chaseOddsPct": 13.45,
-        "grailOddsPct": 1.69,
-        "baseOddsPct": 84.86,
-        "evCents": 104908,
-        "evDisplay": "$1049.08",
-        "packPriceCents": 80000,
-        "evRatio": 1.31,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 100000,
-        "amountDisplay": "$1,000",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "b6ea336d-5e55-49b6-98fa-625206b9797a",
-      "title": "Pokemon: Ultra Pack $500",
-      "status": "READY",
-      "productId": "6985f25f-291f-4fea-811a-5a58d3633811",
-      "repackId": "8bea4c34-f295-45a6-a759-8e1812cb42c2",
-      "packTier": 3,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 20000,
-        "amountDisplay": "$200"
-      },
-      "averageValue": {
-        "amount": 36999,
-        "amountDisplay": "$369.99"
-      },
-      "ceilingValue": {
-        "amount": 300000,
-        "amountDisplay": "$3,000"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 40000,
-      "odds": {
-        "totalCards": 1888,
-        "baseCount": 1625,
-        "chaseCount": 231,
-        "grailCount": 32,
-        "chaseOddsPct": 12.24,
-        "grailOddsPct": 1.69,
-        "baseOddsPct": 86.07,
-        "evCents": 50103,
-        "evDisplay": "$501.03",
-        "packPriceCents": 40000,
-        "evRatio": 1.25,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 50000,
-        "amountDisplay": "$500",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "ed7ac1eb-391f-4dbb-83a4-ae19634637b3",
-      "title": "Basketball: Ultra Pack $500",
-      "status": "READY",
-      "productId": "5e4a5805-f4ae-4c52-8700-f88e9d515162",
-      "repackId": "65c882c7-8bd9-46c9-a085-1a2d05a6aa5b",
-      "packTier": 3,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 20000,
-        "amountDisplay": "$200"
-      },
-      "averageValue": {
-        "amount": 38643,
-        "amountDisplay": "$386.43"
-      },
-      "ceilingValue": {
-        "amount": 298300,
-        "amountDisplay": "$2,983"
-      },
-      "description": "Court legends collide. From superstar vets to electric new talent, this drop delivers the game’s biggest hits. Packed with autos, low-numbered parallels, and refractors that shine from baseline to rim. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 40000,
-      "odds": {
-        "totalCards": 693,
-        "baseCount": 589,
-        "chaseCount": 91,
-        "grailCount": 13,
-        "chaseOddsPct": 13.13,
-        "grailOddsPct": 1.88,
-        "baseOddsPct": 84.99,
-        "evCents": 49199,
-        "evDisplay": "$491.99",
-        "packPriceCents": 40000,
-        "evRatio": 1.23,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 50000,
-        "amountDisplay": "$500",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "613ceac3-3e4d-4c75-a4f2-aaeb4c140b97",
-      "title": "Football: Mega Pack $250",
-      "status": "READY",
-      "productId": "d9d358ca-d9d4-494e-b1ee-9222a23b7d6f",
-      "repackId": "cb91fc8d-1c2d-45c2-9a12-b86b2a84607e",
-      "packTier": 2,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 10000,
-        "amountDisplay": "$100"
-      },
-      "averageValue": {
-        "amount": 18838,
-        "amountDisplay": "$188.38"
-      },
-      "ceilingValue": {
-        "amount": 129999,
-        "amountDisplay": "$1,299.99"
-      },
-      "description": "The midseason chase. Big names, bold designs, and serious hits—autos, low-numbered parallels, and refractors that bring the game-day rush. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 20000,
-      "odds": {
-        "totalCards": 2373,
-        "baseCount": 2027,
-        "chaseCount": 305,
-        "grailCount": 41,
-        "chaseOddsPct": 12.85,
-        "grailOddsPct": 1.73,
-        "baseOddsPct": 85.42,
-        "evCents": 23712,
-        "evDisplay": "$237.12",
-        "packPriceCents": 20000,
-        "evRatio": 1.19,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 25000,
-        "amountDisplay": "$250",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "5aedb1fe-9880-4877-b142-a7455fa780cd",
-      "title": "Pokemon: Super Pack $150",
-      "status": "READY",
-      "productId": "7b112acd-773d-4050-9d47-6853473addb0",
-      "repackId": "d55af7f2-222f-464e-83fc-4155c7699aa5",
-      "packTier": 1,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 6025,
-        "amountDisplay": "$60.25"
-      },
-      "averageValue": {
-        "amount": 11087,
-        "amountDisplay": "$110.87"
-      },
-      "ceilingValue": {
-        "amount": 89000,
-        "amountDisplay": "$890"
-      },
-      "description": "Catch the spark. A vibrant mix of rare cards, stunning holo hits, and chase-worthy pulls that keep collectors ripping for more. Every pack is bursting with energy and surprise—instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 12000,
-      "odds": {
-        "totalCards": 6783,
-        "baseCount": 5777,
-        "chaseCount": 886,
-        "grailCount": 120,
-        "chaseOddsPct": 13.06,
-        "grailOddsPct": 1.77,
-        "baseOddsPct": 85.17,
-        "evCents": 13958,
-        "evDisplay": "$139.58",
-        "packPriceCents": 12000,
-        "evRatio": 1.16,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 15000,
-        "amountDisplay": "$150",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "bd0fd61f-5b6e-4fd6-a81c-4773355227c7",
-      "title": "Basketball: Mega Pack $250",
-      "status": "READY",
-      "productId": "1a594c67-c6c3-4952-987b-82204fd13b7b",
-      "repackId": "5fe3d20c-5871-459b-9b4a-af1b04e3266d",
-      "packTier": 2,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 10000,
-        "amountDisplay": "$100"
-      },
-      "averageValue": {
-        "amount": 19804,
-        "amountDisplay": "$198.04"
-      },
-      "ceilingValue": {
-        "amount": 144500,
-        "amountDisplay": "$1,445"
-      },
-      "description": "The midcourt momentum. A loaded lineup featuring elite players, rare autos, and low-numbered refractors that bring intensity to every rip. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 20000,
-      "odds": {
-        "totalCards": 766,
-        "baseCount": 648,
-        "chaseCount": 103,
-        "grailCount": 15,
-        "chaseOddsPct": 13.45,
-        "grailOddsPct": 1.96,
-        "baseOddsPct": 84.6,
-        "evCents": 23259,
-        "evDisplay": "$232.59",
-        "packPriceCents": 20000,
-        "evRatio": 1.16,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 25000,
-        "amountDisplay": "$250",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "4953dee9-4bf9-4809-8a89-cf6048895d34",
-      "title": "Baseball: Mega Pack $250",
-      "status": "READY",
-      "productId": "6dad8e6c-c0b7-4c67-b0b6-6e95ae297a62",
-      "repackId": "4ee02ed0-2a56-4b9e-b151-fc95acef6994",
-      "packTier": 2,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 10000,
-        "amountDisplay": "$100"
-      },
-      "averageValue": {
-        "amount": 21090,
-        "amountDisplay": "$210.90"
-      },
-      "ceilingValue": {
-        "amount": 144000,
-        "amountDisplay": "$1,440"
-      },
-      "description": "Chase the big league heat. From breakout rookies to established stars, this set delivers pure diamond energy. Every pack is loaded with autos, low-numbered parallels, and refractors that light up the hobby. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 20000,
-      "odds": {
-        "totalCards": 2752,
-        "baseCount": 2354,
-        "chaseCount": 349,
-        "grailCount": 49,
-        "chaseOddsPct": 12.68,
-        "grailOddsPct": 1.78,
-        "baseOddsPct": 85.54,
-        "evCents": 23100,
-        "evDisplay": "$231.00",
-        "packPriceCents": 20000,
-        "evRatio": 1.15,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 25000,
-        "amountDisplay": "$250",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "5445b23f-74ee-413a-af6c-b617171b1ede",
-      "title": "Basketball: $75",
-      "status": "READY",
-      "productId": "71c82e69-5a6e-4a4f-925b-225f3e442b98",
-      "repackId": "8f49d2cf-1e36-40ac-b8ee-814391c74108",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 3000,
-        "amountDisplay": "$30"
-      },
-      "averageValue": {
-        "amount": 5554,
-        "amountDisplay": "$55.54"
-      },
-      "ceilingValue": {
-        "amount": 39900,
-        "amountDisplay": "$399"
-      },
-      "description": "Every pack brings heat. Stars, signatures, and refractors that pop with pure hobby energy. A dynamic mix that keeps the chase alive in every rip. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 6000,
-      "odds": {
-        "totalCards": 6203,
-        "baseCount": 5263,
-        "chaseCount": 822,
-        "grailCount": 117,
-        "chaseOddsPct": 13.25,
-        "grailOddsPct": 1.89,
-        "baseOddsPct": 84.85,
-        "evCents": 6836,
-        "evDisplay": "$68.36",
-        "packPriceCents": 6000,
-        "evRatio": 1.14,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 7500,
-        "amountDisplay": "$75",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "fa27e756-8459-4e82-b81f-d340b0ba92f3",
-      "title": "Mixed Sport: Mega Pack $250",
-      "status": "READY",
-      "productId": "15848f59-242c-4565-95d8-f582dd0285c8",
-      "repackId": "e6e89585-214a-41ac-9e28-65bb70c6723b",
-      "packTier": 2,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 9898,
-        "amountDisplay": "$98.98"
-      },
-      "averageValue": {
-        "amount": 20403,
-        "amountDisplay": "$204.03"
-      },
-      "ceilingValue": {
-        "amount": 155900,
-        "amountDisplay": "$1,559"
-      },
-      "description": "Chase the energy. A dynamic mix of top-tier talent and rare inserts that bring every sport under one roof. Look for autos, low-numbered cards, and eye-catching refractors that pop straight out of the pack. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 20000,
-      "odds": {
-        "totalCards": 2776,
-        "baseCount": 2367,
-        "chaseCount": 365,
-        "grailCount": 44,
-        "chaseOddsPct": 13.15,
-        "grailOddsPct": 1.59,
-        "baseOddsPct": 85.27,
-        "evCents": 22623,
-        "evDisplay": "$226.23",
-        "packPriceCents": 20000,
-        "evRatio": 1.13,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 25000,
-        "amountDisplay": "$250",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "4a58af80-b730-4f63-9a62-ab6bfbfcc856",
-      "title": "Football: Ultra Pack $500",
-      "status": "READY",
-      "productId": "5c595d46-eeba-4bbc-bdff-8e8d27b78260",
-      "repackId": "77667e71-06f0-43a3-91be-c59527044bc3",
-      "packTier": 3,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 20000,
-        "amountDisplay": "$200"
-      },
-      "averageValue": {
-        "amount": 39615,
-        "amountDisplay": "$396.15"
-      },
-      "ceilingValue": {
-        "amount": 280000,
-        "amountDisplay": "$2,800"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 40000,
-      "odds": {
-        "totalCards": 93,
-        "baseCount": 80,
-        "chaseCount": 10,
-        "grailCount": 3,
-        "chaseOddsPct": 10.75,
-        "grailOddsPct": 3.23,
-        "baseOddsPct": 86.02,
-        "evCents": 44726,
-        "evDisplay": "$447.26",
-        "packPriceCents": 40000,
-        "evRatio": 1.12,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 50000,
-        "amountDisplay": "$500",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "8150022c-c828-4c14-b5a3-183c6521137c",
-      "title": "Football: $75",
-      "status": "READY",
-      "productId": "80668e47-c6ab-48a8-9133-b9fcb09d5866",
-      "repackId": "38426242-455c-4957-9f66-78280eabe50f",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 3000,
-        "amountDisplay": "$30"
-      },
-      "averageValue": {
-        "amount": 6207,
-        "amountDisplay": "$62.07"
-      },
-      "ceilingValue": {
-        "amount": 50000,
-        "amountDisplay": "$500"
-      },
-      "description": "Rip the gridiron energy. A quick-hit drop filled with autos, refractors, and numbered cards from across the league. Every pack brings that game-winning thrill. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 6000,
-      "odds": {
-        "totalCards": 7758,
-        "baseCount": 6504,
-        "chaseCount": 1098,
-        "grailCount": 156,
-        "chaseOddsPct": 14.15,
-        "grailOddsPct": 2.01,
-        "baseOddsPct": 83.84,
-        "evCents": 6659,
-        "evDisplay": "$66.59",
-        "packPriceCents": 6000,
-        "evRatio": 1.11,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 7500,
-        "amountDisplay": "$75",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "a0aad0f2-bf64-4ecb-9769-0e96d4531ff7",
-      "title": "Pokemon 10s Only: $500",
-      "status": "READY",
-      "productId": "84b8692e-46c2-4268-bc94-ea22ca771b2c",
-      "repackId": "6d27ca55-6888-4dac-a7aa-7a6ab92a4597",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 17647,
-        "amountDisplay": "$176.47"
-      },
-      "averageValue": {
-        "amount": 35195,
-        "amountDisplay": "$351.95"
-      },
-      "ceilingValue": {
-        "amount": 280200,
-        "amountDisplay": "$2,802"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 40000,
-      "odds": {
-        "totalCards": 53,
-        "baseCount": 39,
-        "chaseCount": 10,
-        "grailCount": 2,
-        "chaseOddsPct": 18.87,
-        "grailOddsPct": 3.77,
-        "baseOddsPct": 73.58,
-        "evCents": 44558,
-        "evDisplay": "$445.58",
-        "packPriceCents": 40000,
-        "evRatio": 1.11,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 50000,
-        "amountDisplay": "$500",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "1da7c7d6-137c-40dc-ac1b-7f850ae8d33e",
-      "title": "Pokemon: Infinity Pack $1,000",
-      "status": "READY",
-      "productId": "8d4c37f8-5d96-490e-b9ff-64b5fd836cb4",
-      "repackId": "4cbd75dd-4669-4561-a887-36e38ddac500",
-      "packTier": 4,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 27600,
-        "amountDisplay": "$276"
-      },
-      "averageValue": {
-        "amount": 71918,
-        "amountDisplay": "$719.18"
-      },
-      "ceilingValue": {
-        "amount": 575000,
-        "amountDisplay": "$5,750"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 80000,
-      "odds": {
-        "totalCards": 672,
-        "baseCount": 598,
-        "chaseCount": 63,
-        "grailCount": 11,
-        "chaseOddsPct": 9.38,
-        "grailOddsPct": 1.64,
-        "baseOddsPct": 88.99,
-        "evCents": 86497,
-        "evDisplay": "$864.97",
-        "packPriceCents": 80000,
-        "evRatio": 1.08,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 100000,
-        "amountDisplay": "$1,000",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "797a9994-34e8-4872-bb22-c45091611fa7",
-      "title": "Baseball: Ultra Pack $500",
-      "status": "READY",
-      "productId": "9565c788-b485-4f43-bcb7-d278c495a7e3",
-      "repackId": "dd5f577b-2f82-4826-8fea-c0d774b28853",
-      "packTier": 3,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 20000,
-        "amountDisplay": "$200"
-      },
-      "averageValue": {
-        "amount": 39028,
-        "amountDisplay": "$390.28"
-      },
-      "ceilingValue": {
-        "amount": 300000,
-        "amountDisplay": "$3,000"
-      },
-      "description": "The diamond standard. Premium hits, elite signatures, and ultra-low-numbered cards define this drop. Each rip delivers the best of the big leagues—authentic, exclusive, and built for serious collectors. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 40000,
-      "odds": {
-        "totalCards": 1139,
-        "baseCount": 987,
-        "chaseCount": 131,
-        "grailCount": 21,
-        "chaseOddsPct": 11.5,
-        "grailOddsPct": 1.84,
-        "baseOddsPct": 86.65,
-        "evCents": 42966,
-        "evDisplay": "$429.66",
-        "packPriceCents": 40000,
-        "evRatio": 1.07,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 50000,
-        "amountDisplay": "$500",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "90f3f002-7c22-4255-8f6b-68e71861ceda",
-      "title": "Mixed Sport: $75",
-      "status": "READY",
-      "productId": "56c7a89a-91cd-466d-a895-71f7b193d3ee",
-      "repackId": "035bd2b5-0042-4676-8011-1e8fa92abd05",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 3000,
-        "amountDisplay": "$30"
-      },
-      "averageValue": {
-        "amount": 5541,
-        "amountDisplay": "$55.41"
-      },
-      "ceilingValue": {
-        "amount": 45600,
-        "amountDisplay": "$456"
-      },
-      "description": "Every rip counts. A fast-paced mix of stars and standouts from across the game. Each pack delivers authentic hits—from refractors to numbered pulls and even autos that keep collectors chasing. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 6000,
-      "odds": {
-        "totalCards": 18485,
-        "baseCount": 15821,
-        "chaseCount": 2355,
-        "grailCount": 309,
-        "chaseOddsPct": 12.74,
-        "grailOddsPct": 1.67,
-        "baseOddsPct": 85.59,
-        "evCents": 6332,
-        "evDisplay": "$63.32",
-        "packPriceCents": 6000,
-        "evRatio": 1.06,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 7500,
-        "amountDisplay": "$75",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "65fffcca-4b52-4842-b936-d446cc8b0bc0",
-      "title": "Baseball: $75",
-      "status": "READY",
-      "productId": "dbfe37c3-0fc5-484a-829a-c783f816f0a3",
-      "repackId": "c5bb7288-bf56-48f6-96ee-a5b512cee2ed",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 3000,
-        "amountDisplay": "$30"
-      },
-      "averageValue": {
-        "amount": 6187,
-        "amountDisplay": "$61.87"
-      },
-      "ceilingValue": {
-        "amount": 47700,
-        "amountDisplay": "$477"
-      },
-      "description": "Rip the diamond energy. A fast-paced mix of stars, rookies, and standout moments from across the league. Every pack brings autos, refractors, and numbered hits that keep the chase alive. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 6000,
-      "odds": {
-        "totalCards": 13301,
-        "baseCount": 11345,
-        "chaseCount": 1703,
-        "grailCount": 250,
-        "chaseOddsPct": 12.8,
-        "grailOddsPct": 1.88,
-        "baseOddsPct": 85.29,
-        "evCents": 6347,
-        "evDisplay": "$63.47",
-        "packPriceCents": 6000,
-        "evRatio": 1.06,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 7500,
-        "amountDisplay": "$75",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "d1485e1f-1d93-4f9a-8b3b-0ef06f243751",
-      "title": "Football: Infinity Pack $1,000",
-      "status": "READY",
-      "productId": "bc5aef09-1a2c-4819-8784-4d52de745fa3",
-      "repackId": "775dfe0e-c7b7-4bae-8fae-949258a69c22",
-      "packTier": 4,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 40000,
-        "amountDisplay": "$400"
-      },
-      "averageValue": {
-        "amount": 73617,
-        "amountDisplay": "$736.17"
-      },
-      "ceilingValue": {
-        "amount": 535000,
-        "amountDisplay": "$5,350"
-      },
-      "description": "The championship chase. From all-time greats to rising icons, this drop defines premium football collecting. Expect on-card autos, ultra-low-numbered hits, and refractors that flash like Sunday lights. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 80000,
-      "odds": {
-        "totalCards": 379,
-        "baseCount": 330,
-        "chaseCount": 43,
-        "grailCount": 6,
-        "chaseOddsPct": 11.35,
-        "grailOddsPct": 1.58,
-        "baseOddsPct": 87.07,
-        "evCents": 84408,
-        "evDisplay": "$844.08",
-        "packPriceCents": 80000,
-        "evRatio": 1.06,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 100000,
-        "amountDisplay": "$1,000",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "c6ff4d4d-e01b-4fdf-a24c-3d6a02dd648e",
-      "title": "Mixed Sport: Ultra Pack $500",
-      "status": "READY",
-      "productId": "4f8cbef1-4af1-4bae-9247-0d13e0730387",
-      "repackId": "eb85b878-82ef-47cd-8fe5-878beffe2793",
-      "packTier": 3,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 20000,
-        "amountDisplay": "$200"
-      },
-      "averageValue": {
-        "amount": 39988,
-        "amountDisplay": "$399.88"
-      },
-      "ceilingValue": {
-        "amount": 299600,
-        "amountDisplay": "$2,996"
-      },
-      "description": "A chase stacked with legends. Tom Brady, Shohei Ohtani, and Michael Jordan headline this Instant Rips drop with cards that define the pinnacle of collecting. From the 2021 Donruss Downtown Tom Brady PSA 10, to the 2019 National Treasures Shadowbox Shohei Ohtani Patch Auto /20 BGS 8.5, to the 2013 Fleer Retro ’95 Precious Metal Gems Red Michael Jordan /150 BGS 9—this lineup is pure hobby gold. Every pack delivers the thrill with superstar autos, low-numbered parallels, and iconic inserts. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 40000,
-      "odds": {
-        "totalCards": 2284,
-        "baseCount": 1953,
-        "chaseCount": 291,
-        "grailCount": 35,
-        "chaseOddsPct": 12.74,
-        "grailOddsPct": 1.53,
-        "baseOddsPct": 85.51,
-        "evCents": 41862,
-        "evDisplay": "$418.62",
-        "packPriceCents": 40000,
-        "evRatio": 1.05,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 50000,
-        "amountDisplay": "$500",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "8d43c470-154b-4f72-8141-3d781eab147d",
-      "title": "Mixed Sport: Super Pack $150",
-      "status": "READY",
-      "productId": "9121dad6-494c-4954-9af8-4af9826623bf",
-      "repackId": "73820da4-689f-4b98-a2b8-a382766db4c9",
-      "packTier": 1,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 6000,
-        "amountDisplay": "$60"
-      },
-      "averageValue": {
-        "amount": 11455,
-        "amountDisplay": "$114.55"
-      },
-      "ceilingValue": {
-        "amount": 79300,
-        "amountDisplay": "$793"
-      },
-      "description": "The chase stays hot. A sharp blend of elite athletes and rare hits across every sport. Look for autos, numbered parallels, and refractors that deliver instant impact with every pull. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 12000,
-      "odds": {
-        "totalCards": 4173,
-        "baseCount": 3593,
-        "chaseCount": 508,
-        "grailCount": 72,
-        "chaseOddsPct": 12.17,
-        "grailOddsPct": 1.73,
-        "baseOddsPct": 86.1,
-        "evCents": 12489,
-        "evDisplay": "$124.89",
-        "packPriceCents": 12000,
-        "evRatio": 1.04,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 15000,
-        "amountDisplay": "$150",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "63e07811-1d04-429c-90ea-198b31061bfe",
-      "title": "Football: Super Pack $150",
-      "status": "READY",
-      "productId": "559f77af-4da3-4871-8637-a2fe9073d2f1",
-      "repackId": "d84a98eb-e303-41b6-b5a0-e140ef749a77",
-      "packTier": 1,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 6000,
-        "amountDisplay": "$60"
-      },
-      "averageValue": {
-        "amount": 10994,
-        "amountDisplay": "$109.94"
-      },
-      "ceilingValue": {
-        "amount": 90000,
-        "amountDisplay": "$900"
-      },
-      "description": "Every down, every hit. A crisp mix of autos, numbered pulls, and refractors featuring the athletes who make every Sunday unforgettable. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 12000,
-      "odds": {
-        "totalCards": 2833,
-        "baseCount": 2423,
-        "chaseCount": 353,
-        "grailCount": 57,
-        "chaseOddsPct": 12.46,
-        "grailOddsPct": 2.01,
-        "baseOddsPct": 85.53,
-        "evCents": 12503,
-        "evDisplay": "$125.03",
-        "packPriceCents": 12000,
-        "evRatio": 1.04,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 15000,
-        "amountDisplay": "$150",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "576f765c-22d5-4a89-bb71-2634d634d4f1",
-      "title": "Mixed Sport Gem 10: $149",
-      "status": "READY",
-      "productId": "3f6b9908-4fb0-4241-a3cf-fc6966cb7ead",
-      "repackId": "9b621ff0-41eb-4dff-b31a-3f9039ace8c4",
-      "packTier": 2,
-      "isDynamic": true,
-      "repackStatus": "AWAITING_REFILL",
-      "floorValue": {
-        "amount": 6000,
-        "amountDisplay": "$60"
-      },
-      "averageValue": {
-        "amount": 11399,
-        "amountDisplay": "$113.99"
-      },
-      "ceilingValue": {
-        "amount": 87800,
-        "amountDisplay": "$878"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 11920,
-      "odds": {
-        "totalCards": 244,
-        "baseCount": 209,
-        "chaseCount": 31,
-        "grailCount": 4,
-        "chaseOddsPct": 12.7,
-        "grailOddsPct": 1.64,
-        "baseOddsPct": 85.66,
-        "evCents": 12173,
-        "evDisplay": "$121.73",
-        "packPriceCents": 11920,
-        "evRatio": 1.02,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 14900,
-        "amountDisplay": "$149",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "dae03bc4-ae9c-4a66-8b4f-7abdb24debbd",
-      "title": "Basketball: Super Pack $150",
-      "status": "READY",
-      "productId": "f9f052eb-9c13-4c68-a528-33d5d01a812f",
-      "repackId": "f147af39-a73f-477e-95da-a7763a4c5b58",
-      "packTier": 1,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 6000,
-        "amountDisplay": "$60"
-      },
-      "averageValue": {
-        "amount": 11215,
-        "amountDisplay": "$112.15"
-      },
-      "ceilingValue": {
-        "amount": 90000,
-        "amountDisplay": "$900"
-      },
-      "description": "Rip the energy. A fast-paced chase for collectors who live for the game—autos, refractors, and numbered cards that bring the action from tip-off to buzzer. Instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 12000,
-      "odds": {
-        "totalCards": 2001,
-        "baseCount": 1715,
-        "chaseCount": 250,
-        "grailCount": 36,
-        "chaseOddsPct": 12.49,
-        "grailOddsPct": 1.8,
-        "baseOddsPct": 85.71,
-        "evCents": 12268,
-        "evDisplay": "$122.68",
-        "packPriceCents": 12000,
-        "evRatio": 1.02,
-        "isPositiveEV": true
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 15000,
-        "amountDisplay": "$150",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "e98b8a14-069f-488a-ac61-cfb053037027",
-      "title": "Pokemon: Mega Pack $250",
-      "status": "READY",
-      "productId": "554ab72e-d893-44f5-a52f-2b94eedb4b35",
-      "repackId": "12c0e59f-765e-4ca7-882e-d6d3000bd46c",
-      "packTier": 2,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 9500,
-        "amountDisplay": "$95"
-      },
-      "averageValue": {
-        "amount": 19373,
-        "amountDisplay": "$193.73"
-      },
-      "ceilingValue": {
-        "amount": 150000,
-        "amountDisplay": "$1,500"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 20000,
-      "odds": {
-        "totalCards": 5762,
-        "baseCount": 4934,
-        "chaseCount": 728,
-        "grailCount": 99,
-        "chaseOddsPct": 12.63,
-        "grailOddsPct": 1.72,
-        "baseOddsPct": 85.63,
-        "evCents": 19980,
-        "evDisplay": "$199.80",
-        "packPriceCents": 20000,
-        "evRatio": 1,
-        "isPositiveEV": false
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 25000,
-        "amountDisplay": "$250",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "5c403684-e686-4437-b79b-45677fc031d2",
-      "title": "OG Pokemon: $150",
-      "status": "READY",
-      "productId": "fefd435c-d732-4426-9873-19031d7eeb87",
-      "repackId": "aeef786a-7e4e-44d6-bd6f-d5a01c3b40ea",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 6000,
-        "amountDisplay": "$60"
-      },
-      "averageValue": {
-        "amount": 11430,
-        "amountDisplay": "$114.30"
-      },
-      "ceilingValue": {
-        "amount": 90000,
-        "amountDisplay": "$900"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 12000,
-      "odds": {
-        "totalCards": 85,
-        "baseCount": 73,
-        "chaseCount": 10,
-        "grailCount": 2,
-        "chaseOddsPct": 11.76,
-        "grailOddsPct": 2.35,
-        "baseOddsPct": 85.88,
-        "evCents": 11742,
-        "evDisplay": "$117.42",
-        "packPriceCents": 12000,
-        "evRatio": 0.98,
-        "isPositiveEV": false
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 15000,
-        "amountDisplay": "$150",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "bb34d5a3-fdd3-497d-a36f-220fc0f04689",
-      "title": "OG Pokemon: $1,000",
-      "status": "READY",
-      "productId": "1c93d339-fef5-42c0-b115-eb290990ba30",
-      "repackId": "e38325aa-0147-4de3-bf0b-378f42865865",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 40000,
-        "amountDisplay": "$400"
-      },
-      "averageValue": {
-        "amount": 73214,
-        "amountDisplay": "$732.14"
-      },
-      "ceilingValue": {
-        "amount": 501000,
-        "amountDisplay": "$5,010"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 80000,
-      "odds": {
-        "totalCards": 31,
-        "baseCount": 26,
-        "chaseCount": 4,
-        "grailCount": 1,
-        "chaseOddsPct": 12.9,
-        "grailOddsPct": 3.23,
-        "baseOddsPct": 83.87,
-        "evCents": 77774,
-        "evDisplay": "$777.74",
-        "packPriceCents": 80000,
-        "evRatio": 0.97,
-        "isPositiveEV": false
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 100000,
-        "amountDisplay": "$1,000",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "f688d9cf-da39-42f2-8bc4-97b841b8893c",
-      "title": "Pokemon 10s Only: $150",
-      "status": "READY",
-      "productId": "ca4bd981-8e82-4739-8398-5833fa79db2d",
-      "repackId": "c732f9cb-c0c6-498d-8604-31c4f8929284",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 6000,
-        "amountDisplay": "$60"
-      },
-      "averageValue": {
-        "amount": 10962,
-        "amountDisplay": "$109.62"
-      },
-      "ceilingValue": {
-        "amount": 90000,
-        "amountDisplay": "$900"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 12000,
-      "odds": {
-        "totalCards": 320,
-        "baseCount": 272,
-        "chaseCount": 40,
-        "grailCount": 6,
-        "chaseOddsPct": 12.5,
-        "grailOddsPct": 1.88,
-        "baseOddsPct": 85,
-        "evCents": 11424,
-        "evDisplay": "$114.24",
-        "packPriceCents": 12000,
-        "evRatio": 0.95,
-        "isPositiveEV": false
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 15000,
-        "amountDisplay": "$150",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "4e29ee25-50f3-4d33-bb6a-9f08317bf35d",
-      "title": "OG Pokemon: $75",
-      "status": "READY",
-      "productId": "8c56620f-130f-4288-b4bf-e205402cc946",
-      "repackId": "8784586b-de23-4731-9abc-a1a1fd1d5948",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 2401,
-        "amountDisplay": "$24.01"
-      },
-      "averageValue": {
-        "amount": 5585,
-        "amountDisplay": "$55.85"
-      },
-      "ceilingValue": {
-        "amount": 49500,
-        "amountDisplay": "$495"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 6000,
-      "odds": {
-        "totalCards": 243,
-        "baseCount": 209,
-        "chaseCount": 30,
-        "grailCount": 4,
-        "chaseOddsPct": 12.35,
-        "grailOddsPct": 1.65,
-        "baseOddsPct": 86.01,
-        "evCents": 5471,
-        "evDisplay": "$54.71",
-        "packPriceCents": 6000,
-        "evRatio": 0.91,
-        "isPositiveEV": false
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 7500,
-        "amountDisplay": "$75",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "1de4c857-480d-4aaf-86b4-da0b1ed2d7c3",
-      "title": "Pokemon: $75",
-      "status": "READY",
-      "productId": "10a9d77e-9ad0-471f-a8e6-43bb67fde6c4",
-      "repackId": "5e62f657-7cc5-4111-9f47-75ba61ec8ec8",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 3000,
-        "amountDisplay": "$30"
-      },
-      "averageValue": {
-        "amount": 5468,
-        "amountDisplay": "$54.68"
-      },
-      "ceilingValue": {
-        "amount": 48000,
-        "amountDisplay": "$480"
-      },
-      "description": "Catch the spark. A vibrant mix of rare cards, stunning holo hits, and chase-worthy pulls that keep collectors ripping for more. Every pack is bursting with energy and surprise—instantly vaulted to your Fanatics Collect account and ready to sell, trade, or ship.",
-      "categories": null,
-      "msrpInCents": 6000,
-      "odds": {
-        "totalCards": 39598,
-        "baseCount": 34012,
-        "chaseCount": 4930,
-        "grailCount": 655,
-        "chaseOddsPct": 12.45,
-        "grailOddsPct": 1.65,
-        "baseOddsPct": 85.89,
-        "evCents": 5471,
-        "evDisplay": "$54.71",
-        "packPriceCents": 6000,
-        "evRatio": 0.91,
-        "isPositiveEV": false
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 7500,
-        "amountDisplay": "$75",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "0e66e6d4-6b65-4568-a63d-52e6ebd24cb8",
-      "title": "Pokemon 10s Only: $75",
-      "status": "READY",
-      "productId": "67a9969e-e3de-49b9-8a93-bb3e1e425741",
-      "repackId": "7685e0aa-0662-470a-9f60-047dcf60f418",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 3000,
-        "amountDisplay": "$30"
-      },
-      "averageValue": {
-        "amount": 5483,
-        "amountDisplay": "$54.83"
-      },
-      "ceilingValue": {
-        "amount": 47500,
-        "amountDisplay": "$475"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 6000,
-      "odds": {
-        "totalCards": 216,
-        "baseCount": 168,
-        "chaseCount": 23,
-        "grailCount": 3,
-        "chaseOddsPct": 10.65,
-        "grailOddsPct": 1.39,
-        "baseOddsPct": 77.78,
-        "evCents": 4807,
-        "evDisplay": "$48.07",
-        "packPriceCents": 6000,
-        "evRatio": 0.8,
-        "isPositiveEV": false
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 7500,
-        "amountDisplay": "$75",
-        "currency": "USD"
-      }
-    },
-    {
-      "breakId": "0f8fc570-8980-490e-869e-998df169c805",
-      "title": "OG Pokemon: $500",
-      "status": "READY",
-      "productId": "f4b66f7f-5e45-451b-b2b0-81a7df5d42bc",
-      "repackId": "090fba2e-0706-4196-ab12-d5d0e8214ff9",
-      "packTier": null,
-      "isDynamic": true,
-      "repackStatus": "SEALED",
-      "floorValue": {
-        "amount": 18500,
-        "amountDisplay": "$185"
-      },
-      "averageValue": {
-        "amount": 38452,
-        "amountDisplay": "$384.52"
-      },
-      "ceilingValue": {
-        "amount": 272600,
-        "amountDisplay": "$2,726"
-      },
-      "description": null,
-      "categories": null,
-      "msrpInCents": 40000,
-      "odds": {
-        "totalCards": 4,
-        "baseCount": 4,
-        "chaseCount": 0,
-        "grailCount": 0,
-        "chaseOddsPct": 0,
-        "grailOddsPct": 0,
-        "baseOddsPct": 100,
-        "evCents": 25000,
-        "evDisplay": "$250.00",
-        "packPriceCents": 40000,
-        "evRatio": 0.63,
-        "isPositiveEV": false
-      },
-      "spotsAvailable": 1,
-      "spotsClaimed": 0,
-      "spotsTotal": 1,
-      "price": {
-        "amount": 50000,
-        "amountDisplay": "$500",
-        "currency": "USD"
-      }
-    }
-  ]
-};
-
-function init() {
-  packData = EMBEDDED_DATA;
-  renderTimestamp();
-  renderStats();
-  renderFilters();
-  renderPacks();
-  setupSortButtons();
-}
-
-function renderTimestamp() {
-  const ts = new Date(packData.timestamp);
-  document.getElementById('timestamp').textContent = 
-    `Last Update: ${ts.toLocaleString('en-US', { 
-      timeZone: 'America/Indiana/Indianapolis', 
-      month: 'short', 
-      day: 'numeric', 
-      hour: 'numeric', 
-      minute: '2-digit', 
-      hour12: true 
-    })} EST`;
-}
-
-function renderStats() {
-  const packs = packData.packs;
-  const posEV = packs.filter(p => p.odds.isPositiveEV).length;
-  const negEV = packs.length - posEV;
-  const avgRatio = (packs.reduce((s, p) => s + p.odds.evRatio, 0) / packs.length).toFixed(2);
-  const bestPack = packs.reduce((best, p) => p.odds.evRatio > best.odds.evRatio ? p : best);
-  const totalValue = packs.reduce((s, p) => s + p.averageValue.amount, 0) / 100;
-
-  const stats = [
-    { label: 'Total Packs', value: packs.length, cls: 'blue' },
-    { label: '+EV Packs', value: posEV, cls: 'green' },
-    { label: '-EV Packs', value: negEV, cls: 'red' },
-    { label: 'Avg EV Ratio', value: avgRatio + 'x', cls: 'orange' },
-    { label: 'Best Ratio', value: bestPack.odds.evRatio.toFixed(2) + 'x', cls: 'gold' },
-    { label: 'Total Value', value: '$' + totalValue.toLocaleString(), cls: 'blue' },
-  ];
-
-  document.getElementById('stats-grid').innerHTML = stats.map(s => `
-    <div class="stat-card">
-      <div class="stat-label">${s.label}</div>
-      <div class="stat-value ${s.cls}">${s.value}</div>
-    </div>
-  `).join('');
-}
-
-function getSportFromTitle(title) {
-  const t = title.toLowerCase();
-  if (t.includes('mixed sport')) return 'Mixed Sport';
-  if (t.includes('basketball')) return 'Basketball';
-  if (t.includes('football')) return 'Football';
-  if (t.includes('baseball')) return 'Baseball';
-  if (t.includes('hockey')) return 'Hockey';
-  if (t.includes('soccer')) return 'Soccer';
-  return 'Other';
-}
-
-function getTierName(tier) {
-  return { 1: 'Standard', 2: 'Premium', 3: 'Ultra', 4: 'Infinity' }[tier] || 'Unknown';
-}
-
-function renderFilters() {
-  const sports = [...new Set(packData.packs.map(p => getSportFromTitle(p.title)))].sort();
-  const html = [`<button class="filter-btn active" data-filter="all">All Packs</button>`];
-  sports.forEach(s => {
-    const count = packData.packs.filter(p => getSportFromTitle(p.title) === s).length;
-    html.push(`<button class="filter-btn" data-filter="${s}">${s} (${count})</button>`);
-  });
-  html.push(`<button class="filter-btn" data-filter="+ev">+EV Only</button>`);
-  
-  const container = document.getElementById('filters');
-  container.innerHTML = html.join('');
-  container.addEventListener('click', e => {
-    if (!e.target.classList.contains('filter-btn')) return;
-    container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
-    currentFilter = e.target.dataset.filter;
-    renderPacks();
-  });
-}
-
-function setupSortButtons() {
-  document.querySelector('.controls').addEventListener('click', e => {
-    if (!e.target.classList.contains('sort-btn')) return;
-    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
-    currentSort = e.target.dataset.sort;
-    renderPacks();
-  });
-}
-
-function filterPacks(packs) {
-  if (currentFilter === 'all') return packs;
-  if (currentFilter === '+ev') return packs.filter(p => p.odds.isPositiveEV);
-  return packs.filter(p => getSportFromTitle(p.title) === currentFilter);
-}
-
-function sortPacks(packs) {
-  const sorted = [...packs];
-  switch (currentSort) {
-    case 'ev-ratio': sorted.sort((a, b) => b.odds.evRatio - a.odds.evRatio); break;
-    case 'price-low': sorted.sort((a, b) => a.price.amount - b.price.amount); break;
-    case 'price-high': sorted.sort((a, b) => b.price.amount - a.price.amount); break;
-    case 'chase': sorted.sort((a, b) => b.odds.chaseOddsPct - a.odds.chaseOddsPct); break;
-    case 'grail': sorted.sort((a, b) => b.odds.grailOddsPct - a.odds.grailOddsPct); break;
-  }
-  return sorted;
-}
-
-function renderPacks() {
-  const packs = sortPacks(filterPacks(packData.packs));
-  
-  document.getElementById('packs-grid').innerHTML = packs.map(p => {
-    const ev = p.odds;
-    const isPos = ev.isPositiveEV;
-    const tierNum = p.packTier;
-    const sport = getSportFromTitle(p.title);
-    const cleanTitle = p.title.replace(/\$[\d,]+/, '').trim();
-    
-    // Value bar: show floor/avg/ceiling relative positioning
-    const ceil = p.ceilingValue.amount;
-    const floorPct = ceil > 0 ? (p.floorValue.amount / ceil * 100) : 0;
-    const avgPct = ceil > 0 ? (p.averageValue.amount / ceil * 100) : 0;
-    const pricePct = ceil > 0 ? (p.price.amount / ceil * 100) : 0;
-
-    return `
-      <div class="pack-card ${isPos ? '' : 'negative'}">
-        <div class="ev-badge ${isPos ? 'positive' : 'negative'}">${ev.evRatio.toFixed(2)}x</div>
-        <div class="pack-title">${cleanTitle}</div>
-        <div class="pack-price">${p.price.amountDisplay}</div>
-        <div class="pack-ev">
-          Expected Value: <strong>${ev.evDisplay}</strong> • ${ev.totalCards} cards
-        </div>
-        
-        <div class="odds-row">
-          <div class="odds-pill base">
-            <span class="pct">${ev.baseOddsPct}%</span>
-            Base (${ev.baseCount})
-          </div>
-          <div class="odds-pill chase">
-            <span class="pct">${ev.chaseOddsPct}%</span>
-            Chase (${ev.chaseCount})
-          </div>
-          <div class="odds-pill grail">
-            <span class="pct">${ev.grailOddsPct}%</span>
-            Grail (${ev.grailCount})
-          </div>
+    <div class="container">
+        <div class="header">
+            <div class="brand">
+                <div class="brand-logo">B'B</div>
+                <div class="brand-text">
+                    <h1>Instant Rips Pack Dashboard</h1>
+                    <p class="subtitle">Live Pack Odds & Inventory</p>
+                </div>
+            </div>
+            <div class="header-meta">
+                <p class="timestamp" id="timestamp">Loading...</p>
+                <p class="status">● Live Data • Updates every 30min</p>
+            </div>
         </div>
 
-        <div class="value-bar">
-          <span>$${(p.floorValue.amount/100).toLocaleString()}</span>
-          <div class="bar">
-            <div class="fill" style="width: ${avgPct}%"></div>
-            <div class="price-marker" style="left: ${pricePct}%"></div>
-          </div>
-          <span>$${(p.ceilingValue.amount/100).toLocaleString()}</span>
+        <div class="stats-grid" id="stats-grid"></div>
+
+        <div class="controls">
+            <div class="filters" id="filters"></div>
+            
+            <div class="sort-row">
+                <span>Sort by:</span>
+                <button class="sort-btn active" data-sort="chase-odds">Chase %</button>
+                <button class="sort-btn" data-sort="grail-odds">Grail %</button>
+                <button class="sort-btn" data-sort="price-low">Price ↑</button>
+                <button class="sort-btn" data-sort="price-high">Price ↓</button>
+                <button class="sort-btn" data-sort="cards-total">Cards</button>
+            </div>
         </div>
 
-        <div class="pack-footer">
-          <span class="tier-badge tier-${tierNum}">${getTierName(tierNum)}</span>
-          <div class="status-indicator">
-            <span class="status-dot ${p.spotsAvailable > 0 ? 'available' : 'sold'}"></span>
-            ${p.spotsAvailable > 0 ? `${p.spotsAvailable} Available` : 'Sold Out'}
-          </div>
-          <span>${sport}</span>
-        </div>
-      </div>
-    `;
-  }).join('');
-}
+        <div class="pack-grid" id="pack-grid"></div>
+    </div>
 
-init();
-</script>
+    <script>
+        let packData = null;
+        let currentFilter = 'all';
+        let currentSort = 'chase-odds';
+
+        // Load pack data from embedded JSON
+        const PACK_DATA = /*PACK_DATA_PLACEHOLDER*/;
+
+        function init() {
+            if (PACK_DATA && PACK_DATA.packs) {
+                packData = PACK_DATA;
+                updateTimestamp();
+                generateStats();
+                generateFilters();
+                renderPacks();
+            } else {
+                console.error('No pack data available');
+                document.getElementById('pack-grid').innerHTML = '<p style="text-align:center; color: var(--text-muted);">No pack data available</p>';
+            }
+        }
+
+        function updateTimestamp() {
+            const timestamp = new Date(packData.timestamp).toLocaleString();
+            document.getElementById('timestamp').textContent = `Updated: ${timestamp}`;
+        }
+
+        function generateStats() {
+            const packs = packData.packs;
+            const totalPacks = packs.length;
+            const totalCards = packs.reduce((sum, pack) => sum + pack.odds.totalCards, 0);
+            const avgChaseOdds = (packs.reduce((sum, pack) => sum + pack.odds.chaseOddsPct, 0) / totalPacks).toFixed(1);
+            const avgGrailOdds = (packs.reduce((sum, pack) => sum + pack.odds.grailOddsPct, 0) / totalPacks).toFixed(1);
+            const hotPacks = packs.filter(pack => pack.odds.chaseOddsPct >= 13 && pack.odds.grailOddsPct >= 1.8).length;
+
+            const stats = [
+                { label: 'Total Packs', value: totalPacks, cls: 'green' },
+                { label: 'Hot Packs', value: hotPacks, cls: 'orange' },
+                { label: 'Avg Chase %', value: avgChaseOdds + '%', cls: 'blue' },
+                { label: 'Avg Grail %', value: avgGrailOdds + '%', cls: 'gold' },
+                { label: 'Total Cards', value: totalCards.toLocaleString(), cls: 'blue' }
+            ];
+
+            const statsHtml = stats.map(stat => `
+                <div class="stat-card">
+                    <div class="label">${stat.label}</div>
+                    <div class="value ${stat.cls}">${stat.value}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('stats-grid').innerHTML = statsHtml;
+        }
+
+        function generateFilters() {
+            const packs = packData.packs;
+            const sports = [...new Set(packs.map(pack => getSportFromTitle(pack.title)))].sort();
+            
+            let filtersHtml = '<button class="filter-btn active" data-filter="all">All Packs</button>';
+            filtersHtml += '<button class="filter-btn" data-filter="hot">🔥 Hot Packs</button>';
+            
+            sports.forEach(sport => {
+                filtersHtml += `<button class="filter-btn" data-filter="${sport.toLowerCase()}">${sport}</button>`;
+            });
+
+            document.getElementById('filters').innerHTML = filtersHtml;
+        }
+
+        function getSportFromTitle(title) {
+            const lower = title.toLowerCase();
+            if (lower.includes('basketball')) return 'Basketball';
+            if (lower.includes('football')) return 'Football';
+            if (lower.includes('baseball')) return 'Baseball';
+            if (lower.includes('pokemon')) return 'Pokemon';
+            if (lower.includes('mixed')) return 'Mixed Sport';
+            return 'Other';
+        }
+
+        function isHotPack(pack) {
+            return pack.odds.chaseOddsPct >= 13 && pack.odds.grailOddsPct >= 1.8;
+        }
+
+        function filterPacks(packs) {
+            if (currentFilter === 'all') return packs;
+            if (currentFilter === 'hot') return packs.filter(isHotPack);
+            
+            const sport = currentFilter.charAt(0).toUpperCase() + currentFilter.slice(1);
+            return packs.filter(pack => getSportFromTitle(pack.title).toLowerCase() === currentFilter);
+        }
+
+        function sortPacks(packs) {
+            const sorted = [...packs];
+            
+            switch (currentSort) {
+                case 'chase-odds':
+                    sorted.sort((a, b) => b.odds.chaseOddsPct - a.odds.chaseOddsPct);
+                    break;
+                case 'grail-odds':
+                    sorted.sort((a, b) => b.odds.grailOddsPct - a.odds.grailOddsPct);
+                    break;
+                case 'price-low':
+                    sorted.sort((a, b) => a.price.amount - b.price.amount);
+                    break;
+                case 'price-high':
+                    sorted.sort((a, b) => b.price.amount - a.price.amount);
+                    break;
+                case 'cards-total':
+                    sorted.sort((a, b) => b.odds.totalCards - a.odds.totalCards);
+                    break;
+            }
+            
+            return sorted;
+        }
+
+        function renderPacks() {
+            const packs = sortPacks(filterPacks(packData.packs));
+            
+            const packsHtml = packs.map(pack => {
+                const sport = getSportFromTitle(pack.title);
+                const isHot = isHotPack(pack);
+                const tierClass = pack.packTier ? `tier-${pack.packTier}` : 'tier-1';
+                
+                return `
+                    <div class="pack-card">
+                        ${isHot ? '<div class="hot-indicator hot">🔥 Hot</div>' : ''}
+                        
+                        <div class="pack-header">
+                            <div>
+                                <div class="pack-title">${pack.title}</div>
+                                <div class="sport-category">${sport}</div>
+                            </div>
+                            <div class="pack-price">${pack.price.amountDisplay}</div>
+                        </div>
+
+                        <div class="cards-info">
+                            <div class="cards-total">${pack.odds.totalCards.toLocaleString()} Total Cards</div>
+                            
+                            <div class="cards-breakdown">
+                                <div class="card-type base">
+                                    <span class="count">${pack.odds.baseCount}</span>
+                                    Base
+                                </div>
+                                <div class="card-type chase">
+                                    <span class="count">${pack.odds.chaseCount}</span>
+                                    Chase
+                                </div>
+                                <div class="card-type grail">
+                                    <span class="count">${pack.odds.grailCount}</span>
+                                    Grail
+                                </div>
+                            </div>
+
+                            <div class="odds-row">
+                                <div class="odds-pill chase">
+                                    <span class="pct">${pack.odds.chaseOddsPct}%</span>
+                                    Chase Odds
+                                </div>
+                                <div class="odds-pill grail">
+                                    <span class="pct">${pack.odds.grailOddsPct}%</span>
+                                    Grail Odds
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pack-footer">
+                            <div class="tier-badge ${tierClass}">
+                                ${pack.packTier ? `Tier ${pack.packTier}` : 'Standard'}
+                            </div>
+                            <div class="status-indicator">
+                                <div class="status-dot ${pack.status === 'READY' ? 'ready' : 'sold'}"></div>
+                                <span>${pack.status === 'READY' ? 'Available' : 'Sold Out'}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('pack-grid').innerHTML = packsHtml;
+        }
+
+        // Event listeners
+        document.addEventListener('click', e => {
+            if (e.target.matches('.filter-btn')) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.filter;
+                renderPacks();
+            }
+            
+            if (e.target.matches('.sort-btn')) {
+                document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                currentSort = e.target.dataset.sort;
+                renderPacks();
+            }
+        });
+
+        // Initialize on page load
+        init();
+    </script>
 </body>
 </html>
