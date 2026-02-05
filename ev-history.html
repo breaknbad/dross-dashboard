@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Database Dashboard - Break'n Bad Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0f1a;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a2332 0%, #0a0f1a 100%);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 2px solid #f97316;
+        }
+
+        .header h1 {
+            color: #fbbf24;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .section {
+            background: #1a2332;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .section h2 {
+            color: #fbbf24;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h3 {
+            color: #f97316;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        /* Status indicators */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-card {
+            background: #0f1826;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            text-align: center;
+        }
+
+        .status-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #0f1826;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+        }
+
+        th {
+            background: #1e293b;
+            color: #fbbf24;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background: #1e293b;
+        }
+
+        /* EV Color Coding */
+        .ev-positive {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .ev-negative {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .ev-strong {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        .ev-ratio {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Charts */
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 2rem 0;
+            background: #0f1826;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Movers */
+        .movers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .mover-card {
+            background: #0f1826;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            margin-bottom: 0.5rem;
+        }
+
+        .mover-pack {
+            font-weight: 600;
+            color: #fbbf24;
+        }
+
+        .mover-change-positive {
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .mover-change-negative {
+            color: #ef4444;
+            font-weight: 700;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #94a3b8;
+        }
+
+        .error {
+            background: #ef4444;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .last-updated {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem 0.5rem;
+            }
+            
+            .section {
+                padding: 1rem;
+            }
+            
+            .movers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sport-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .sport-baseball { background: #dc2626; color: white; }
+        .sport-basketball { background: #f59e0b; color: white; }
+        .sport-football { background: #10b981; color: white; }
+        .sport-pokemon { background: #8b5cf6; color: white; }
+        .sport-mixed { background: #6b7280; color: white; }
+
+        .percentage {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 EV Database Dashboard</h1>
+        <p>Break'n Bad IR Pack Tracking • Admin Dashboard</p>
+    </div>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <h2>Loading EV data...</h2>
+            <p>Fetching latest pack information from the database</p>
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="dashboard" style="display: none;">
+            <!-- Status Overview -->
+            <div class="section">
+                <h2>📊 Dashboard Overview</h2>
+                <div class="status-grid">
+                    <div class="status-card">
+                        <div class="status-value" id="total-packs">-</div>
+                        <div class="status-label">Total Packs</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-value ev-positive" id="plus-ev-count">-</div>
+                        <div class="status-label">+EV Packs</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-value ev-strong" id="strong-ev-count">-</div>
+                        <div class="status-label">Strong +EV (>1.25x)</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-value" id="avg-ev">-</div>
+                        <div class="status-label">Average EV Ratio</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Snapshot Table -->
+            <div class="section">
+                <h2>📋 Current Snapshot</h2>
+                <div class="table-container">
+                    <table id="current-table">
+                        <thead>
+                            <tr>
+                                <th>Pack Name</th>
+                                <th>Sport</th>
+                                <th>Price</th>
+                                <th>True EV</th>
+                                <th>EV Ratio</th>
+                                <th>Remaining</th>
+                                <th>Grail %</th>
+                                <th>Chase %</th>
+                                <th>Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody id="current-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- EV Trend Charts -->
+            <div class="section">
+                <h2>📈 EV Trend Charts</h2>
+                <div class="chart-grid">
+                    <div class="chart-container">
+                        <canvas id="ev-trends-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pool-depletion-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Biggest Movers -->
+            <div class="section">
+                <h2>🚀 Biggest Movers (24h)</h2>
+                <div class="movers-grid">
+                    <div>
+                        <h3>📈 Biggest Gainers</h3>
+                        <div id="gainers-list"></div>
+                    </div>
+                    <div>
+                        <h3>📉 Biggest Losers</h3>
+                        <div id="losers-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historical Stats -->
+            <div class="section">
+                <h2>📊 Historical Statistics</h2>
+                <div class="status-grid">
+                    <div class="status-card">
+                        <div class="status-value" id="total-snapshots">-</div>
+                        <div class="status-label">Total Snapshots</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-value" id="time-range">-</div>
+                        <div class="status-label">Hours of Data</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-value" id="earliest-time">-</div>
+                        <div class="status-label">First Snapshot</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-value" id="avg-historical-ev">-</div>
+                        <div class="status-label">Historical Avg EV</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="last-updated">
+            Last updated: <span id="last-updated-time">-</span>
+        </div>
+    </div>
+
+    <script>
+        let evData = null;
+        let charts = {};
+
+        // Load and display data
+        async function loadDashboard() {
+            try {
+                const response = await fetch('./ev-data.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+                }
+                evData = await response.json();
+                displayDashboard();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loading').style.display = 'none';
+                const errorEl = document.getElementById('error');
+                errorEl.textContent = `Error loading data: ${error.message}. Make sure ev-data.json exists and is accessible.`;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        function displayDashboard() {
+            displayOverview();
+            displayCurrentSnapshot();
+            displayCharts();
+            displayMovers();
+            displayHistoricalStats();
+            updateLastUpdated();
+        }
+
+        function displayOverview() {
+            const latest = evData.snapshots[0];
+            const avgEv = evData.current_data.reduce((sum, p) => sum + (p.ev_ratio || 0), 0) / evData.current_data.length;
+            
+            document.getElementById('total-packs').textContent = latest.total_packs;
+            document.getElementById('plus-ev-count').textContent = latest.plus_ev_count || 0;
+            document.getElementById('strong-ev-count').textContent = latest.strong_plus_ev_count || 0;
+            document.getElementById('avg-ev').textContent = avgEv.toFixed(3) + 'x';
+        }
+
+        function displayCurrentSnapshot() {
+            const tbody = document.getElementById('current-tbody');
+            tbody.innerHTML = '';
+
+            // Sort by EV ratio descending
+            const sortedData = [...evData.current_data].sort((a, b) => (b.ev_ratio || 0) - (a.ev_ratio || 0));
+
+            sortedData.forEach(pack => {
+                const row = document.createElement('tr');
+                
+                const evRatio = pack.ev_ratio || 0;
+                let evClass = 'ev-negative';
+                if (evRatio >= 1.25) evClass = 'ev-strong';
+                else if (evRatio >= 1.0) evClass = 'ev-positive';
+
+                const sportClass = `sport-${pack.sport.toLowerCase()}`;
+                const lastUpdated = new Date(pack.timestamp).toLocaleString();
+
+                row.innerHTML = `
+                    <td><strong>${pack.pack_name}</strong></td>
+                    <td><span class="sport-badge ${sportClass}">${pack.sport}</span></td>
+                    <td>$${pack.price.toLocaleString()}</td>
+                    <td>$${pack.true_ev.toFixed(2)}</td>
+                    <td class="ev-ratio ${evClass}">${evRatio.toFixed(3)}x</td>
+                    <td>${pack.remaining.toLocaleString()}</td>
+                    <td class="percentage">${(pack.grail_pct || 0).toFixed(2)}%</td>
+                    <td class="percentage">${(pack.chase_pct || 0).toFixed(2)}%</td>
+                    <td>${lastUpdated}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function displayCharts() {
+            // EV Trends Chart
+            const ctx1 = document.getElementById('ev-trends-chart').getContext('2d');
+            
+            // Get top 8 packs by current EV ratio
+            const topPacks = [...evData.current_data]
+                .sort((a, b) => (b.ev_ratio || 0) - (a.ev_ratio || 0))
+                .slice(0, 8);
+
+            const colors = [
+                '#f97316', '#fbbf24', '#10b981', '#3b82f6', 
+                '#8b5cf6', '#ec4899', '#ef4444', '#6b7280'
+            ];
+
+            const datasets = topPacks.map((pack, index) => {
+                const timeSeries = evData.time_series[pack.pack_id];
+                if (!timeSeries || !timeSeries.data) return null;
+
+                return {
+                    label: pack.pack_name.replace(/:/g, ' -'),
+                    data: timeSeries.data.map(d => ({
+                        x: d.timestamp,
+                        y: d.ev_ratio
+                    })),
+                    borderColor: colors[index],
+                    backgroundColor: colors[index] + '20',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.1
+                };
+            }).filter(Boolean);
+
+            charts.evTrends = new Chart(ctx1, {
+                type: 'line',
+                data: { datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'EV Ratio Trends (Top 8 Packs)',
+                            color: '#fbbf24',
+                            font: { size: 16, weight: 'bold' }
+                        },
+                        legend: {
+                            labels: { color: '#ffffff' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'hour' },
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: '#334155' }
+                        },
+                        y: {
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: '#334155' },
+                            title: {
+                                display: true,
+                                text: 'EV Ratio',
+                                color: '#94a3b8'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Pool Depletion Chart
+            const ctx2 = document.getElementById('pool-depletion-chart').getContext('2d');
+            
+            // Get packs with significant depletion
+            const depletionPacks = topPacks.slice(0, 5); // Top 5 for cleaner chart
+            
+            const depletionDatasets = depletionPacks.map((pack, index) => {
+                const timeSeries = evData.time_series[pack.pack_id];
+                if (!timeSeries || !timeSeries.data) return null;
+
+                return {
+                    label: pack.pack_name.replace(/:/g, ' -'),
+                    data: timeSeries.data.map(d => ({
+                        x: d.timestamp,
+                        y: d.remaining
+                    })),
+                    borderColor: colors[index],
+                    backgroundColor: colors[index] + '20',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.1
+                };
+            }).filter(Boolean);
+
+            charts.poolDepletion = new Chart(ctx2, {
+                type: 'line',
+                data: { datasets: depletionDatasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Pool Depletion (Remaining Cards)',
+                            color: '#fbbf24',
+                            font: { size: 16, weight: 'bold' }
+                        },
+                        legend: {
+                            labels: { color: '#ffffff' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'hour' },
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: '#334155' }
+                        },
+                        y: {
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: '#334155' },
+                            title: {
+                                display: true,
+                                text: 'Cards Remaining',
+                                color: '#94a3b8'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function displayMovers() {
+            const gainers = evData.movers_24h
+                .filter(m => m.change > 0)
+                .sort((a, b) => b.change - a.change)
+                .slice(0, 5);
+
+            const losers = evData.movers_24h
+                .filter(m => m.change < 0)
+                .sort((a, b) => a.change - b.change)
+                .slice(0, 5);
+
+            const gainersEl = document.getElementById('gainers-list');
+            const losersEl = document.getElementById('losers-list');
+
+            if (gainers.length === 0) {
+                gainersEl.innerHTML = '<div class="mover-card"><p>No significant gainers in the last 24h</p></div>';
+            } else {
+                gainersEl.innerHTML = gainers.map(pack => `
+                    <div class="mover-card">
+                        <div class="mover-pack">${pack.pack_name}</div>
+                        <div>Current: <span class="ev-ratio ${pack.current_ev >= 1.25 ? 'ev-strong' : pack.current_ev >= 1.0 ? 'ev-positive' : 'ev-negative'}">${pack.current_ev.toFixed(3)}x</span></div>
+                        <div>Change: <span class="mover-change-positive">+${pack.change.toFixed(3)} (+${pack.change_percent.toFixed(1)}%)</span></div>
+                    </div>
+                `).join('');
+            }
+
+            if (losers.length === 0) {
+                losersEl.innerHTML = '<div class="mover-card"><p>No significant losers in the last 24h</p></div>';
+            } else {
+                losersEl.innerHTML = losers.map(pack => `
+                    <div class="mover-card">
+                        <div class="mover-pack">${pack.pack_name}</div>
+                        <div>Current: <span class="ev-ratio ${pack.current_ev >= 1.25 ? 'ev-strong' : pack.current_ev >= 1.0 ? 'ev-positive' : 'ev-negative'}">${pack.current_ev.toFixed(3)}x</span></div>
+                        <div>Change: <span class="mover-change-negative">${pack.change.toFixed(3)} (${pack.change_percent.toFixed(1)}%)</span></div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function displayHistoricalStats() {
+            const stats = evData.historical_stats;
+            
+            document.getElementById('total-snapshots').textContent = stats.total_snapshots;
+            document.getElementById('time-range').textContent = stats.time_range_hours.toFixed(1);
+            document.getElementById('earliest-time').textContent = new Date(stats.earliest_timestamp).toLocaleDateString();
+            document.getElementById('avg-historical-ev').textContent = stats.avg_ev_ratio.toFixed(3) + 'x';
+        }
+
+        function updateLastUpdated() {
+            document.getElementById('last-updated-time').textContent = new Date(evData.generated_at).toLocaleString();
+        }
+
+        // Initialize dashboard
+        loadDashboard();
+
+        // Auto-refresh every 5 minutes
+        setInterval(() => {
+            console.log('Auto-refreshing dashboard data...');
+            loadDashboard();
+        }, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
