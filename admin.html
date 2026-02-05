@@ -8,17 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bnb-dark: #0a0a0a;
-            --bnb-deep: #111111;
-            --bnb-primary: #161616;
-            --bnb-card: rgba(20,20,20,0.9);
-            --bnb-card-hover: rgba(30,30,30,0.95);
-            --bnb-accent: #FF4500;
-            --bnb-accent-light: #ff8a50;
-            --bnb-gold: #ffc107;
-            --bnb-gold-light: #ffd54f;
-            --bnb-border: rgba(255,69,0,0.15);
-            --bnb-border-hover: rgba(255,69,0,0.35);
+            /* Break'n Bad Brand Colors - Updated to match requirements */
+            --bnb-dark: #0a0f1a;
+            --bnb-deep: #0a0f1a;
+            --bnb-primary: #1a2332;
+            --bnb-card: #1a2332;
+            --bnb-card-hover: rgba(26,35,50,0.95);
+            --bnb-accent: #f97316;
+            --bnb-accent-light: #fb923c;
+            --bnb-gold: #fbbf24;
+            --bnb-gold-light: #fcd34d;
+            --bnb-border: rgba(249,115,22,0.15);
+            --bnb-border-hover: rgba(249,115,22,0.35);
             --text: #f5f5f5;
             --text-muted: #888888;
             --hot-red: #ff4757;
@@ -513,20 +514,46 @@
         .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
         .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--text); }
 
-        /* ─── Mobile ─── */
-        @media (max-width: 600px) {
-            .page { padding: 16px 12px 40px; }
-            .header h1 { font-size: 1.7rem; }
-            .header { margin-bottom: 28px; padding: 20px 0 16px; }
+        /* ─── Mobile Responsiveness - 375px, 768px, 1024px breakpoints ─── */
+        
+        /* Large tablets and small desktops */
+        @media (max-width: 1024px) {
+            .page { 
+                max-width: 100%; 
+                padding: 20px 16px 50px; 
+            }
+            .header h1 { 
+                font-size: 2rem; 
+            }
+        }
+
+        /* Tablets */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px; /* Ensure minimum 14px body text */
+            }
+            .page { 
+                padding: 16px 12px 40px; 
+            }
+            .header h1 { 
+                font-size: 1.7rem; 
+            }
+            .header { 
+                margin-bottom: 28px; 
+                padding: 20px 0 16px; 
+            }
 
             .pack-card {
                 grid-template-columns: 1fr;
                 gap: 14px;
                 padding: 18px 16px;
                 border-radius: 16px;
+                overflow-x: auto; /* Horizontal scroll for wide content */
             }
 
-            .pack-info { padding-left: 32px; }
+            .pack-info { 
+                padding-left: 32px; 
+            }
 
             .pack-stats {
                 text-align: left;
@@ -536,13 +563,112 @@
                 padding-left: 32px;
             }
 
-            .pack-price { font-size: 1.3rem; }
+            .pack-price { 
+                font-size: 1.3rem; 
+            }
 
-            .odds-row { gap: 12px; }
-            .odd-block { max-width: none; }
+            .odds-row { 
+                gap: 12px; 
+                flex-wrap: wrap;
+            }
+            .odd-block { 
+                max-width: none;
+                min-height: 44px; /* Ensure 44px touch targets */
+            }
 
-            .rank-badge { top: 12px; left: 12px; width: 24px; height: 24px; font-size: 0.65rem; }
-            .sport-icon { top: 12px; right: 12px; font-size: 1.1rem; }
+            .rank-badge { 
+                top: 12px; 
+                left: 12px; 
+                width: 24px; 
+                height: 24px; 
+                font-size: 0.65rem; 
+            }
+            .sport-icon { 
+                top: 12px; 
+                right: 12px; 
+                font-size: 1.1rem; 
+            }
+            
+            .shop-link {
+                padding: 16px 24px;
+                font-size: 0.9rem;
+                min-height: 48px; /* Larger touch target */
+            }
+        }
+
+        /* Mobile phones */
+        @media (max-width: 375px) {
+            body {
+                font-size: 14px; /* Ensure minimum 14px body text */
+            }
+            .page { 
+                padding: 12px 8px 30px; 
+            }
+            .header {
+                margin-bottom: 20px;
+                padding: 16px 0 12px;
+            }
+            .header h1 { 
+                font-size: 1.4rem; 
+            }
+            .logo-mark {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 12px;
+            }
+
+            .pack-card {
+                padding: 16px 12px;
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+
+            .pack-info { 
+                padding-left: 0; 
+            }
+
+            .pack-stats {
+                padding-left: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .pack-price { 
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .odds-row { 
+                flex-direction: column;
+                gap: 8px; 
+            }
+            .odd-block { 
+                min-height: 48px; /* Larger touch targets for mobile */
+                text-align: center;
+                padding: 12px 8px;
+            }
+
+            .rank-badge { 
+                width: 20px; 
+                height: 20px; 
+                font-size: 0.6rem; 
+            }
+            .sport-icon { 
+                font-size: 1rem; 
+            }
+            
+            .shop-link {
+                padding: 18px 20px;
+                font-size: 0.9rem;
+                min-height: 52px; /* Extra large touch target for mobile */
+                width: 100%;
+            }
+            
+            .footer {
+                font-size: 0.65rem;
+                padding: 16px;
+            }
         }
     </style>
 </head>

@@ -6,19 +6,19 @@
     <title>Break'n Bad | Instant Rips Pack Dashboard</title>
     <style>
         :root {
-            /* Break'n Bad Brand Colors */
-            --bnb-primary: #1a237e;     /* Deep blue */
-            --bnb-secondary: #3949ab;   /* Medium blue */
-            --bnb-accent: #ff6b35;      /* Break'n Bad orange */
-            --bnb-gold: #ffc107;        /* Gold highlights */
-            --bnb-dark: #0a0e27;        /* Dark navy background */
-            --bnb-card: #1e2555;        /* Card background */
-            --bnb-border: #3949ab40;    /* Border with opacity */
+            /* Break'n Bad Brand Colors - Updated to match requirements */
+            --bnb-dark: #0a0f1a;        /* Dark background */
+            --bnb-card: #1a2332;        /* Card background */
+            --bnb-accent: #f97316;      /* Orange accent */
+            --bnb-gold: #fbbf24;        /* Gold highlights */
+            --bnb-primary: #1a2332;     /* Primary color */
+            --bnb-secondary: #2a3441;   /* Secondary color */
+            --bnb-border: rgba(249, 115, 22, 0.2); /* Orange border with opacity */
             
             /* Status Colors */
             --green: #4caf50;
             --red: #f44336;
-            --orange: #ff9800;
+            --orange: var(--bnb-accent);
             --gold: var(--bnb-gold);
             --text: #ffffff;
             --text-muted: #b0bec5;
@@ -402,13 +402,145 @@
         .status-dot.ready { background: var(--green); }
         .status-dot.sold { background: var(--red); }
         
+        /* Mobile Responsiveness - 375px, 768px, 1024px breakpoints */
+        
+        /* Large tablets and small desktops */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 100%;
+                padding: 0 16px;
+            }
+            .pack-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 12px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 12px;
+            }
+        }
+
+        /* Tablets */
         @media (max-width: 768px) {
-            body { padding: 8px; }
-            .header { padding: 16px; }
-            .pack-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .sort-row { flex-direction: column; align-items: flex-start; gap: 8px; }
-            .filters { flex-direction: column; }
+            body { 
+                padding: 8px; 
+                font-size: 14px; /* Ensure minimum 14px body text */
+            }
+            .header { 
+                padding: 16px;
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            .brand-text h1 { 
+                font-size: 1.2rem; 
+            }
+            .pack-grid { 
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .stats-grid { 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .sort-row { 
+                flex-direction: column; 
+                align-items: flex-start; 
+                gap: 8px; 
+            }
+            .filters { 
+                justify-content: center;
+                gap: 8px;
+            }
+            .filter-btn, .sort-btn {
+                min-height: 44px; /* Ensure 44px touch targets */
+                min-width: 44px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            /* Ensure tables scroll horizontally */
+            .pack-card {
+                overflow-x: auto;
+            }
+        }
+
+        /* Mobile phones */
+        @media (max-width: 375px) {
+            body { 
+                padding: 4px; 
+                font-size: 14px; /* Ensure minimum 14px body text */
+            }
+            .container {
+                padding: 0 8px;
+            }
+            .header {
+                padding: 12px;
+                margin-bottom: 16px;
+            }
+            .brand-text h1 { 
+                font-size: 1.1rem; 
+            }
+            .brand-text .subtitle {
+                font-size: 0.8rem;
+            }
+            .stats-grid { 
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .stat-card {
+                padding: 12px;
+            }
+            .stat-card .value {
+                font-size: 1.4rem;
+            }
+            .pack-card {
+                padding: 16px;
+                margin-bottom: 12px;
+            }
+            .pack-price {
+                font-size: 1.2rem;
+            }
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-btn {
+                width: 100%;
+                margin-bottom: 8px;
+                min-height: 48px; /* Larger touch targets for mobile */
+                font-size: 14px;
+            }
+            .sort-btn {
+                min-height: 44px;
+                font-size: 13px;
+            }
+            
+            /* Better mobile card layout */
+            .pack-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+            .pack-title {
+                padding-right: 0;
+                text-align: center;
+            }
+            .pack-price {
+                text-align: center;
+            }
+            
+            /* Mobile-friendly odds display */
+            .odds-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .odds-pill {
+                min-height: 44px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
         }
     </style>
 </head>

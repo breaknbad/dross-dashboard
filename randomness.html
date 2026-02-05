@@ -294,7 +294,29 @@
         }
 
         /* Responsive */
+        /* Mobile Responsiveness - 375px, 768px, 1024px breakpoints */
+        
+        /* Large tablets and small desktops */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 100%;
+                padding: 18px;
+            }
+            .pack-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 15px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 12px;
+            }
+        }
+
+        /* Tablets */
         @media (max-width: 768px) {
+            body {
+                font-size: 14px; /* Ensure minimum 14px body text */
+            }
             .container {
                 padding: 15px;
             }
@@ -313,25 +335,122 @@
 
             .pack-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
 
             .section-title {
                 font-size: 1.5rem;
             }
+            
+            /* Ensure charts are readable on mobile */
+            .chart-container {
+                overflow-x: auto;
+                min-height: 300px;
+            }
+            
+            /* Tables scroll horizontally if too wide */
+            .section {
+                overflow-x: auto;
+            }
+            
+            /* Touch-friendly elements */
+            button {
+                min-height: 44px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
         }
 
-        @media (max-width: 480px) {
+        /* Mobile phones */
+        @media (max-width: 375px) {
+            body {
+                font-size: 14px; /* Ensure minimum 14px body text */
+            }
+            .container {
+                padding: 12px;
+            }
+            
+            .header {
+                padding: 16px 0;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+
+            .verdict-hero {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .verdict-status {
+                font-size: 1.8rem;
+            }
+            
+            .verdict-description {
+                font-size: 0.9rem;
+            }
+
             .pack-header {
                 flex-direction: column;
                 gap: 10px;
+                text-align: center;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .pack-grid {
+                gap: 12px;
+            }
+            
+            .section {
+                padding: 12px;
+                margin-bottom: 16px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+            
+            /* Better mobile chart display */
+            .chart-container {
+                min-height: 250px;
+                padding: 8px;
+            }
+            
+            /* Mobile-friendly tables with horizontal scroll */
+            .overflow-x-auto {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Larger touch targets for mobile */
+            button {
+                min-height: 48px;
+                padding: 14px 16px;
+                font-size: 14px;
+                width: 100%;
+                margin-bottom: 8px;
+            }
+            
+            /* Better spacing for mobile */
+            .pack-card {
+                padding: 16px 12px;
+            }
+            
+            .stat-value {
+                font-size: 1.4rem;
             }
         }
     </style>
