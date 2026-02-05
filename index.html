@@ -167,10 +167,10 @@
             background: var(--bnb-card);
             border: 1px solid var(--bnb-border);
             border-radius: 20px;
-            padding: 22px 26px;
+            padding: 24px 28px 20px;
             display: grid;
             grid-template-columns: 1fr auto;
-            gap: 20px;
+            gap: 24px;
             align-items: center;
             position: relative;
             overflow: hidden;
@@ -273,8 +273,8 @@
         .pack-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 14px;
+            gap: 8px;
+            margin-bottom: 16px;
         }
 
         .tag {
@@ -316,14 +316,46 @@
         /* Odds visual bars */
         .odds-row {
             display: flex;
-            gap: 20px;
-            align-items: flex-end;
+            gap: 24px;
+            align-items: stretch;
+            margin-top: 6px;
         }
 
         .odd-block {
             flex: 1;
-            max-width: 160px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
         }
+
+        .odd-block .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .odd-block .tier-header .count {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .odd-block .tier-header .odds-pct {
+            font-size: 0.7rem;
+            font-weight: 600;
+            opacity: 0.6;
+        }
+
+        .odd-block .value-range {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .odd-block .value-range.grail-color { color: var(--grail-purple); }
+        .odd-block .value-range.chase-color { color: var(--chase-blue); }
 
         .odd-block .label {
             display: flex;
@@ -350,7 +382,7 @@
 
         .bar-track {
             width: 100%;
-            height: 5px;
+            height: 4px;
             background: rgba(255,255,255,0.06);
             border-radius: 3px;
             overflow: hidden;
@@ -536,7 +568,7 @@
 
     <script>
         const PACK_DATA = {
-  "timestamp": "2026-02-05T04:00:33.663Z",
+  "timestamp": "2026-02-05T04:30:33.389Z",
   "packs": [
     {
       "title": "Baseball: Infinity Pack $1,000",
@@ -623,34 +655,6 @@
       "categories": []
     },
     {
-      "title": "Football: Mega Pack $250",
-      "price": 250,
-      "remaining": 94,
-      "grailCount": 2,
-      "chaseCount": 10,
-      "grailRangeLow": 1263,
-      "grailRangeHigh": 1299.99,
-      "chaseRangeLow": 353.01,
-      "chaseRangeHigh": 500,
-      "grailPct": 2.13,
-      "chasePct": 10.64,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
-        },
-        {
-          "type": "scarce",
-          "icon": "⚡",
-          "label": "94 Cards Left",
-          "weight": 50
-        }
-      ],
-      "categories": []
-    },
-    {
       "title": "Baseball: Super Pack $150",
       "price": 150,
       "remaining": 161,
@@ -723,73 +727,23 @@
       "categories": []
     },
     {
-      "title": "Basketball: Mega Pack $250",
-      "price": 250,
-      "remaining": 210,
-      "grailCount": 3,
-      "chaseCount": 25,
-      "grailRangeLow": 1275,
-      "grailRangeHigh": 1445,
-      "chaseRangeLow": 200.66,
-      "chaseRangeHigh": 535,
-      "grailPct": 1.43,
-      "chasePct": 11.9,
+      "title": "Football: Ultra Pack $500",
+      "price": 500,
+      "remaining": 103,
+      "grailCount": 0,
+      "chaseCount": 16,
+      "grailRangeLow": 2600,
+      "grailRangeHigh": 2820,
+      "chaseRangeLow": 660,
+      "chaseRangeHigh": 1000,
+      "grailPct": 0,
+      "chasePct": 15.53,
       "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 3 Grails Left!",
-          "weight": 95
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Baseball: Mega Pack $250",
-      "price": 250,
-      "remaining": 161,
-      "grailCount": 2,
-      "chaseCount": 19,
-      "grailRangeLow": 1281,
-      "grailRangeHigh": 1440,
-      "chaseRangeLow": 405,
-      "chaseRangeHigh": 765,
-      "grailPct": 1.24,
-      "chasePct": 11.8,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Pokemon: Super Pack $150",
-      "price": 150,
-      "remaining": 203,
-      "grailCount": 1,
-      "chaseCount": 30,
-      "grailRangeLow": 759.95,
-      "grailRangeHigh": 890,
-      "chaseRangeLow": 164,
-      "chaseRangeHigh": 395.12,
-      "grailPct": 0.49,
-      "chasePct": 14.78,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 1 Grail Left!",
-          "weight": 95
-        },
         {
           "type": "chase",
           "icon": "🎯",
-          "label": "30 Chases Live",
-          "weight": 25
+          "label": "16 Chases Live",
+          "weight": 45
         }
       ],
       "categories": []
@@ -862,6 +816,12 @@
                 // Format dollar amounts (no cents)
                 const fmtDollar = (v) => '$' + Math.round(v).toLocaleString();
 
+                // Hit rates — only show if 5%+
+                const grailPct = parseFloat(pack.grailPct) || 0;
+                const chasePct = parseFloat(pack.chasePct) || 0;
+                const grailOddsStr = grailPct >= 5 ? ` (${grailPct}%)` : '';
+                const chaseOddsStr = chasePct >= 5 ? ` (${chasePct}%)` : '';
+
                 // Build grail/chase display strings
                 const grailRange = grailHigh > 0 ? `${fmtDollar(grailLow)}–${fmtDollar(grailHigh)}` : '';
                 const chaseRange = chaseHigh > 0 ? `${fmtDollar(chaseLow)}–${fmtDollar(chaseHigh)}` : '';
@@ -886,19 +846,21 @@
                             <div class="pack-tags">${tags}</div>
                             <div class="odds-row">
                                 <div class="odd-block">
-                                    <div class="label">
-                                        <span>💎 ${grailCount} Grail${grailCount !== 1 ? 's' : ''} Live</span>
-                                        <span class="pct grail-color">${grailRange}</span>
+                                    <div class="tier-header">
+                                        <span class="count" style="color:var(--grail-purple)">💎 ${grailCount} Grail${grailCount !== 1 ? 's' : ''} Live</span>
+                                        ${grailOddsStr ? `<span class="odds-pct">${grailOddsStr}</span>` : ''}
                                     </div>
+                                    ${grailRange ? `<div class="value-range grail-color">${grailRange}</div>` : ''}
                                     <div class="bar-track">
                                         <div class="bar-fill grail" style="width:${grailBarWidth}%"></div>
                                     </div>
                                 </div>
                                 <div class="odd-block">
-                                    <div class="label">
-                                        <span>🎯 ${chaseCount} Chase${chaseCount !== 1 ? 's' : ''} Live</span>
-                                        <span class="pct chase-color">${chaseRange}</span>
+                                    <div class="tier-header">
+                                        <span class="count" style="color:var(--chase-blue)">🎯 ${chaseCount} Chase${chaseCount !== 1 ? 's' : ''} Live</span>
+                                        ${chaseOddsStr ? `<span class="odds-pct">${chaseOddsStr}</span>` : ''}
                                     </div>
+                                    ${chaseRange ? `<div class="value-range chase-color">${chaseRange}</div>` : ''}
                                     <div class="bar-track">
                                         <div class="bar-fill chase" style="width:${chaseBarWidth}%"></div>
                                     </div>
