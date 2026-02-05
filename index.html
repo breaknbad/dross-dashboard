@@ -8,19 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bnb-dark: #080c1f;
-            --bnb-deep: #0d1130;
-            --bnb-primary: #1a1a1a;
-            --bnb-card: rgba(18,22,56,0.85);
-            --bnb-card-hover: rgba(28,34,72,0.95);
+            --bnb-dark: #0a0a0a;
+            --bnb-deep: #111111;
+            --bnb-primary: #161616;
+            --bnb-card: rgba(20,20,20,0.9);
+            --bnb-card-hover: rgba(30,30,30,0.95);
             --bnb-accent: #FF4500;
             --bnb-accent-light: #ff8a50;
             --bnb-gold: #ffc107;
             --bnb-gold-light: #ffd54f;
-            --bnb-border: rgba(57,73,171,0.2);
-            --bnb-border-hover: rgba(57,73,171,0.45);
-            --text: #f0f0f8;
-            --text-muted: #7b85a4;
+            --bnb-border: rgba(255,69,0,0.15);
+            --bnb-border-hover: rgba(255,69,0,0.35);
+            --text: #f5f5f5;
+            --text-muted: #888888;
             --hot-red: #ff4757;
             --grail-purple: #b388ff;
             --grail-glow: rgba(179,136,255,0.25);
@@ -53,7 +53,7 @@
             position: absolute;
             width: 600px; height: 600px;
             top: -200px; right: -100px;
-            background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,69,0,0.06) 0%, transparent 70%);
             animation: float1 20s ease-in-out infinite;
         }
         .bg-glow::after {
@@ -61,7 +61,7 @@
             position: absolute;
             width: 500px; height: 500px;
             bottom: -150px; left: -100px;
-            background: radial-gradient(circle, rgba(179,136,255,0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,140,0,0.04) 0%, transparent 70%);
             animation: float2 25s ease-in-out infinite;
         }
         @keyframes float1 {
@@ -102,8 +102,6 @@
             filter: invert(1) brightness(2);
             mix-blend-mode: screen;
             transition: filter 0.3s ease;
-            box-shadow: 0 8px 32px rgba(255,107,53,0.25);
-            letter-spacing: -0.5px;
         }
 
         .header h1 {
