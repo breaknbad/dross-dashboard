@@ -8,18 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Break'n Bad Brand Colors - Updated to match requirements */
-            --bnb-dark: #0a0f1a;
-            --bnb-deep: #0a0f1a;
-            --bnb-primary: #1a2332;
-            --bnb-card: #1a2332;
-            --bnb-card-hover: rgba(26,35,50,0.95);
-            --bnb-accent: #f97316;
-            --bnb-accent-light: #fb923c;
-            --bnb-gold: #fbbf24;
-            --bnb-gold-light: #fcd34d;
-            --bnb-border: rgba(249,115,22,0.15);
-            --bnb-border-hover: rgba(249,115,22,0.35);
+            --bnb-dark: #0a0a0a;
+            --bnb-deep: #111111;
+            --bnb-primary: #161616;
+            --bnb-card: rgba(20,20,20,0.9);
+            --bnb-card-hover: rgba(30,30,30,0.95);
+            --bnb-accent: #FF4500;
+            --bnb-accent-light: #ff8a50;
+            --bnb-gold: #ffc107;
+            --bnb-gold-light: #ffd54f;
+            --bnb-border: rgba(255,69,0,0.15);
+            --bnb-border-hover: rgba(255,69,0,0.35);
             --text: #f5f5f5;
             --text-muted: #888888;
             --hot-red: #ff4757;
@@ -514,46 +513,20 @@
         .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
         .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--text); }
 
-        /* ─── Mobile Responsiveness - 375px, 768px, 1024px breakpoints ─── */
-        
-        /* Large tablets and small desktops */
-        @media (max-width: 1024px) {
-            .page { 
-                max-width: 100%; 
-                padding: 20px 16px 50px; 
-            }
-            .header h1 { 
-                font-size: 2rem; 
-            }
-        }
-
-        /* Tablets */
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px; /* Ensure minimum 14px body text */
-            }
-            .page { 
-                padding: 16px 12px 40px; 
-            }
-            .header h1 { 
-                font-size: 1.7rem; 
-            }
-            .header { 
-                margin-bottom: 28px; 
-                padding: 20px 0 16px; 
-            }
+        /* ─── Mobile ─── */
+        @media (max-width: 600px) {
+            .page { padding: 16px 12px 40px; }
+            .header h1 { font-size: 1.7rem; }
+            .header { margin-bottom: 28px; padding: 20px 0 16px; }
 
             .pack-card {
                 grid-template-columns: 1fr;
                 gap: 14px;
                 padding: 18px 16px;
                 border-radius: 16px;
-                overflow-x: auto; /* Horizontal scroll for wide content */
             }
 
-            .pack-info { 
-                padding-left: 32px; 
-            }
+            .pack-info { padding-left: 32px; }
 
             .pack-stats {
                 text-align: left;
@@ -563,112 +536,13 @@
                 padding-left: 32px;
             }
 
-            .pack-price { 
-                font-size: 1.3rem; 
-            }
+            .pack-price { font-size: 1.3rem; }
 
-            .odds-row { 
-                gap: 12px; 
-                flex-wrap: wrap;
-            }
-            .odd-block { 
-                max-width: none;
-                min-height: 44px; /* Ensure 44px touch targets */
-            }
+            .odds-row { gap: 12px; }
+            .odd-block { max-width: none; }
 
-            .rank-badge { 
-                top: 12px; 
-                left: 12px; 
-                width: 24px; 
-                height: 24px; 
-                font-size: 0.65rem; 
-            }
-            .sport-icon { 
-                top: 12px; 
-                right: 12px; 
-                font-size: 1.1rem; 
-            }
-            
-            .shop-link {
-                padding: 16px 24px;
-                font-size: 0.9rem;
-                min-height: 48px; /* Larger touch target */
-            }
-        }
-
-        /* Mobile phones */
-        @media (max-width: 375px) {
-            body {
-                font-size: 14px; /* Ensure minimum 14px body text */
-            }
-            .page { 
-                padding: 12px 8px 30px; 
-            }
-            .header {
-                margin-bottom: 20px;
-                padding: 16px 0 12px;
-            }
-            .header h1 { 
-                font-size: 1.4rem; 
-            }
-            .logo-mark {
-                width: 120px;
-                height: 120px;
-                margin-bottom: 12px;
-            }
-
-            .pack-card {
-                padding: 16px 12px;
-                gap: 12px;
-                margin-bottom: 16px;
-            }
-
-            .pack-info { 
-                padding-left: 0; 
-            }
-
-            .pack-stats {
-                padding-left: 0;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 8px;
-            }
-
-            .pack-price { 
-                font-size: 1.2rem;
-                text-align: center;
-            }
-
-            .odds-row { 
-                flex-direction: column;
-                gap: 8px; 
-            }
-            .odd-block { 
-                min-height: 48px; /* Larger touch targets for mobile */
-                text-align: center;
-                padding: 12px 8px;
-            }
-
-            .rank-badge { 
-                width: 20px; 
-                height: 20px; 
-                font-size: 0.6rem; 
-            }
-            .sport-icon { 
-                font-size: 1rem; 
-            }
-            
-            .shop-link {
-                padding: 18px 20px;
-                font-size: 0.9rem;
-                min-height: 52px; /* Extra large touch target for mobile */
-                width: 100%;
-            }
-            
-            .footer {
-                font-size: 0.65rem;
-                padding: 16px;
-            }
+            .rank-badge { top: 12px; left: 12px; width: 24px; height: 24px; font-size: 0.65rem; }
+            .sport-icon { top: 12px; right: 12px; font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -701,8 +575,8 @@
 
     <script>
         const PACK_DATA = {
-  "timestamp": "2026-02-05T12:30:39.402Z",
-  "totalPacks": 9,
+  "timestamp": "2026-02-05T13:04:20.945Z",
+  "totalPacks": 30,
   "plusEV": 0,
   "packs": [
     {
@@ -778,6 +652,78 @@
       "categories": []
     },
     {
+      "title": "Mixed Sport: Ultra Pack $500",
+      "price": 500,
+      "remaining": 328,
+      "totalOriginal": 2313,
+      "grailCount": 8,
+      "chaseCount": 39,
+      "baseCount": 281,
+      "grailRangeLow": 2500,
+      "grailRangeHigh": 2996,
+      "chaseRangeLow": 850,
+      "chaseRangeHigh": 1000,
+      "grailPct": 2.44,
+      "chasePct": 11.89,
+      "evRatio": 0.87,
+      "trueEV": 435.07,
+      "poolValue": 142701.62,
+      "tierAvgValues": {
+        "grailAvg": 2935.57,
+        "chaseAvg": 941.13,
+        "baseAvg": 293.64
+      },
+      "categories": []
+    },
+    {
+      "title": "Baseball: Mega Pack $250",
+      "price": 250,
+      "remaining": 160,
+      "totalOriginal": 2762,
+      "grailCount": 2,
+      "chaseCount": 19,
+      "baseCount": 139,
+      "grailRangeLow": 1281,
+      "grailRangeHigh": 1440,
+      "chaseRangeLow": 405,
+      "chaseRangeHigh": 765,
+      "grailPct": 1.25,
+      "chasePct": 11.88,
+      "evRatio": 0.852,
+      "trueEV": 213.01,
+      "poolValue": 34081.44,
+      "tierAvgValues": {
+        "grailAvg": 1519.59,
+        "chaseAvg": 514.07,
+        "baseAvg": 153.06
+      },
+      "categories": []
+    },
+    {
+      "title": "Pokemon: Mega Pack $250",
+      "price": 250,
+      "remaining": 799,
+      "totalOriginal": 5804,
+      "grailCount": 15,
+      "chaseCount": 113,
+      "baseCount": 671,
+      "grailRangeLow": 1250,
+      "grailRangeHigh": 1500,
+      "chaseRangeLow": 425,
+      "chaseRangeHigh": 500,
+      "grailPct": 1.88,
+      "chasePct": 14.14,
+      "evRatio": 0.847,
+      "trueEV": 211.79,
+      "poolValue": 169221.81,
+      "tierAvgValues": {
+        "grailAvg": 1352.87,
+        "chaseAvg": 491.97,
+        "baseAvg": 139.1
+      },
+      "categories": []
+    },
+    {
       "title": "Pokemon: Ultra Pack $500",
       "price": 500,
       "remaining": 728,
@@ -793,11 +739,35 @@
       "chasePct": 15.11,
       "evRatio": 0.834,
       "trueEV": 417.17,
-      "poolValue": 303702.26,
+      "poolValue": 303702.24,
       "tierAvgValues": {
         "grailAvg": 2809.85,
         "chaseAvg": 947.63,
         "baseAvg": 265.11
+      },
+      "categories": []
+    },
+    {
+      "title": "Mixed Sport: Mega Pack $250",
+      "price": 250,
+      "remaining": 114,
+      "totalOriginal": 2786,
+      "grailCount": 2,
+      "chaseCount": 13,
+      "baseCount": 99,
+      "grailRangeLow": 1250,
+      "grailRangeHigh": 1559,
+      "chaseRangeLow": 415,
+      "chaseRangeHigh": 593,
+      "grailPct": 1.75,
+      "chasePct": 11.4,
+      "evRatio": 0.834,
+      "trueEV": 208.41,
+      "poolValue": 23758.51,
+      "tierAvgValues": {
+        "grailAvg": 1600,
+        "chaseAvg": 393.92,
+        "baseAvg": 155.93
       },
       "categories": []
     },
@@ -826,6 +796,54 @@
       "categories": []
     },
     {
+      "title": "Football: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 147,
+      "totalOriginal": 379,
+      "grailCount": 2,
+      "chaseCount": 24,
+      "baseCount": 121,
+      "grailRangeLow": 5000,
+      "grailRangeHigh": 5350,
+      "chaseRangeLow": 1413,
+      "chaseRangeHigh": 2997,
+      "grailPct": 1.36,
+      "chasePct": 16.33,
+      "evRatio": 0.821,
+      "trueEV": 820.88,
+      "poolValue": 120668.89,
+      "tierAvgValues": {
+        "grailAvg": 5439,
+        "chaseAvg": 1733.43,
+        "baseAvg": 563.54
+      },
+      "categories": []
+    },
+    {
+      "title": "Baseball: $75",
+      "price": 75,
+      "remaining": 160,
+      "totalOriginal": 13478,
+      "grailCount": 3,
+      "chaseCount": 23,
+      "baseCount": 134,
+      "grailRangeLow": 392,
+      "grailRangeHigh": 500,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 1.88,
+      "chasePct": 14.38,
+      "evRatio": 0.817,
+      "trueEV": 61.26,
+      "poolValue": 9801,
+      "tierAvgValues": {
+        "grailAvg": 416,
+        "chaseAvg": 137.51,
+        "baseAvg": 40.23
+      },
+      "categories": []
+    },
+    {
       "title": "Basketball: Ultra Pack $500",
       "price": 500,
       "remaining": 217,
@@ -846,6 +864,78 @@
         "grailAvg": 2853.5,
         "chaseAvg": 890.58,
         "baseAvg": 282.02
+      },
+      "categories": []
+    },
+    {
+      "title": "Football: $75",
+      "price": 75,
+      "remaining": 149,
+      "totalOriginal": 7781,
+      "grailCount": 3,
+      "chaseCount": 21,
+      "baseCount": 125,
+      "grailRangeLow": 400,
+      "grailRangeHigh": 500,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 2.01,
+      "chasePct": 14.09,
+      "evRatio": 0.804,
+      "trueEV": 60.29,
+      "poolValue": 8982.61,
+      "tierAvgValues": {
+        "grailAvg": 415,
+        "chaseAvg": 137.55,
+        "baseAvg": 38.79
+      },
+      "categories": []
+    },
+    {
+      "title": "Mixed Sport: Super Pack $150",
+      "price": 150,
+      "remaining": 196,
+      "totalOriginal": 4189,
+      "grailCount": 3,
+      "chaseCount": 30,
+      "baseCount": 163,
+      "grailRangeLow": 750,
+      "grailRangeHigh": 793,
+      "chaseRangeLow": 260,
+      "chaseRangeHigh": 300,
+      "grailPct": 1.53,
+      "chasePct": 15.31,
+      "evRatio": 0.804,
+      "trueEV": 120.54,
+      "poolValue": 23625.85,
+      "tierAvgValues": {
+        "grailAvg": 770.33,
+        "chaseAvg": 271.47,
+        "baseAvg": 80.8
+      },
+      "categories": []
+    },
+    {
+      "title": "Pokemon: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 176,
+      "totalOriginal": 672,
+      "grailCount": 2,
+      "chaseCount": 26,
+      "baseCount": 148,
+      "grailRangeLow": 5075,
+      "grailRangeHigh": 5750,
+      "chaseRangeLow": 1418,
+      "chaseRangeHigh": 2596,
+      "grailPct": 1.14,
+      "chasePct": 14.77,
+      "evRatio": 0.797,
+      "trueEV": 796.93,
+      "poolValue": 140259.2,
+      "tierAvgValues": {
+        "grailAvg": 5625.5,
+        "chaseAvg": 1880.46,
+        "baseAvg": 541.33
       },
       "categories": []
     },
@@ -898,6 +988,174 @@
       "categories": []
     },
     {
+      "title": "Basketball: Mega Pack $250",
+      "price": 250,
+      "remaining": 201,
+      "totalOriginal": 779,
+      "grailCount": 3,
+      "chaseCount": 24,
+      "baseCount": 174,
+      "grailRangeLow": 1275,
+      "grailRangeHigh": 1445,
+      "chaseRangeLow": 200.66,
+      "chaseRangeHigh": 535,
+      "grailPct": 1.49,
+      "chasePct": 11.94,
+      "evRatio": 0.786,
+      "trueEV": 196.6,
+      "poolValue": 39517.23,
+      "tierAvgValues": {
+        "grailAvg": 1379,
+        "chaseAvg": 445.17,
+        "baseAvg": 141.93
+      },
+      "categories": []
+    },
+    {
+      "title": "OG Pokemon: $150",
+      "price": 150,
+      "remaining": 157,
+      "totalOriginal": 86,
+      "grailCount": 2,
+      "chaseCount": 21,
+      "baseCount": 134,
+      "grailRangeLow": 806.04,
+      "grailRangeHigh": 900,
+      "chaseRangeLow": 260,
+      "chaseRangeHigh": 300,
+      "grailPct": 1.27,
+      "chasePct": 13.38,
+      "evRatio": 0.786,
+      "trueEV": 117.86,
+      "poolValue": 18503.65,
+      "tierAvgValues": {
+        "grailAvg": 700,
+        "chaseAvg": 284.28,
+        "baseAvg": 83.09
+      },
+      "categories": []
+    },
+    {
+      "title": "Mixed Sport: $75",
+      "price": 75,
+      "remaining": 86,
+      "totalOriginal": 18499,
+      "grailCount": 1,
+      "chaseCount": 12,
+      "baseCount": 73,
+      "grailRangeLow": 378,
+      "grailRangeHigh": 456,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 1.16,
+      "chasePct": 13.95,
+      "evRatio": 0.779,
+      "trueEV": 58.42,
+      "poolValue": 5024.38,
+      "tierAvgValues": {
+        "grailAvg": 400,
+        "chaseAvg": 147.67,
+        "baseAvg": 39.07
+      },
+      "categories": []
+    },
+    {
+      "title": "OG Pokemon: $500",
+      "price": 500,
+      "remaining": 96,
+      "totalOriginal": 4,
+      "grailCount": 2,
+      "chaseCount": 15,
+      "baseCount": 79,
+      "grailRangeLow": 2500,
+      "grailRangeHigh": 2726,
+      "chaseRangeLow": 850,
+      "chaseRangeHigh": 1000,
+      "grailPct": 2.08,
+      "chasePct": 15.63,
+      "evRatio": 0.778,
+      "trueEV": 389.19,
+      "poolValue": 37362.24,
+      "tierAvgValues": {
+        "grailAvg": 2642.5,
+        "chaseAvg": 876.11,
+        "baseAvg": 239.69
+      },
+      "categories": []
+    },
+    {
+      "title": "Baseball: Ultra Pack $500",
+      "price": 500,
+      "remaining": 216,
+      "totalOriginal": 1139,
+      "grailCount": 2,
+      "chaseCount": 27,
+      "baseCount": 187,
+      "grailRangeLow": 2639,
+      "grailRangeHigh": 3000,
+      "chaseRangeLow": 851,
+      "chaseRangeHigh": 1000,
+      "grailPct": 0.93,
+      "chasePct": 12.5,
+      "evRatio": 0.776,
+      "trueEV": 387.95,
+      "poolValue": 83797.59,
+      "tierAvgValues": {
+        "grailAvg": 2792.5,
+        "chaseAvg": 917.83,
+        "baseAvg": 285.73
+      },
+      "categories": []
+    },
+    {
+      "title": "Pokemon 10s Only: $150",
+      "price": 150,
+      "remaining": 551,
+      "totalOriginal": 335,
+      "grailCount": 8,
+      "chaseCount": 82,
+      "baseCount": 461,
+      "grailRangeLow": 752,
+      "grailRangeHigh": 900,
+      "chaseRangeLow": 260,
+      "chaseRangeHigh": 300,
+      "grailPct": 1.45,
+      "chasePct": 14.88,
+      "evRatio": 0.768,
+      "trueEV": 115.24,
+      "poolValue": 63498.06,
+      "tierAvgValues": {
+        "grailAvg": 779.88,
+        "chaseAvg": 278.53,
+        "baseAvg": 74.66
+      },
+      "categories": []
+    },
+    {
+      "title": "Pokemon: $75",
+      "price": 75,
+      "remaining": 122,
+      "totalOriginal": 39620,
+      "grailCount": 2,
+      "chaseCount": 15,
+      "baseCount": 105,
+      "grailRangeLow": 133,
+      "grailRangeHigh": 480,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 1.64,
+      "chasePct": 12.3,
+      "evRatio": 0.767,
+      "trueEV": 57.49,
+      "poolValue": 7014.07,
+      "tierAvgValues": {
+        "grailAvg": 419,
+        "chaseAvg": 141.66,
+        "baseAvg": 38.58
+      },
+      "categories": []
+    },
+    {
       "title": "Football: Mega Pack $250",
       "price": 250,
       "remaining": 92,
@@ -918,6 +1176,126 @@
         "grailAvg": 1275.5,
         "chaseAvg": 439.4,
         "baseAvg": 130.54
+      },
+      "categories": []
+    },
+    {
+      "title": "Basketball: Super Pack $150",
+      "price": 150,
+      "remaining": 224,
+      "totalOriginal": 2024,
+      "grailCount": 4,
+      "chaseCount": 26,
+      "baseCount": 194,
+      "grailRangeLow": 750,
+      "grailRangeHigh": 900,
+      "chaseRangeLow": 260,
+      "chaseRangeHigh": 300,
+      "grailPct": 1.79,
+      "chasePct": 11.61,
+      "evRatio": 0.746,
+      "trueEV": 111.83,
+      "poolValue": 25049.19,
+      "tierAvgValues": {
+        "grailAvg": 795.25,
+        "chaseAvg": 278.13,
+        "baseAvg": 75.45
+      },
+      "categories": []
+    },
+    {
+      "title": "Football: Super Pack $150",
+      "price": 150,
+      "remaining": 169,
+      "totalOriginal": 2854,
+      "grailCount": 2,
+      "chaseCount": 22,
+      "baseCount": 145,
+      "grailRangeLow": 791,
+      "grailRangeHigh": 900,
+      "chaseRangeLow": 260,
+      "chaseRangeHigh": 300,
+      "grailPct": 1.18,
+      "chasePct": 13.02,
+      "evRatio": 0.726,
+      "trueEV": 108.84,
+      "poolValue": 18393.24,
+      "tierAvgValues": {
+        "grailAvg": 802,
+        "chaseAvg": 284.23,
+        "baseAvg": 72.66
+      },
+      "categories": []
+    },
+    {
+      "title": "Pokemon 10s Only: $500",
+      "price": 500,
+      "remaining": 913,
+      "totalOriginal": 59,
+      "grailCount": 14,
+      "chaseCount": 114,
+      "baseCount": 785,
+      "grailRangeLow": 2000,
+      "grailRangeHigh": 2802,
+      "chaseRangeLow": 750,
+      "chaseRangeHigh": 1135,
+      "grailPct": 1.53,
+      "chasePct": 12.49,
+      "evRatio": 0.709,
+      "trueEV": 354.4,
+      "poolValue": 323565.04,
+      "tierAvgValues": {
+        "grailAvg": 2533.14,
+        "chaseAvg": 879.04,
+        "baseAvg": 239.35
+      },
+      "categories": []
+    },
+    {
+      "title": "OG Pokemon: $1,000",
+      "price": 1000,
+      "remaining": 18,
+      "totalOriginal": 31,
+      "grailCount": 0,
+      "chaseCount": 3,
+      "baseCount": 15,
+      "grailRangeLow": 5010,
+      "grailRangeHigh": 5010,
+      "chaseRangeLow": 1750,
+      "chaseRangeHigh": 1950,
+      "grailPct": 0,
+      "chasePct": 16.67,
+      "evRatio": 0.677,
+      "trueEV": 676.77,
+      "poolValue": 12181.77,
+      "tierAvgValues": {
+        "grailAvg": 5010,
+        "chaseAvg": 1891.92,
+        "baseAvg": 433.73
+      },
+      "categories": []
+    },
+    {
+      "title": "Pokemon 10s Only: $75",
+      "price": 75,
+      "remaining": 11,
+      "totalOriginal": 233,
+      "grailCount": 0,
+      "chaseCount": 1,
+      "baseCount": 10,
+      "grailRangeLow": 379.99,
+      "grailRangeHigh": 475,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 0,
+      "chasePct": 9.09,
+      "evRatio": 0.596,
+      "trueEV": 44.73,
+      "poolValue": 492,
+      "tierAvgValues": {
+        "grailAvg": 427.5,
+        "chaseAvg": 138,
+        "baseAvg": 35.4
       },
       "categories": []
     }
