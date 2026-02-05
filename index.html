@@ -410,11 +410,43 @@
             box-shadow: 0 0 8px var(--chase-glow);
         }
 
-        .cards-left {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            font-weight: 500;
+        .pitch-line {
+            color: var(--text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        .odds-line {
+            font-size: 0.72rem;
+            font-weight: 600;
             margin-top: 4px;
+            opacity: 0.8;
+        }
+
+        .sold-bar-wrap {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sold-bar-wrap .bar-track {
+            flex: 1;
+        }
+
+        .bar-fill.sold {
+            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold));
+            box-shadow: 0 0 8px rgba(255,107,53,0.3);
+        }
+
+        .sold-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--bnb-accent-light);
+            white-space: nowrap;
         }
 
         /* Right side */
@@ -574,12 +606,13 @@
 
     <script>
         const PACK_DATA = {
-  "timestamp": "2026-02-05T05:00:38.351Z",
+  "timestamp": "2026-02-05T05:01:56.797Z",
   "packs": [
     {
       "title": "Baseball: Infinity Pack $1,000",
       "price": 1000,
       "remaining": 12,
+      "totalOriginal": 885,
       "grailCount": 1,
       "chaseCount": 1,
       "grailRangeLow": 4878,
@@ -599,9 +632,33 @@
       "categories": []
     },
     {
+      "title": "OG Pokemon: $500",
+      "price": 500,
+      "remaining": 96,
+      "totalOriginal": 4,
+      "grailCount": 2,
+      "chaseCount": 15,
+      "grailRangeLow": 2500,
+      "grailRangeHigh": 2726,
+      "chaseRangeLow": 850,
+      "chaseRangeHigh": 1000,
+      "grailPct": 2.08,
+      "chasePct": 15.63,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "Only 2 Grails Left!",
+          "weight": 95
+        }
+      ],
+      "categories": []
+    },
+    {
       "title": "Mixed Sport: Infinity Pack $1,000",
       "price": 1000,
       "remaining": 81,
+      "totalOriginal": 780,
       "grailCount": 2,
       "chaseCount": 11,
       "grailRangeLow": 5000,
@@ -624,6 +681,7 @@
       "title": "Pokemon: Ultra Pack $500",
       "price": 500,
       "remaining": 731,
+      "totalOriginal": 1888,
       "grailCount": 15,
       "chaseCount": 111,
       "grailRangeLow": 2500,
@@ -643,9 +701,79 @@
       "categories": []
     },
     {
+      "title": "Football: $75",
+      "price": 75,
+      "remaining": 163,
+      "totalOriginal": 7767,
+      "grailCount": 3,
+      "chaseCount": 24,
+      "grailRangeLow": 400,
+      "grailRangeHigh": 500,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 1.84,
+      "chasePct": 14.72,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "Only 3 Grails Left!",
+          "weight": 95
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "Football: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 147,
+      "totalOriginal": 379,
+      "grailCount": 2,
+      "chaseCount": 24,
+      "grailRangeLow": 5000,
+      "grailRangeHigh": 5350,
+      "chaseRangeLow": 1413,
+      "chaseRangeHigh": 2997,
+      "grailPct": 1.36,
+      "chasePct": 16.33,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "Only 2 Grails Left!",
+          "weight": 95
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "Mixed Sport: $75",
+      "price": 75,
+      "remaining": 87,
+      "totalOriginal": 18498,
+      "grailCount": 1,
+      "chaseCount": 13,
+      "grailRangeLow": 378,
+      "grailRangeHigh": 456,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 1.15,
+      "chasePct": 14.94,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "Only 1 Grail Left!",
+          "weight": 95
+        }
+      ],
+      "categories": []
+    },
+    {
       "title": "Baseball: Super Pack $150",
       "price": 150,
       "remaining": 161,
+      "totalOriginal": 4387,
       "grailCount": 3,
       "chaseCount": 21,
       "grailRangeLow": 781,
@@ -665,83 +793,41 @@
       "categories": []
     },
     {
-      "title": "Basketball: Ultra Pack $500",
-      "price": 500,
-      "remaining": 220,
-      "grailCount": 4,
-      "chaseCount": 27,
-      "grailRangeLow": 2605,
-      "grailRangeHigh": 2983,
-      "chaseRangeLow": 548,
-      "chaseRangeHigh": 1000,
-      "grailPct": 1.82,
-      "chasePct": 12.27,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "4 Grails Live",
-          "weight": 30
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Football: Mega Pack $250",
+      "title": "Pokemon: Mega Pack $250",
       "price": 250,
-      "remaining": 94,
-      "grailCount": 2,
-      "chaseCount": 10,
-      "grailRangeLow": 1263,
-      "grailRangeHigh": 1299.99,
-      "chaseRangeLow": 353.01,
+      "remaining": 832,
+      "totalOriginal": 5769,
+      "grailCount": 15,
+      "chaseCount": 117,
+      "grailRangeLow": 1250,
+      "grailRangeHigh": 1500,
+      "chaseRangeLow": 425,
       "chaseRangeHigh": 500,
-      "grailPct": 2.13,
-      "chasePct": 10.64,
+      "grailPct": 1.8,
+      "chasePct": 14.06,
       "tags": [
         {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
+          "type": "chase",
+          "icon": "🎯",
+          "label": "Chase Heavy",
+          "weight": 60
         }
       ],
       "categories": []
     },
     {
-      "title": "Basketball: Infinity Pack $1,000",
-      "price": 1000,
-      "remaining": 240,
-      "grailCount": 4,
-      "chaseCount": 29,
-      "grailRangeLow": 5000,
-      "grailRangeHigh": 5994,
-      "chaseRangeLow": 1551,
-      "chaseRangeHigh": 2450,
-      "grailPct": 1.67,
-      "chasePct": 12.08,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "4 Grails Live",
-          "weight": 30
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Football: Ultra Pack $500",
-      "price": 500,
-      "remaining": 103,
-      "grailCount": 0,
-      "chaseCount": 16,
-      "grailRangeLow": 2600,
-      "grailRangeHigh": 2820,
-      "chaseRangeLow": 660,
-      "chaseRangeHigh": 1000,
-      "grailPct": 0,
-      "chasePct": 15.53,
+      "title": "Pokemon 10s Only: $150",
+      "price": 150,
+      "remaining": 560,
+      "totalOriginal": 322,
+      "grailCount": 8,
+      "chaseCount": 84,
+      "grailRangeLow": 752,
+      "grailRangeHigh": 900,
+      "chaseRangeLow": 260,
+      "chaseRangeHigh": 300,
+      "grailPct": 1.43,
+      "chasePct": 15,
       "tags": [
         {
           "type": "chase",
@@ -809,24 +895,20 @@
                 const sport = getSport(pack.title);
                 const icon = SPORT_ICONS[sport] || '🃏';
 
-                // Grail & chase counts + value ranges
+                // Grail & chase data
                 const grailCount = pack.grailCount || 0;
                 const chaseCount = pack.chaseCount || 0;
                 const grailLow = pack.grailRangeLow || 0;
                 const grailHigh = pack.grailRangeHigh || 0;
                 const chaseLow = pack.chaseRangeLow || 0;
                 const chaseHigh = pack.chaseRangeHigh || 0;
-
-                // Format dollar amounts (no cents)
                 const fmtDollar = (v) => '$' + Math.round(v).toLocaleString();
 
-                // Hit rates — only show if 5%+
+                // Odds
                 const grailPct = parseFloat(pack.grailPct) || 0;
                 const chasePct = parseFloat(pack.chasePct) || 0;
-                const grailOddsStr = grailPct >= 5 ? ` (${grailPct}%)` : '';
-                const chaseOddsStr = chasePct >= 5 ? ` (${chasePct}%)` : '';
 
-                // Build grail/chase display strings — single value if only 1 card
+                // Value display — single value if 1 card, range if multiple
                 const grailRange = grailHigh > 0
                     ? (grailCount === 1 ? fmtDollar(Math.round((grailLow + grailHigh) / 2)) : `${fmtDollar(grailLow)}–${fmtDollar(grailHigh)}`)
                     : '';
@@ -834,15 +916,33 @@
                     ? (chaseCount === 1 ? fmtDollar(Math.round((chaseLow + chaseHigh) / 2)) : `${fmtDollar(chaseLow)}–${fmtDollar(chaseHigh)}`)
                     : '';
 
+                // "1 in X" odds — only when notable
+                const grailOneIn = grailPct > 0 ? Math.round(100 / grailPct) : 0;
+                const chaseOneIn = chasePct > 0 ? Math.round(100 / chasePct) : 0;
+                const showGrailOdds = grailPct >= 3;
+                const showChaseOdds = chasePct >= 10;
+
+                // Auto pitch line
+                let pitch = '';
+                if (grailCount === 1 && grailHigh > 0) {
+                    pitch = `Last grail in the pool worth ${fmtDollar(Math.round((grailLow + grailHigh) / 2))}`;
+                } else if (grailPct >= 5 && grailHigh > 0) {
+                    pitch = `${grailPct}% shot at a grail worth up to ${fmtDollar(grailHigh)}`;
+                } else if (remaining <= 20) {
+                    pitch = `Almost gone — only ${remaining} cards left in the pool`;
+                } else if (chasePct >= 15) {
+                    pitch = `${chasePct}% of the pool is chase cards`;
+                }
+
+                // Sold progress — need totalOriginal from data
+                const totalOrig = pack.totalOriginal || 0;
+                const soldPct = totalOrig > remaining ? Math.round(((totalOrig - remaining) / totalOrig) * 100) : 0;
+
                 // Rank badge
                 let rankClass = 'rank-n';
                 if (i === 0) rankClass = 'rank-1';
                 else if (i === 1) rankClass = 'rank-2';
                 else if (i === 2) rankClass = 'rank-3';
-
-                // Grail bar: scale relative to original pool (show depletion)
-                const grailBarWidth = grailCount > 0 ? Math.max(Math.min(grailCount / 15 * 100, 100), 8) : 0;
-                const chaseBarWidth = chaseCount > 0 ? Math.max(Math.min(chaseCount / 100 * 100, 100), 8) : 0;
 
                 return `
                     <div class="pack-card ${featured}">
@@ -852,20 +952,28 @@
                         <div class="pack-info">
                             <h3>${pack.title}</h3>
                             <div class="pack-tags">${tags}</div>
+                            ${pitch ? `<div class="pitch-line">${pitch}</div>` : ''}
                             <div class="odds-row">
                                 <div class="odd-block">
                                     <div class="tier-header">
                                         <span class="count" style="color:var(--grail-purple)">💎 Grails</span>
                                     </div>
                                     ${grailRange ? `<div class="value-range grail-color">${grailRange}</div>` : ''}
+                                    ${showGrailOdds ? `<div class="odds-line grail-color">1 in ${grailOneIn} chance</div>` : ''}
                                 </div>
                                 <div class="odd-block">
                                     <div class="tier-header">
                                         <span class="count" style="color:var(--chase-blue)">🎯 Chases</span>
                                     </div>
                                     ${chaseRange ? `<div class="value-range chase-color">${chaseRange}</div>` : ''}
+                                    ${showChaseOdds ? `<div class="odds-line chase-color">1 in ${chaseOneIn} chance</div>` : ''}
                                 </div>
                             </div>
+                            ${soldPct >= 15 ? `
+                            <div class="sold-bar-wrap">
+                                <div class="bar-track"><div class="bar-fill sold" style="width:${soldPct}%"></div></div>
+                                <div class="sold-label">${soldPct}% sold</div>
+                            </div>` : ''}
                         </div>
 
                         <div class="pack-stats">
