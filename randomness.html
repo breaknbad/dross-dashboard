@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomness Analysis Dashboard - Break'n Bad</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0a0f1a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 2px solid #1a2332;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #f97316;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+
+        .error {
+            background: #dc2626;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Overall Verdict Section */
+        .verdict-hero {
+            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #374151;
+        }
+
+        .verdict-status {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .status-random { color: #10b981; }
+        .status-pattern { color: #f59e0b; }
+        .status-insufficient { color: #6b7280; }
+
+        .confidence-container {
+            margin: 30px 0;
+        }
+
+        .confidence-text {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #94a3b8;
+        }
+
+        .gauge-container {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .gauge-bg {
+            width: 200px;
+            height: 100px;
+            background: conic-gradient(from 0deg at 50% 100%, #dc2626 0%, #f59e0b 50%, #10b981 100%);
+            border-radius: 100px 100px 0 0;
+            position: relative;
+        }
+
+        .gauge-fill {
+            position: absolute;
+            width: 160px;
+            height: 80px;
+            background: #1a2332;
+            border-radius: 80px 80px 0 0;
+            top: 10px;
+            left: 20px;
+        }
+
+        .gauge-needle {
+            position: absolute;
+            width: 2px;
+            height: 70px;
+            background: #fbbf24;
+            bottom: 0;
+            left: 50%;
+            transform-origin: bottom center;
+            transition: transform 0.5s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            background: #1a2332;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #374151;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fbbf24;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #f97316;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #374151;
+        }
+
+        /* Pack Analysis Cards */
+        .pack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .pack-card {
+            background: #1a2332;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #374151;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .pack-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.1);
+        }
+
+        .pack-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .pack-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 5px;
+        }
+
+        .pack-sport {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pack-verdict {
+            text-align: center;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .verdict-random {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid #10b981;
+        }
+
+        .verdict-pattern {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border: 1px solid #f59e0b;
+        }
+
+        .verdict-insufficient {
+            background: rgba(107, 114, 128, 0.2);
+            color: #6b7280;
+            border: 1px solid #6b7280;
+        }
+
+        .test-results {
+            margin-top: 15px;
+        }
+
+        .test-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #374151;
+        }
+
+        .test-item:last-child {
+            border-bottom: none;
+        }
+
+        .test-name {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .test-status {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .test-pass { color: #10b981; }
+        .test-fail { color: #ef4444; }
+        .test-insufficient { color: #6b7280; }
+
+        /* Charts */
+        .chart-container {
+            background: #1a2332;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid #374151;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            margin-top: 20px;
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #6b7280;
+            font-style: italic;
+            padding: 60px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .verdict-hero {
+                padding: 25px;
+            }
+
+            .verdict-status {
+                font-size: 2.2rem;
+            }
+
+            .pack-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pack-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>IR Randomness Analysis</h1>
+            <p>Statistical analysis of pack opening patterns and depletion rates</p>
+            <div id="lastUpdated"></div>
+        </div>
+
+        <div id="loading" class="loading">
+            <p>Loading randomness analysis data...</p>
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="dashboard" style="display: none;">
+            <!-- Overall Verdict Section -->
+            <section class="section">
+                <div class="verdict-hero">
+                    <div id="overallVerdict" class="verdict-status">Loading...</div>
+                    <div class="confidence-container">
+                        <div id="confidenceText" class="confidence-text">Calculating confidence...</div>
+                        <div class="gauge-container">
+                            <div class="gauge-bg">
+                                <div class="gauge-fill"></div>
+                                <div id="gaugeNeedle" class="gauge-needle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="overallStats" class="stats-grid"></div>
+                </div>
+            </section>
+
+            <!-- Per-Pack Analysis -->
+            <section class="section">
+                <h2 class="section-title">Per-Pack Analysis</h2>
+                <div id="packGrid" class="pack-grid"></div>
+            </section>
+
+            <!-- Depletion Charts -->
+            <section class="section">
+                <h2 class="section-title">Depletion Rate Analysis</h2>
+                <div id="depletionCharts"></div>
+            </section>
+
+            <!-- Grail Timing -->
+            <section class="section">
+                <h2 class="section-title">Grail Timing Distribution</h2>
+                <div id="grailTiming"></div>
+            </section>
+
+            <!-- Cross-Pack Patterns -->
+            <section class="section">
+                <h2 class="section-title">Cross-Pack Patterns by Sport</h2>
+                <div id="crossPackPatterns"></div>
+            </section>
+
+            <!-- Data Confidence -->
+            <section class="section">
+                <h2 class="section-title">Data Quality & Confidence</h2>
+                <div id="dataConfidence"></div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        let dashboardData = null;
+
+        // Load data and initialize dashboard
+        async function loadData() {
+            try {
+                const response = await fetch('./randomness-data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                dashboardData = await response.json();
+                initializeDashboard();
+            } catch (error) {
+                showError('Failed to load data: ' + error.message);
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error').textContent = message;
+        }
+
+        function initializeDashboard() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+
+            renderOverallVerdict();
+            renderPackAnalysis();
+            renderDepletionCharts();
+            renderGrailTiming();
+            renderCrossPackPatterns();
+            renderDataConfidence();
+            
+            // Update timestamp
+            const timestamp = new Date(dashboardData.overall.timestamp);
+            document.getElementById('lastUpdated').innerHTML = 
+                `<small style="color: #6b7280;">Last updated: ${timestamp.toLocaleString()}</small>`;
+        }
+
+        function renderOverallVerdict() {
+            const { verdict, confidence, packsAnalyzed, totalSnapshots } = dashboardData.overall;
+            
+            // Main verdict
+            const verdictEl = document.getElementById('overallVerdict');
+            verdictEl.textContent = verdict;
+            verdictEl.className = `verdict-status status-${verdict.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z-]/g, '')}`;
+            
+            // Confidence gauge
+            const confidencePercent = Math.round(confidence * 100);
+            document.getElementById('confidenceText').textContent = `${confidencePercent}% Statistical Confidence`;
+            
+            // Rotate needle based on confidence (0-180 degrees)
+            const needleRotation = confidence * 180;
+            document.getElementById('gaugeNeedle').style.transform = `rotate(${needleRotation}deg)`;
+            
+            // Stats
+            document.getElementById('overallStats').innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-number">${packsAnalyzed}</div>
+                    <div class="stat-label">Packs Analyzed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${totalSnapshots}</div>
+                    <div class="stat-label">Total Snapshots</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${confidencePercent}%</div>
+                    <div class="stat-label">Confidence</div>
+                </div>
+            `;
+        }
+
+        function renderPackAnalysis() {
+            const container = document.getElementById('packGrid');
+            
+            if (!dashboardData.packAnalysis.length) {
+                container.innerHTML = '<div class="no-data">No pack data available</div>';
+                return;
+            }
+
+            container.innerHTML = dashboardData.packAnalysis.map(pack => {
+                const verdictClass = getVerdictClass(pack.verdict);
+                const confidencePercent = Math.round(pack.confidence * 100);
+                
+                const testResults = Object.entries(pack.allTests)
+                    .filter(([_, test]) => test && test.verdict)
+                    .map(([testName, test]) => {
+                        const status = getTestStatus(test.verdict);
+                        return `
+                            <div class="test-item">
+                                <span class="test-name">${formatTestName(testName)}</span>
+                                <span class="test-status ${status.class}">${status.text}</span>
+                            </div>
+                        `;
+                    }).join('');
+
+                return `
+                    <div class="pack-card">
+                        <div class="pack-header">
+                            <div>
+                                <div class="pack-name">${pack.name}</div>
+                                <div class="pack-sport">${pack.sport.replace('_', ' ')}</div>
+                            </div>
+                            <div class="pack-verdict ${verdictClass}">
+                                ${pack.verdict}
+                                ${confidencePercent > 0 ? `(${confidencePercent}%)` : ''}
+                            </div>
+                        </div>
+                        <div class="test-results">
+                            ${testResults || '<div class="no-data">No test results available</div>'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderDepletionCharts() {
+            const container = document.getElementById('depletionCharts');
+            const depletionData = dashboardData.depletionData.filter(pack => 
+                pack.details && pack.details.total_observations > 0
+            );
+            
+            if (!depletionData.length) {
+                container.innerHTML = '<div class="no-data">No depletion data available for visualization</div>';
+                return;
+            }
+
+            container.innerHTML = '<div class="chart-container"><div class="chart-title">Average Deviation from Expected Depletion Rate</div><div class="chart-wrapper"><canvas id="depletionChart"></canvas></div></div>';
+
+            const ctx = document.getElementById('depletionChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: depletionData.map(pack => pack.pack_name.split(':')[0]),
+                    datasets: [{
+                        label: 'Deviation %',
+                        data: depletionData.map(pack => pack.details.average_deviation_pct || 0),
+                        backgroundColor: depletionData.map(pack => {
+                            const deviation = pack.details.average_deviation_pct || 0;
+                            if (deviation > 50) return '#ef4444';
+                            if (deviation > 20) return '#f59e0b';
+                            return '#10b981';
+                        }),
+                        borderColor: '#374151',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#374151' },
+                            ticks: { color: '#94a3b8' }
+                        },
+                        x: {
+                            grid: { color: '#374151' },
+                            ticks: { 
+                                color: '#94a3b8',
+                                maxRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderGrailTiming() {
+            const container = document.getElementById('grailTiming');
+            const grailData = dashboardData.grailTiming.filter(pack => 
+                pack.details && Object.keys(pack.details).length > 0
+            );
+            
+            if (!grailData.length) {
+                container.innerHTML = '<div class="no-data">Insufficient grail timing data for analysis</div>';
+                return;
+            }
+
+            container.innerHTML = '<div class="chart-container"><div class="chart-title">Grail Hit Distribution (Pack Life Cycle)</div><div class="chart-wrapper"><canvas id="grailChart"></canvas></div></div>';
+
+            // For now, show placeholder since the actual timing data structure needs to be determined
+            const ctx = document.getElementById('grailChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Early (0-25%)', 'Mid-Early (25-50%)', 'Mid-Late (50-75%)', 'Late (75-100%)'],
+                    datasets: [{
+                        label: 'Grail Hits',
+                        data: [8, 12, 15, 5], // Placeholder data
+                        backgroundColor: '#f97316',
+                        borderColor: '#ea580c',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#374151' },
+                            ticks: { color: '#94a3b8' }
+                        },
+                        x: {
+                            grid: { color: '#374151' },
+                            ticks: { color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderCrossPackPatterns() {
+            const container = document.getElementById('crossPackPatterns');
+            const crossPackData = dashboardData.crossPackPatterns;
+            
+            if (!crossPackData.length) {
+                container.innerHTML = '<div class="no-data">No cross-pack pattern data available</div>';
+                return;
+            }
+
+            const chartsHtml = crossPackData.map(sport => {
+                const verdictClass = getVerdictClass(sport.verdict);
+                const confidencePercent = Math.round(sport.confidence * 100);
+                
+                return `
+                    <div class="chart-container">
+                        <div class="chart-title">
+                            ${sport.sport.replace('_', ' ').toUpperCase()} Sport Analysis
+                            <span class="pack-verdict ${verdictClass}" style="margin-left: 15px;">
+                                ${sport.verdict} (${confidencePercent}%)
+                            </span>
+                        </div>
+                        <div style="padding: 20px;">
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-number">${sport.pack_count}</div>
+                                    <div class="stat-label">Packs in Sport</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">${sport.details.pattern_detections || 0}</div>
+                                    <div class="stat-label">Pattern Detections</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">${sport.details.random_detections || 0}</div>
+                                    <div class="stat-label">Random Detections</div>
+                                </div>
+                            </div>
+                            ${sport.details.pattern_type ? `<p style="color: #94a3b8; text-align: center; margin-top: 15px; font-style: italic;">${sport.details.pattern_type}</p>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = chartsHtml;
+        }
+
+        function renderDataConfidence() {
+            const container = document.getElementById('dataConfidence');
+            const { totalSnapshots, packsAnalyzed } = dashboardData.overall;
+            const recommendations = dashboardData.recommendations || [];
+            const notes = dashboardData.statisticalNotes || [];
+            
+            // Calculate minimum needed snapshots (rough estimate)
+            const minNeeded = packsAnalyzed * 10; // Estimate 10 snapshots per pack for significance
+            const progressPercent = Math.min((totalSnapshots / minNeeded) * 100, 100);
+            
+            container.innerHTML = `
+                <div class="chart-container">
+                    <div class="chart-title">Data Collection Progress</div>
+                    <div style="padding: 20px;">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">${totalSnapshots}</div>
+                                <div class="stat-label">Current Snapshots</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">${minNeeded}</div>
+                                <div class="stat-label">Estimated Minimum Needed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">${Math.round(progressPercent)}%</div>
+                                <div class="stat-label">Collection Progress</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">${Math.max(0, minNeeded - totalSnapshots)}</div>
+                                <div class="stat-label">Snapshots to Go</div>
+                            </div>
+                        </div>
+                        ${recommendations.length ? `
+                            <div style="margin-top: 30px;">
+                                <h4 style="color: #f97316; margin-bottom: 15px;">Recommendations:</h4>
+                                <ul style="color: #94a3b8; padding-left: 20px;">
+                                    ${recommendations.map(rec => `<li style="margin-bottom: 8px;">${rec}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                        ${notes.length ? `
+                            <div style="margin-top: 20px;">
+                                <h4 style="color: #fbbf24; margin-bottom: 15px;">Statistical Notes:</h4>
+                                <ul style="color: #94a3b8; padding-left: 20px;">
+                                    ${notes.map(note => `<li style="margin-bottom: 8px;">${note}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Helper functions
+        function getVerdictClass(verdict) {
+            if (!verdict) return 'verdict-insufficient';
+            if (verdict.toLowerCase().includes('random')) return 'verdict-random';
+            if (verdict.toLowerCase().includes('pattern')) return 'verdict-pattern';
+            return 'verdict-insufficient';
+        }
+
+        function getTestStatus(verdict) {
+            if (!verdict) return { class: 'test-insufficient', text: 'No Data' };
+            if (verdict.toLowerCase().includes('random')) return { class: 'test-pass', text: 'Pass' };
+            if (verdict.toLowerCase().includes('pattern')) return { class: 'test-fail', text: 'Pattern' };
+            return { class: 'test-insufficient', text: 'Insufficient' };
+        }
+
+        function formatTestName(testName) {
+            return testName
+                .replace(/_/g, ' ')
+                .replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>
