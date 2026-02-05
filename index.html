@@ -280,13 +280,13 @@
         .tag {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 8px;
+            gap: 5px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.5px;
         }
 
         .tag.grail {
@@ -537,7 +537,7 @@
 
     <script>
         const PACK_DATA = {
-  "timestamp": "2026-02-05T03:30:51.149Z",
+  "timestamp": "2026-02-05T03:32:01.948Z",
   "packs": [
     {
       "title": "Baseball: Infinity Pack $1,000",
@@ -547,19 +547,16 @@
       "chasePct": 8.33,
       "tags": [
         {
-          "type": "grail",
-          "icon": "💎",
-          "label": "8.33% Grail Odds"
-        },
-        {
           "type": "scarce",
           "icon": "⚡",
-          "label": "Only 12 Left"
+          "label": "Only 12 Left",
+          "weight": 100
         },
         {
-          "type": "hot",
-          "icon": "🔥",
-          "label": "Hot Pack"
+          "type": "grail",
+          "icon": "💎",
+          "label": "8.33% Grail Odds",
+          "weight": 95
         }
       ],
       "categories": []
@@ -574,12 +571,36 @@
         {
           "type": "grail",
           "icon": "💎",
-          "label": "2.47% Grail Odds"
+          "label": "2.47% Grail Odds",
+          "weight": 60
         },
         {
           "type": "scarce",
           "icon": "⚡",
-          "label": "Running Low"
+          "label": "81 Cards Left",
+          "weight": 50
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "OG Pokemon: $500",
+      "price": 500,
+      "remaining": 96,
+      "grailPct": 2.08,
+      "chasePct": 15.63,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "2.08% Grail Odds",
+          "weight": 60
+        },
+        {
+          "type": "scarce",
+          "icon": "⚡",
+          "label": "96 Cards Left",
+          "weight": 50
         }
       ],
       "categories": []
@@ -594,12 +615,112 @@
         {
           "type": "grail",
           "icon": "💎",
-          "label": "2.05% Grail Odds"
+          "label": "2.05% Grail Odds",
+          "weight": 60
         },
         {
           "type": "chase",
           "icon": "🎯",
-          "label": "15.18% Chase Odds"
+          "label": "15.18% Chase Odds",
+          "weight": 45
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "Baseball: $75",
+      "price": 75,
+      "remaining": 241,
+      "grailPct": 2.07,
+      "chasePct": 13.69,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "2.07% Grail Odds",
+          "weight": 60
+        },
+        {
+          "type": "chase",
+          "icon": "🎯",
+          "label": "13.69% Chase Odds",
+          "weight": 25
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "Mixed Sport: Ultra Pack $500",
+      "price": 500,
+      "remaining": 343,
+      "grailPct": 2.33,
+      "chasePct": 11.66,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "2.33% Grail Odds",
+          "weight": 60
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "Football: $75",
+      "price": 75,
+      "remaining": 163,
+      "grailPct": 1.84,
+      "chasePct": 14.72,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "1.84% Grail Odds",
+          "weight": 30
+        },
+        {
+          "type": "chase",
+          "icon": "🎯",
+          "label": "14.72% Chase Odds",
+          "weight": 25
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "Pokemon: Mega Pack $250",
+      "price": 250,
+      "remaining": 835,
+      "grailPct": 1.8,
+      "chasePct": 14.13,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "1.8% Grail Odds",
+          "weight": 30
+        },
+        {
+          "type": "chase",
+          "icon": "🎯",
+          "label": "14.13% Chase Odds",
+          "weight": 25
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "Football: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 147,
+      "grailPct": 1.36,
+      "chasePct": 16.33,
+      "tags": [
+        {
+          "type": "chase",
+          "icon": "🎯",
+          "label": "16.33% Chase Odds",
+          "weight": 45
         }
       ],
       "categories": []
@@ -614,68 +735,16 @@
         {
           "type": "grail",
           "icon": "💎",
-          "label": "2.13% Grail Odds"
+          "label": "2.13% Grail Odds",
+          "weight": 60
         },
         {
           "type": "scarce",
           "icon": "⚡",
-          "label": "Running Low"
+          "label": "94 Cards Left",
+          "weight": 50
         }
       ],
-      "categories": []
-    },
-    {
-      "title": "Baseball: Super Pack $150",
-      "price": 150,
-      "remaining": 161,
-      "grailPct": 1.86,
-      "chasePct": 13.04,
-      "tags": [],
-      "categories": []
-    },
-    {
-      "title": "Mixed Sport: Mega Pack $250",
-      "price": 250,
-      "remaining": 118,
-      "grailPct": 1.69,
-      "chasePct": 12.71,
-      "tags": [],
-      "categories": []
-    },
-    {
-      "title": "Basketball: Ultra Pack $500",
-      "price": 500,
-      "remaining": 220,
-      "grailPct": 1.82,
-      "chasePct": 12.27,
-      "tags": [],
-      "categories": []
-    },
-    {
-      "title": "Basketball: Infinity Pack $1,000",
-      "price": 1000,
-      "remaining": 240,
-      "grailPct": 1.67,
-      "chasePct": 12.08,
-      "tags": [],
-      "categories": []
-    },
-    {
-      "title": "Basketball: Mega Pack $250",
-      "price": 250,
-      "remaining": 210,
-      "grailPct": 1.43,
-      "chasePct": 11.9,
-      "tags": [],
-      "categories": []
-    },
-    {
-      "title": "Baseball: Mega Pack $250",
-      "price": 250,
-      "remaining": 162,
-      "grailPct": 1.23,
-      "chasePct": 11.73,
-      "tags": [],
       "categories": []
     }
   ]
