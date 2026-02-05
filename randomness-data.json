@@ -2,11 +2,133 @@
   "overall": {
     "verdict": "Insufficient Data",
     "confidence": 0.3,
-    "timestamp": "2026-02-05T08:01:34.501Z",
-    "packsAnalyzed": 12,
-    "totalSnapshots": 16
+    "timestamp": "2026-02-05T13:04:42.090Z",
+    "packsAnalyzed": 33,
+    "totalSnapshots": 26
   },
   "packAnalysis": [
+    {
+      "name": "Baseball: Infinity Pack $1,000",
+      "sport": "baseball",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 23.521666666666665,
+        "significant_deviations": 5,
+        "total_observations": 6
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Baseball: Infinity Pack $1,000",
+          "sport": "baseball",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 23.521666666666665,
+            "significant_deviations": 5,
+            "total_observations": 6
+          }
+        },
+        "chi_square": {
+          "pack_name": "Baseball: Infinity Pack $1,000",
+          "sport": "baseball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Baseball: Infinity Pack $1,000",
+          "sport": "baseball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Baseball: Infinity Pack $1,000",
+          "sport": "baseball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Baseball: Infinity Pack $1,000",
+          "sport": "baseball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 24,
+            "grail_velocity_correlation": 0,
+            "chase_velocity_correlation": 0.009941919695401548
+          }
+        }
+      }
+    },
+    {
+      "name": "Mixed Sport: Infinity Pack $1,000",
+      "sport": "mixed",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 8.025,
+        "significant_deviations": 2,
+        "total_observations": 2
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Mixed Sport: Infinity Pack $1,000",
+          "sport": "mixed",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 8.025,
+            "significant_deviations": 2,
+            "total_observations": 2
+          }
+        },
+        "chi_square": {
+          "pack_name": "Mixed Sport: Infinity Pack $1,000",
+          "sport": "mixed",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Mixed Sport: Infinity Pack $1,000",
+          "sport": "mixed",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Mixed Sport: Infinity Pack $1,000",
+          "sport": "mixed",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Mixed Sport: Infinity Pack $1,000",
+          "sport": "mixed",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 24,
+            "grail_velocity_correlation": 0.043478260869565216,
+            "chase_velocity_correlation": 0.04347826086956522
+          }
+        }
+      }
+    },
     {
       "name": "OG Pokemon: $75",
       "sport": "og_pokemon",
@@ -53,7 +175,60 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
+            "observations": 23,
+            "grail_velocity_correlation": 0,
+            "chase_velocity_correlation": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Mixed Sport Gem 10: $149",
+      "sport": "mixed",
+      "verdict": "Insufficient Data",
+      "confidence": 0,
+      "details": {},
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Mixed Sport Gem 10: $149",
+          "sport": "mixed",
+          "test_type": "depletion_rate",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "chi_square": {
+          "pack_name": "Mixed Sport Gem 10: $149",
+          "sport": "mixed",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Mixed Sport Gem 10: $149",
+          "sport": "mixed",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Mixed Sport Gem 10: $149",
+          "sport": "mixed",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Mixed Sport Gem 10: $149",
+          "sport": "mixed",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
             "grail_velocity_correlation": 0,
             "chase_velocity_correlation": 0
           }
@@ -114,9 +289,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
+            "observations": 23,
             "grail_velocity_correlation": 0,
-            "chase_velocity_correlation": 0.1211216317601551
+            "chase_velocity_correlation": 0.06481766328297126
           }
         }
       }
@@ -167,7 +342,7 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
+            "observations": 23,
             "grail_velocity_correlation": 0,
             "chase_velocity_correlation": 0
           }
@@ -228,9 +403,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
-            "grail_velocity_correlation": 0.11895297551166777,
-            "chase_velocity_correlation": 0.11895297551166774
+            "observations": 23,
+            "grail_velocity_correlation": 0.03471568759105315,
+            "chase_velocity_correlation": 0.03471568759105314
           }
         }
       }
@@ -287,11 +462,11 @@
           "sport": "og_pokemon",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 1.0000000000000002,
+          "confidence": 1,
           "details": {
-            "observations": 13,
-            "grail_velocity_correlation": -1.0000000000000002,
-            "chase_velocity_correlation": -1.0000000000000002,
+            "observations": 23,
+            "grail_velocity_correlation": -1,
+            "chase_velocity_correlation": -1,
             "pattern_type": "Grail hits correlate with buying velocity"
           }
         }
@@ -303,9 +478,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 36.088125,
-        "significant_deviations": 16,
-        "total_observations": 16
+        "average_deviation_pct": 25.226282051282052,
+        "significant_deviations": 26,
+        "total_observations": 26
       },
       "allTests": {
         "depletion_rate": {
@@ -315,9 +490,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 36.088125,
-            "significant_deviations": 16,
-            "total_observations": 16
+            "average_deviation_pct": 25.226282051282052,
+            "significant_deviations": 26,
+            "total_observations": 26
           }
         },
         "chi_square": {
@@ -351,9 +526,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
-            "grail_velocity_correlation": 0.03259643942752889,
-            "chase_velocity_correlation": 0.0499383783853372
+            "observations": 23,
+            "grail_velocity_correlation": 0.016388848871240366,
+            "chase_velocity_correlation": 0.07562514516386389
           }
         }
       }
@@ -364,9 +539,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 271.2688888888889,
-        "significant_deviations": 12,
-        "total_observations": 12
+        "average_deviation_pct": 166.01933333333335,
+        "significant_deviations": 20,
+        "total_observations": 20
       },
       "allTests": {
         "depletion_rate": {
@@ -376,9 +551,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 271.2688888888889,
-            "significant_deviations": 12,
-            "total_observations": 12
+            "average_deviation_pct": 166.01933333333335,
+            "significant_deviations": 20,
+            "total_observations": 20
           }
         },
         "chi_square": {
@@ -412,9 +587,131 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
-            "grail_velocity_correlation": 0.09688053751981919,
-            "chase_velocity_correlation": 0.0933525679145029
+            "observations": 23,
+            "grail_velocity_correlation": 0.05150806531962658,
+            "chase_velocity_correlation": 0.050640546132335346
+          }
+        }
+      }
+    },
+    {
+      "name": "Football: Super Pack $150",
+      "sport": "football",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 73.3075,
+        "significant_deviations": 20,
+        "total_observations": 20
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Football: Super Pack $150",
+          "sport": "football",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 73.3075,
+            "significant_deviations": 20,
+            "total_observations": 20
+          }
+        },
+        "chi_square": {
+          "pack_name": "Football: Super Pack $150",
+          "sport": "football",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Football: Super Pack $150",
+          "sport": "football",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Football: Super Pack $150",
+          "sport": "football",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Football: Super Pack $150",
+          "sport": "football",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0.09877094173504572,
+            "chase_velocity_correlation": 0.11998091022262575
+          }
+        }
+      }
+    },
+    {
+      "name": "Basketball: Super Pack $150",
+      "sport": "basketball",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 26.513611111111107,
+        "significant_deviations": 12,
+        "total_observations": 12
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Basketball: Super Pack $150",
+          "sport": "basketball",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 26.513611111111107,
+            "significant_deviations": 12,
+            "total_observations": 12
+          }
+        },
+        "chi_square": {
+          "pack_name": "Basketball: Super Pack $150",
+          "sport": "basketball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Basketball: Super Pack $150",
+          "sport": "basketball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Basketball: Super Pack $150",
+          "sport": "basketball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Basketball: Super Pack $150",
+          "sport": "basketball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": -0.3652833343362866,
+            "chase_velocity_correlation": -0.15900992982884002
           }
         }
       }
@@ -465,9 +762,70 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
+            "observations": 23,
             "grail_velocity_correlation": 0,
             "chase_velocity_correlation": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Mixed Sport: $75",
+      "sport": "mixed",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 25.825,
+        "significant_deviations": 4,
+        "total_observations": 4
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Mixed Sport: $75",
+          "sport": "mixed",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 25.825,
+            "significant_deviations": 4,
+            "total_observations": 4
+          }
+        },
+        "chi_square": {
+          "pack_name": "Mixed Sport: $75",
+          "sport": "mixed",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Mixed Sport: $75",
+          "sport": "mixed",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Mixed Sport: $75",
+          "sport": "mixed",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Mixed Sport: $75",
+          "sport": "mixed",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0.04844852728493018,
+            "chase_velocity_correlation": 0.049631562504582866
           }
         }
       }
@@ -478,9 +836,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 129.19055555555556,
-        "significant_deviations": 11,
-        "total_observations": 12
+        "average_deviation_pct": 91.21425925925928,
+        "significant_deviations": 17,
+        "total_observations": 18
       },
       "allTests": {
         "depletion_rate": {
@@ -490,9 +848,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 129.19055555555556,
-            "significant_deviations": 11,
-            "total_observations": 12
+            "average_deviation_pct": 91.21425925925928,
+            "significant_deviations": 17,
+            "total_observations": 18
           }
         },
         "chi_square": {
@@ -526,9 +884,306 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
-            "grail_velocity_correlation": 0.05863475744492692,
-            "chase_velocity_correlation": 0.06763075170905948
+            "observations": 23,
+            "grail_velocity_correlation": 0.014108473036178812,
+            "chase_velocity_correlation": 0.02456618506643725
+          }
+        }
+      }
+    },
+    {
+      "name": "Baseball: Ultra Pack $500",
+      "sport": "baseball",
+      "verdict": "Insufficient Data",
+      "confidence": 0,
+      "details": {},
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Baseball: Ultra Pack $500",
+          "sport": "baseball",
+          "test_type": "depletion_rate",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "chi_square": {
+          "pack_name": "Baseball: Ultra Pack $500",
+          "sport": "baseball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Baseball: Ultra Pack $500",
+          "sport": "baseball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Baseball: Ultra Pack $500",
+          "sport": "baseball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Baseball: Ultra Pack $500",
+          "sport": "baseball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0,
+            "chase_velocity_correlation": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Mixed Sport: Super Pack $150",
+      "sport": "mixed",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 34.42333333333333,
+        "significant_deviations": 14,
+        "total_observations": 14
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Mixed Sport: Super Pack $150",
+          "sport": "mixed",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 34.42333333333333,
+            "significant_deviations": 14,
+            "total_observations": 14
+          }
+        },
+        "chi_square": {
+          "pack_name": "Mixed Sport: Super Pack $150",
+          "sport": "mixed",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Mixed Sport: Super Pack $150",
+          "sport": "mixed",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Mixed Sport: Super Pack $150",
+          "sport": "mixed",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Mixed Sport: Super Pack $150",
+          "sport": "mixed",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": -0.18550530439235222,
+            "chase_velocity_correlation": -0.18550530439235216
+          }
+        }
+      }
+    },
+    {
+      "name": "Mixed Sport: Ultra Pack $500",
+      "sport": "mixed",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 59.34388888888888,
+        "significant_deviations": 6,
+        "total_observations": 6
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Mixed Sport: Ultra Pack $500",
+          "sport": "mixed",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 59.34388888888888,
+            "significant_deviations": 6,
+            "total_observations": 6
+          }
+        },
+        "chi_square": {
+          "pack_name": "Mixed Sport: Ultra Pack $500",
+          "sport": "mixed",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Mixed Sport: Ultra Pack $500",
+          "sport": "mixed",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Mixed Sport: Ultra Pack $500",
+          "sport": "mixed",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Mixed Sport: Ultra Pack $500",
+          "sport": "mixed",
+          "test_type": "velocity_correlation",
+          "verdict": "Inconclusive",
+          "confidence": 0.4,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": -0.42752592974136777,
+            "chase_velocity_correlation": -0.4275259297413677
+          }
+        }
+      }
+    },
+    {
+      "name": "Football: $75",
+      "sport": "football",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 113.41641025641023,
+        "significant_deviations": 26,
+        "total_observations": 26
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Football: $75",
+          "sport": "football",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 113.41641025641023,
+            "significant_deviations": 26,
+            "total_observations": 26
+          }
+        },
+        "chi_square": {
+          "pack_name": "Football: $75",
+          "sport": "football",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Football: $75",
+          "sport": "football",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Football: $75",
+          "sport": "football",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Football: $75",
+          "sport": "football",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0.16969751990183193,
+            "chase_velocity_correlation": 0.17930729004366425
+          }
+        }
+      }
+    },
+    {
+      "name": "Baseball: Mega Pack $250",
+      "sport": "baseball",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 269.02250000000004,
+        "significant_deviations": 4,
+        "total_observations": 4
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Baseball: Mega Pack $250",
+          "sport": "baseball",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 269.02250000000004,
+            "significant_deviations": 4,
+            "total_observations": 4
+          }
+        },
+        "chi_square": {
+          "pack_name": "Baseball: Mega Pack $250",
+          "sport": "baseball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Baseball: Mega Pack $250",
+          "sport": "baseball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Baseball: Mega Pack $250",
+          "sport": "baseball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Baseball: Mega Pack $250",
+          "sport": "baseball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0.006161400752810718,
+            "chase_velocity_correlation": 0.0061614007528107105
           }
         }
       }
@@ -587,9 +1242,131 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
-            "grail_velocity_correlation": -0.18015507971481134,
-            "chase_velocity_correlation": -0.18015507971481137
+            "observations": 23,
+            "grail_velocity_correlation": -0.2154406671710884,
+            "chase_velocity_correlation": -0.21544066717108845
+          }
+        }
+      }
+    },
+    {
+      "name": "Basketball: Mega Pack $250",
+      "sport": "basketball",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 81.72333333333333,
+        "significant_deviations": 6,
+        "total_observations": 6
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Basketball: Mega Pack $250",
+          "sport": "basketball",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 81.72333333333333,
+            "significant_deviations": 6,
+            "total_observations": 6
+          }
+        },
+        "chi_square": {
+          "pack_name": "Basketball: Mega Pack $250",
+          "sport": "basketball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Basketball: Mega Pack $250",
+          "sport": "basketball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Basketball: Mega Pack $250",
+          "sport": "basketball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Basketball: Mega Pack $250",
+          "sport": "basketball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": -0.13926261053902764,
+            "chase_velocity_correlation": -0.13926261053902764
+          }
+        }
+      }
+    },
+    {
+      "name": "Baseball: $75",
+      "sport": "baseball",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 10.104448051948054,
+        "significant_deviations": 26,
+        "total_observations": 28
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Baseball: $75",
+          "sport": "baseball",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 10.104448051948054,
+            "significant_deviations": 26,
+            "total_observations": 28
+          }
+        },
+        "chi_square": {
+          "pack_name": "Baseball: $75",
+          "sport": "baseball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Baseball: $75",
+          "sport": "baseball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Baseball: $75",
+          "sport": "baseball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Baseball: $75",
+          "sport": "baseball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": -0.2899317173144599,
+            "chase_velocity_correlation": -0.1264402131332752
           }
         }
       }
@@ -640,9 +1417,306 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
+            "observations": 23,
             "grail_velocity_correlation": 0,
             "chase_velocity_correlation": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Basketball: $75",
+      "sport": "basketball",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.7,
+      "details": {
+        "average_deviation_pct": 8.901,
+        "significant_deviations": 7,
+        "total_observations": 10
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Basketball: $75",
+          "sport": "basketball",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.7,
+          "details": {
+            "average_deviation_pct": 8.901,
+            "significant_deviations": 7,
+            "total_observations": 10
+          }
+        },
+        "chi_square": {
+          "pack_name": "Basketball: $75",
+          "sport": "basketball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Basketball: $75",
+          "sport": "basketball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Basketball: $75",
+          "sport": "basketball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Basketball: $75",
+          "sport": "basketball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0,
+            "chase_velocity_correlation": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Football: Infinity Pack $1,000",
+      "sport": "football",
+      "verdict": "Insufficient Data",
+      "confidence": 0,
+      "details": {},
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Football: Infinity Pack $1,000",
+          "sport": "football",
+          "test_type": "depletion_rate",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "chi_square": {
+          "pack_name": "Football: Infinity Pack $1,000",
+          "sport": "football",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Football: Infinity Pack $1,000",
+          "sport": "football",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Football: Infinity Pack $1,000",
+          "sport": "football",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Football: Infinity Pack $1,000",
+          "sport": "football",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0,
+            "chase_velocity_correlation": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Mixed Sport: Mega Pack $250",
+      "sport": "mixed",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 68.04333333333332,
+        "significant_deviations": 10,
+        "total_observations": 10
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Mixed Sport: Mega Pack $250",
+          "sport": "mixed",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 68.04333333333332,
+            "significant_deviations": 10,
+            "total_observations": 10
+          }
+        },
+        "chi_square": {
+          "pack_name": "Mixed Sport: Mega Pack $250",
+          "sport": "mixed",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Mixed Sport: Mega Pack $250",
+          "sport": "mixed",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Mixed Sport: Mega Pack $250",
+          "sport": "mixed",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Mixed Sport: Mega Pack $250",
+          "sport": "mixed",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": -0.006024055822936713,
+            "chase_velocity_correlation": 0.01476592843108982
+          }
+        }
+      }
+    },
+    {
+      "name": "Football: Mega Pack $250",
+      "sport": "football",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 23.294285714285714,
+        "significant_deviations": 14,
+        "total_observations": 14
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Football: Mega Pack $250",
+          "sport": "football",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 23.294285714285714,
+            "significant_deviations": 14,
+            "total_observations": 14
+          }
+        },
+        "chi_square": {
+          "pack_name": "Football: Mega Pack $250",
+          "sport": "football",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Football: Mega Pack $250",
+          "sport": "football",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Football: Mega Pack $250",
+          "sport": "football",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Football: Mega Pack $250",
+          "sport": "football",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": -0.056238500355093576,
+            "chase_velocity_correlation": -0.056238500355093556
+          }
+        }
+      }
+    },
+    {
+      "name": "Basketball: Ultra Pack $500",
+      "sport": "basketball",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 11.596666666666664,
+        "significant_deviations": 2,
+        "total_observations": 2
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Basketball: Ultra Pack $500",
+          "sport": "basketball",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 11.596666666666664,
+            "significant_deviations": 2,
+            "total_observations": 2
+          }
+        },
+        "chi_square": {
+          "pack_name": "Basketball: Ultra Pack $500",
+          "sport": "basketball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Basketball: Ultra Pack $500",
+          "sport": "basketball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Basketball: Ultra Pack $500",
+          "sport": "basketball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Basketball: Ultra Pack $500",
+          "sport": "basketball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0.045454545454545456,
+            "chase_velocity_correlation": 0.057763419226095444
           }
         }
       }
@@ -653,9 +1727,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 20.243333333333336,
-        "significant_deviations": 6,
-        "total_observations": 6
+        "average_deviation_pct": 29.33125,
+        "significant_deviations": 8,
+        "total_observations": 8
       },
       "allTests": {
         "depletion_rate": {
@@ -665,9 +1739,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 20.243333333333336,
-            "significant_deviations": 6,
-            "total_observations": 6
+            "average_deviation_pct": 29.33125,
+            "significant_deviations": 8,
+            "total_observations": 8
           }
         },
         "chi_square": {
@@ -701,15 +1775,215 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 13,
-            "grail_velocity_correlation": 0.08715806610571848,
-            "chase_velocity_correlation": 0.08650578204569559
+            "observations": 23,
+            "grail_velocity_correlation": 0.04639036344863923,
+            "chase_velocity_correlation": 0.04816808211079954
+          }
+        }
+      }
+    },
+    {
+      "name": "Football: Ultra Pack $500",
+      "sport": "football",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.5,
+      "details": {
+        "average_deviation_pct": 7.69,
+        "significant_deviations": 1,
+        "total_observations": 2
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Football: Ultra Pack $500",
+          "sport": "football",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.5,
+          "details": {
+            "average_deviation_pct": 7.69,
+            "significant_deviations": 1,
+            "total_observations": 2
+          }
+        },
+        "chi_square": {
+          "pack_name": "Football: Ultra Pack $500",
+          "sport": "football",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Football: Ultra Pack $500",
+          "sport": "football",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Football: Ultra Pack $500",
+          "sport": "football",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Football: Ultra Pack $500",
+          "sport": "football",
+          "test_type": "velocity_correlation",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.9798499429771823,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0.9798499429771819,
+            "chase_velocity_correlation": 0.9798499429771823,
+            "pattern_type": "Chase hits correlate with buying velocity"
+          }
+        }
+      }
+    },
+    {
+      "name": "Baseball: Super Pack $150",
+      "sport": "baseball",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 171.51714285714283,
+        "significant_deviations": 14,
+        "total_observations": 14
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Baseball: Super Pack $150",
+          "sport": "baseball",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 171.51714285714283,
+            "significant_deviations": 14,
+            "total_observations": 14
+          }
+        },
+        "chi_square": {
+          "pack_name": "Baseball: Super Pack $150",
+          "sport": "baseball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Baseball: Super Pack $150",
+          "sport": "baseball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Baseball: Super Pack $150",
+          "sport": "baseball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Baseball: Super Pack $150",
+          "sport": "baseball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0.07232281309658611,
+            "chase_velocity_correlation": 0.07232281309658611
+          }
+        }
+      }
+    },
+    {
+      "name": "Basketball: Infinity Pack $1,000",
+      "sport": "basketball",
+      "verdict": "Insufficient Data",
+      "confidence": 0,
+      "details": {},
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Basketball: Infinity Pack $1,000",
+          "sport": "basketball",
+          "test_type": "depletion_rate",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "chi_square": {
+          "pack_name": "Basketball: Infinity Pack $1,000",
+          "sport": "basketball",
+          "test_type": "chi_square_temporal",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "clustering": {
+          "pack_name": "Basketball: Infinity Pack $1,000",
+          "sport": "basketball",
+          "test_type": "clustering",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "grail_timing": {
+          "pack_name": "Basketball: Infinity Pack $1,000",
+          "sport": "basketball",
+          "test_type": "grail_timing",
+          "verdict": "Insufficient Data",
+          "confidence": 0,
+          "details": {}
+        },
+        "velocity_correlation": {
+          "pack_name": "Basketball: Infinity Pack $1,000",
+          "sport": "basketball",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 23,
+            "grail_velocity_correlation": 0,
+            "chase_velocity_correlation": 0
           }
         }
       }
     }
   ],
   "depletionData": [
+    {
+      "pack_name": "Baseball: Infinity Pack $1,000",
+      "sport": "baseball",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 23.521666666666665,
+        "significant_deviations": 5,
+        "total_observations": 6
+      }
+    },
+    {
+      "pack_name": "Mixed Sport: Infinity Pack $1,000",
+      "sport": "mixed",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 8.025,
+        "significant_deviations": 2,
+        "total_observations": 2
+      }
+    },
     {
       "pack_name": "Pokemon 10s Only: $75",
       "sport": "pokemon",
@@ -753,9 +2027,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 36.088125,
-        "significant_deviations": 16,
-        "total_observations": 16
+        "average_deviation_pct": 25.226282051282052,
+        "significant_deviations": 26,
+        "total_observations": 26
       }
     },
     {
@@ -765,9 +2039,45 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 271.2688888888889,
+        "average_deviation_pct": 166.01933333333335,
+        "significant_deviations": 20,
+        "total_observations": 20
+      }
+    },
+    {
+      "pack_name": "Football: Super Pack $150",
+      "sport": "football",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 73.3075,
+        "significant_deviations": 20,
+        "total_observations": 20
+      }
+    },
+    {
+      "pack_name": "Basketball: Super Pack $150",
+      "sport": "basketball",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 26.513611111111107,
         "significant_deviations": 12,
         "total_observations": 12
+      }
+    },
+    {
+      "pack_name": "Mixed Sport: $75",
+      "sport": "mixed",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 25.825,
+        "significant_deviations": 4,
+        "total_observations": 4
       }
     },
     {
@@ -777,9 +2087,57 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 129.19055555555556,
-        "significant_deviations": 11,
-        "total_observations": 12
+        "average_deviation_pct": 91.21425925925928,
+        "significant_deviations": 17,
+        "total_observations": 18
+      }
+    },
+    {
+      "pack_name": "Mixed Sport: Super Pack $150",
+      "sport": "mixed",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 34.42333333333333,
+        "significant_deviations": 14,
+        "total_observations": 14
+      }
+    },
+    {
+      "pack_name": "Mixed Sport: Ultra Pack $500",
+      "sport": "mixed",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 59.34388888888888,
+        "significant_deviations": 6,
+        "total_observations": 6
+      }
+    },
+    {
+      "pack_name": "Football: $75",
+      "sport": "football",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 113.41641025641023,
+        "significant_deviations": 26,
+        "total_observations": 26
+      }
+    },
+    {
+      "pack_name": "Baseball: Mega Pack $250",
+      "sport": "baseball",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 269.02250000000004,
+        "significant_deviations": 4,
+        "total_observations": 4
       }
     },
     {
@@ -795,20 +2153,142 @@
       }
     },
     {
+      "pack_name": "Basketball: Mega Pack $250",
+      "sport": "basketball",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 81.72333333333333,
+        "significant_deviations": 6,
+        "total_observations": 6
+      }
+    },
+    {
+      "pack_name": "Baseball: $75",
+      "sport": "baseball",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 10.104448051948054,
+        "significant_deviations": 26,
+        "total_observations": 28
+      }
+    },
+    {
+      "pack_name": "Basketball: $75",
+      "sport": "basketball",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.7,
+      "details": {
+        "average_deviation_pct": 8.901,
+        "significant_deviations": 7,
+        "total_observations": 10
+      }
+    },
+    {
+      "pack_name": "Mixed Sport: Mega Pack $250",
+      "sport": "mixed",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 68.04333333333332,
+        "significant_deviations": 10,
+        "total_observations": 10
+      }
+    },
+    {
+      "pack_name": "Football: Mega Pack $250",
+      "sport": "football",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 23.294285714285714,
+        "significant_deviations": 14,
+        "total_observations": 14
+      }
+    },
+    {
+      "pack_name": "Basketball: Ultra Pack $500",
+      "sport": "basketball",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 11.596666666666664,
+        "significant_deviations": 2,
+        "total_observations": 2
+      }
+    },
+    {
       "pack_name": "Pokemon: Ultra Pack $500",
       "sport": "pokemon",
       "test_type": "depletion_rate",
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 20.243333333333336,
-        "significant_deviations": 6,
-        "total_observations": 6
+        "average_deviation_pct": 29.33125,
+        "significant_deviations": 8,
+        "total_observations": 8
+      }
+    },
+    {
+      "pack_name": "Football: Ultra Pack $500",
+      "sport": "football",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.5,
+      "details": {
+        "average_deviation_pct": 7.69,
+        "significant_deviations": 1,
+        "total_observations": 2
+      }
+    },
+    {
+      "pack_name": "Baseball: Super Pack $150",
+      "sport": "baseball",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 171.51714285714283,
+        "significant_deviations": 14,
+        "total_observations": 14
       }
     }
   ],
   "grailTiming": [],
   "crossPackPatterns": [
+    {
+      "sport": "baseball",
+      "pack_count": 5,
+      "test_type": "cross_pack_patterns",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "pattern_detections": 4,
+        "random_detections": 0,
+        "analyzed_packs": 5,
+        "pattern_type": "Consistent non-random behavior across sport"
+      }
+    },
+    {
+      "sport": "mixed",
+      "pack_count": 6,
+      "test_type": "cross_pack_patterns",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "pattern_detections": 5,
+        "random_detections": 0,
+        "analyzed_packs": 6,
+        "pattern_type": "Consistent non-random behavior across sport"
+      }
+    },
     {
       "sport": "og_pokemon",
       "pack_count": 4,
@@ -833,25 +2313,52 @@
         "analyzed_packs": 8,
         "pattern_type": "Consistent non-random behavior across sport"
       }
+    },
+    {
+      "sport": "football",
+      "pack_count": 5,
+      "test_type": "cross_pack_patterns",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "pattern_detections": 4,
+        "random_detections": 0,
+        "analyzed_packs": 5,
+        "pattern_type": "Consistent non-random behavior across sport"
+      }
+    },
+    {
+      "sport": "basketball",
+      "pack_count": 5,
+      "test_type": "cross_pack_patterns",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "pattern_detections": 4,
+        "random_detections": 0,
+        "analyzed_packs": 5,
+        "pattern_type": "Consistent non-random behavior across sport"
+      }
     }
   ],
   "recommendations": [
     "Need more data points for conclusive analysis"
   ],
   "statisticalNotes": [
-    "Analyzed 12 packs across 16 snapshots",
+    "Analyzed 33 packs across 26 snapshots",
     "Chi-square tests use 95% confidence intervals",
     "Correlation analysis requires minimum 5 observations per pack",
     "Pattern detection threshold: 40% of tests showing non-random behavior",
-    "Minimum 3 snapshots per pack required for inclusion in analysis"
+    "Monte Carlo simulations run 1000 iterations per pack",
+    "Wald-Wolfowitz run tests check for sequential randomness",
+    "Time-of-day analysis requires data across 6+ different hours"
   ],
   "metadata": {
     "script_version": "1.0.0",
     "node_version": "v22.22.0",
-    "execution_time_ms": 7,
+    "execution_time_ms": 12,
     "cli_args": [
-      "--pack",
-      "Pokemon"
+      "--quiet"
     ]
   }
 }
