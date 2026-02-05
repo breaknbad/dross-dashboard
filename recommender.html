@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pack Recommender | Break'n Bad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0f1a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a2332 0%, #0a0f1a 100%);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 3px solid #f97316;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f97316;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Strategy Buttons */
+        .strategy-picker {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .strategy-btn {
+            background: #1a2332;
+            border: 2px solid #374151;
+            color: #e2e8f0;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+            min-width: 150px;
+        }
+        
+        .strategy-btn:hover {
+            border-color: #f97316;
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+        
+        .strategy-btn.active {
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            border-color: #fbbf24;
+            color: #0a0f1a;
+        }
+        
+        /* Cards */
+        .card {
+            background: #1a2332;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: #f97316;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.1);
+        }
+        
+        .pack-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pack-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .pack-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #f97316;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pack-sport {
+            background: #374151;
+            color: #e2e8f0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .pack-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fbbf24;
+        }
+        
+        .pack-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #f97316;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .heat-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .heat-red-hot {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        .heat-hot {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+        }
+        
+        .heat-warm {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #0a0f1a;
+        }
+        
+        .heat-lukewarm {
+            background: #4b5563;
+            color: #e2e8f0;
+        }
+        
+        .heat-cool {
+            background: #374151;
+            color: #9ca3af;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Sections */
+        .section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Sport Tabs */
+        .sport-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .sport-tab {
+            background: #1a2332;
+            border: 2px solid #374151;
+            color: #e2e8f0;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .sport-tab:hover {
+            border-color: #f97316;
+        }
+        
+        .sport-tab.active {
+            background: #f97316;
+            border-color: #f97316;
+            color: #0a0f1a;
+        }
+        
+        /* Pack Grid */
+        .pack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* Pack Details */
+        .pack-details {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #374151;
+        }
+        
+        .tier-breakdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tier-item {
+            text-align: center;
+            padding: 0.75rem;
+            background: #0f172a;
+            border-radius: 8px;
+        }
+        
+        .tier-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tier-grail { color: #a855f7; }
+        .tier-chase { color: #3b82f6; }
+        .tier-base { color: #10b981; }
+        
+        .expand-btn {
+            background: #374151;
+            border: none;
+            color: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+        
+        .expand-btn:hover {
+            background: #4b5563;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 4rem 0;
+            color: #94a3b8;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #374151;
+            border-top: 4px solid #f97316;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .strategy-picker {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .strategy-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .pack-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pack-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .sport-tabs {
+                flex-direction: column;
+            }
+            
+            .sport-tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .pack-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .tier-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">BREAK'N BAD</div>
+            <div class="tagline">Premium Sports Card Breaking</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>What Should I Rip?</h1>
+            <p>Find your perfect pack with our intelligent recommendations. Choose your strategy and let us guide you to the best breaks.</p>
+            
+            <div class="strategy-picker">
+                <button class="strategy-btn active" data-strategy="all">All Strategies</button>
+                <button class="strategy-btn" data-strategy="Best Odds">Best Odds</button>
+                <button class="strategy-btn" data-strategy="Grail Hunter">Grail Hunter</button>
+                <button class="strategy-btn" data-strategy="Chase the Heat">Chase the Heat</button>
+                <button class="strategy-btn" data-strategy="Budget Friendly">Budget Friendly</button>
+                <button class="strategy-btn" data-strategy="High Roller">High Roller</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Packs Section -->
+    <section class="section" id="recommended">
+        <div class="container">
+            <h2 class="section-title">Recommended Packs</h2>
+            <div id="recommended-packs" class="pack-grid">
+                <!-- Recommended packs will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- By Sport Section -->
+    <section class="section" id="by-sport">
+        <div class="container">
+            <h2 class="section-title">Browse by Sport</h2>
+            
+            <div class="sport-tabs">
+                <button class="sport-tab active" data-sport="all">All Sports</button>
+                <button class="sport-tab" data-sport="football">🏈 Football</button>
+                <button class="sport-tab" data-sport="basketball">🏀 Basketball</button>
+                <button class="sport-tab" data-sport="baseball">⚾ Baseball</button>
+                <button class="sport-tab" data-sport="pokemon">⚡ Pokémon</button>
+                <button class="sport-tab" data-sport="mixed">🎯 Mixed</button>
+            </div>
+            
+            <div id="sport-packs" class="pack-grid">
+                <!-- Sport-filtered packs will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Hot Right Now Section -->
+    <section class="section" id="hot-now">
+        <div class="container">
+            <h2 class="section-title">🔥 Hot Right Now</h2>
+            <div id="hot-packs" class="pack-grid">
+                <!-- Hot packs will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Loading pack data...</p>
+    </div>
+
+    <script>
+        class PackRecommender {
+            constructor() {
+                this.data = null;
+                this.currentStrategy = 'all';
+                this.currentSport = 'all';
+                this.expandedPacks = new Set();
+                
+                this.init();
+            }
+            
+            async init() {
+                try {
+                    await this.loadData();
+                    this.setupEventListeners();
+                    this.renderAll();
+                    document.getElementById('loading').style.display = 'none';
+                } catch (error) {
+                    console.error('Failed to initialize:', error);
+                    this.showError('Failed to load pack data. Please try again later.');
+                }
+            }
+            
+            async loadData() {
+                const response = await fetch('./recommender-data.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load data');
+                }
+                this.data = await response.json();
+            }
+            
+            setupEventListeners() {
+                // Strategy buttons
+                document.querySelectorAll('.strategy-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.strategy-btn').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.currentStrategy = e.target.dataset.strategy;
+                        this.renderRecommended();
+                    });
+                });
+                
+                // Sport tabs
+                document.querySelectorAll('.sport-tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        document.querySelectorAll('.sport-tab').forEach(t => t.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.currentSport = e.target.dataset.sport;
+                        this.renderBySport();
+                    });
+                });
+            }
+            
+            filterPacksByStrategy(packs, strategy) {
+                if (strategy === 'all') return packs;
+                return packs.filter(pack => pack.strategies.includes(strategy));
+            }
+            
+            filterPacksBySport(packs, sport) {
+                if (sport === 'all') return packs;
+                return packs.filter(pack => pack.sport === sport);
+            }
+            
+            getHotPacks(packs) {
+                return packs.filter(pack => pack.heat.score >= 60).slice(0, 6);
+            }
+            
+            createPackCard(pack) {
+                const heatClass = `heat-${pack.heat.label.toLowerCase().replace(' ', '-')}`;
+                const sportEmojis = {
+                    football: '🏈',
+                    basketball: '🏀',
+                    baseball: '⚾',
+                    pokemon: '⚡',
+                    mixed: '🎯',
+                    other: '🃏'
+                };
+                
+                const isExpanded = this.expandedPacks.has(pack.id);
+                
+                return `
+                    <div class="card pack-card">
+                        <div class="heat-badge ${heatClass}">${pack.heat.label}</div>
+                        
+                        <div class="pack-header">
+                            <div>
+                                <div class="pack-title">${pack.title}</div>
+                                <div class="pack-sport">${sportEmojis[pack.sport] || '🃏'} ${pack.sport.toUpperCase()}</div>
+                            </div>
+                            <div class="pack-price">${pack.priceDisplay}</div>
+                        </div>
+                        
+                        <div class="pack-stats">
+                            <div class="stat">
+                                <div class="stat-value">${pack.remaining.total}</div>
+                                <div class="stat-label">Remaining</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">${pack.remaining.grails}</div>
+                                <div class="stat-label">Grails Left</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">${pack.odds.chasePct}%</div>
+                                <div class="stat-label">Chase Odds</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">${pack.heat.score}/100</div>
+                                <div class="stat-label">Heat Score</div>
+                            </div>
+                        </div>
+                        
+                        <button class="expand-btn" onclick="packRecommender.toggleDetails('${pack.id}')">
+                            ${isExpanded ? 'Hide' : 'Show'} Details
+                        </button>
+                        
+                        <div class="pack-details ${isExpanded ? '' : 'hidden'}" id="details-${pack.id}">
+                            <div class="tier-breakdown">
+                                <div class="tier-item">
+                                    <div class="tier-name tier-grail">💎 Grails</div>
+                                    <div>${pack.remaining.grails}/${pack.total.grails}</div>
+                                    <div style="font-size: 0.8rem; color: #94a3b8;">${pack.odds.grailPct}% odds</div>
+                                </div>
+                                <div class="tier-item">
+                                    <div class="tier-name tier-chase">🎲 Chases</div>
+                                    <div>${pack.remaining.chases}/${pack.total.chases}</div>
+                                    <div style="font-size: 0.8rem; color: #94a3b8;">${pack.odds.chasePct}% odds</div>
+                                </div>
+                                <div class="tier-item">
+                                    <div class="tier-name tier-base">📋 Base</div>
+                                    <div>${pack.remaining.base}/${pack.total.base}</div>
+                                    <div style="font-size: 0.8rem; color: #94a3b8;">${pack.odds.basePct}% odds</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            toggleDetails(packId) {
+                const detailsEl = document.getElementById(`details-${packId}`);
+                const button = detailsEl.previousElementSibling;
+                
+                if (this.expandedPacks.has(packId)) {
+                    this.expandedPacks.delete(packId);
+                    detailsEl.classList.add('hidden');
+                    button.textContent = 'Show Details';
+                } else {
+                    this.expandedPacks.add(packId);
+                    detailsEl.classList.remove('hidden');
+                    button.textContent = 'Hide Details';
+                }
+            }
+            
+            renderRecommended() {
+                const filtered = this.filterPacksByStrategy(this.data.packs, this.currentStrategy);
+                const topPacks = filtered.slice(0, 6);
+                
+                document.getElementById('recommended-packs').innerHTML = 
+                    topPacks.map(pack => this.createPackCard(pack)).join('');
+            }
+            
+            renderBySport() {
+                const filtered = this.filterPacksBySport(this.data.packs, this.currentSport);
+                
+                document.getElementById('sport-packs').innerHTML = 
+                    filtered.map(pack => this.createPackCard(pack)).join('');
+            }
+            
+            renderHotPacks() {
+                const hotPacks = this.getHotPacks(this.data.packs);
+                
+                document.getElementById('hot-packs').innerHTML = 
+                    hotPacks.map(pack => this.createPackCard(pack)).join('');
+            }
+            
+            renderAll() {
+                this.renderRecommended();
+                this.renderBySport();
+                this.renderHotPacks();
+            }
+            
+            showError(message) {
+                document.getElementById('loading').innerHTML = `
+                    <div style="color: #ef4444; text-align: center; padding: 2rem;">
+                        <h3>Error</h3>
+                        <p>${message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Initialize when DOM is loaded
+        let packRecommender;
+        document.addEventListener('DOMContentLoaded', () => {
+            packRecommender = new PackRecommender();
+        });
+    </script>
+</body>
+</html>
