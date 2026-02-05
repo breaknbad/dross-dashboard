@@ -545,6 +545,224 @@
         .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
         .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--text); }
 
+        /* ─── IR Alerts Banner ─── */
+        .alerts-banner {
+            background: linear-gradient(135deg, var(--bnb-card), rgba(255,69,0,0.05));
+            border: 2px solid var(--bnb-border-hover);
+            border-radius: 20px;
+            padding: 24px 28px;
+            margin-bottom: 32px;
+            position: relative;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            animation: bannerSlide 0.8s ease;
+            box-shadow: 0 8px 32px rgba(255,69,0,0.1);
+        }
+
+        @keyframes bannerSlide {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .banner-main {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .banner-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .banner-text h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+
+        .banner-text p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        .banner-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .quick-signup {
+            text-align: center;
+        }
+
+        .keyword-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .keyword-text strong {
+            color: var(--bnb-accent);
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .phone-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .banner-divider {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 0 8px;
+        }
+
+        .banner-btn {
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .banner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,107,53,0.3);
+        }
+
+        .banner-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: var(--text-muted);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .banner-close:hover {
+            background: rgba(255,69,0,0.2);
+            color: var(--bnb-accent);
+        }
+
+        /* ─── Inline Signup Form ─── */
+        .signup-form-inline {
+            background: var(--bnb-card);
+            border: 1px solid var(--bnb-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            animation: formSlide 0.5s ease;
+        }
+
+        @keyframes formSlide {
+            from { opacity: 0; height: 0; padding: 0; margin: 0; }
+            to { opacity: 1; height: auto; padding: 24px; margin-bottom: 24px; }
+        }
+
+        .form-content h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .phone-input-inline {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .phone-input-inline:focus {
+            outline: none;
+            border-color: var(--bnb-accent);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .submit-inline {
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-inline:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(255,107,53,0.3);
+        }
+
+        .form-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        .social-proof-inline {
+            color: var(--text-muted);
+        }
+
+        .form-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .form-close:hover {
+            color: var(--text);
+        }
+
         /* ─── Mobile ─── */
         @media (max-width: 600px) {
             .page { padding: 16px 12px 40px; }
@@ -575,6 +793,63 @@
 
             .rank-badge { top: 12px; left: 12px; width: 24px; height: 24px; font-size: 0.65rem; }
             .sport-icon { top: 12px; right: 12px; font-size: 1.1rem; }
+            
+            /* Banner mobile styles */
+            .alerts-banner {
+                padding: 20px;
+                margin-bottom: 24px;
+            }
+            
+            .banner-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+            
+            .banner-main {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            
+            .banner-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+            }
+            
+            .banner-text h3 {
+                font-size: 1.1rem;
+            }
+            
+            .banner-actions {
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+            }
+            
+            .banner-btn {
+                width: 100%;
+                padding: 14px 20px;
+            }
+            
+            .signup-form-inline {
+                padding: 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .phone-input-inline {
+                width: 100%;
+            }
+            
+            .submit-inline {
+                width: 100%;
+                padding: 14px 24px;
+            }
         }
     </style>
 </head>
@@ -588,6 +863,43 @@
             <p class="subtitle">
                 <span class="live-badge"><span class="live-dot"></span> Live</span>
             </p>
+        </div>
+
+        <!-- IR Alerts Signup Banner -->
+        <div class="alerts-banner" id="alertsBanner">
+            <div class="banner-content">
+                <div class="banner-main">
+                    <div class="banner-icon">🔥</div>
+                    <div class="banner-text">
+                        <h3>Get +EV Pack Alerts</h3>
+                        <p>Be the first to know when grails are still in the pool</p>
+                    </div>
+                </div>
+                <div class="banner-actions">
+                    <div class="quick-signup">
+                        <div class="keyword-text">Text <strong>RIPS</strong></div>
+                        <div class="phone-text">to (555) 123-4567</div>
+                    </div>
+                    <div class="banner-divider">or</div>
+                    <button class="banner-btn" onclick="showSignupForm()">Enter Phone</button>
+                </div>
+            </div>
+            <button class="banner-close" onclick="hideBanner()" aria-label="Close banner">×</button>
+        </div>
+
+        <!-- Inline Signup Form (hidden by default) -->
+        <div class="signup-form-inline" id="signupFormInline" style="display: none;">
+            <div class="form-content">
+                <h4>Get IR Pack Alerts</h4>
+                <div class="form-row">
+                    <input type="tel" id="phoneInputInline" placeholder="(555) 123-4567" class="phone-input-inline">
+                    <button onclick="submitInlineSignup()" class="submit-inline">Subscribe</button>
+                </div>
+                <div class="form-footer">
+                    <span class="social-proof-inline">Join 127+ smart buyers</span>
+                    <button class="form-close" onclick="hideSignupForm()">Cancel</button>
+                </div>
+            </div>
         </div>
 
         <div class="pack-list" id="packList"></div>
@@ -606,13 +918,13 @@
 
     <script>
         const PACK_DATA = {
-  "timestamp": "2026-02-05T16:00:56.060Z",
+  "timestamp": "2026-02-05T16:30:41.778Z",
   "packs": [
     {
       "title": "Mixed Sport: Infinity Pack $1,000",
       "price": 1000,
       "remaining": 75,
-      "totalOriginal": 780,
+      "totalOriginal": 786,
       "grailCount": 2,
       "chaseCount": 11,
       "grailRangeLow": 5000,
@@ -635,7 +947,7 @@
       "title": "Pokemon: Ultra Pack $500",
       "price": 500,
       "remaining": 728,
-      "totalOriginal": 1891,
+      "totalOriginal": 1892,
       "grailCount": 14,
       "chaseCount": 110,
       "grailRangeLow": 2500,
@@ -655,33 +967,10 @@
       "categories": []
     },
     {
-      "title": "Football: $75",
-      "price": 75,
-      "remaining": 143,
-      "totalOriginal": 7781,
-      "grailCount": 3,
-      "chaseCount": 20,
-      "grailRangeLow": 400,
-      "grailRangeHigh": 500,
-      "chaseRangeLow": 130,
-      "chaseRangeHigh": 150,
-      "grailPct": 2.1,
-      "chasePct": 13.99,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 3 Grails Left!",
-          "weight": 95
-        }
-      ],
-      "categories": []
-    },
-    {
       "title": "Football: Mega Pack $250",
       "price": 250,
       "remaining": 92,
-      "totalOriginal": 2389,
+      "totalOriginal": 2390,
       "grailCount": 2,
       "chaseCount": 10,
       "grailRangeLow": 1263,
@@ -727,7 +1016,7 @@
       "title": "Basketball: Ultra Pack $500",
       "price": 500,
       "remaining": 211,
-      "totalOriginal": 694,
+      "totalOriginal": 695,
       "grailCount": 4,
       "chaseCount": 26,
       "grailRangeLow": 2605,
@@ -770,70 +1059,70 @@
       "categories": []
     },
     {
-      "title": "Mixed Sport: Mega Pack $250",
-      "price": 250,
-      "remaining": 114,
-      "totalOriginal": 2786,
-      "grailCount": 2,
-      "chaseCount": 13,
-      "grailRangeLow": 1250,
-      "grailRangeHigh": 1559,
-      "chaseRangeLow": 415,
-      "chaseRangeHigh": 593,
-      "grailPct": 1.75,
-      "chasePct": 11.4,
+      "title": "Pokemon: Super Pack $150",
+      "price": 150,
+      "remaining": 200,
+      "totalOriginal": 6788,
+      "grailCount": 1,
+      "chaseCount": 29,
+      "grailRangeLow": 759.95,
+      "grailRangeHigh": 890,
+      "chaseRangeLow": 164,
+      "chaseRangeHigh": 395.12,
+      "grailPct": 0.5,
+      "chasePct": 14.5,
       "tags": [
         {
           "type": "grail",
           "icon": "💎",
-          "label": "Only 2 Grails Left!",
+          "label": "Only 1 Grail Left!",
           "weight": 95
         }
       ],
       "categories": []
     },
     {
-      "title": "Basketball: Mega Pack $250",
-      "price": 250,
-      "remaining": 201,
-      "totalOriginal": 779,
-      "grailCount": 3,
-      "chaseCount": 24,
-      "grailRangeLow": 1275,
-      "grailRangeHigh": 1445,
-      "chaseRangeLow": 200.66,
-      "chaseRangeHigh": 535,
-      "grailPct": 1.49,
-      "chasePct": 11.94,
+      "title": "Football: Ultra Pack $500",
+      "price": 500,
+      "remaining": 101,
+      "totalOriginal": 651,
+      "grailCount": 0,
+      "chaseCount": 16,
+      "grailRangeLow": 2600,
+      "grailRangeHigh": 2820,
+      "chaseRangeLow": 660,
+      "chaseRangeHigh": 1000,
+      "grailPct": 0,
+      "chasePct": 15.84,
       "tags": [
         {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 3 Grails Left!",
-          "weight": 95
+          "type": "chase",
+          "icon": "🎯",
+          "label": "Chase Heavy",
+          "weight": 60
         }
       ],
       "categories": []
     },
     {
-      "title": "Baseball: Mega Pack $250",
-      "price": 250,
-      "remaining": 160,
-      "totalOriginal": 2762,
-      "grailCount": 2,
-      "chaseCount": 19,
-      "grailRangeLow": 1281,
-      "grailRangeHigh": 1440,
-      "chaseRangeLow": 405,
-      "chaseRangeHigh": 765,
-      "grailPct": 1.25,
-      "chasePct": 11.88,
+      "title": "Baseball: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 11,
+      "totalOriginal": 890,
+      "grailCount": 0,
+      "chaseCount": 1,
+      "grailRangeLow": 4878,
+      "grailRangeHigh": 5948,
+      "chaseRangeLow": 1700,
+      "chaseRangeHigh": 2139,
+      "grailPct": 0,
+      "chasePct": 9.09,
       "tags": [
         {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
+          "type": "scarce",
+          "icon": "⚡",
+          "label": "Only 11 Left",
+          "weight": 100
         }
       ],
       "categories": []
@@ -988,6 +1277,155 @@
         }
 
         render();
+
+        // IR Alerts Banner Functions
+        function showSignupForm() {
+            document.getElementById('signupFormInline').style.display = 'block';
+            document.getElementById('phoneInputInline').focus();
+            
+            // Track interaction
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'ir_banner_clicked', {
+                    'event_category': 'engagement',
+                    'event_label': 'enter_phone_button'
+                });
+            }
+        }
+        
+        function hideSignupForm() {
+            document.getElementById('signupFormInline').style.display = 'none';
+        }
+        
+        function hideBanner() {
+            document.getElementById('alertsBanner').style.display = 'none';
+            
+            // Track banner dismissal
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'ir_banner_dismissed', {
+                    'event_category': 'engagement'
+                });
+            }
+            
+            // Remember preference for session
+            sessionStorage.setItem('ir_banner_dismissed', 'true');
+        }
+        
+        async function submitInlineSignup() {
+            const phoneInput = document.getElementById('phoneInputInline');
+            const submitBtn = document.querySelector('.submit-inline');
+            
+            // Basic validation
+            const phone = phoneInput.value.replace(/\D/g, '');
+            if (phone.length !== 10) {
+                alert('Please enter a valid 10-digit phone number');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Subscribing...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Format phone for submission
+                const formattedPhone = `+1${phone}`;
+                
+                // Submit to backend (replace with actual endpoint)
+                const response = await fetch('/api/ir-signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        phone: formattedPhone,
+                        source: 'dashboard_banner',
+                        timestamp: new Date().toISOString(),
+                        referrer: document.referrer,
+                        user_agent: navigator.userAgent
+                    })
+                });
+                
+                if (response.ok) {
+                    // Success - show confirmation
+                    document.getElementById('signupFormInline').innerHTML = `
+                        <div class="form-content" style="text-align: center; padding: 20px;">
+                            <div style="font-size: 3rem; margin-bottom: 12px;">✅</div>
+                            <h4 style="color: var(--green); margin-bottom: 8px;">You're subscribed!</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                                You'll get alerts when +EV packs drop. Reply STOP to unsubscribe.
+                            </p>
+                        </div>
+                    `;
+                    
+                    // Track successful signup
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'ir_signup_success', {
+                            'event_category': 'conversion',
+                            'event_label': 'dashboard_banner',
+                            'value': 1
+                        });
+                    }
+                    
+                    // Hide form after 3 seconds
+                    setTimeout(() => {
+                        hideSignupForm();
+                        hideBanner();
+                    }, 3000);
+                    
+                } else {
+                    throw new Error('Signup failed');
+                }
+                
+            } catch (error) {
+                console.error('Signup error:', error);
+                
+                // Fallback: redirect to main signup page
+                window.open('https://breaknbad.github.io/ir-signup', '_blank');
+                
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Track error
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'ir_signup_error', {
+                        'event_category': 'error',
+                        'event_label': 'dashboard_banner'
+                    });
+                }
+            }
+        }
+        
+        // Phone number formatting for inline input
+        document.getElementById('phoneInputInline').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            let formattedValue = '';
+            
+            if (value.length > 0) {
+                if (value.length <= 3) {
+                    formattedValue = value;
+                } else if (value.length <= 6) {
+                    formattedValue = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+                } else {
+                    formattedValue = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                }
+            }
+            
+            e.target.value = formattedValue;
+        });
+        
+        // Check if banner should be hidden
+        if (sessionStorage.getItem('ir_banner_dismissed') === 'true') {
+            document.getElementById('alertsBanner').style.display = 'none';
+        }
+        
+        // Track page view for analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_title': 'IR Dashboard',
+                'page_location': window.location.href
+            });
+        }
     </script>
 </body>
 </html>
