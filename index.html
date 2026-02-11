@@ -579,7 +579,21 @@
         }
         
         .banner-text {
+            flex: 0;
+        }
+
+        .banner-features {
+            display: flex;
             flex: 1;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .banner-features .feature {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
         }
 
         .banner-icon {
@@ -776,6 +790,11 @@
                         <h3>Never Miss a Grail</h3>
                         <p>Get alerts when hot packs drop</p>
                     </div>
+                </div>
+                <div class="banner-features">
+                    <span class="feature">📱 Instant alerts</span>
+                    <span class="feature">💎 Grail drops</span>
+                    <span class="feature">⚡ First dibs</span>
                 </div>
                 <div class="banner-actions">
                     <a href="sms:+15742750277&body=RIPS" class="quick-signup-link">
