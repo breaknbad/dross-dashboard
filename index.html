@@ -325,6 +325,15 @@
             border: 1px solid rgba(255,107,53,0.3);
         }
 
+        /* Combined hit rate */
+        .combined-stat {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--bnb-accent-light);
+            margin: 8px 0 4px;
+            letter-spacing: -0.3px;
+        }
+
         /* Odds visual bars */
         .odds-row {
             display: flex;
@@ -1198,6 +1207,15 @@
                 const showGrailOdds = grailPct >= 3;
                 const showChaseOdds = chasePct >= 10;
 
+                // Combined hit rate
+                const combinedPct = grailPct + chasePct;
+                const combinedCount = grailCount + chaseCount;
+                const combinedLine = combinedPct >= 10 
+                    ? `🎯 ${Math.round(combinedPct)}% hit rate`
+                    : combinedCount > 0 
+                        ? `🎯 ${combinedCount} hits live`
+                        : '';
+
                 // Sold progress — need totalOriginal from data
                 const totalOrig = pack.totalOriginal || 0;
                 const soldPct = totalOrig > remaining ? Math.round(((totalOrig - remaining) / totalOrig) * 100) : 0;
@@ -1218,6 +1236,7 @@
                         <div class="pack-info">
                             <h3>${pack.title}</h3>
                             <div class="pack-tags">${tags}</div>
+                            ${combinedLine ? `<div class="combined-stat">${combinedLine}</div>` : ''}
                             <div class="odds-row">
                                 <div class="odd-block">
                                     <div class="tier-header">
