@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pack Details - Break'n Bad IR</title>
+    <style>
+        :root {
+            --bg: #0d0d0f;
+            --card: #18181b;
+            --border: #27272a;
+            --text: #fafafa;
+            --text-muted: #a1a1aa;
+            --bnb-accent: #ff6b35;
+            --bnb-accent-light: #ff8c5a;
+            --grail: #ffd700;
+            --chase: #a855f7;
+            --base: #6b7280;
+            --green: #22c55e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--text); }
+
+        .pack-header {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .pack-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pack-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .meta-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .meta-value.grail { color: var(--grail); }
+        .meta-value.chase { color: var(--chase); }
+        .meta-value.ev { color: var(--green); }
+
+        .tier-filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .tier-btn {
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--card);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tier-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text);
+        }
+
+        .tier-btn.active {
+            background: var(--bnb-accent);
+            border-color: var(--bnb-accent);
+            color: white;
+        }
+
+        .tier-btn.grail.active { background: var(--grail); border-color: var(--grail); color: #000; }
+        .tier-btn.chase.active { background: var(--chase); border-color: var(--chase); }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .card-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+        }
+
+        .card-image-container {
+            position: relative;
+            aspect-ratio: 3/4;
+            background: #111;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card-tier-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-tier-badge.grail {
+            background: var(--grail);
+            color: #000;
+        }
+
+        .card-tier-badge.chase {
+            background: var(--chase);
+            color: white;
+        }
+
+        .card-info {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .no-cards {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .no-cards h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .pack-title { font-size: 1.4rem; }
+            .pack-meta { gap: 16px; }
+            .meta-value { font-size: 1.2rem; }
+            .cards-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+            .card-info { padding: 12px; }
+            .card-title { font-size: 0.8rem; }
+            .card-value { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <a href="index.html" class="back-link">← Back to Hot Packs</a>
+        
+        <div class="pack-header" id="packHeader">
+            <div class="loading">Loading pack details...</div>
+        </div>
+
+        <div class="tier-filters" id="tierFilters" style="display: none;">
+            <button class="tier-btn active" data-tier="all">All Cards</button>
+            <button class="tier-btn grail" data-tier="GRAIL">🏆 Grails</button>
+            <button class="tier-btn chase" data-tier="CHASE">⚡ Chases</button>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid"></div>
+
+        <div class="footer">
+            <p>Card values from CardLadder. Updated every 30 minutes.</p>
+            <p>Break'n Bad IR Intelligence</p>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const packId = urlParams.get('id');
+        
+        let packData = null;
+        let currentFilter = 'all';
+
+        async function loadData() {
+            try {
+                const response = await fetch('cards-data.json');
+                const data = await response.json();
+                
+                packData = data.packs.find(p => p.repackId === packId || p.productId === packId);
+                
+                if (!packData) {
+                    document.getElementById('packHeader').innerHTML = `
+                        <div class="no-cards">
+                            <h3>Pack not found</h3>
+                            <p>This pack may have been removed or the ID is incorrect.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                renderHeader();
+                renderCards();
+                setupFilters();
+                
+            } catch (err) {
+                console.error('Error loading data:', err);
+                document.getElementById('packHeader').innerHTML = `
+                    <div class="no-cards">
+                        <h3>Error loading data</h3>
+                        <p>Please try refreshing the page.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderHeader() {
+            const grailCount = packData.cards.filter(c => c.tier === 'GRAIL').length;
+            const chaseCount = packData.cards.filter(c => c.tier === 'CHASE').length;
+            const totalValue = packData.cards.reduce((sum, c) => sum + c.value, 0) / 100;
+            
+            document.getElementById('packHeader').innerHTML = `
+                <h1 class="pack-title">${packData.title}</h1>
+                <div class="pack-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Price</span>
+                        <span class="meta-value">$${packData.price || Math.round(packData.msrpInCents / 100)}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">True EV</span>
+                        <span class="meta-value ev">$${packData.trueEV?.toFixed(0) || '—'}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Grails Left</span>
+                        <span class="meta-value grail">${grailCount}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Chases Left</span>
+                        <span class="meta-value chase">${chaseCount}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Pool Value</span>
+                        <span class="meta-value">$${totalValue.toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+            
+            document.title = `${packData.title} - Break'n Bad IR`;
+        }
+
+        function renderCards() {
+            const grid = document.getElementById('cardsGrid');
+            const cards = currentFilter === 'all' 
+                ? packData.cards 
+                : packData.cards.filter(c => c.tier === currentFilter);
+            
+            if (cards.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-cards" style="grid-column: 1 / -1;">
+                        <h3>No ${currentFilter.toLowerCase()} cards remaining</h3>
+                        <p>All cards of this tier have been pulled!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = cards.map(card => `
+                <div class="card-item">
+                    <div class="card-image-container">
+                        ${card.image 
+                            ? `<img class="card-image" src="${card.image}" alt="${card.title}" loading="lazy">`
+                            : `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-muted);">No image</div>`
+                        }
+                        <span class="card-tier-badge ${card.tier.toLowerCase()}">${card.tier}</span>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">${card.title}</div>
+                        <div class="card-value">${card.valueDisplay}</div>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('tierFilters').style.display = 'flex';
+        }
+
+        function setupFilters() {
+            document.querySelectorAll('.tier-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.tier;
+                    renderCards();
+                });
+            });
+        }
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
