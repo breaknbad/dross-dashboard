@@ -163,6 +163,12 @@
             gap: 14px;
         }
 
+        .pack-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
         .pack-card {
             background: var(--bnb-card);
             border: 1px solid var(--bnb-border);
@@ -1154,13 +1160,15 @@
                 else if (i === 1) rankClass = 'rank-2';
                 else if (i === 2) rankClass = 'rank-3';
 
+                const packUrl = `pack.html?id=${pack.repackId || pack.productId}`;
                 return `
+                    <a href="${packUrl}" class="pack-card-link">
                     <div class="pack-card ${featured}">
                         <div class="rank-badge ${rankClass}">${i + 1}</div>
                         <div class="sport-icon">${icon}</div>
 
                         <div class="pack-info">
-                            <h3><a href="pack.html?id=${pack.repackId || pack.productId}" style="color:inherit;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">${pack.title}</a></h3>
+                            <h3>${pack.title}</h3>
                             <div class="pack-tags">${tags}</div>
                             ${pitch ? `<div class="pitch-line">${pitch}</div>` : ''}
                             <div class="odds-row">
@@ -1193,6 +1201,7 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 `;
             }).join('');
         }
