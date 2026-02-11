@@ -1226,10 +1226,10 @@
                                     ${grailRange ? `<div class="value-range grail-color">${grailRange}</div>` : ''}
                                     ${grailPct >= 5 
                                         ? `<div class="odds-line grail-color">${Math.round(grailPct)}% chance</div>`
-                                        : grailCount >= 5 
-                                            ? `<div class="odds-line grail-color">${grailCount} in pool</div>`
-                                            : grailPct > 0 
-                                                ? `<div class="odds-line grail-color">1 in ${grailOneIn}</div>` 
+                                        : grailOneIn <= 15 && grailOneIn > 0
+                                            ? `<div class="odds-line grail-color">1 in ${grailOneIn} chance</div>`
+                                            : grailCount > 0
+                                                ? `<div class="odds-line grail-color">${grailCount} live</div>` 
                                                 : ''}
                                 </div>
                                 <div class="odd-block">
@@ -1239,10 +1239,10 @@
                                     ${chaseRange ? `<div class="value-range chase-color">${chaseRange}</div>` : ''}
                                     ${chasePct >= 20 
                                         ? `<div class="odds-line chase-color">${Math.round(chasePct)}% chance</div>`
-                                        : chaseCount >= 20 
-                                            ? `<div class="odds-line chase-color">${chaseCount} in pool</div>`
-                                            : chasePct > 0 
-                                                ? `<div class="odds-line chase-color">1 in ${chaseOneIn}</div>` 
+                                        : chaseOneIn <= 10 && chaseOneIn > 0
+                                            ? `<div class="odds-line chase-color">1 in ${chaseOneIn} chance</div>`
+                                            : chaseCount > 0
+                                                ? `<div class="odds-line chase-color">${chaseCount} live</div>` 
                                                 : ''}
                                 </div>
                             </div>
