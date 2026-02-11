@@ -1234,17 +1234,17 @@
                             <div class="odds-row">
                                 <div class="odd-block">
                                     <div class="tier-header">
-                                        <span class="count" style="color:var(--grail-purple)">💎 Grails</span>
+                                        <span class="count" style="color:var(--grail-purple)">💎 ${grailCount} Grail${grailCount !== 1 ? 's' : ''}</span>
                                     </div>
                                     ${grailRange ? `<div class="value-range grail-color">${grailRange}</div>` : ''}
-                                    ${showGrailOdds ? `<div class="odds-line grail-color">1 in ${grailOneIn} chance</div>` : ''}
+                                    ${grailPct > 0 ? `<div class="odds-line grail-color">${grailPct >= 1 ? Math.round(grailPct) + '% odds' : '1 in ' + grailOneIn}</div>` : ''}
                                 </div>
                                 <div class="odd-block">
                                     <div class="tier-header">
-                                        <span class="count" style="color:var(--chase-blue)">🎯 Chases</span>
+                                        <span class="count" style="color:var(--chase-blue)">⚡ ${chaseCount} Chase${chaseCount !== 1 ? 's' : ''}</span>
                                     </div>
                                     ${chaseRange ? `<div class="value-range chase-color">${chaseRange}</div>` : ''}
-                                    ${showChaseOdds ? `<div class="odds-line chase-color">1 in ${chaseOneIn} chance</div>` : ''}
+                                    ${chasePct > 0 ? `<div class="odds-line chase-color">${chasePct >= 10 ? Math.round(chasePct) + '% odds' : '1 in ' + chaseOneIn}</div>` : ''}
                                 </div>
                             </div>
                             ${soldPct >= 15 ? `
