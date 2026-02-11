@@ -1198,18 +1198,6 @@
                 const showGrailOdds = grailPct >= 3;
                 const showChaseOdds = chasePct >= 10;
 
-                // Auto pitch line
-                let pitch = '';
-                if (grailCount === 1 && grailHigh > 0) {
-                    pitch = `Last grail in the pool worth ${fmtDollar(Math.round((grailLow + grailHigh) / 2))}`;
-                } else if (grailPct >= 5 && grailHigh > 0) {
-                    pitch = `${grailPct}% shot at a grail worth up to ${fmtDollar(grailHigh)}`;
-                } else if (remaining <= 20) {
-                    pitch = `Almost gone — only ${remaining} cards left in the pool`;
-                } else if (chasePct >= 15) {
-                    pitch = `${chasePct}% of the pool is chase cards`;
-                }
-
                 // Sold progress — need totalOriginal from data
                 const totalOrig = pack.totalOriginal || 0;
                 const soldPct = totalOrig > remaining ? Math.round(((totalOrig - remaining) / totalOrig) * 100) : 0;
@@ -1230,7 +1218,6 @@
                         <div class="pack-info">
                             <h3>${pack.title}</h3>
                             <div class="pack-tags">${tags}</div>
-                            ${pitch ? `<div class="pitch-line">${pitch}</div>` : ''}
                             <div class="odds-row">
                                 <div class="odd-block">
                                     <div class="tier-header">
