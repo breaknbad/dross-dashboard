@@ -1234,17 +1234,29 @@
                             <div class="odds-row">
                                 <div class="odd-block">
                                     <div class="tier-header">
-                                        <span class="count" style="color:var(--grail-purple)">💎 ${grailCount} Grail${grailCount !== 1 ? 's' : ''}</span>
+                                        <span class="count" style="color:var(--grail-purple)">💎 Grails</span>
                                     </div>
                                     ${grailRange ? `<div class="value-range grail-color">${grailRange}</div>` : ''}
-                                    ${grailPct > 0 ? `<div class="odds-line grail-color">${grailPct >= 1 ? Math.round(grailPct) + '% odds' : '1 in ' + grailOneIn}</div>` : ''}
+                                    ${grailPct >= 5 
+                                        ? `<div class="odds-line grail-color">${Math.round(grailPct)}% chance</div>`
+                                        : grailCount >= 5 
+                                            ? `<div class="odds-line grail-color">${grailCount} in pool</div>`
+                                            : grailPct > 0 
+                                                ? `<div class="odds-line grail-color">1 in ${grailOneIn}</div>` 
+                                                : ''}
                                 </div>
                                 <div class="odd-block">
                                     <div class="tier-header">
-                                        <span class="count" style="color:var(--chase-blue)">⚡ ${chaseCount} Chase${chaseCount !== 1 ? 's' : ''}</span>
+                                        <span class="count" style="color:var(--chase-blue)">⚡ Chases</span>
                                     </div>
                                     ${chaseRange ? `<div class="value-range chase-color">${chaseRange}</div>` : ''}
-                                    ${chasePct > 0 ? `<div class="odds-line chase-color">${chasePct >= 10 ? Math.round(chasePct) + '% odds' : '1 in ' + chaseOneIn}</div>` : ''}
+                                    ${chasePct >= 20 
+                                        ? `<div class="odds-line chase-color">${Math.round(chasePct)}% chance</div>`
+                                        : chaseCount >= 20 
+                                            ? `<div class="odds-line chase-color">${chaseCount} in pool</div>`
+                                            : chasePct > 0 
+                                                ? `<div class="odds-line chase-color">1 in ${chaseOneIn}</div>` 
+                                                : ''}
                                 </div>
                             </div>
                             ${soldPct >= 15 ? `
