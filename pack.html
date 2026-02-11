@@ -232,11 +232,91 @@
             .card-title { font-size: 0.8rem; }
             .card-value { font-size: 1rem; }
         }
+
+        /* CTA Banner */
+        .alerts-banner {
+            background: linear-gradient(135deg, var(--card), rgba(255,69,0,0.08));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .banner-main {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .banner-icon {
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--bnb-accent), #ffc107);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-text h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .banner-text p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .quick-signup-link {
+            text-decoration: none;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            border-radius: 8px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .quick-signup-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255,107,53,0.3);
+        }
+
+        @media (max-width: 600px) {
+            .alerts-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            .banner-main { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
     <div class="page">
         <a href="index.html" class="back-link">← Back to Hot Packs</a>
+
+        <div class="alerts-banner">
+            <div class="banner-main">
+                <div class="banner-icon">🔥</div>
+                <div class="banner-text">
+                    <h3>Never Miss a Grail</h3>
+                    <p>Get alerts when hot packs drop</p>
+                </div>
+            </div>
+            <a href="sms:+15742750277&body=RIPS" class="quick-signup-link">
+                Text <strong>RIPS</strong> to (574) 275-0277
+            </a>
+        </div>
         
         <div class="pack-header" id="packHeader">
             <div class="loading">Loading pack details...</div>
