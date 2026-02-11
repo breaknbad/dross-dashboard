@@ -1224,9 +1224,9 @@
                                         <span class="count" style="color:var(--grail-purple)">💎 Grails</span>
                                     </div>
                                     ${grailRange ? `<div class="value-range grail-color">${grailRange}</div>` : ''}
-                                    ${grailPct >= 5 
+                                    ${grailPct >= 10 
                                         ? `<div class="odds-line grail-color">${Math.round(grailPct)}% chance</div>`
-                                        : grailOneIn <= 15 && grailOneIn > 0
+                                        : grailOneIn <= 10 && grailOneIn > 0
                                             ? `<div class="odds-line grail-color">1 in ${grailOneIn} chance</div>`
                                             : grailCount > 0
                                                 ? `<div class="odds-line grail-color">${grailCount} live</div>` 
