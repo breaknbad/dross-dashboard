@@ -1,15 +1,15 @@
 {
   "_meta": {
-    "generated_at": "2026-02-11T23:36:40.873Z",
-    "total_days": 8,
+    "generated_at": "2026-02-12T10:35:23.406Z",
+    "total_days": 9,
     "date_range": {
       "start": "2026-02-04",
-      "end": "2026-02-11"
+      "end": "2026-02-12"
     },
     "totals": {
       "tasks_completed": 15,
       "reports_generated": 7,
-      "key_actions": 97,
+      "key_actions": 108,
       "todoist_activity": 6
     }
   },
@@ -1886,6 +1886,36 @@
           ]
         },
         {
+          "name": "Discord Context Optimization Analysis",
+          "items": [
+            "#security-compliance: 152K tokens (over limit)",
+            "#general: 134K tokens (over limit)",
+            "#repacks: 124K tokens (over limit)",
+            "12 channels inject every message (`requireMention: false`)"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Created `reports/discord-context-optimization.md` with recommendations to reduce token burn:",
+            "**Problem:** New Discord sessions hitting 120K+ token limits",
+            "**Recommendations:**",
+            "1. Flip #repacks + #ir-dashboards to `requireMention: true` — ~40K+ token savings",
+            "2. Add context windows (8-24hrs) to high-volume channels",
+            "3. Consider separate session pools for monitoring vs work",
+            "**Pending Matthew decision** on tightening Discord settings."
+          ]
+        },
+        {
+          "name": "Token Usage Today",
+          "items": [
+            "~416k tokens burned",
+            "$1.22 USD cost",
+            "Ground truth: 24% weekly, 3% session",
+            "24 crons synced to Mission Control"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
           "name": "MC Task Attachments Feature (In Progress)",
           "items": [
             "Created `AttachmentUpload.tsx` — drag-drop + URL input",
@@ -1966,6 +1996,10 @@
         {
           "description": "Rule: `from:ebay.com subject:invoice` → Label + Skip inbox + Forward to kent@breaknbad.com",
           "category": "email"
+        },
+        {
+          "description": "24 crons synced to Mission Control",
+          "category": "automation"
         }
       ],
       "interactions": [],
@@ -1981,11 +2015,263 @@
       ],
       "infrastructure": [],
       "stats": {
-        "sections_count": 12,
+        "sections_count": 14,
         "tasks_completed_count": 0,
         "reports_count": 0,
-        "key_actions_count": 16,
+        "key_actions_count": 17,
         "todoist_count": 2
+      }
+    },
+    {
+      "date": "2026-02-12",
+      "title": "12 Daily Log",
+      "sections": [
+        {
+          "name": "Thread Analyzer Feature (SHIPPED)",
+          "items": [
+            "`POST /api/threads` — create thread analysis",
+            "`POST /api/threads/:id/comments` — discussion",
+            "`POST /api/threads/:id/deploy` — create task from thread",
+            "`PATCH /api/threads` — update verdict, suggested_actions",
+            "`thread_analyses` — main record with suggested_actions JSONB",
+            "`thread_comments` — discussion comments",
+            "`tasks.thread_id` — links tasks to source thread"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Full workflow now live at https://poetic-melomakarona-d51375.netlify.app/threads",
+            "**Flow:**",
+            "1. X link dropped in #threads",
+            "2. Dross fetches via fxtwitter API → posts summary",
+            "3. Bots discuss with domain perspectives",
+            "4. Suggested actions captured from discussion (not auto-extracted)",
+            "5. Deploy All or individual actions → creates MC tasks",
+            "6. Bots claim on heartbeat → work → complete",
+            "**Key components:**",
+            "**Suggested actions format:**",
+            "```json",
+            "{",
+            "\"title\": \"Action title\",",
+            "\"description\": \"Why and how - from discussion\",",
+            "\"assignee\": \"dross\",",
+            "\"scope\": \"single\" | \"all-bots\"",
+            "}",
+            "```",
+            "**Database tables:**"
+          ]
+        },
+        {
+          "name": "All-Bots Scope (SHIPPED)",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "When deploying with scope=\"all-bots\":",
+            "1. Creates parent task `[ALL BOTS] Title`",
+            "2. Spawns 4 sub-tasks (one per bot)",
+            "3. Sub-tasks linked via depends_on",
+            "4. Tagged with `scope:all-bots`, `type:parent/sub-task`",
+            "Bot consensus: Sub-tasks + Discord ping for visibility. Audit trail beats broadcast-only."
+          ]
+        },
+        {
+          "name": "Cross-Bot Sync System (SHIPPED)",
+          "items": [
+            "`shared/skills/` — SKILL.md files for all bots",
+            "`shared/protocols/` — COMMS-PROTOCOL etc",
+            "`shared/memory/` — cross-bot knowledge"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Shared directory:** `mission-control/shared/`",
+            "**New heartbeat step (0.9):**",
+            "```bash",
+            "cd ~/clawd/mission-control && git pull origin main --quiet",
+            "```",
+            "Check for updates in shared directories, ack in Discord.",
+            "**Why:** Makes all-bots scope actually work. When one bot pushes, others sync on heartbeat."
+          ]
+        },
+        {
+          "name": "UI Improvements",
+          "items": [
+            "`glass-card` class for containers",
+            "CSS variables: `--glass-border`, `--text-muted`, `--accent`",
+            "No colored badges — simple text status",
+            "Checkboxes for action selection",
+            "\"Deploy All\" button",
+            "Scope dropdown (1 bot / All bots)",
+            "Expandable action descriptions"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Threads page now uses MC design system:"
+          ]
+        },
+        {
+          "name": "First Thread Analyzed",
+          "items": [
+            "ID: b3255884-0075-4aa1-8dbb-631efeb2c958",
+            "Suggested actions about formalizing our scripts as Skills"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Alex Finn (@AlexFinn) thread about OpenAI Skills/Shell/Compaction primitives"
+          ]
+        },
+        {
+          "name": "Tasks Completed",
+          "items": [
+            "MC-1e8709a2: Thread discussion + deploy workflow",
+            "MC-66716a1d: All-bots scope implementation"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Late Night Session",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "4:30 AM ship session with Matthew. Built entire thread analyzer feature + cross-bot sync infrastructure in one sitting."
+          ]
+        },
+        {
+          "name": "IR Data Source Fix (5:06 AM)",
+          "items": [
+            "**Source file:** `ir-pack-ev.json` (NOT ir-pack-data.json)",
+            "**CardLadder values** = actual per-card prices from CardLadder",
+            "**Fanatics tier ranges** = inflated marketing estimates (DO NOT USE for EV)",
+            "ir-alert.js",
+            "ir-daily-digest.js",
+            "ir-dashboard.js",
+            "ir-ev-database.js",
+            "ir-pack-recommender.js",
+            "ir-trending.js",
+            "ir-update-dashboard.js",
+            "whale-alert-system.js",
+            "Fanatics ranges showed Football Ultra at 1.12x EV",
+            "CardLadder reality: same pack is 0.88x EV",
+            "Most packs are -EV with real CardLadder values",
+            "1.00x = +EV alert",
+            "1.10x = Strong buy",
+            "1.15x = Exceptional"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**CRITICAL: All IR scripts now use CardLadder-based EV data**",
+            "**Scripts updated:**",
+            "**Pipeline flow:**",
+            "1. `ir-scraper.js` → outputs to `ir-pack-data.json` (basic pack info)",
+            "2. `ir-checklist-scraper.js` → reads ir-pack-data.json, fetches CardLadder per-card values, outputs to `ir-pack-ev.json` (TRUE EV)",
+            "3. All downstream scripts read from `ir-pack-ev.json`",
+            "**Key difference:**",
+            "**Alert thresholds (based on CardLadder data):**"
+          ]
+        },
+        {
+          "name": "Security Hardening Session (5:22 AM)",
+          "items": [
+            "Dross: Fixed Telegram DM session isolation (`session.dmScope = \"per-channel-peer\"`)",
+            "Pinged Wit + MacGyver to run audits and align",
+            "Big Brother to enable firewall + fix session isolation",
+            "FileVault on Dross — requires restart + recovery key setup, need Matthew approval for downtime",
+            "OpenClaw updates — coordinating fleet-wide update",
+            "Original request was for one-time OAuth setup on other machines",
+            "Big Brother correctly flagged security risks of blanket SSH",
+            "Better approach: Each bot runs their own OAuth setup (no SSH needed)",
+            "One-time scoped access with supervision is acceptable if truly needed"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Matthew asked Big Brother about SSH access risks, then directed us to establish best practices for all 4 bots.",
+            "**Fleet Security Baseline Established:**",
+            "| Check | Standard | Priority |",
+            "|-------|----------|----------|",
+            "| macOS Firewall | ON | 🔴 Critical |",
+            "| FileVault | ON | 🔴 Critical |",
+            "| Gateway bind | 127.0.0.1 | 🔴 Critical |",
+            "| Gateway auth | Token required | 🔴 Critical |",
+            "| Discord policy | allowlist | 🔴 Critical |",
+            "| Telegram policy | allowlist | 🔴 Critical |",
+            "| Telegram DM scope | per-channel-peer | ⚠️ High |",
+            "| OpenClaw version | Latest stable | ⚠️ High |",
+            "**Final Status (5:25 AM):**",
+            "| Bot | Firewall | FileVault | DM Isolation | OpenClaw |",
+            "|-----|----------|-----------|--------------|----------|",
+            "| Dross | ✅ ON | ❌ OFF | ✅ FIXED | ⚠️ 2026.2.3-1 |",
+            "| Big Brother | ❌ OFF | ✅ ON | ✅ FIXED | ⚠️ 2026.2.3-1 |",
+            "| Wit | ❌ OFF | ✅ ON | ✅ FIXED | ⚠️ 2026.2.3-1 |",
+            "| MacGyver | ❌ OFF | ✅ ON | ✅ FIXED | ⚠️ 2026.2.3-1 |",
+            "**DM Isolation: 4/4 COMPLETE** — all bots fixed their own configs",
+            "**Actions Taken:**",
+            "**Deferred:**",
+            "**SSH Access Decision:**"
+          ]
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "`POST /api/threads` — create thread analysis",
+          "category": "integration"
+        },
+        {
+          "description": "`POST /api/threads/:id/comments` — discussion",
+          "category": "integration"
+        },
+        {
+          "description": "`POST /api/threads/:id/deploy` — create task from thread",
+          "category": "integration"
+        },
+        {
+          "description": "`PATCH /api/threads` — update verdict, suggested_actions",
+          "category": "integration"
+        },
+        {
+          "description": "Expandable action descriptions",
+          "category": "integration"
+        },
+        {
+          "description": "Suggested actions about formalizing our scripts as Skills",
+          "category": "integration"
+        },
+        {
+          "description": "Fanatics tier ranges = inflated marketing estimates (DO NOT USE for EV)",
+          "category": "general"
+        },
+        {
+          "description": "Fanatics ranges showed Football Ultra at 1.12x EV",
+          "category": "general"
+        },
+        {
+          "description": "Original request was for one-time OAuth setup on other machines",
+          "category": "integration"
+        },
+        {
+          "description": "Better approach: Each bot runs their own OAuth setup (no SSH needed)",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [
+        "Dross: Fixed Telegram DM session isolation (`session.dmScope = \"per-channel-peer\"`)",
+        "Pinged Wit + MacGyver to run audits and align",
+        "Big Brother to enable firewall + fix session isolation",
+        "FileVault on Dross — requires restart + recovery key setup, need Matthew approval for downtime",
+        "OpenClaw updates — coordinating fleet-wide update",
+        "Original request was for one-time OAuth setup on other machines",
+        "Big Brother correctly flagged security risks of blanket SSH",
+        "Better approach: Each bot runs their own OAuth setup (no SSH needed)",
+        "One-time scoped access with supervision is acceptable if truly needed"
+      ],
+      "stats": {
+        "sections_count": 9,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 10,
+        "todoist_count": 0
       }
     }
   ]
