@@ -1,16 +1,16 @@
 {
   "_meta": {
-    "generated_at": "2026-02-17T00:06:22.392Z",
-    "total_days": 13,
+    "generated_at": "2026-02-17T11:05:14.193Z",
+    "total_days": 14,
     "date_range": {
       "start": "2026-02-04",
-      "end": "2026-02-16"
+      "end": "2026-02-17"
     },
     "totals": {
-      "tasks_completed": 23,
+      "tasks_completed": 24,
       "reports_generated": 7,
-      "key_actions": 219,
-      "todoist_activity": 9
+      "key_actions": 221,
+      "todoist_activity": 12
     }
   },
   "days": [
@@ -4318,6 +4318,68 @@
           ],
           "subsections": [],
           "rawText": []
+        },
+        {
+          "name": "Task Attachment SOP (22:45 EST)",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "**Per Matthew:** Task attachments should be PDFs stored in Drive, not local file paths.",
+            "**Workflow for completed tasks with deliverables:**",
+            "1. Convert markdown/docs to PDF using `scripts/html-to-pdf.js`",
+            "2. Upload to Dross Reports folder: `scripts/gdrive-upload.js <file> ***REDACTED***`",
+            "3. Update task attachment via API with proper object format:",
+            "```json",
+            "{\"url\": \"https://drive.google.com/file/d/...\", \"name\": \"Title.pdf\", \"type\": \"application/pdf\"}",
+            "```",
+            "**API fix deployed:** Added `attachments` and `completion_notes` to allowed fields in direct task updates."
+          ]
+        },
+        {
+          "name": "OpenClaw Venture Discussion (11:38 PM)",
+          "items": [
+            "Spinning off AI agent platform into separate LLC called \"OpenClaw\"",
+            "Using BnB as prototype, then taking to other businesses",
+            "Mark interested in financial + strategic involvement",
+            "Wednesday 9 PM follow-up meeting to discuss LLC structure",
+            "Need 1-2 more engineers to scale",
+            "John Henry (Notre Dame Innovation Park) = key contact",
+            "Business model: hardware upfront + subscription",
+            "Browserbase: $300M valuation on $67.5M raised (browser automation infra)",
+            "Adept: $1B valuation, $415M raised (AI workflow automation)",
+            "OpenClaw at seed stage: likely $8-15M valuation for $1-3M raise",
+            "With traction: $30-50M valuation range"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Matthew shared Gemini meeting notes from a call with Mark (potential investor/advisor).",
+            "**Key takeaways:**",
+            "**Valuation research I did:**",
+            "**TAM estimate:** ~$4B (US SMBs paying $500-2K/mo for automation)"
+          ]
+        },
+        {
+          "name": "OpenClaw Team Valuation Session (11:43 PM)",
+          "items": [
+            "$0.03/hour per agent vs $20-40/hour human (500-1000x cost efficiency)",
+            "\"AI oversight\" differentiator (Big Brother watching the fleet) = enterprise compliance angle",
+            "\"Eat your own dogfood\" moat — real business, not a demo",
+            "Fleet economics: agent #5 ≈ free, employee #5 = $40K+/year",
+            "SMB: \"AI employees that work while you sleep\"",
+            "Enterprise: \"Autonomous agents with built-in oversight\"",
+            "Investors: \"We scaled a $16M company with 4 bots. Here's how.\"",
+            "Big Brother: Cost analysis doc (uptime, task throughput, agent-hour economics)",
+            "Wit: Deck copy (headlines, value props, story arc)",
+            "MacGyver: Technical architecture one-pager",
+            "Me: Valuation comps + TAM (done), coordination"
+          ],
+          "subsections": [],
+          "rawText": [
+            "First real 4-bot collaborative session in #test channel. All bots contributed:",
+            "**Key insights generated:**",
+            "**Positioning options:**",
+            "**Assignments for Wednesday Mark meeting:**"
+          ]
         }
       ],
       "tasks_completed": [],
@@ -4462,17 +4524,161 @@
         {
           "description": "Sync script: `~/clawd/bnb-hq/scripts/sync-repack-postgres.js`",
           "category": "integration"
+        },
+        {
+          "description": "Business model: hardware upfront + subscription",
+          "category": "integration"
         }
       ],
       "interactions": [],
       "todoist_activity": [],
       "infrastructure": [],
       "stats": {
-        "sections_count": 15,
+        "sections_count": 18,
         "tasks_completed_count": 0,
         "reports_count": 0,
-        "key_actions_count": 35,
+        "key_actions_count": 36,
         "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-02-17",
+      "title": "17 (Monday)",
+      "sections": [
+        {
+          "name": "Session Summary (Late Night ~7pm-3am)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "MrBeast $1M Puzzle Hunt Session",
+              "items": [
+                "**Resumed puzzle hunt** with full bot team (Dross, Wit, Big Brother, MacGyver)",
+                "**Found master list:** delfinadap.github.io/mrbeast-51-locations/all",
+                "**Status:** 22 confirmed, 6 probable, 20 unsolved locations",
+                "**Key discovery:** All Stage 1 answers are CITY NAMES (not addresses)",
+                "**Our theories:**",
+                "**Crossword answer:** EYJAFJALLAJOKULL (Icelandic volcano)",
+                "**Blockers:** Need Salesforce account, onemil.xyz access, phone call 337-317-5853",
+                "**Updated:** memory/mrbeast-puzzle.md with full session progress"
+              ]
+            },
+            {
+              "name": "Discord Channel Changes",
+              "items": [
+                "Created **#breaker-wellness** (1473092033781432330) — moved to Big Brother category",
+                "Created **#test** (1473175020804243486) — all bots configured"
+              ]
+            },
+            {
+              "name": "Bot Fleet Updates",
+              "items": [
+                "**All 4 bots run on separate Macs** (not consolidated as I incorrectly thought)",
+                "**Heartbeat schedule:** All bots run every 30 min, 12pm-midnight EST",
+                "**NEW: Telegram notifications** — all bots now message Matthew (8247529666) after:",
+                "**NEW: Completion requirements** — all tasks must include:"
+              ]
+            },
+            {
+              "name": "Code Statistics",
+              "items": [
+                "**Total lines:** ~77,000 (Mission Control: 59K, BnB HQ: 18K)",
+                "**Last 2 hours:** +844 net lines in BnB HQ (20 commits)",
+                "**Documentation:** Light (~4-6% comment ratio)"
+              ]
+            },
+            {
+              "name": "Credentials Confirmed",
+              "items": [
+                "✅ BnB HQ Supabase: Have full access (URL, anon key, service role key)",
+                "Can run any SQL/migrations without Matthew's help"
+              ]
+            },
+            {
+              "name": "LinkedIn Discussion",
+              "items": [
+                "LinkedIn scraping is risky (aggressive blocking, legal precedent)",
+                "Better options: Sales Navigator, Apollo, ZoomInfo",
+                "No action taken — Matthew didn't specify use case"
+              ]
+            },
+            {
+              "name": "SMS Username Matching",
+              "items": [
+                "Matthew asked about phone→username matching",
+                "Turns out it's already partially built",
+                "No action needed"
+              ]
+            },
+            {
+              "name": "Session End (~3:30am)",
+              "items": [
+                "**Compaction triggered** — session memory saved",
+                "**Still TODO:** Broadcast HEARTBEAT.md update to other bots (Wit, Big Brother, MacGyver)",
+                "**MrBeast puzzle:** Paused, waiting for human to unblock Salesforce/phone/sudoku"
+              ]
+            }
+          ],
+          "rawText": [
+            "- HOMESTEAD, FL (vault bills sum = 90 → A=1 cipher)",
+            "- ORLANDO, FL (BTS number sequence via MILLIONDOLLAR cipher)",
+            "- Completing heartbeat work",
+            "- Completing any task directly",
+            "- Completion notes (what was done)",
+            "- Links (commit SHA, PR, deployed URL, file paths)",
+            "- Attachments for deliverables"
+          ]
+        },
+        {
+          "name": "References",
+          "items": [
+            "HEARTBEAT.md updated with Steps 5-6 (completion requirements + Telegram notifications)",
+            "memory/mrbeast-puzzle.md updated with full puzzle hunt progress"
+          ],
+          "subsections": [],
+          "rawText": []
+        }
+      ],
+      "tasks_completed": [
+        {
+          "name": "BnB HQ Supabase: Have full access (URL, anon key, service role key)",
+          "status": "done",
+          "category": "general"
+        }
+      ],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "LinkedIn scraping is risky (aggressive blocking, legal precedent)",
+          "category": "integration"
+        }
+      ],
+      "interactions": [
+        {
+          "description": "Matthew asked about phone→username matching",
+          "type": "matthew"
+        }
+      ],
+      "todoist_activity": [
+        {
+          "action": "created",
+          "description": "Created #breaker-wellness (1473092033781432330) — moved to Big Brother category"
+        },
+        {
+          "action": "created",
+          "description": "Created #test (1473175020804243486) — all bots configured"
+        },
+        {
+          "action": "updated",
+          "description": "NEW: Telegram notifications — all bots now message Matthew (8247529666) after:"
+        }
+      ],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 2,
+        "tasks_completed_count": 1,
+        "reports_count": 0,
+        "key_actions_count": 1,
+        "todoist_count": 3
       }
     }
   ]
