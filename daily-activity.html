@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dross Daily Activity Dashboard</title>
+<style>
+  :root {
+    --bg-primary: #0d0d0d;
+    --bg-secondary: #161618;
+    --bg-card: #1c1c1f;
+    --bg-hover: #252529;
+    --border: #2a2a2e;
+    --text-primary: #e8e8ec;
+    --text-secondary: #9898a0;
+    --text-muted: #5c5c66;
+    --accent-purple: #9b6dff;
+    --accent-purple-dim: rgba(155, 109, 255, 0.15);
+    --accent-green: #34d399;
+    --accent-green-dim: rgba(52, 211, 153, 0.12);
+    --accent-blue: #60a5fa;
+    --accent-blue-dim: rgba(96, 165, 250, 0.12);
+    --accent-orange: #fb923c;
+    --accent-orange-dim: rgba(251, 146, 60, 0.12);
+    --accent-pink: #f472b6;
+    --accent-pink-dim: rgba(244, 114, 182, 0.12);
+    --accent-cyan: #22d3ee;
+    --accent-cyan-dim: rgba(34, 211, 238, 0.12);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ── Layout ──────────────────────────────── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--accent-purple), #6b3fa0);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  h1 span {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 14px;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ── Date Navigation ─────────────────────── */
+  .date-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 6px;
+  }
+
+  .date-nav button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+  }
+
+  .date-nav button:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+
+  .date-nav button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .date-display {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 6px 14px;
+    min-width: 180px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s;
+    position: relative;
+  }
+
+  .date-display:hover {
+    background: var(--bg-hover);
+  }
+
+  .date-display input[type="date"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  .date-display .day-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* ── Day Selector Pills ──────────────────── */
+  .day-pills {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .day-pills::-webkit-scrollbar { display: none; }
+
+  .day-pill {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+    text-align: center;
+    min-width: 80px;
+  }
+
+  .day-pill:hover {
+    border-color: var(--accent-purple);
+    color: var(--text-primary);
+  }
+
+  .day-pill.active {
+    background: var(--accent-purple-dim);
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+    font-weight: 600;
+  }
+
+  .day-pill .pill-date {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .day-pill.active .pill-date {
+    color: var(--accent-purple);
+    opacity: 0.7;
+  }
+
+  /* ── Stat Cards ──────────────────────────── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .stat-card.purple::before { background: var(--accent-purple); }
+  .stat-card.green::before { background: var(--accent-green); }
+  .stat-card.blue::before { background: var(--accent-blue); }
+  .stat-card.orange::before { background: var(--accent-orange); }
+  .stat-card.pink::before { background: var(--accent-pink); }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .stat-card.purple .stat-value { color: var(--accent-purple); }
+  .stat-card.green .stat-value { color: var(--accent-green); }
+  .stat-card.blue .stat-value { color: var(--accent-blue); }
+  .stat-card.orange .stat-value { color: var(--accent-orange); }
+  .stat-card.pink .stat-value { color: var(--accent-pink); }
+
+  /* ── Content Sections ────────────────────── */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .content-grid.full {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 768px) {
+    .content-grid { grid-template-columns: 1fr; }
+  }
+
+  .panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .panel-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .panel-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .panel-icon.purple { background: var(--accent-purple-dim); }
+  .panel-icon.green { background: var(--accent-green-dim); }
+  .panel-icon.blue { background: var(--accent-blue-dim); }
+  .panel-icon.orange { background: var(--accent-orange-dim); }
+  .panel-icon.pink { background: var(--accent-pink-dim); }
+  .panel-icon.cyan { background: var(--accent-cyan-dim); }
+
+  .panel-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+
+  .panel-body {
+    padding: 12px 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .panel-body::-webkit-scrollbar { width: 4px; }
+  .panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  /* ── List Items ──────────────────────────── */
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .item:last-child { border-bottom: none; }
+
+  .item-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .item-dot.done { background: var(--accent-green); }
+  .item-dot.built { background: var(--accent-purple); }
+  .item-dot.live { background: var(--accent-cyan); }
+  .item-dot.designed { background: var(--accent-orange); }
+  .item-dot.written { background: var(--accent-blue); }
+  .item-dot.prepared { background: var(--accent-pink); }
+  .item-dot.completed { background: var(--accent-green); }
+  .item-dot.default { background: var(--text-muted); }
+
+  .item-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .item-name {
+    font-size: 13px;
+    color: var(--text-primary);
+    word-wrap: break-word;
+  }
+
+  .item-meta {
+    display: flex;
+    gap: 8px;
+    margin-top: 3px;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .tag.research { background: var(--accent-blue-dim); color: var(--accent-blue); }
+  .tag.engineering { background: var(--accent-purple-dim); color: var(--accent-purple); }
+  .tag.tools { background: var(--accent-cyan-dim); color: var(--accent-cyan); }
+  .tag.operations { background: var(--accent-orange-dim); color: var(--accent-orange); }
+  .tag.organization { background: var(--accent-green-dim); color: var(--accent-green); }
+  .tag.creative { background: var(--accent-pink-dim); color: var(--accent-pink); }
+  .tag.team { background: rgba(255,255,255,0.08); color: var(--text-secondary); }
+  .tag.general { background: rgba(255,255,255,0.05); color: var(--text-muted); }
+
+  .tag.status-done { background: var(--accent-green-dim); color: var(--accent-green); }
+  .tag.status-built { background: var(--accent-purple-dim); color: var(--accent-purple); }
+  .tag.status-live { background: var(--accent-cyan-dim); color: var(--accent-cyan); }
+  .tag.status-designed { background: var(--accent-orange-dim); color: var(--accent-orange); }
+  .tag.status-written { background: var(--accent-blue-dim); color: var(--accent-blue); }
+  .tag.status-prepared { background: var(--accent-pink-dim); color: var(--accent-pink); }
+
+  /* ── Todoist ─────────────────────────────── */
+  .todoist-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 3px;
+  }
+
+  .todoist-action.closed { background: var(--accent-green-dim); color: var(--accent-green); }
+  .todoist-action.created { background: var(--accent-blue-dim); color: var(--accent-blue); }
+  .todoist-action.updated { background: var(--accent-orange-dim); color: var(--accent-orange); }
+
+  /* ── Section Browser ─────────────────────── */
+  .section-item {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .section-item:last-child { border-bottom: none; }
+
+  .section-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-name:hover { color: var(--accent-purple); }
+
+  .section-chevron {
+    font-size: 10px;
+    transition: transform 0.2s;
+    color: var(--text-muted);
+  }
+
+  .section-item.open .section-chevron {
+    transform: rotate(90deg);
+  }
+
+  .section-details {
+    display: none;
+    padding: 8px 0 4px 20px;
+  }
+
+  .section-item.open .section-details {
+    display: block;
+  }
+
+  .section-detail-item {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 3px 0;
+    line-height: 1.5;
+  }
+
+  /* ── Interaction Items ───────────────────── */
+  .interaction-badge {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: 3px;
+    display: inline-block;
+  }
+
+  .interaction-badge.matthew {
+    background: var(--accent-purple-dim);
+    color: var(--accent-purple);
+  }
+
+  .interaction-badge.team {
+    background: var(--accent-cyan-dim);
+    color: var(--accent-cyan);
+  }
+
+  /* ── Empty State ─────────────────────────── */
+  .empty-state {
+    padding: 32px 20px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  .empty-state .empty-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+  }
+
+  /* ── Loading ─────────────────────────────── */
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--text-muted);
+  }
+
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent-purple);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Footer ──────────────────────────────── */
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+
+  /* ── All Sections Toggle ─────────────────── */
+  .sections-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .sections-toggle:hover {
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div id="app">
+    <div class="loading">
+      <div class="spinner"></div>
+      <div>Loading dashboard data...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Config ────────────────────────────────────────────────────────────────────
+// Try multiple data sources. Works with file:// (inline) and served (fetch).
+const DATA_PATH = './data/activity-data.json';
+
+let DATA = null;
+let currentIndex = -1;
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+async function boot() {
+  try {
+    const resp = await fetch(DATA_PATH);
+    if (!resp.ok) throw new Error('Fetch failed');
+    DATA = await resp.json();
+  } catch (e) {
+    // If fetch fails (file://), try inline data
+    if (window.__DASHBOARD_DATA) {
+      DATA = window.__DASHBOARD_DATA;
+    } else {
+      document.getElementById('app').innerHTML = `
+        <div class="loading">
+          <div class="empty-icon">📂</div>
+          <div>Could not load activity data.</div>
+          <div style="font-size:12px;margin-top:8px;color:var(--text-muted)">
+            Run: <code style="background:var(--bg-card);padding:2px 8px;border-radius:4px">node scripts/generate-daily-dashboard.js</code><br>
+            Then serve with: <code style="background:var(--bg-card);padding:2px 8px;border-radius:4px">npx serve dashboard/</code>
+          </div>
+        </div>`;
+      return;
+    }
+  }
+
+  currentIndex = DATA.days.length - 1;
+  render();
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render() {
+  const day = DATA.days[currentIndex];
+  if (!day) return;
+
+  const dateObj = new Date(day.date + 'T12:00:00');
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dayName = dayNames[dateObj.getDay()];
+  const formatted = `${monthNames[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
+
+  document.getElementById('app').innerHTML = `
+    <header>
+      <div class="logo-area">
+        <div class="logo-icon">🌙</div>
+        <h1>Dross Activity Log<span>Daily breakdown of what I did</span></h1>
+      </div>
+      <div class="date-nav">
+        <button onclick="navigate(-1)" ${currentIndex === 0 ? 'disabled' : ''}>◀</button>
+        <div class="date-display">
+          ${formatted}
+          <div class="day-label">${dayName}${day.title ? ' — ' + escHtml(day.title) : ''}</div>
+          <input type="date" value="${day.date}" onchange="jumpToDate(this.value)" 
+                 min="${DATA.days[0].date}" max="${DATA.days[DATA.days.length-1].date}">
+        </div>
+        <button onclick="navigate(1)" ${currentIndex === DATA.days.length - 1 ? 'disabled' : ''}>▶</button>
+      </div>
+    </header>
+
+    ${renderPills(day.date)}
+
+    <div class="stats-grid">
+      <div class="stat-card purple">
+        <div class="stat-label">Tasks Completed</div>
+        <div class="stat-value">${day.stats.tasks_completed_count}</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-label">Reports</div>
+        <div class="stat-value">${day.stats.reports_count}</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-label">Key Actions</div>
+        <div class="stat-value">${day.stats.key_actions_count}</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-label">Todoist Activity</div>
+        <div class="stat-value">${day.stats.todoist_count}</div>
+      </div>
+      <div class="stat-card pink">
+        <div class="stat-label">Sections</div>
+        <div class="stat-value">${day.stats.sections_count}</div>
+      </div>
+    </div>
+
+    <!-- Tasks + Reports -->
+    <div class="content-grid">
+      ${renderTasksPanel(day)}
+      ${renderReportsPanel(day)}
+    </div>
+
+    <!-- Key Actions + Todoist -->
+    <div class="content-grid">
+      ${renderActionsPanel(day)}
+      ${renderTodoistPanel(day)}
+    </div>
+
+    <!-- Interactions -->
+    ${day.interactions.length > 0 ? `
+    <div class="content-grid full">
+      ${renderInteractionsPanel(day)}
+    </div>` : ''}
+
+    <!-- All Sections Browser -->
+    <div class="content-grid full">
+      ${renderSectionsPanel(day)}
+    </div>
+
+    <footer>
+      Dross Activity Dashboard · Data generated ${DATA._meta.generated_at ? new Date(DATA._meta.generated_at).toLocaleString() : 'unknown'} · ${DATA._meta.total_days} days tracked
+    </footer>
+  `;
+}
+
+// ── Pills ─────────────────────────────────────────────────────────────────────
+function renderPills(activeDate) {
+  return `<div class="day-pills">
+    ${DATA.days.map((d, i) => {
+      const dt = new Date(d.date + 'T12:00:00');
+      const label = (dt.getMonth()+1) + '/' + dt.getDate();
+      const dayAbbr = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][dt.getDay()];
+      return `<div class="day-pill ${d.date === activeDate ? 'active' : ''}" onclick="jumpToIndex(${i})">
+        ${dayAbbr}<div class="pill-date">${label}</div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+// ── Panels ────────────────────────────────────────────────────────────────────
+function renderTasksPanel(day) {
+  const items = day.tasks_completed;
+  return `<div class="panel">
+    <div class="panel-header">
+      <div class="panel-title"><div class="panel-icon purple">✅</div> Tasks Completed</div>
+      <div class="panel-count">${items.length}</div>
+    </div>
+    <div class="panel-body">
+      ${items.length === 0 ? emptyState('No tasks logged this day', '📋') : 
+        items.map(t => `
+          <div class="item">
+            <div class="item-dot ${t.status || 'default'}"></div>
+            <div class="item-content">
+              <div class="item-name">${escHtml(t.name)}</div>
+              <div class="item-meta">
+                <span class="tag ${t.category}">${t.category}</span>
+                <span class="tag status-${t.status}">${t.status}</span>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderReportsPanel(day) {
+  const items = day.reports_generated;
+  return `<div class="panel">
+    <div class="panel-header">
+      <div class="panel-title"><div class="panel-icon green">📄</div> Reports & Docs</div>
+      <div class="panel-count">${items.length}</div>
+    </div>
+    <div class="panel-body">
+      ${items.length === 0 ? emptyState('No reports generated this day', '📝') :
+        items.map(r => `
+          <div class="item">
+            <div class="item-dot default" style="background:var(--accent-green)"></div>
+            <div class="item-content">
+              <div class="item-name">${escHtml(r.name)}</div>
+              <div class="item-meta">
+                <span class="tag ${r.category === 'market-intel' ? 'research' : r.category}">${r.category}</span>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderActionsPanel(day) {
+  const items = day.key_actions;
+  return `<div class="panel">
+    <div class="panel-header">
+      <div class="panel-title"><div class="panel-icon blue">⚡</div> Key Actions</div>
+      <div class="panel-count">${items.length}</div>
+    </div>
+    <div class="panel-body">
+      ${items.length === 0 ? emptyState('No key actions logged', '🔧') :
+        items.map(a => `
+          <div class="item">
+            <div class="item-dot default" style="background:var(--accent-blue)"></div>
+            <div class="item-content">
+              <div class="item-name">${escHtml(a.description)}</div>
+              <div class="item-meta">
+                <span class="tag ${a.category === 'email' ? 'operations' : a.category === 'integration' ? 'engineering' : a.category === 'calendar' ? 'tools' : 'general'}">${a.category}</span>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderTodoistPanel(day) {
+  const items = day.todoist_activity;
+  return `<div class="panel">
+    <div class="panel-header">
+      <div class="panel-title"><div class="panel-icon orange">📌</div> Todoist Activity</div>
+      <div class="panel-count">${items.length}</div>
+    </div>
+    <div class="panel-body">
+      ${items.length === 0 ? emptyState('No Todoist activity logged', '✏️') :
+        items.map(t => `
+          <div class="item">
+            <div class="item-dot default" style="background:var(--accent-${t.action === 'closed' ? 'green' : t.action === 'created' ? 'blue' : 'orange'})"></div>
+            <div class="item-content">
+              <div class="item-name">${escHtml(t.description)}</div>
+              <span class="todoist-action ${t.action}">${t.action}</span>
+            </div>
+          </div>
+        `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderInteractionsPanel(day) {
+  const items = day.interactions;
+  return `<div class="panel">
+    <div class="panel-header">
+      <div class="panel-title"><div class="panel-icon cyan">💬</div> Interactions & Decisions</div>
+      <div class="panel-count">${items.length}</div>
+    </div>
+    <div class="panel-body">
+      ${items.map(i => `
+        <div class="item">
+          <div class="item-dot default" style="background:var(--accent-${i.type === 'matthew' ? 'purple' : 'cyan'})"></div>
+          <div class="item-content">
+            <div class="item-name">${escHtml(i.description)}</div>
+            <span class="interaction-badge ${i.type}">${i.type}</span>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderSectionsPanel(day) {
+  return `<div class="panel">
+    <div class="panel-header">
+      <div class="panel-title"><div class="panel-icon pink">📂</div> All Sections</div>
+      <div class="panel-count">${day.sections.length}</div>
+      <button class="sections-toggle" onclick="toggleAllSections()">Expand All</button>
+    </div>
+    <div class="panel-body" style="max-height:600px">
+      ${day.sections.length === 0 ? emptyState('No sections found', '📁') :
+        day.sections.map((s, idx) => `
+          <div class="section-item" id="section-${idx}">
+            <div class="section-name" onclick="toggleSection(${idx})">
+              <span class="section-chevron">▶</span>
+              ${escHtml(s.name)}
+              <span style="color:var(--text-muted);font-weight:400;font-size:11px">${s.items.length + s.subsections.reduce((a,ss) => a + ss.items.length, 0)} items</span>
+            </div>
+            <div class="section-details">
+              ${s.items.map(item => `<div class="section-detail-item">• ${escHtml(item)}</div>`).join('')}
+              ${s.subsections.map(ss => `
+                <div style="margin-top:6px;font-size:12px;font-weight:600;color:var(--text-secondary)">${escHtml(ss.name)}</div>
+                ${ss.items.map(item => `<div class="section-detail-item" style="padding-left:12px">• ${escHtml(item)}</div>`).join('')}
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+    </div>
+  </div>`;
+}
+
+// ── Helpers ────────────────────────────────────────────────────────────────────
+function escHtml(str) {
+  const el = document.createElement('span');
+  el.textContent = str || '';
+  return el.innerHTML;
+}
+
+function emptyState(msg, icon) {
+  return `<div class="empty-state"><div class="empty-icon">${icon}</div>${msg}</div>`;
+}
+
+function navigate(dir) {
+  const next = currentIndex + dir;
+  if (next >= 0 && next < DATA.days.length) {
+    currentIndex = next;
+    render();
+    window.scrollTo(0, 0);
+  }
+}
+
+function jumpToIndex(idx) {
+  currentIndex = idx;
+  render();
+  window.scrollTo(0, 0);
+}
+
+function jumpToDate(dateStr) {
+  const idx = DATA.days.findIndex(d => d.date === dateStr);
+  if (idx >= 0) {
+    currentIndex = idx;
+    render();
+    window.scrollTo(0, 0);
+  }
+}
+
+function toggleSection(idx) {
+  const el = document.getElementById('section-' + idx);
+  if (el) el.classList.toggle('open');
+}
+
+function toggleAllSections() {
+  const items = document.querySelectorAll('.section-item');
+  const anyOpen = [...items].some(el => el.classList.contains('open'));
+  items.forEach(el => {
+    if (anyOpen) el.classList.remove('open');
+    else el.classList.add('open');
+  });
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') navigate(-1);
+  if (e.key === 'ArrowRight') navigate(1);
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+boot();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,4479 @@
+{
+  "_meta": {
+    "generated_at": "2026-02-17T00:06:22.392Z",
+    "total_days": 13,
+    "date_range": {
+      "start": "2026-02-04",
+      "end": "2026-02-16"
+    },
+    "totals": {
+      "tasks_completed": 23,
+      "reports_generated": 7,
+      "key_actions": 219,
+      "todoist_activity": 9
+    }
+  },
+  "days": [
+    {
+      "date": "2026-02-04",
+      "title": "Daily Log - February 4, 2026",
+      "sections": [
+        {
+          "name": "Key Decisions",
+          "items": [
+            "**No Canva auto-graphics** — dashboard replaces it",
+            "**No Telegram for alerts** — SMS first (SimpleTexting), then email, then DMs",
+            "**EV ratio uses actual selling price, NOT MSRP**",
+            "**ALWAYS use publish-report.js** for report delivery",
+            "Matthew wants to try stock/crypto trading ($750 stocks + $300 crypto) — waiting on account setup"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "IR Automation — ALL PHASES COMPLETE",
+          "items": [
+            "**Fanatics Live GraphQL API** — no auth needed, `x-platform-app: live` headers",
+            "**Show ID:** ***REDACTED*** | **Shop ID:** ***REDACTED***",
+            "Scripts: `ir-scraper.js`, `ir-alert.js`, `ir-checklist-scraper.js`, `ir-ev-alert.js`, `ir-update-dashboard.js`",
+            "Cron pipeline (30min): scrape → EV check → SMS alert → dashboard deploy",
+            "Dashboard live: https://breaknbad.github.io/dross-dashboard/",
+            "SMS via SimpleTexting API (5742750277 → 5079932041), threshold: evRatio > 1.25x",
+            "BnB logo embedded (PNG base64, 160x160 retina), deployed"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Todoist Project IDs (v1 API)",
+          "items": [
+            "Inbox: 6Crf925q9fg8q4Wr | BnB: 6Fg78rCrHP6Rc3Jw | Active Sprint: 6fw5XC58V8GQVF2G",
+            "Backlog: 6fqxgHqV6557CHwh | Reports: 6frvG2fC2MHqm8QF | Personal: 6fW5Mcrj4FxfgwVW"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "System Fixes",
+          "items": [
+            "Todoist migrated to v1 API (alphanumeric IDs)",
+            "Google Drive auth bug fixed (expiry vs expiry_date)",
+            "Gateway installed as managed service (LaunchAgent)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Discord Setup",
+          "items": [
+            "Bot: Dross | Server: Break'n Bad HQ (1468783258027294875)",
+            "Channels: #bot-commands, #ir-automation, #inventory, #orders, #breaks, #alerts, #general, #mission-control, #crm, #buyback, #schedule, #api-comping, #repack-purchasing, #bnb-app",
+            "Team: mharfmann=Matthew, bumfisher=Michael, wutangwarrior16=Erick"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Big Brother (Second Clawdbot)",
+          "items": [
+            "Running on second Mac mini (breakninsta), using OpenClaw",
+            "Connected to Discord, claude-opus-4-5 (Claude Max)",
+            "SOUL.md drafted (Jarvis vibe): `reports/jarvis-soul-md-draft.md`",
+            "TODO: Install custom SOUL/IDENTITY/etc, Tailscale for node pairing"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Reports Delivered",
+          "items": [
+            "CRM Pipeline Strategy, CRM Growth Playbook, Buyback Automation",
+            "Mission Control scope doc, Trading Strategy Plan, Kalshi Research"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Behavioral Notes",
+          "items": [
+            "Don't yap, just do. Don't repeat decided things.",
+            "Don't run heartbeat tasks during active conversation.",
+            "Session compactions look like crashes to Matthew — explain proactively."
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Pending",
+          "items": [
+            "clawdbot@breaknbad.com email (Matthew needs to create in Google Workspace)",
+            "Trading accounts (Alpaca + Kraken — waiting on Matthew)",
+            "IR alert threshold tuning with Matthew"
+          ],
+          "subsections": [],
+          "rawText": []
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "No Canva auto-graphics — dashboard replaces it",
+          "category": "general"
+        },
+        {
+          "description": "No Telegram for alerts — SMS first (SimpleTexting), then email, then DMs",
+          "category": "email"
+        },
+        {
+          "description": "Fanatics Live GraphQL API — no auth needed, `x-platform-app: live` headers",
+          "category": "integration"
+        },
+        {
+          "description": "Scripts: `ir-scraper.js`, `ir-alert.js`, `ir-checklist-scraper.js`, `ir-ev-alert.js`, `ir-update-dashboard.js`",
+          "category": "integration"
+        },
+        {
+          "description": "Cron pipeline (30min): scrape → EV check → SMS alert → dashboard deploy",
+          "category": "automation"
+        },
+        {
+          "description": "SMS via SimpleTexting API (5742750277 → 5079932041), threshold: evRatio > 1.25x",
+          "category": "integration"
+        },
+        {
+          "description": "Inbox: 6Crf925q9fg8q4Wr | BnB: 6Fg78rCrHP6Rc3Jw | Active Sprint: 6fw5XC58V8GQVF2G",
+          "category": "email"
+        },
+        {
+          "description": "Todoist migrated to v1 API (alphanumeric IDs)",
+          "category": "integration"
+        },
+        {
+          "description": "Google Drive auth bug fixed (expiry vs expiry_date)",
+          "category": "general"
+        },
+        {
+          "description": "Channels: #bot-commands, #ir-automation, #inventory, #orders, #breaks, #alerts, #general, #mission-control, #crm, #buyback, #schedule, #api-comping, #repack-purchasing, #bnb-app",
+          "category": "calendar"
+        },
+        {
+          "description": "TODO: Install custom SOUL/IDENTITY/etc, Tailscale for node pairing",
+          "category": "security"
+        },
+        {
+          "description": "clawdbot@breaknbad.com email (Matthew needs to create in Google Workspace)",
+          "category": "email"
+        }
+      ],
+      "interactions": [
+        {
+          "description": "Matthew wants to try stock/crypto trading ($750 stocks + $300 crypto) — waiting on account setup",
+          "type": "matthew"
+        }
+      ],
+      "todoist_activity": [
+        {
+          "action": "updated",
+          "description": "Todoist migrated to v1 API (alphanumeric IDs)"
+        },
+        {
+          "action": "updated",
+          "description": "Bot: Dross | Server: Break'n Bad HQ (1468783258027294875)"
+        }
+      ],
+      "infrastructure": [
+        "Bot: Dross | Server: Break'n Bad HQ (1468783258027294875)",
+        "Channels: #bot-commands, #ir-automation, #inventory, #orders, #breaks, #alerts, #general, #mission-control, #crm, #buyback, #schedule, #api-comping, #repack-purchasing, #bnb-app",
+        "Team: mharfmann=Matthew, bumfisher=Michael, wutangwarrior16=Erick"
+      ],
+      "stats": {
+        "sections_count": 9,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 12,
+        "todoist_count": 2
+      }
+    },
+    {
+      "date": "2026-02-05",
+      "title": "Daily Log",
+      "sections": [
+        {
+          "name": "Heartbeat Activities",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Business Monitors",
+              "items": [
+                "Ran `heartbeat-monitor.js` - price tracking skipped (ran 3h ago), on schedule",
+                "No urgent alerts or deals to report"
+              ]
+            },
+            {
+              "name": "Active Tasks Reviewed",
+              "items": [
+                "1 task: Canva cleanup from markup PDF - requires PDF from Matthew to proceed",
+                "45 tasks total across P2-P4 priorities",
+                "Fanatics Collect auto-accept needs clarification on spreadsheet interface issues",
+                "Several tasks blocked on Matthew input/decisions"
+              ]
+            },
+            {
+              "name": "Capabilities Improvements Identified",
+              "items": [
+                "**Issue:** Raw API errors (context limit exceeded) leaking to Matthew via Telegram",
+                "**Fix Applied:** Tightened compaction thresholds (softTrimRatio 0.6→0.5, hardClearRatio 0.7→0.6, memoryFlush 50k→40k tokens)",
+                "**Follow-up:** Filed GitHub issue #9951 for proper error handling in Clawdbot framework",
+                "**Current:** Following HEARTBEAT.md protocol strictly - good discipline",
+                "**Opportunity:** Many tasks require Matthew input/clarification - need better async work identification",
+                "**Next:** Create separate \"Dross Solo Work\" category for tasks that don't need Matthew",
+                "**Issue:** Spreadsheet interface complexity preventing full automation",
+                "**Current:** Manual intervention required for updates",
+                "**Opportunity:** Direct Google Sheets API calls instead of browser automation",
+                "**Status:** Partially automated, needs technical solution for table updates",
+                "**Good:** Two-project system (Active Sprint vs Backlog) provides clear prioritization",
+                "**Issue:** Many tasks stack up requiring Matthew decisions/approvals",
+                "**Opportunity:** Better task intake classification (solo vs collaborative vs blocked)"
+              ]
+            },
+            {
+              "name": "Technical Notes",
+              "items": [
+                "Google Calendar API working well for schedule monitoring",
+                "Todoist API reliable for task management",
+                "Need to investigate Google Sheets API for Fanatics automation",
+                "Browser automation hitting limits on complex table interfaces"
+              ]
+            },
+            {
+              "name": "Completed During Heartbeat",
+              "items": [
+                "Created \"What Is a Sports Card Break? A Complete Beginner's Guide\" (1,400 words)",
+                "Created \"Card Breaking Terms Every Collector Should Know\" (2,000 words)",
+                "Both posts target high-value SEO keywords identified in audit",
+                "Ready for Matthew to upload to Shopify blog",
+                "Addresses Phase 2 of BnB SEO audit recommendations",
+                "Prepared comprehensive priority review for Feb 6, 8AM deadline",
+                "Identified 4 high-priority actions Matthew can take",
+                "Documented task blockers and autonomous work options",
+                "File: `daily-priority-review-feb6.md`"
+              ]
+            },
+            {
+              "name": "Action Items for Tomorrow",
+              "items": [
+                "Matthew: Upload blog posts to Shopify (immediate SEO impact)",
+                "Matthew: Provide Canva markup PDF to unblock Active Sprint",
+                "Matthew: Set up Shopify credentials for automation",
+                "Continue with available solo-work tasks"
+              ]
+            }
+          ],
+          "rawText": [
+            "**🔥 Active Sprint (2366687501):**",
+            "**🌙 Backlog (2366172750):**"
+          ]
+        },
+        {
+          "name": "Status",
+          "items": [
+            "Active Sprint: 1 task (blocked on PDF)",
+            "Backlog: Multiple P2 tasks available, some ready to start",
+            "Content Creation: 2 complete blog posts ready for publication",
+            "Priority Review: Completed for tomorrow's deadline",
+            "Monitors: Running on schedule",
+            "Strong progress on autonomous tasks completed"
+          ],
+          "subsections": [],
+          "rawText": []
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "1 task: Canva cleanup from markup PDF - requires PDF from Matthew to proceed",
+          "category": "general"
+        },
+        {
+          "description": "Fanatics Collect auto-accept needs clarification on spreadsheet interface issues",
+          "category": "general"
+        },
+        {
+          "description": "Issue: Raw API errors (context limit exceeded) leaking to Matthew via Telegram",
+          "category": "integration"
+        },
+        {
+          "description": "Opportunity: Direct Google Sheets API calls instead of browser automation",
+          "category": "integration"
+        },
+        {
+          "description": "Google Calendar API working well for schedule monitoring",
+          "category": "calendar"
+        },
+        {
+          "description": "Todoist API reliable for task management",
+          "category": "integration"
+        },
+        {
+          "description": "Need to investigate Google Sheets API for Fanatics automation",
+          "category": "integration"
+        },
+        {
+          "description": "Ready for Matthew to upload to Shopify blog",
+          "category": "general"
+        },
+        {
+          "description": "Matthew: Upload blog posts to Shopify (immediate SEO impact)",
+          "category": "general"
+        },
+        {
+          "description": "Matthew: Provide Canva markup PDF to unblock Active Sprint",
+          "category": "general"
+        },
+        {
+          "description": "Matthew: Set up Shopify credentials for automation",
+          "category": "automation"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [
+        {
+          "action": "updated",
+          "description": "Todoist API reliable for task management"
+        }
+      ],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 2,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 11,
+        "todoist_count": 1
+      }
+    },
+    {
+      "date": "2026-02-06",
+      "title": "06 (Thursday)",
+      "sections": [
+        {
+          "name": "Mission Control Major Build Session",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Light Theme Deployed",
+              "items": [
+                "Matthew requested neutral light theme (no BnB branding, no red, no purple)",
+                "Colors: #F9FAFB bg, #3B82F6 blue accent, white cards, gray borders",
+                "Updated all components: Sidebar, Header, DashboardCard, ActivityFeed, AlertsList, TaskBoard",
+                "Multiple deploys to fix Turbopack cache corruption issues"
+              ]
+            },
+            {
+              "name": "New Pages Created",
+              "items": [
+                "`/activity` - \"The Squad\" page with bot status cards + activity feed",
+                "`/alerts` - Full alert management page",
+                "`/settings` - Placeholder with coming soon sections",
+                "`/chat` - Already existed, updated to light theme"
+              ]
+            },
+            {
+              "name": "Task Board Improvements",
+              "items": [
+                "Added **Inbox** column (was missing - tasks with status \"inbox\" weren't showing)",
+                "Added **Review** column",
+                "Now 5 columns: Inbox → In Progress → Review → Done → Blocked",
+                "Fixed drag-drop bug (was setting status to task ID when dropped on another card)",
+                "Added task detail modal (click card to see full details)"
+              ]
+            },
+            {
+              "name": "Bot Integration Setup",
+              "items": [
+                "Created `scripts/mission-control.js` helper CLI",
+                "Commands: heartbeat, tasks, claim, complete, message, agents",
+                "Posted integration instructions to all bot onboarding channels",
+                "Updated HEARTBEAT.md to include Mission Control check-ins",
+                "Bots reacted with 👀 - they saw the instructions"
+              ]
+            },
+            {
+              "name": "Tasks Seeded for Overnight Work",
+              "items": [
+                "\"Research competitor social media strategies\" (Wit)",
+                "\"Draft weekly security audit checklist\" (Big Brother)",
+                "\"Document current shipping carrier rates\" (MacGyver)"
+              ]
+            },
+            {
+              "name": "Vercel Deployment",
+              "items": [
+                "Token stored at `~/clawd/.credentials/vercel-token.txt`",
+                "Deploy command: `npx vercel --prod --yes --token=\"$(cat ~/clawd/.credentials/vercel-token.txt)\"`",
+                "No git remote needed - deploys directly"
+              ]
+            },
+            {
+              "name": "Dashboard URL",
+              "items": [
+                "Live: https://mission-control-hazel.vercel.app"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Technical Notes",
+          "items": [
+            "Mission Control API base: https://mission-control-hazel.vercel.app",
+            "Supabase backend (credentials in .env.local)",
+            "Task statuses: inbox, in-progress, review, done, blocked",
+            "Activity feed pulls from `audit_log` table (uses action_type + details fields)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Late Night Session",
+          "items": [
+            "Matthew wanted to push through to get bots integrated for overnight work",
+            "Erick (wutangwarrior16) helping with testing/feedback",
+            "Wit, Big Brother, MacGyver all acknowledged integration instructions"
+          ],
+          "subsections": [],
+          "rawText": []
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Added Inbox column (was missing - tasks with status \"inbox\" weren't showing)",
+          "category": "email"
+        },
+        {
+          "description": "Now 5 columns: Inbox → In Progress → Review → Done → Blocked",
+          "category": "email"
+        },
+        {
+          "description": "Created `scripts/mission-control.js` helper CLI",
+          "category": "integration"
+        },
+        {
+          "description": "Posted integration instructions to all bot onboarding channels",
+          "category": "integration"
+        },
+        {
+          "description": "Mission Control API base: https://mission-control-hazel.vercel.app",
+          "category": "integration"
+        },
+        {
+          "description": "Task statuses: inbox, in-progress, review, done, blocked",
+          "category": "email"
+        },
+        {
+          "description": "Wit, Big Brother, MacGyver all acknowledged integration instructions",
+          "category": "integration"
+        }
+      ],
+      "interactions": [
+        {
+          "description": "Matthew requested neutral light theme (no BnB branding, no red, no purple)",
+          "type": "matthew"
+        }
+      ],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 3,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 7,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-02-07",
+      "title": "07 Daily Log",
+      "sections": [
+        {
+          "name": "Heartbeat Activities (4:02 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Mission Control",
+              "items": [
+                "✅ Completed daily standup check (ID: ***REDACTED***)",
+                "Next standup scheduled for Feb 10",
+                "Mission Control dashboard showing 0 active tasks"
+              ]
+            },
+            {
+              "name": "Business Monitors",
+              "items": [
+                "Singles tracking: skipped (ran 3h ago, 6h interval)",
+                "Wax tracking: skipped (ran 3h ago, 6h interval)",
+                "No new deals or price alerts"
+              ]
+            },
+            {
+              "name": "Tasks Completed",
+              "items": [
+                "✅ Daily improvement task (6fv7g7qrvXWfCjg9) - continuous capability enhancement",
+                "✅ Mission Control daily standup check"
+              ]
+            },
+            {
+              "name": "Dashboard Test (Partial)",
+              "items": [
+                "**Issue:** Could not fully test Mission Control dashboard collapse button (reminder from 10:01:50)",
+                "Browser tool had Chrome extension relay issues",
+                "web_fetch confirmed dashboard is loading but can't test JS functionality",
+                "**Note for Matthew:** Dashboard appears operational but collapse button test incomplete"
+              ]
+            },
+            {
+              "name": "Review Tasks Check",
+              "items": [
+                "Checked \"📄 Dross Reports to Review\" project (98 tasks)",
+                "No newly completed review tasks found needing file processing",
+                "Cron jobs for review task automation ran successfully"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "System Status",
+          "items": [
+            "All monitors operational",
+            "Mission Control functional",
+            "Discord posting errors noted (unknown channel issues for #ir-analytics, #orders)",
+            "Email alerts: U.S. Bank wire transfer warning flagged for Matthew's attention"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Tasks Completed This Session",
+          "items": [],
+          "subsections": [
+            {
+              "name": "P2 Task - Fanatics Collect Pro Auto-Accept (6frqMMM4gW2rw6h9)",
+              "items": [
+                "✅ Researched auto-accept settings for FC Pro",
+                "Found: FC Pro requires login access to check seller dashboard settings",
+                "Documented findings and next steps needing Matthew's input",
+                "Status: Waiting for Matthew to log into FC Pro and document available automation options"
+              ]
+            },
+            {
+              "name": "P2 Task - Canva Design Cleanup Delegation (6fwjgPG8QGfGh289)",
+              "items": [
+                "✅ Created comprehensive delegation plan (`reports/canva-cleanup-delegation-plan.md`)",
+                "77 designs need renaming (23 untitled, 54 \"Copy of...\" generics)",
+                "Recommended approach: Matthew direct review (~2-3 hours vs 6-8 for VA)",
+                "Established naming convention and category system",
+                "Status: Ready for Matthew to choose delegation method"
+              ]
+            },
+            {
+              "name": "P3 Task - Fix Collect Incoming Sheet Bulk Updates (6fvMmwV2MmHrgJrh)",
+              "items": [
+                "✅ **COMPLETED** - Full solution delivered",
+                "Created command line script (`scripts/collect-incoming-bulk-update.js`) for bulk marking orders as arrived",
+                "Designed Google Apps Script menu system for user-friendly bulk updates",
+                "Documented complete solution (`reports/collect-incoming-bulk-solution.md`)",
+                "Works with current Purchase Date grouping, future-ready for Order IDs",
+                "Recommended next step: Install Google Apps Script in the sheet for team use"
+              ]
+            },
+            {
+              "name": "P3 Task - Automated Sorting & Shipping Robotics Research (6fwXF8xMCprcRv39)",
+              "items": [
+                "✅ **COMPLETED** - Comprehensive 100M scale automation roadmap delivered",
+                "Researched card-specific equipment (BG Machinery trading card packaging machines)",
+                "Analyzed vision-guided robotics (Cognex, KEYENCE) and industrial robots (FANUC, ABB)",
+                "Identified three investment tiers ($150K-1.5M) with ROI projections (8-30 month payback)",
+                "Created complete implementation roadmap with vendor contacts and pilot project proposal",
+                "**Full Report:** `reports/***REDACTED***.md`",
+                "Recommended: $200K proof-of-concept pilot to validate automation approach"
+              ]
+            },
+            {
+              "name": "P3 Task - Weekly Product Release Calendar Review (6frgGqFRXRxXwvCr)",
+              "items": [
+                "✅ **COMPLETED** - Comprehensive February 2026 release calendar delivered",
+                "Compiled from multiple sources (Checklist Insider, Yardbarker, market reports)",
+                "Identified critical upcoming releases: Chrome Premier League Soccer (Feb 5), Topps Series 1 Baseball (Feb 11)",
+                "Created BnB-specific breaking strategy with budget allocation (40% Series 1, 25% Chrome Soccer)",
+                "Established Tier 1/2/3 product priority matrix and optimal breaking schedule",
+                "**Full Calendar:** `reports/***REDACTED***.md`",
+                "Next review scheduled for Feb 14 (recurring task)"
+              ]
+            },
+            {
+              "name": "P4 Task - Daily Task Review & Priority Assignment for Matthew (6frgQF89r2pXm5cJ)",
+              "items": [
+                "✅ **COMPLETED** - Comprehensive review of Matthew's 171 personal tasks",
+                "Identified 1 overdue task (clean water bottles) and 8 tasks due tomorrow",
+                "Created structured priority report with weekend schedule recommendations",
+                "Highlighted important tasks: Mayo Clinic appointment, budget review, utility payments",
+                "**Priority Report:** `reports/***REDACTED***.md`",
+                "Established daily routine for ongoing task triage and priority setting"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Session Summary",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "**Highly productive heartbeat session:** Completed 4 major tasks including 3 substantial deliverables ready for Matthew's review."
+          ]
+        },
+        {
+          "name": "Next Priority Tasks",
+          "items": [
+            "Several P1 review tasks pending Matthew's attention (98 in review backlog)",
+            "P2 Backlog tasks available but most require Matthew input or decisions",
+            "Active Sprint currently empty - waiting for Matthew's task prioritization",
+            "Mission Control dashboard collapse button test incomplete (browser issues)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Mission Control UI Development (Evening Session)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "P1 Task - Task Detail Modal (***REDACTED***)",
+              "items": [
+                "✅ **COMPLETED** - Integrated TaskDetailModal component with TaskBoard",
+                "Click functionality: clicking any task card opens detailed modal",
+                "Full editing capabilities: title, description, assignee, status, priority",
+                "Shows all required fields: dates, created_by, completion_notes, tags",
+                "Proper state management and API integration for saving changes"
+              ]
+            },
+            {
+              "name": "P2 Task - Working Filters (***REDACTED***)",
+              "items": [
+                "✅ **COMPLETED** - Verified filter functionality already working",
+                "All 6 filters operational: All, Inbox, Assigned, Active, Review, Done",
+                "Proper state management, visual feedback, real-time task counts",
+                "TaskBoard receives filtered tasks correctly"
+              ]
+            },
+            {
+              "name": "Mission Control Tasks Still Pending:",
+              "items": [
+                "Create Task Flow (+New button) - assigned to Wit",
+                "Real-time Updates - P2, unassigned",
+                "Drag & Drop functionality - P2, unassigned",
+                "Chat Page UI - P3, unassigned"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Ready for Matthew's Review",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "1. **Collect Incoming bulk update solution** - Google Apps Script ready for installation",
+            "2. **Canva design cleanup plan** - 77 designs identified, delegation strategy prepared",
+            "3. **Automation research** - Complete 100M scale roadmap with vendor contacts and pilot proposal",
+            "4. **Mission Control dashboard** - Task detail modal and filters now working"
+          ]
+        },
+        {
+          "name": "Key Deliverables Created Today",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "| Report | Location | Purpose |",
+            "|--------|----------|---------|",
+            "| Canva Cleanup Plan | `reports/canva-cleanup-delegation-plan.md` | 77 designs needing rename |",
+            "| Collect Incoming Solution | `reports/collect-incoming-bulk-solution.md` | Bulk order marking |",
+            "| Automation Roadmap | `reports/***REDACTED***.md` | 100M scale automation |",
+            "| Weekly Release Calendar | `reports/***REDACTED***.md` | Feb 2026 card releases |",
+            "| Matthew's Priorities | `reports/***REDACTED***.md` | Task triage for weekend |"
+          ]
+        },
+        {
+          "name": "Scripts Created Today",
+          "items": [
+            "`scripts/collect-incoming-bulk-update.js` - Bulk mark orders as arrived by date/order ID"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Afternoon Session (3:30 PM - 3:45 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Migration: clawdbot → OpenClaw",
+              "items": [
+                "**Successfully migrated from `clawdbot-gateway` to `openclaw-gateway`**",
+                "Matthew confirmed migration request",
+                "Process: stopped clawdbot launchd service, started on openclaw",
+                "Now running OpenClaw 2026.2.3-1 (PID 23401 at migration time)",
+                "All configs preserved (copied from clawdbot config)"
+              ]
+            },
+            {
+              "name": "Configuration Changes",
+              "items": [
+                "**TTS disabled** — Matthew requested turning off auto voice memos",
+                "Changed `messages.tts.auto` from \"always\" to \"off\""
+              ]
+            },
+            {
+              "name": "Mission Control Auth",
+              "items": [
+                "Password accidentally posted in Discord #general (3:11 AM overnight)",
+                "**Rotated password immediately** — deleted message, generated new password",
+                "New credentials saved to `~/.credentials/***`",
+                "Sent new creds via Telegram to Matthew and Michael"
+              ]
+            },
+            {
+              "name": "New Discord Channel",
+              "items": [
+                "**#ir-graphics** created (ID: `1469608876818169958`)",
+                "Moved to 💜 DROSS — OPS & REPACKS category",
+                "Purpose: Graphics and visual assets for Instant Rips",
+                "Already in my allowlist (by name)"
+              ]
+            },
+            {
+              "name": "User Identity Confirmed",
+              "items": [
+                "**Lilmikey = Matthew** on Discord (mharfmann / 664555708225683466)",
+                "Updated USER.md with Discord info"
+              ]
+            },
+            {
+              "name": "Bot Status Check",
+              "items": [
+                "All 4 bots online and responsive:"
+              ]
+            },
+            {
+              "name": "System Verification Post-Migration",
+              "items": [
+                "Memory search: Working (local embeddings)",
+                "Workspace: 155 scripts, 25 credential files accessible",
+                "Context: 146k/200k (73%)",
+                "Telegram: Configured (awaiting test from Matthew)",
+                "Discord: Connected and responding"
+              ]
+            }
+          ],
+          "rawText": [
+            "- Dross ✅ (on OpenClaw now)",
+            "- Wit ✅",
+            "- Big Brother ✅",
+            "- MacGyver ✅",
+            "---"
+          ]
+        },
+        {
+          "name": "Mission Control Buildout Sprint (3:16 AM - 3:27 AM, then 2:01 PM - 3:49 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Features Deployed",
+              "items": []
+            },
+            {
+              "name": "Team Collaboration Model",
+              "items": [
+                "**Relay Mode:** Bots post code in Discord, I integrate into codebase",
+                "Wit: CreateTaskModal, Chat Page UI",
+                "MacGyver: Drag & Drop code, Real-time Updates code, API analysis",
+                "Big Brother: Oversight, testing, verification",
+                "This workflow works well for parallel development"
+              ]
+            },
+            {
+              "name": "Technical Notes",
+              "items": [
+                "Vercel CDN propagation was VERY slow (took ~10 hours for some changes)",
+                "Workaround: Query strings (?v=2) sometimes help, but not always",
+                "Already have @dnd-kit/core for drag & drop (MacGyver's react-dnd code not needed)",
+                "Task board polls every 10 seconds for updates"
+              ]
+            },
+            {
+              "name": "Bot Discord IDs (verified working)",
+              "items": [
+                "Dross: 1467364849859297432",
+                "Wit: 1469127143744344237",
+                "Big Brother: 1469195643666042995",
+                "MacGyver: 1469219891390189600"
+              ]
+            },
+            {
+              "name": "Remaining Work",
+              "items": [
+                "Drag & drop visual feedback could be improved",
+                "Supabase Realtime subscription (vs polling) for better UX",
+                "Calendar view with due dates",
+                "Settings page"
+              ]
+            }
+          ],
+          "rawText": [
+            "1. **Collapsible Side Panels** — Both Agents (left) and Live Feed (right) now collapse with chevron buttons",
+            "2. **Task Detail Modal** — Click any task card to view/edit details (title, description, status, priority, assignee)",
+            "3. **Create Task Modal** — +New button opens form with title, description, priority, assignee fields",
+            "4. **Working Filters** — Inbox/Assigned/Active/Review/Done buttons actually filter the task board",
+            "5. **Chat Page** — /chat with message list, send as/to selectors, broadcast support, 5s polling",
+            "6. **API Enhancement** — `/api/tasks/update` now supports direct field updates (for drag-drop and edit modal)",
+            "---"
+          ]
+        },
+        {
+          "name": "Late Evening Session (11:00 PM+)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Mission Control Features Built & Deployed",
+              "items": []
+            },
+            {
+              "name": "Discord Design Posts",
+              "items": [
+                "Dashboard widgets proposal → #mission-control-buildout",
+                "Notification system design → #mission-control-buildout",
+                "Agent detail page spec → #mission-control-buildout",
+                "Settings page features → #mission-control-buildout",
+                "Keyboard shortcuts research proposal → #mission-control-buildout"
+              ]
+            },
+            {
+              "name": "Vapi Phone Integration Research",
+              "items": [
+                "**Recommended for BnB AI phone line** - Cleanest setup, ~$0.05/min",
+                "**Free tier available**: Free US phone numbers (up to 10/wallet), $10 trial credits",
+                "**Setup path**: docs.vapi.ai/free-telephony → \"Phone Numbers\" → \"Create a Phone Number\" → \"Free Vapi Number\"",
+                "Numbers take couple minutes to activate after creation",
+                "Could deploy same day once Matthew sets up account",
+                "Alternatives researched: Twilio (no free tier), Google Voice (manual), Bland AI, Retell AI"
+              ]
+            },
+            {
+              "name": "Database Schema Escalation",
+              "items": [
+                "Need `archived_at` column on tasks table for archive functionality",
+                "Don't have direct Supabase admin access",
+                "Escalated to team in #mission-control-buildout"
+              ]
+            },
+            {
+              "name": "Tasks Addressed",
+              "items": [
+                "✅ Daily capability improvement task (6fv7g7qrvXWfCjg9)",
+                "✅ Responded to MacGyver about frontend task reassignment",
+                "Added blocking comments to FC Pro auto-accept task (needs credentials)",
+                "AI phone research complete - Vapi recommended"
+              ]
+            },
+            {
+              "name": "Blocked Tasks Status",
+              "items": [
+                "**Fanatics Collect Pro auto-accept** (6frqMMM4gW2rw6h9): Needs FC Pro login from Matthew",
+                "**Whatnot trade-back system** (6fv5V4xXPJF668Qh): Needs workflow walkthrough",
+                "**Discord monitoring** (6fvHrfPxMGWVCMM9): Matthew needs to log into Discord on Chrome",
+                "**Big Brother bot**: Invalid Discord token + Anthropic rate limits"
+              ]
+            },
+            {
+              "name": "Key Learnings",
+              "items": [
+                "Toast notifications use React context for global state management",
+                "Settings page tabbed navigation pattern works well for complex config UIs",
+                "Vapi offers best DX for AI phone integration (vs Twilio complexity)"
+              ]
+            }
+          ],
+          "rawText": [
+            "1. **Cost Tracking Widget** (`CostWidget.tsx`) - Dashboard widget with period filters (today/week/month)",
+            "2. **Toast Notification System** - `Toast.tsx` + `ToastContext.tsx`, integrated via ToastProvider in layout",
+            "3. **Settings Page** (`/settings`) - 5-tab navigation: Appearance, Notifications, Agents, System, Security",
+            "4. **Mobile Responsive Improvements** - flex-col lg:flex-row layouts, improved touch targets",
+            "5. **Enhanced Mission Control Script** (`scripts/enhanced-mission-control.js`)",
+            "---"
+          ]
+        },
+        {
+          "name": "Overnight Session (4:00 AM - 5:00 AM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Major Builds & Designs Created",
+              "items": [
+                "**Built:** `scripts/shopify-integration.js` - Full API integration for Break'n Bad Shopify store",
+                "Supports product CRUD, inventory management, collection handling, order processing",
+                "SEO optimization function built-in for bulk updates",
+                "**Deployed SEO optimization on 78+ products**",
+                "**Built:** `scripts/fanatics-collect-automation.js` - Browser automation for Fanatics Collect",
+                "Handles vault checking, hit vaulting, collection status monitoring",
+                "Uses Puppeteer for headless automation",
+                "Still needs FC Pro credentials for full deployment",
+                "**Built:** `mission-control/src/app/archive/page.tsx`",
+                "Completed tasks grouped by bot in folder view",
+                "Waiting on `archived_at` column in Supabase for full functionality"
+              ]
+            },
+            {
+              "name": "Cron Job Updates",
+              "items": [
+                "**IR Scraper Dashboard Deploy** - Now runs 5 minutes after each IR scrape",
+                "Ensures dashboard always has fresh data after scrape completes"
+              ]
+            },
+            {
+              "name": "Security Hardening",
+              "items": [
+                "**Added to AGENTS.md:**"
+              ]
+            },
+            {
+              "name": "Session Stats",
+              "items": [
+                "**Reports created this session:** 7 comprehensive design/analysis reports",
+                "**Scripts created:** 2 major automation scripts",
+                "**SEO products optimized:** 78+",
+                "**Context before compaction:** ~146k/200k tokens"
+              ]
+            }
+          ],
+          "rawText": [
+            "| Report | Purpose |",
+            "|--------|---------|",
+            "| `reports/personal-breaks-shopify-design.md` | Personal breaks / rip-and-ship storefront design |",
+            "| `reports/branded-merch-store-plan.md` | BnB merchandise store expansion plan |",
+            "| `reports/customer-hit-archive-design.md` | Customer PC showcase / hit archive feature |",
+            "| `reports/acquisition-target-scouting.md` | Potential acquisition targets for BnB growth |",
+            "| `reports/todoist-ops-board-sync-design.md` | Sync design for Todoist → Mission Control Ops Board |",
+            "- No API credentials/tokens sharing without Matthew's explicit consent",
+            "- No SOUL.md changes without Matthew's approval",
+            "- Clarified existing refund password and allowlist rules"
+          ]
+        }
+      ],
+      "tasks_completed": [
+        {
+          "name": "Completed daily standup check (ID: ***REDACTED***)",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Daily improvement task (6fv7g7qrvXWfCjg9) - continuous capability enhancement",
+          "status": "done",
+          "category": "organization"
+        },
+        {
+          "name": "Mission Control daily standup check",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Researched auto-accept settings for FC Pro",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "Created comprehensive delegation plan (`reports/canva-cleanup-delegation-plan.md`)",
+          "status": "done",
+          "category": "research"
+        },
+        {
+          "name": "COMPLETED - Full solution delivered",
+          "status": "live",
+          "category": "organization"
+        },
+        {
+          "name": "COMPLETED - Comprehensive 100M scale automation roadmap delivered",
+          "status": "live",
+          "category": "engineering"
+        },
+        {
+          "name": "COMPLETED - Comprehensive February 2026 release calendar delivered",
+          "status": "live",
+          "category": "organization"
+        },
+        {
+          "name": "COMPLETED - Comprehensive review of Matthew's 171 personal tasks",
+          "status": "done",
+          "category": "organization"
+        },
+        {
+          "name": "COMPLETED - Integrated TaskDetailModal component with TaskBoard",
+          "status": "done",
+          "category": "organization"
+        },
+        {
+          "name": "COMPLETED - Verified filter functionality already working",
+          "status": "done",
+          "category": "operations"
+        },
+        {
+          "name": "Daily capability improvement task (6fv7g7qrvXWfCjg9)",
+          "status": "done",
+          "category": "organization"
+        },
+        {
+          "name": "Responded to MacGyver about frontend task reassignment",
+          "status": "done",
+          "category": "organization"
+        }
+      ],
+      "reports_generated": [
+        {
+          "name": "| Report | Location | Purpose |",
+          "category": "general"
+        },
+        {
+          "name": "|--------|----------|---------|",
+          "category": "general"
+        },
+        {
+          "name": "| Canva Cleanup Plan | `reports/canva-cleanup-delegation-plan.md` | 77 designs needing rename |",
+          "category": "general"
+        },
+        {
+          "name": "| Collect Incoming Solution | `reports/collect-incoming-bulk-solution.md` | Bulk order marking |",
+          "category": "general"
+        },
+        {
+          "name": "| Automation Roadmap | `reports/***REDACTED***.md` | 100M scale automation |",
+          "category": "strategy"
+        },
+        {
+          "name": "| Weekly Release Calendar | `reports/***REDACTED***.md` | Feb 2026 card releases |",
+          "category": "product"
+        },
+        {
+          "name": "| Matthew's Priorities | `reports/***REDACTED***.md` | Task triage for weekend |",
+          "category": "general"
+        }
+      ],
+      "key_actions": [
+        {
+          "description": "Cron jobs for review task automation ran successfully",
+          "category": "automation"
+        },
+        {
+          "description": "Email alerts: U.S. Bank wire transfer warning flagged for Matthew's attention",
+          "category": "email"
+        },
+        {
+          "description": "✅ Created comprehensive delegation plan (`reports/canva-cleanup-delegation-plan.md`)",
+          "category": "general"
+        },
+        {
+          "description": "Created command line script (`scripts/collect-incoming-bulk-update.js`) for bulk marking orders as arrived",
+          "category": "integration"
+        },
+        {
+          "description": "Designed Google Apps Script menu system for user-friendly bulk updates",
+          "category": "integration"
+        },
+        {
+          "description": "Recommended next step: Install Google Apps Script in the sheet for team use",
+          "category": "integration"
+        },
+        {
+          "description": "✅ COMPLETED - Comprehensive February 2026 release calendar delivered",
+          "category": "calendar"
+        },
+        {
+          "description": "Full Calendar: `reports/***REDACTED***.md`",
+          "category": "calendar"
+        },
+        {
+          "description": "Full editing capabilities: title, description, assignee, status, priority",
+          "category": "integration"
+        },
+        {
+          "description": "Proper state management and API integration for saving changes",
+          "category": "integration"
+        },
+        {
+          "description": "✅ COMPLETED - Verified filter functionality already working",
+          "category": "email"
+        },
+        {
+          "description": "All 6 filters operational: All, Inbox, Assigned, Active, Review, Done",
+          "category": "email"
+        },
+        {
+          "description": "TaskBoard receives filtered tasks correctly",
+          "category": "email"
+        },
+        {
+          "description": "`scripts/collect-incoming-bulk-update.js` - Bulk mark orders as arrived by date/order ID",
+          "category": "integration"
+        },
+        {
+          "description": "Workspace: 155 scripts, 25 credential files accessible",
+          "category": "integration"
+        },
+        {
+          "description": "MacGyver: Drag & Drop code, Real-time Updates code, API analysis",
+          "category": "integration"
+        },
+        {
+          "description": "Supabase Realtime subscription (vs polling) for better UX",
+          "category": "integration"
+        },
+        {
+          "description": "Calendar view with due dates",
+          "category": "calendar"
+        },
+        {
+          "description": "Setup path: docs.vapi.ai/free-telephony → \"Phone Numbers\" → \"Create a Phone Number\" → \"Free Vapi Number\"",
+          "category": "integration"
+        },
+        {
+          "description": "Alternatives researched: Twilio (no free tier), Google Voice (manual), Bland AI, Retell AI",
+          "category": "general"
+        },
+        {
+          "description": "AI phone research complete - Vapi recommended",
+          "category": "integration"
+        },
+        {
+          "description": "Fanatics Collect Pro auto-accept (6frqMMM4gW2rw6h9): Needs FC Pro login from Matthew",
+          "category": "general"
+        },
+        {
+          "description": "Whatnot trade-back system (6fv5V4xXPJF668Qh): Needs workflow walkthrough",
+          "category": "general"
+        },
+        {
+          "description": "Vapi offers best DX for AI phone integration (vs Twilio complexity)",
+          "category": "integration"
+        },
+        {
+          "description": "Built: `scripts/shopify-integration.js` - Full API integration for Break'n Bad Shopify store",
+          "category": "integration"
+        },
+        {
+          "description": "Built: `scripts/fanatics-collect-automation.js` - Browser automation for Fanatics Collect",
+          "category": "integration"
+        },
+        {
+          "description": "Scripts created: 2 major automation scripts",
+          "category": "integration"
+        }
+      ],
+      "interactions": [
+        {
+          "description": "Matthew confirmed migration request",
+          "type": "matthew"
+        },
+        {
+          "description": "TTS disabled — Matthew requested turning off auto voice memos",
+          "type": "matthew"
+        }
+      ],
+      "todoist_activity": [],
+      "infrastructure": [
+        "`scripts/collect-incoming-bulk-update.js` - Bulk mark orders as arrived by date/order ID"
+      ],
+      "stats": {
+        "sections_count": 13,
+        "tasks_completed_count": 13,
+        "reports_count": 7,
+        "key_actions_count": 27,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-02-08",
+      "title": "Dross Daily Log",
+      "sections": [
+        {
+          "name": "Heartbeat Work Summary",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Mission Control Tasks Completed ✅",
+              "items": []
+            },
+            {
+              "name": "Todoist Tasks Completed ✅",
+              "items": []
+            }
+          ],
+          "rawText": [
+            "1. **Daily standup check** (P3) - completed routine standup, confirmed API endpoints working fine (MacGyver reported false API issues)",
+            "2. **Inbox monitoring for stale unassigned tasks** (P2) - built `stale-inbox-monitor.js` script:",
+            "- Monitors unassigned inbox tasks >4h old",
+            "- Suggests assignments based on bot domain mapping",
+            "- Alerts during active hours only (8 AM - Midnight EST)",
+            "- Includes bot domain keywords for smart routing",
+            "3. **Canva design cleanup** (P2, 6fww7ChR8PFHQMM9) - built comprehensive solution:",
+            "- Created `canva-bulk-rename.js` script for 77 messy design names",
+            "- Improved naming convention: `[CATEGORY] - [PURPOSE] - [DATE]`",
+            "- Smart categorization: BREAKING, SOCIAL, PROMO, PLATFORM, MISC",
+            "- Dry run tested successfully - proper categorization working",
+            "- **Blocked**: Canva access token expired, needs manual refresh",
+            "- Script ready to run once auth is fixed"
+          ]
+        },
+        {
+          "name": "Technical Accomplishments",
+          "items": [
+            "**API validation**: Confirmed Mission Control endpoints working (MacGyver's concern was false alarm)",
+            "**Task automation**: Built monitoring system for unassigned tasks",
+            "**Design organization**: Created smart categorization system for Canva cleanup",
+            "**Code quality**: Both scripts include dry-run modes, error handling, rate limiting"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Bot Communications",
+          "items": [
+            "MacGyver reported API issues but testing showed endpoints working fine",
+            "Messaging system has DB constraint issue (foreign key violation)",
+            "MacGyver incorrectly assigned frontend task - should be routed to UI domain bots"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Business Monitors Status",
+          "items": [
+            "eBay price tracking: Last run 3h ago, scheduled for 6h intervals",
+            "No urgent alerts or significant price movements"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Next Steps",
+          "items": [
+            "Canva token needs refresh before bulk renaming can proceed",
+            "Consider auto-assignment improvements based on stale task monitoring insights",
+            "Address messaging system DB constraints for bot communication"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Metrics",
+          "items": [
+            "**Tasks completed**: 3 (2 MC + 1 Todoist)",
+            "**Scripts built**: 2 (monitoring + Canva cleanup)",
+            "**Processing time**: ~39 minutes total",
+            "**Success rate**: 100% for buildable tasks"
+          ],
+          "subsections": [],
+          "rawText": [
+            "---"
+          ]
+        },
+        {
+          "name": "FINAL COUNT: 51 BRANCHES! 🎉",
+          "items": [
+            "51 branches merged",
+            "25+ APIs built (MacGyver)",
+            "Full Liquid Glass theme",
+            "Token-based usage tracking (25M weekly budget)",
+            "Git hooks for task enforcement",
+            "Real bot sparklines",
+            "Health check API"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Session Duration:** ~3 hours (5:53 PM - 9:58 PM EST)",
+            "**Final Stats:**",
+            "**This is the most productive single session in Mission Control history.**",
+            "The void is liquid. 🧊🔥"
+          ]
+        }
+      ],
+      "tasks_completed": [
+        {
+          "name": "Mission Control Tasks Completed",
+          "status": "done",
+          "category": "organization"
+        },
+        {
+          "name": "Todoist Tasks Completed",
+          "status": "done",
+          "category": "organization"
+        }
+      ],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "API validation: Confirmed Mission Control endpoints working (MacGyver's concern was false alarm)",
+          "category": "integration"
+        },
+        {
+          "description": "Design organization: Created smart categorization system for Canva cleanup",
+          "category": "general"
+        },
+        {
+          "description": "Code quality: Both scripts include dry-run modes, error handling, rate limiting",
+          "category": "integration"
+        },
+        {
+          "description": "MacGyver reported API issues but testing showed endpoints working fine",
+          "category": "integration"
+        },
+        {
+          "description": "Canva token needs refresh before bulk renaming can proceed",
+          "category": "general"
+        },
+        {
+          "description": "Scripts built: 2 (monitoring + Canva cleanup)",
+          "category": "integration"
+        },
+        {
+          "description": "25+ APIs built (MacGyver)",
+          "category": "integration"
+        },
+        {
+          "description": "Health check API",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [
+        {
+          "action": "updated",
+          "description": "Tasks completed: 3 (2 MC + 1 Todoist)"
+        }
+      ],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 7,
+        "tasks_completed_count": 2,
+        "reports_count": 0,
+        "key_actions_count": 8,
+        "todoist_count": 1
+      }
+    },
+    {
+      "date": "2026-02-09",
+      "title": "09 (Monday)",
+      "sections": [
+        {
+          "name": "Mission Control Session - Evening",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Dashboard Cleanup",
+              "items": [
+                "**Moved Reset Timers** to `/usage` page (removed from main dashboard)",
+                "**Moved Subagent panel** to `/subagents` page (removed from main dashboard)",
+                "Dashboard now cleaner: just stats row, Completed Today, and task board"
+              ]
+            },
+            {
+              "name": "Bugs Fixed",
+              "items": [
+                "**Weekly reset timer** was showing 7d instead of correct time — fixed EST timezone calculation in `/api/costs/resets/route.ts`",
+                "**Subagent spinner** was stuck loading — table `subagent_sessions` didn't exist. Wit fixed graceful handling, Matthew ran migration"
+              ]
+            },
+            {
+              "name": "Token Tracking Issue",
+              "items": [
+                "After weekly reset (Monday 4 PM), bots weren't reporting tokens",
+                "**Root cause:** Heartbeats need to include `token_burn_session` field",
+                "**Fix:** Each bot must POST heartbeat with token estimate",
+                "Created `scripts/token-tracker.js` utility for local accumulation",
+                "OpenClaw doesn't expose cumulative session tokens — have to estimate from context × 1.5"
+              ]
+            },
+            {
+              "name": "Bot Git Emails (for Vercel deploys)",
+              "items": [
+                "Bots have git emails: `wit@breaknbad.com`, `macgyver@breaknbad.ai`, `big-brother@breaknbad.ai`",
+                "When merging bot branches, must run `git commit --amend --reset-author` before pushing",
+                "Otherwise Vercel rejects (bot emails not on Vercel team)",
+                "This is why some deploys fail with bot email errors"
+              ]
+            },
+            {
+              "name": "Review Column Purpose",
+              "items": [
+                "**Review** = \"done but needs human check\" before closing",
+                "Workflow: Bot completes → Review → Human verifies → Done",
+                "Prevents bots from auto-closing things that need human eyes"
+              ]
+            },
+            {
+              "name": "Subagent Tracking Now Live",
+              "items": [
+                "Matthew ran `subagent_sessions` migration",
+                "Big Brother registered: the-auditor-daily (6 AM), api-usage-monitor-hourly",
+                "`/subagents` page ready for tracking"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Key Insight",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "Feb 9, 2026 IS a Monday (I kept thinking it was Sunday). Weekly reset at 4 PM already passed when Matthew asked about the timer — the \"6d 20h\" was correct."
+          ]
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Weekly reset timer was showing 7d instead of correct time — fixed EST timezone calculation in `/api/costs/resets/route.ts`",
+          "category": "integration"
+        },
+        {
+          "description": "Created `scripts/token-tracker.js` utility for local accumulation",
+          "category": "integration"
+        },
+        {
+          "description": "Bots have git emails: `wit@breaknbad.com`, `macgyver@breaknbad.ai`, `big-brother@breaknbad.ai`",
+          "category": "email"
+        },
+        {
+          "description": "Otherwise Vercel rejects (bot emails not on Vercel team)",
+          "category": "email"
+        },
+        {
+          "description": "This is why some deploys fail with bot email errors",
+          "category": "email"
+        },
+        {
+          "description": "Big Brother registered: the-auditor-daily (6 AM), api-usage-monitor-hourly",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 2,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 6,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-02-10",
+      "title": "Daily Log",
+      "sections": [
+        {
+          "name": "Major Issues Resolved",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Topps Invoice Pipeline Fixed",
+              "items": [
+                "Backup detection method when snapshot approach fails",
+                "Better error alerting for missing dependencies",
+                "Health check that Python dependencies are installed"
+              ]
+            },
+            {
+              "name": "Mission Control Development",
+              "items": [
+                "Completed Usage Widget for dashboard (UsageWidget.tsx + /api/usage/fleet-summary)",
+                "Added Discord channel sync endpoint",
+                "Auto-throttle script now in MC repo for all bots",
+                "Fixed auth issues with commit hooks requiring Dross authorship"
+              ]
+            }
+          ],
+          "rawText": [
+            "**Problem:** Missing Python dependency (`pdfplumber`) caused invoice processor to silently fail for days.",
+            "**Impact:** Matthew paid $49k invoice but remittance email wasn't sent because completed task wasn't detected.",
+            "**Root cause:** Cron used snapshot-based detection, but if cron fails, completed tasks get lost.",
+            "**Solutions implemented:**",
+            "1. Installed missing `pdfplumber` Python package",
+            "2. Manually processed invoice 312110131767 ($48,975) - marked PAID and sent remittance email",
+            "3. Updated remittance script: ACH → wire transfer (how BnB actually pays)",
+            "4. Created P1 task for Matthew to fix email layout",
+            "**Process improvements needed:**"
+          ]
+        },
+        {
+          "name": "Communications",
+          "items": [
+            "Telegram: Troubleshot topps cron issue with Matthew",
+            "Discord: Notified bot fleet about auto-throttle script availability"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Technical Work",
+          "items": [
+            "Fixed checkboxes in Topps spreadsheet (boolean values vs text)",
+            "Created remittance email manually",
+            "Deployed MC widget updates"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Memory Updates",
+          "items": [
+            "Updated MEMORY.md with email approval rule (learned from DA Card World incident)",
+            "Added wire transfer note for future reference"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Next Steps",
+          "items": [
+            "Monitor topps cron runs to ensure they work properly going forward",
+            "Consider backup detection method for completed invoice tasks",
+            "Add health checks for Python dependencies in critical scripts"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Ground Truth Usage Pipeline (Built Tonight)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "What We Built",
+              "items": []
+            },
+            {
+              "name": "Components",
+              "items": []
+            },
+            {
+              "name": "Account Mapping",
+              "items": []
+            },
+            {
+              "name": "Why We Needed This",
+              "items": []
+            },
+            {
+              "name": "Deploy Issues Fixed",
+              "items": [
+                "Removed conflicting `pages/` directory (Next.js can't have both pages/ and src/app/)",
+                "Fixed TypeScript error (Supabase queries don't have .catch(), use try/catch)",
+                "Set up Netlify auto-deploy from GitHub"
+              ]
+            },
+            {
+              "name": "Scripts",
+              "items": [
+                "`~/clawd/scripts/update-ground-truth.js` - manual update script",
+                "Big Brother has `update-ground-truth.sh` on his machine"
+              ]
+            },
+            {
+              "name": "Current Status (as of midnight)",
+              "items": [
+                "Dross: 34% session / 21% weekly",
+                "Wit: 0% session / 45% weekly",
+                "Big Brother: 39% session / 44% weekly",
+                "MacGyver: 19% session / 54% weekly"
+              ]
+            },
+            {
+              "name": "MC Deploy Fixes (Late Night)",
+              "items": []
+            },
+            {
+              "name": "Netlify Auto-Deploy",
+              "items": [
+                "Netlify IS connected to GitHub (github.com/breaknbad/mission-control)",
+                "Auto-publishes from main branch",
+                "Environment vars already set: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY",
+                "GitHub Actions workflow added as backup (needs NETLIFY_AUTH_TOKEN + NETLIFY_SITE_ID secrets)"
+              ]
+            },
+            {
+              "name": "UI Improvement Requested",
+              "items": []
+            },
+            {
+              "name": "Supabase Credentials (for bots)",
+              "items": [
+                "URL: https://***supabase.co",
+                "Anon key: sb_***_REDACTED",
+                "Can PATCH agents table directly for ground truth updates"
+              ]
+            }
+          ],
+          "rawText": [
+            "Browser automation that scrapes actual usage percentages from claude.ai/settings/usage and stores them in Supabase.",
+            "1. **Big Brother's cron job** (`console-usage-scraper`) - runs every 2 hours",
+            "2. **Chrome profiles** with saved Google sessions for all 4 accounts",
+            "3. **Supabase columns** on `agents` table:",
+            "- `ground_truth_pct` (weekly %)",
+            "- `ground_truth_session_pct` (session %)",
+            "- `ground_truth_updated_at`",
+            "4. **MC API updates** (`/api/costs/usage`, `/api/usage/fleet-summary`) - prefer ground truth when fresh (<4h)",
+            "| Email | Bot | Weekly Reset |",
+            "|-------|-----|--------------|",
+            "| matthew@breaknbad.com | Dross | Mon 3:59 PM |",
+            "| clawdbot@breaknbad.com | Big Brother | Thu 2:00 AM |",
+            "| clawdbot2@breaknbad.com | Wit | Sun 4:59 PM |",
+            "| clawdbot4@breaknbad.com | MacGyver | Fri 1:00 AM |",
+            "session_status tracking only sees tokens through OpenClaw — misses direct claude.ai usage. Ground truth from the console is the real number.",
+            "Multiple build failures fixed:",
+            "1. **pages/ directory conflict** - Next.js can't have both `pages/` and `src/app/`. Removed rogue `pages/api/` that kept getting recreated.",
+            "2. **TypeScript error** - Supabase queries don't have `.catch()`, changed to try/catch",
+            "3. **Fleet usage math** - Changed from SUM to MAX for fleet totals (each account has separate limits, summing is meaningless)",
+            "Matthew wants reset times merged INTO bot cards instead of separate sections:",
+            "```",
+            "Dross",
+            "Session: 34% (resets in 1h 9m)",
+            "Weekly: 21% (resets Mon 4 PM)",
+            "```",
+            "Created as follow-up task - cleaner UX, all info in one place per bot."
+          ]
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Completed Usage Widget for dashboard (UsageWidget.tsx + /api/usage/fleet-summary)",
+          "category": "integration"
+        },
+        {
+          "description": "Auto-throttle script now in MC repo for all bots",
+          "category": "integration"
+        },
+        {
+          "description": "Telegram: Troubleshot topps cron issue with Matthew",
+          "category": "automation"
+        },
+        {
+          "description": "Discord: Notified bot fleet about auto-throttle script availability",
+          "category": "integration"
+        },
+        {
+          "description": "Created remittance email manually",
+          "category": "email"
+        },
+        {
+          "description": "Updated MEMORY.md with email approval rule (learned from DA Card World incident)",
+          "category": "email"
+        },
+        {
+          "description": "Monitor topps cron runs to ensure they work properly going forward",
+          "category": "automation"
+        },
+        {
+          "description": "Add health checks for Python dependencies in critical scripts",
+          "category": "integration"
+        },
+        {
+          "description": "Fixed TypeScript error (Supabase queries don't have .catch(), use try/catch)",
+          "category": "integration"
+        },
+        {
+          "description": "`~/clawd/scripts/update-ground-truth.js` - manual update script",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 6,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 10,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-02-11",
+      "title": "11 Daily Log",
+      "sections": [
+        {
+          "name": "Topps Invoice Automation Fixed",
+          "items": [
+            "Root cause: `pdfplumber` Python package missing",
+            "Fixed with `pip3 install pdfplumber --break-system-packages` (macOS externally-managed Python)",
+            "Manually processed invoice #312110131767 ($48,975) — marked PAID, remittance sent",
+            "Updated remittance script: ACH → wire transfer (Topps uses wire)",
+            "Crons running: invoice processor 9 AM, remittance sync 9:30 AM"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Mission Control Features Built",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Mobile Swipe Gestures (MC-13404ffb) — commit 282185c",
+              "items": [
+                "Created `useSwipe` hook in `src/hooks/useSwipe.ts`",
+                "Built `SwipeableTaskCard` component",
+                "Left swipe = reject/block/archive, Right = approve/start/complete (contextual per status)"
+              ]
+            },
+            {
+              "name": "Cost Tracking Dashboard (MC-f3c893f4 + MC-e328b4b4) — commit e07a9e9",
+              "items": [
+                "Added recharts dependency",
+                "Created `CostTrendsChart.tsx` component",
+                "Line charts for cost trends over time"
+              ]
+            },
+            {
+              "name": "Usage API Fix (MC-0c850ff7) — commit 24306bb",
+              "items": [
+                "`/api/costs/usage` now returns ground truth values only",
+                "Internal token tracking DISABLED — drifts 20-50x from reality",
+                "Ground truth comes from Big Brother's console scraper (every 2h)"
+              ]
+            },
+            {
+              "name": "Task Dependency Visualization (MC-80797391)",
+              "items": [
+                "Added `depends_on` field to Task interface in `src/types/index.ts`",
+                "Created `TaskDependencyGraph.tsx` with hierarchical layout + SVG arrows",
+                "Built `/dependencies` page with filtering & stats dashboard",
+                "TopNav already had \"Deps\" link ready"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Homebase Schedule Gap Monitoring",
+          "items": [
+            "Cron job ID: `***REDACTED***`",
+            "Schedule: 7 AM / 12 PM / 5 PM EST",
+            "Location: SB (***REDACTED***)",
+            "Alerts to #alerts-oversight (1469150281194406031)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Approved 8 Pending Tasks",
+          "items": [
+            "Reviewed and moved bot-generated tasks from pending_approval to inbox",
+            "Task approval flow: human tasks skip approval, bot tasks need Dross review"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Key Technical Context",
+          "items": [
+            "**Discord #api-usage-alerts**: 1470307842040008835 (for token threshold alerts)",
+            "**Topps spreadsheet**: ***REDACTED***",
+            "**23 crons synced** to Mission Control",
+            "**Alert cooldowns**: Info=60min, Warning=30min, Critical=10min"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Blocked Items",
+          "items": [
+            "usage_history table creation — needs Supabase dashboard access (assigned to big-brother)",
+            "SOP: Bot usage limits — requires Matthew sign-off + doc doesn't exist yet"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Handoff System Implemented (5:11 PM)",
+          "items": [
+            "`node scripts/handoff.js create --from dross --to wit --task \"description\"`",
+            "`node scripts/handoff.js deliver --id ho-xxxxx`",
+            "`node scripts/handoff.js confirm --id ho-xxxxx`",
+            "`node scripts/handoff.js check --bot <name>`",
+            "`node scripts/handoff.js list --stale`"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Created `scripts/handoff.js` for bot-to-bot handoff tracking after dropping the ball on Wit's brand materials.",
+            "**Workflow:**",
+            "1. `create` — when committing to deliver something to another bot",
+            "2. `deliver` — when you've completed your part",
+            "3. `confirm` — receiving bot confirms they got what they need",
+            "4. Big Brother monitors for stale handoffs (>4hrs pending during active hours)",
+            "**Commands:**",
+            "Data stored in `data/handoffs.json`",
+            "**Action:** Add handoff creation to my workflow whenever I commit to something for another bot. Check for pending handoffs in heartbeats."
+          ]
+        },
+        {
+          "name": "IR Dashboard Polish (5:48 PM)",
+          "items": [
+            "**Logo size increased**: 220px → 300px for better stream visibility",
+            "**CTA simplified**: Removed \"Enter Phone\" button, now just \"Text RIPS to (574) 275-0277\" with SMS link",
+            "**Banner streamlined**: Two-row headline + single-line CTA, removed X close button (not needed on stream)",
+            "**Pack detail pages**: Built with card galleries showing grails/chases, images, CardLadder values",
+            "**Data verified**: All 35 packs present in all 334 scrapes — zero gaps in collection",
+            "Remove card names next to Top Grail (parsing issues)",
+            "Remove player names line",
+            "Keep: Badge + Top Grail value only, Grails/Chases boxes, Progress bar"
+          ],
+          "subsections": [],
+          "rawText": [
+            "With Matthew live in chat:",
+            "**Wit proposing simpler card layout:**",
+            "Waiting for Wit's clarification if this is for the dashboard or promo graphics."
+          ]
+        },
+        {
+          "name": "BnB Brand Spec Sheet (Evening)",
+          "items": [
+            "**Brand colors**: #DC2626 (BnB Red), #1F2937 (Black), #F3F4F6 (Light Gray)",
+            "**Typography**: Inter (body), Space Grotesk (headlines)",
+            "Platform dimensions for Fanatics Live, Whatnot, TikTok, YouTube, Instagram",
+            "Logo usage rules, tone guide"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Created `docs/bnb-brand-spec-sheet.md` + `docs/bnb-brand-quick-reference.md`:"
+          ]
+        },
+        {
+          "name": "IR Graphics Asset Library",
+          "items": [
+            "**Folder ID**: `***REDACTED***`",
+            "Subfolders: Banners, Thumbnails, Insert Cards, Overlays, Brand Elements",
+            "Documented in `docs/ir-graphics-asset-library.md`",
+            "README file uploaded with usage guidelines"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Created organized Google Drive folder for Wit to use:"
+          ]
+        },
+        {
+          "name": "eBay Invoice Autoforward Fixed",
+          "items": [
+            "**Filter ID**: `***REDACTED***`",
+            "Rule: `from:ebay.com subject:invoice` → Label + Skip inbox + Forward to kent@breaknbad.com",
+            "Backfilled ~90 historical invoices via forwarding"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Pending Matthew response**: Add forwarding to supplier filters? (Southern Hobby, GTS, Peachstate, Topps → Kent?)"
+          ]
+        },
+        {
+          "name": "Discord Context Optimization Analysis",
+          "items": [
+            "#security-compliance: 152K tokens (over limit)",
+            "#general: 134K tokens (over limit)",
+            "#repacks: 124K tokens (over limit)",
+            "12 channels inject every message (`requireMention: false`)"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Created `reports/discord-context-optimization.md` with recommendations to reduce token burn:",
+            "**Problem:** New Discord sessions hitting 120K+ token limits",
+            "**Recommendations:**",
+            "1. Flip #repacks + #ir-dashboards to `requireMention: true` — ~40K+ token savings",
+            "2. Add context windows (8-24hrs) to high-volume channels",
+            "3. Consider separate session pools for monitoring vs work",
+            "**Pending Matthew decision** on tightening Discord settings."
+          ]
+        },
+        {
+          "name": "Token Usage Today",
+          "items": [
+            "~416k tokens burned",
+            "$1.22 USD cost",
+            "Ground truth: 24% weekly, 3% session",
+            "24 crons synced to Mission Control"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "MC Task Attachments Feature (In Progress)",
+          "items": [
+            "Created `AttachmentUpload.tsx` — drag-drop + URL input",
+            "Created `AttachmentPreview.tsx` — image modal + download",
+            "Added `attachments` field to Task interface",
+            "Integrated into `CreateTaskModal.tsx`",
+            "**TODO**: Add attachment indicator to TaskBoard cards + full preview in detail modal"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Building file attachment support for MC tasks:"
+          ]
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Updated remittance script: ACH → wire transfer (Topps uses wire)",
+          "category": "integration"
+        },
+        {
+          "description": "Crons running: invoice processor 9 AM, remittance sync 9:30 AM",
+          "category": "automation"
+        },
+        {
+          "description": "`/api/costs/usage` now returns ground truth values only",
+          "category": "integration"
+        },
+        {
+          "description": "Built `/dependencies` page with filtering & stats dashboard",
+          "category": "email"
+        },
+        {
+          "description": "Cron job ID: `***REDACTED***`",
+          "category": "automation"
+        },
+        {
+          "description": "Reviewed and moved bot-generated tasks from pending_approval to inbox",
+          "category": "email"
+        },
+        {
+          "description": "Discord #api-usage-alerts: 1470307842040008835 (for token threshold alerts)",
+          "category": "integration"
+        },
+        {
+          "description": "23 crons synced to Mission Control",
+          "category": "automation"
+        },
+        {
+          "description": "`node scripts/handoff.js create --from dross --to wit --task \"description\"`",
+          "category": "integration"
+        },
+        {
+          "description": "`node scripts/handoff.js deliver --id ho-xxxxx`",
+          "category": "integration"
+        },
+        {
+          "description": "`node scripts/handoff.js confirm --id ho-xxxxx`",
+          "category": "integration"
+        },
+        {
+          "description": "`node scripts/handoff.js check --bot <name>`",
+          "category": "integration"
+        },
+        {
+          "description": "`node scripts/handoff.js list --stale`",
+          "category": "integration"
+        },
+        {
+          "description": "Platform dimensions for Fanatics Live, Whatnot, TikTok, YouTube, Instagram",
+          "category": "general"
+        },
+        {
+          "description": "Filter ID: `***REDACTED***`",
+          "category": "email"
+        },
+        {
+          "description": "Rule: `from:ebay.com subject:invoice` → Label + Skip inbox + Forward to kent@breaknbad.com",
+          "category": "email"
+        },
+        {
+          "description": "24 crons synced to Mission Control",
+          "category": "automation"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [
+        {
+          "action": "created",
+          "description": "Created `TaskDependencyGraph.tsx` with hierarchical layout + SVG arrows"
+        },
+        {
+          "action": "updated",
+          "description": "Alerts to #alerts-oversight (1469150281194406031)"
+        }
+      ],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 14,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 17,
+        "todoist_count": 2
+      }
+    },
+    {
+      "date": "2026-02-12",
+      "title": "12 Daily Log",
+      "sections": [
+        {
+          "name": "Thread Analyzer Feature (SHIPPED)",
+          "items": [
+            "`POST /api/threads` — create thread analysis",
+            "`POST /api/threads/:id/comments` — discussion",
+            "`POST /api/threads/:id/deploy` — create task from thread",
+            "`PATCH /api/threads` — update verdict, suggested_actions",
+            "`thread_analyses` — main record with suggested_actions JSONB",
+            "`thread_comments` — discussion comments",
+            "`tasks.thread_id` — links tasks to source thread"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Full workflow now live at https://poetic-melomakarona-d51375.netlify.app/threads",
+            "**Flow:**",
+            "1. X link dropped in #threads",
+            "2. Dross fetches via fxtwitter API → posts summary",
+            "3. Bots discuss with domain perspectives",
+            "4. Suggested actions captured from discussion (not auto-extracted)",
+            "5. Deploy All or individual actions → creates MC tasks",
+            "6. Bots claim on heartbeat → work → complete",
+            "**Key components:**",
+            "**Suggested actions format:**",
+            "```json",
+            "{",
+            "\"title\": \"Action title\",",
+            "\"description\": \"Why and how - from discussion\",",
+            "\"assignee\": \"dross\",",
+            "\"scope\": \"single\" | \"all-bots\"",
+            "}",
+            "```",
+            "**Database tables:**"
+          ]
+        },
+        {
+          "name": "All-Bots Scope (SHIPPED)",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "When deploying with scope=\"all-bots\":",
+            "1. Creates parent task `[ALL BOTS] Title`",
+            "2. Spawns 4 sub-tasks (one per bot)",
+            "3. Sub-tasks linked via depends_on",
+            "4. Tagged with `scope:all-bots`, `type:parent/sub-task`",
+            "Bot consensus: Sub-tasks + Discord ping for visibility. Audit trail beats broadcast-only."
+          ]
+        },
+        {
+          "name": "Cross-Bot Sync System (SHIPPED)",
+          "items": [
+            "`shared/skills/` — SKILL.md files for all bots",
+            "`shared/protocols/` — COMMS-PROTOCOL etc",
+            "`shared/memory/` — cross-bot knowledge"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Shared directory:** `mission-control/shared/`",
+            "**New heartbeat step (0.9):**",
+            "```bash",
+            "cd ~/clawd/mission-control && git pull origin main --quiet",
+            "```",
+            "Check for updates in shared directories, ack in Discord.",
+            "**Why:** Makes all-bots scope actually work. When one bot pushes, others sync on heartbeat."
+          ]
+        },
+        {
+          "name": "UI Improvements",
+          "items": [
+            "`glass-card` class for containers",
+            "CSS variables: `--glass-border`, `--text-muted`, `--accent`",
+            "No colored badges — simple text status",
+            "Checkboxes for action selection",
+            "\"Deploy All\" button",
+            "Scope dropdown (1 bot / All bots)",
+            "Expandable action descriptions"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Threads page now uses MC design system:"
+          ]
+        },
+        {
+          "name": "First Thread Analyzed",
+          "items": [
+            "ID: ***REDACTED***",
+            "Suggested actions about formalizing our scripts as Skills"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Alex Finn (@AlexFinn) thread about OpenAI Skills/Shell/Compaction primitives"
+          ]
+        },
+        {
+          "name": "Tasks Completed",
+          "items": [
+            "MC-1e8709a2: Thread discussion + deploy workflow",
+            "MC-66716a1d: All-bots scope implementation"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Late Night Session",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "4:30 AM ship session with Matthew. Built entire thread analyzer feature + cross-bot sync infrastructure in one sitting."
+          ]
+        },
+        {
+          "name": "IR Data Source Fix (5:06 AM)",
+          "items": [
+            "**Source file:** `ir-pack-ev.json` (NOT ir-pack-data.json)",
+            "**CardLadder values** = actual per-card prices from CardLadder",
+            "**Fanatics tier ranges** = inflated marketing estimates (DO NOT USE for EV)",
+            "ir-alert.js",
+            "ir-daily-digest.js",
+            "ir-dashboard.js",
+            "ir-ev-database.js",
+            "ir-pack-recommender.js",
+            "ir-trending.js",
+            "ir-update-dashboard.js",
+            "whale-alert-system.js",
+            "Fanatics ranges showed Football Ultra at 1.12x EV",
+            "CardLadder reality: same pack is 0.88x EV",
+            "Most packs are -EV with real CardLadder values",
+            "1.00x = +EV alert",
+            "1.10x = Strong buy",
+            "1.15x = Exceptional"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**CRITICAL: All IR scripts now use CardLadder-based EV data**",
+            "**Scripts updated:**",
+            "**Pipeline flow:**",
+            "1. `ir-scraper.js` → outputs to `ir-pack-data.json` (basic pack info)",
+            "2. `ir-checklist-scraper.js` → reads ir-pack-data.json, fetches CardLadder per-card values, outputs to `ir-pack-ev.json` (TRUE EV)",
+            "3. All downstream scripts read from `ir-pack-ev.json`",
+            "**Key difference:**",
+            "**Alert thresholds (based on CardLadder data):**"
+          ]
+        },
+        {
+          "name": "Security Hardening Session (5:22 AM)",
+          "items": [
+            "Dross: Fixed Telegram DM session isolation (`session.dmScope = \"per-channel-peer\"`)",
+            "Pinged Wit + MacGyver to run audits and align",
+            "Big Brother to enable firewall + fix session isolation",
+            "FileVault on Dross — requires restart + recovery key setup, need Matthew approval for downtime",
+            "OpenClaw updates — coordinating fleet-wide update",
+            "Original request was for one-time OAuth setup on other machines",
+            "Big Brother correctly flagged security risks of blanket SSH",
+            "Better approach: Each bot runs their own OAuth setup (no SSH needed)",
+            "One-time scoped access with supervision is acceptable if truly needed"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Matthew asked Big Brother about SSH access risks, then directed us to establish best practices for all 4 bots.",
+            "**Fleet Security Baseline Established:**",
+            "| Check | Standard | Priority |",
+            "|-------|----------|----------|",
+            "| macOS Firewall | ON | 🔴 Critical |",
+            "| FileVault | ON | 🔴 Critical |",
+            "| Gateway bind | 127.0.0.1 | 🔴 Critical |",
+            "| Gateway auth | Token required | 🔴 Critical |",
+            "| Discord policy | allowlist | 🔴 Critical |",
+            "| Telegram policy | allowlist | 🔴 Critical |",
+            "| Telegram DM scope | per-channel-peer | ⚠️ High |",
+            "| OpenClaw version | Latest stable | ⚠️ High |",
+            "**Final Status (5:25 AM):**",
+            "| Bot | Firewall | FileVault | DM Isolation | OpenClaw |",
+            "|-----|----------|-----------|--------------|----------|",
+            "| Dross | ✅ ON | ❌ OFF | ✅ FIXED | ⚠️ 2026.2.3-1 |",
+            "| Big Brother | ❌ OFF | ✅ ON | ✅ FIXED | ⚠️ 2026.2.3-1 |",
+            "| Wit | ❌ OFF | ✅ ON | ✅ FIXED | ⚠️ 2026.2.3-1 |",
+            "| MacGyver | ❌ OFF | ✅ ON | ✅ FIXED | ⚠️ 2026.2.3-1 |",
+            "**DM Isolation: 4/4 COMPLETE** — all bots fixed their own configs",
+            "**Actions Taken:**",
+            "**Deferred:**",
+            "**SSH Access Decision:**"
+          ]
+        },
+        {
+          "name": "MC Outage Incident (3:10 PM - 3:17 PM EST)",
+          "items": [
+            "`ReviewPanel.tsx` had escaped quotes (`\\\"`) that broke JSX syntax",
+            "Build was failing silently on Netlify",
+            "Local builds also failed but hadn't been caught",
+            "Temporary: Using `mission-control-hazel.vercel.app` instead of Netlify",
+            "23 local scripts updated to point to Vercel",
+            "Heartbeat confirmed working",
+            "Build failures can be silent — should have CI checks",
+            "Keep old deployment live as fallback during migrations",
+            "Need shared config for MC URL so all bots can switch easily"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Alert:** Big Brother flagged MC returning 503 on all endpoints at 3:10 PM",
+            "**Root Cause Found:**",
+            "**Timeline:**",
+            "1. 3:10 PM — Big Brother alerts: all 6 MC endpoints returning 503",
+            "2. 3:11 PM — Dross confirms, starts investigation",
+            "3. 3:13 PM — Found syntax error in ReviewPanel.tsx",
+            "4. 3:14 PM — Fixed escaped quotes, pushed to main",
+            "5. 3:15 PM — Netlify still 503 (deploy taking too long)",
+            "6. 3:16 PM — Discovered OLD Vercel deployment still live and healthy",
+            "7. 3:17 PM — Switched all 23 scripts to point to Vercel URL",
+            "**Resolution:**",
+            "**Open Issues:**",
+            "1. Netlify still 503'ing — need to debug why",
+            "2. Other bots have their own script copies — need to update or pull latest",
+            "3. May want to stay on Vercel if more stable",
+            "**Lessons:**"
+          ]
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "`POST /api/threads` — create thread analysis",
+          "category": "integration"
+        },
+        {
+          "description": "`POST /api/threads/:id/comments` — discussion",
+          "category": "integration"
+        },
+        {
+          "description": "`POST /api/threads/:id/deploy` — create task from thread",
+          "category": "integration"
+        },
+        {
+          "description": "`PATCH /api/threads` — update verdict, suggested_actions",
+          "category": "integration"
+        },
+        {
+          "description": "Expandable action descriptions",
+          "category": "integration"
+        },
+        {
+          "description": "Suggested actions about formalizing our scripts as Skills",
+          "category": "integration"
+        },
+        {
+          "description": "Fanatics tier ranges = inflated marketing estimates (DO NOT USE for EV)",
+          "category": "general"
+        },
+        {
+          "description": "Fanatics ranges showed Football Ultra at 1.12x EV",
+          "category": "general"
+        },
+        {
+          "description": "Original request was for one-time OAuth setup on other machines",
+          "category": "integration"
+        },
+        {
+          "description": "Better approach: Each bot runs their own OAuth setup (no SSH needed)",
+          "category": "integration"
+        },
+        {
+          "description": "23 local scripts updated to point to Vercel",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [
+        "Dross: Fixed Telegram DM session isolation (`session.dmScope = \"per-channel-peer\"`)",
+        "Pinged Wit + MacGyver to run audits and align",
+        "Big Brother to enable firewall + fix session isolation",
+        "FileVault on Dross — requires restart + recovery key setup, need Matthew approval for downtime",
+        "OpenClaw updates — coordinating fleet-wide update",
+        "Original request was for one-time OAuth setup on other machines",
+        "Big Brother correctly flagged security risks of blanket SSH",
+        "Better approach: Each bot runs their own OAuth setup (no SSH needed)",
+        "One-time scoped access with supervision is acceptable if truly needed"
+      ],
+      "stats": {
+        "sections_count": 10,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 11,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-02-13",
+      "title": "Daily Log - February 13, 2026",
+      "sections": [
+        {
+          "name": "Heartbeat Session",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Task Approval Triage ✅",
+              "items": [
+                "Stale task auto-escalation system (Big Brother)",
+                "Homebase schedule gap detection (Big Brother)",
+                "Weekly bot performance report automation (Big Brother)",
+                "Implement domain_secrets credential pattern (Dross)"
+              ]
+            },
+            {
+              "name": "Auto Model Throttle ✅",
+              "items": [
+                "Usage at 0%, no throttling needed",
+                "Current model: opus"
+              ]
+            },
+            {
+              "name": "Cron Sync ✅",
+              "items": [
+                "Synced 27 crons for dross to Mission Control"
+              ]
+            },
+            {
+              "name": "Shared Repo Sync ✅",
+              "items": [
+                "No new updates in mission-control repo"
+              ]
+            },
+            {
+              "name": "MC Heartbeat ✅",
+              "items": [
+                "10 pending tasks, 6 unread messages from Wit",
+                "Processed Wit's requests:"
+              ]
+            },
+            {
+              "name": "Major Completion: Card Photo Pipeline 🎴",
+              "items": [
+                "Enhanced edge detection with Sharp.js",
+                "Background removal service (`scripts/rembg-service.py`)",
+                "Google Drive integration (`scripts/card-pipeline-gdrive.js`)",
+                "Multi-format export (1080x1080, 1080x1350, 1080x1920)",
+                "Color enhancement and correction",
+                "Watch folder automation",
+                "Comprehensive README documentation",
+                "Real-time processing of new photos",
+                "Smart card edge detection and cropping",
+                "AI-powered background removal (rembg)",
+                "Social media format optimization",
+                "Automatic Google Drive upload with folder organization",
+                "Color enhancement (auto-levels, sharpening, saturation)"
+              ]
+            }
+          ],
+          "rawText": [
+            "Approved 4 pending tasks:",
+            "- ✅ Marked Liquid Glass 2.0 task as complete",
+            "- ✅ Marked Subagents page UX improvements as complete",
+            "**DONE:** Completed Card Photo Pipeline (Task 9b972ad6)",
+            "**Built:**",
+            "**Features:**",
+            "**Files Created:**",
+            "1. `scripts/rembg-service.py` - Python background removal service",
+            "2. `scripts/card-pipeline-gdrive.js` - Enhanced Drive uploader with folder management",
+            "3. `data/card-photos/README.md` - Complete documentation and setup guide",
+            "4. Updated main pipeline with production-ready features enabled",
+            "**Ready for production use!** Matthew can now drop card photos in the input folder and get optimized social media formats with automatic Drive upload."
+          ]
+        },
+        {
+          "name": "Ongoing Work",
+          "items": [
+            "Business monitors running in background (heartbeat-monitor.js)",
+            "Continue working through pending task queue"
+          ],
+          "subsections": [
+            {
+              "name": "Repack Spreadsheet Column Fix 🔧",
+              "items": [
+                "Ebay Incoming, Collect Incoming, <$20, Inv<$20, Current Inventory, Used, Ebay Tracking",
+                "Audited all 85 Apps Script files in backups",
+                "Replaced `COL_K = 11` → `_findColByHeader_(src, \"Repack Type\", HEADER_ROW)`",
+                "Replaced `COL_AD = 30` → `_findColByHeader_(src, \"Priority\", HEADER_ROW)`",
+                "Renamed variables: `kFormulaR1C1` → `repackFormulaR1C1`, `adFormulaR1C1` → `priorityFormulaR1C1`",
+                "Pushed fixes via Apps Script API",
+                "Backups saved to `InventoryTools.gs.fixed2`",
+                "Fix scripts: `scripts/fix-inventory-tools.js`, `fix-inventory-tools-v2.js`",
+                "Backups: `backups/repack-scripts/2026-02-11_1800/*.gs`"
+              ]
+            }
+          ],
+          "rawText": [
+            "**DONE:** Fixed critical column structure issues in Football Repack Mastersheet",
+            "**Root Cause:** Duplicate \"Case ID\" column + \"Buyback\" renamed to \"-\"",
+            "**Sheets Fixed (6 total):**",
+            "**Fixes Applied:**",
+            "1. Deleted duplicate Case ID column (was at AC) from 6 sheets",
+            "2. Renamed column P from \"-\" back to \"Buyback\" on 6 sheets",
+            "3. Fixed Ebay Tracking header Q from \"-\" to \"Card Ladder Link\"",
+            "4. Removed conditional formatting rules causing grey fill on blank cells",
+            "5. Set column R width to 160px with white background",
+            "**Apps Script Hardcoded Reference Fix:**",
+            "**Final Column Structure (P-AC):**",
+            "`Buyback | Card Ladder Link | Order ID | Transaction ID | ItemID | Tracking # | Tracking | Carrier | Shipment Status | Delivery Date | Shipped Date | Delivery Flag | Case ID | Priority`",
+            "**Key Files:**",
+            "**Next Step:** Test Ebay Incoming → Current Inventory transfer to confirm columns populate correctly"
+          ]
+        },
+        {
+          "name": "Notes",
+          "items": [
+            "Wit requested backend/API task reassignments - will handle next",
+            "IR Graphics Package approval still needed from Wit's message",
+            "Ground truth usage tracking working properly (0% current usage)",
+            "Mission Control heartbeat system functioning well"
+          ],
+          "subsections": [
+            {
+              "name": "Autobidding System Design Session with Max 🎯",
+              "items": [
+                "Summary sheet has inventory counts + quota needed per tier",
+                "M_S sheet has price ranges for all 8 tiers",
+                "Case Counting tracks ceiling rates",
+                "Sheet ID: 2087092982",
+                "Tracks: Item ID, Title, Tier, Comp, Max Bid, Status, Final Price, Lost Reason",
+                "Auto-calculated stats: Win Rate, Avg % Comp Paid, BIN Loss Rate"
+              ]
+            },
+            {
+              "name": "Autobidding System Session with Max (Continued) 🎯",
+              "items": [
+                "Created \"Bid Tracking\" sheet (ID: 2087092982)",
+                "Added Bidding Summary section with live formulas",
+                "Floors: 9 cards/case, 2-week buffer",
+                "Ceilings: Uses bank logic from Case Counting",
+                "Stats section: Win Rate, Avg % Comp Paid, BIN Loss Rate",
+                "Pulls from \"By Team (Current & Incoming)\" row 35",
+                "Tested Browse API - working",
+                "Category 214 = Sports Trading Cards (filters out jerseys/figures)",
+                "96-100% accuracy on card filtering",
+                "Credentials: `~/.credentials/***` + `token-cache.json`",
+                "Card Ladder has Fanatics partnership (CEO: Chris McGill)",
+                "Need enterprise access via Fanatics connection",
+                "Card Hedge AI = backup option (has public API)",
+                "130Point = free fallback (scrape)",
+                "$10/year Mirror subscription required for API",
+                "API: addSnipe(itemId, maxBid), getSnipes(), deleteSnipe()",
+                "Existing libraries: Ruby (cyberfox/gixen), Java (gixen4j)",
+                "Needs: Account creation, Mirror sub, eBay linking",
+                "98 real eBay listings tested",
+                "Results:",
+                "Handles ALL CAPS, emojis, suffixes (Jr, II)",
+                "Extracts: player, year, set, parallel, auto, rookie, numbered, team, grade",
+                "Added `requireMention: false` for #autobidding channel",
+                "Channel ID: 1471955357063446568"
+              ]
+            }
+          ],
+          "rawText": [
+            "**Channel:** #autobidding (new channel, created by Max)",
+            "**Key Decisions:**",
+            "1. **No price filtering on eBay searches** — want to catch undervalued cards (a $200 comp at $50 current price)",
+            "2. **Use Gixen for sniping** — places bids in final seconds, avoids bid wars",
+            "3. **Track BIN losses** — learn when to Buy It Now vs wait for auction",
+            "4. **Volume handles team diversity** — 32 teams, 10 per case, bulk buying naturally diversifies",
+            "**Spreadsheet Resources Identified:**",
+            "**Created: Bid Tracking Sheet**",
+            "**Bidding Workflow Designed:**",
+            "1. Read Summary → identify tiers with quota needs",
+            "2. Broad eBay search (keywords, no price filter)",
+            "3. Comp each result via 130Point",
+            "4. Calculate max bid (comp × margin %)",
+            "5. Account for win rate when deciding bid quantity",
+            "6. Place bids via Gixen",
+            "7. Track outcomes in Bid Tracking sheet",
+            "**Next:** Test eBay search API + 130Point comp automation",
+            "**Full design doc:** `memory/autobidding-system.md`",
+            "---",
+            "**Time:** 2:52 PM - 5:15 PM EST",
+            "**Channel:** #autobidding",
+            "- Bank Owed = (Cases Built × Target Rate) - Ceilings Given",
+            "- Gap = Buffer + Bank Owed - Inventory",
+            "- Player: 93.9%",
+            "- Year: 96.9%",
+            "- Set: 93.9%",
+            "- Auto: 96.9%",
+            "| Phase | Status |",
+            "|-------|--------|",
+            "| 1. Bidding Summary | ✅ Done |",
+            "| 2. eBay Search | ✅ Done |",
+            "| 3. Comp Lookup | 🔲 Waiting on data source |",
+            "| 4. Gixen Integration | 🔲 Needs account |",
+            "| 5. Title Parser | ✅ Done (94% accuracy) |",
+            "| 6. Orchestration Script | 🔲 Pending |"
+          ]
+        },
+        {
+          "name": "Session Update (2:43 PM - 5:44 PM EST)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "New Discord Channels",
+              "items": [
+                "**#autobidding** (1471955357063446568) - Created by Max, all bots configured",
+                "**#bnb-app-brainstorming** (1472000299144056927) - Under Dross section, for BnB app feature planning"
+              ]
+            },
+            {
+              "name": "Mission Control Task Audit",
+              "items": [
+                "Fixed 18 tasks with null `completed_at` timestamps",
+                "Added completion notes to 11 tasks missing them",
+                "Moved 2 incorrectly blocked tasks (waiting on me) to in-progress",
+                "Moved 1 task (Shipping rate comparison) back to inbox - only had docs, no actual tool built",
+                "Verified 6/7 tasks without notes had actual evidence of completion",
+                "Final counts: 100 done (verified), 7 blocked (legitimate), 14 review, 5 inbox"
+              ]
+            },
+            {
+              "name": "🚨 BnB App Critical Directive (6:23 PM EST)",
+              "items": [
+                "All feature categories",
+                "Top pain points",
+                "Known blockers",
+                "Bot domain assignments for the build",
+                "Key resource file paths"
+              ]
+            },
+            {
+              "name": "MC API Limitations Discovered",
+              "items": [
+                "API caps at 100 tasks per query (even with limit=500)",
+                "UI shows only 20 tasks - pagination not implemented",
+                "Ground truth usage data was stale (17+ hours old for MacGyver)",
+                "Reset times are per-API-key, not global - MC was using wrong assumptions"
+              ]
+            },
+            {
+              "name": "Claude Console Usage Scraper (Task Completed)",
+              "items": [
+                "`scripts/claude-console-scraper.js` - Puppeteer automation",
+                "macOS Keychain for credential storage",
+                "Hourly cron job (a833607f)",
+                "Posts to `/api/costs/ground-truth`",
+                "Full docs at `docs/claude-console-scraper.md`"
+              ]
+            },
+            {
+              "name": "BnB App Knowledge",
+              "items": [
+                "`reports/bnb-app-deep-dive.md` - 204 features mapped",
+                "`docs/buyback-dashboard-spec.md` - Spec for Michael/Erick",
+                "Top 5 priorities: Financial Analytics, Cross-Platform Dashboard, CRM, Shipping Tracking, Break Scheduling"
+              ]
+            }
+          ],
+          "rawText": [
+            "Max requested full audit of done/blocked tasks. Findings:",
+            "**From Max:** \"This is probably the most important thing we've asked you to do so far.\"",
+            "After MC is reliable and all 4 bots are coordinating properly, we transition to building the BnB App. This is our next major job.",
+            "**What was captured today:**",
+            "1. All 4 bots did domain-specific intel dumps into #bnb-app-brainstorming",
+            "2. Max shared comprehensive 100+ feature list (12 categories)",
+            "3. I consolidated everything into:",
+            "- `reports/bnb-app-feature-list-max.md` — Max's full feature wishlist",
+            "- `reports/bnb-app-intel-consolidated.md` — Bot findings with priorities",
+            "**Permanently memorized to MEMORY.md:**",
+            "**Channel:** #bnb-app-brainstorming (1472000299144056927)",
+            "---",
+            "Full scraper built and deployed:",
+            "Confirmed I have the most comprehensive BnB app knowledge:"
+          ]
+        },
+        {
+          "name": "Decision Log",
+          "items": [],
+          "subsections": [
+            {
+              "name": "2026-02-13: Physical Retail",
+              "items": []
+            }
+          ],
+          "rawText": [
+            "**Decision:** No physical retail/lounge for now",
+            "**By:** Matthew",
+            "**Context:** Competitor audit showed WeTheHobby has a physical lounge. Matthew decided not to pursue.",
+            "**Action:** Stop tracking as a competitive gap. Focus on digital/streaming efficiency."
+          ]
+        },
+        {
+          "name": "Mission Control UX Improvements (Built Tonight)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Needs Help Widget Overhaul",
+              "items": [
+                "Added blocker type badges (🔑 credential, ✅ approval, 📥 input, 🤖 bot sync)",
+                "Simplified to one-tap buttons (Approve/Noted/Clear/Dismiss)",
+                "Auto-filters bot-to-bot tasks out of human queue",
+                "Removed text input fields - all actions are single tap"
+              ]
+            },
+            {
+              "name": "Review Notification System",
+              "items": [
+                "When task moves to Review → Dross pings Matthew in #mission-control",
+                "Message includes task details + link to dashboard",
+                "Dashboard has Approve/Request Changes buttons in task modal"
+              ]
+            },
+            {
+              "name": "Approval Action Flow",
+              "items": [
+                "Tasks can have `approval_action` field: notify_assignee, notify_all_bots, deploy_mc, send_content",
+                "When Matthew approves → action executes automatically",
+                "notify_assignee: pings the bot to proceed with deployment",
+                "notify_all_bots: broadcasts directive to all bots (for SOPs)"
+              ]
+            },
+            {
+              "name": "Rules Added to AGENTS.md",
+              "items": []
+            },
+            {
+              "name": "Decision: No Physical Retail",
+              "items": [
+                "Matthew decided no physical retail/lounge for now",
+                "Stop tracking as competitive gap vs WeTheHobby"
+              ]
+            }
+          ],
+          "rawText": [
+            "1. **Research Rule:** Research must produce action (build task, decision, or kill)",
+            "2. **Approval Action Rule:** Tasks needing approval must set approval_action"
+          ]
+        },
+        {
+          "name": "Late Night Session - MC UX Improvements (10pm-midnight)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Built Tonight",
+              "items": [
+                "Added blocker type inference from waiting_reason (credential/approval/external_input/bot_sync)",
+                "Simplified to one-tap buttons (removed text input fields)",
+                "Auto-filters bot-to-bot tasks out of human queue",
+                "Buttons: Approve/Noted/Clear/Dismiss based on blocker type",
+                "When task moves to Review → ping Matthew in #mission-control with link",
+                "Uses bot message (not webhook) for reliability",
+                "Dashboard has Approve/Request Changes buttons in task modal",
+                "Added `approval_action` field to tasks table (Matthew ran SQL)",
+                "Values: notify_assignee, notify_all_bots, deploy_mc, send_content",
+                "When approved: action executes (bot notified, SOP broadcast, etc.)",
+                "Code deployed but Vercel cache was slow - may need verification in morning",
+                "**Research Rule:** Research must produce action (build task, decision, or kill recommendation)",
+                "**Approval Action Rule:** Tasks with requires_human_approval must set approval_action"
+              ]
+            },
+            {
+              "name": "Bugs Fixed",
+              "items": [
+                "Needs Help buttons weren't working (resolve-blocker API had missing DB column)",
+                "Approval URLs returning 200 instead of redirect (fixed with absolute URLs)",
+                "approval_action not in allowedFields for update API (fixed)"
+              ]
+            },
+            {
+              "name": "Decisions Made",
+              "items": [
+                "No physical retail/lounge for now (competitor analysis vs WeTheHobby)",
+                "Kill \"never sleeps\" positioning unless we actually staff 24/7"
+              ]
+            },
+            {
+              "name": "Pending/Known Issues",
+              "items": [
+                "Vercel edge function cache was slow to refresh - approval action execution may need testing in morning",
+                "Health check and agents/history endpoints already exist (built Feb 10) - review tasks were stale"
+              ]
+            },
+            {
+              "name": "Competitor Intel Captured",
+              "items": [
+                "WeTheHobby: 160+ employees, 61K IG, 47K TikTok, 7 studios, physical lounge",
+                "BnB: 77 employees, 16K IG, $16M revenue",
+                "Gap: 4x Instagram following - content cadence opportunity"
+              ]
+            }
+          ],
+          "rawText": [
+            "**1. Needs Help Widget Overhaul**",
+            "**2. Review Notification System**",
+            "**3. Approval Action Flow**",
+            "**4. New Rules Added to AGENTS.md**"
+          ]
+        }
+      ],
+      "tasks_completed": [
+        {
+          "name": "Added blocker type badges (🔑 credential, approval, 📥 input, 🤖 bot sync)",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Task Approval Triage",
+          "status": "done",
+          "category": "organization"
+        },
+        {
+          "name": "Auto Model Throttle",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Cron Sync",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "Shared Repo Sync",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "MC Heartbeat",
+          "status": "done",
+          "category": "general"
+        }
+      ],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Synced 27 crons for dross to Mission Control",
+          "category": "automation"
+        },
+        {
+          "description": "10 pending tasks, 6 unread messages from Wit",
+          "category": "general"
+        },
+        {
+          "description": "Background removal service (`scripts/rembg-service.py`)",
+          "category": "integration"
+        },
+        {
+          "description": "Google Drive integration (`scripts/card-pipeline-gdrive.js`)",
+          "category": "integration"
+        },
+        {
+          "description": "Automatic Google Drive upload with folder organization",
+          "category": "general"
+        },
+        {
+          "description": "Audited all 85 Apps Script files in backups",
+          "category": "integration"
+        },
+        {
+          "description": "Pushed fixes via Apps Script API",
+          "category": "integration"
+        },
+        {
+          "description": "Fix scripts: `scripts/fix-inventory-tools.js`, `fix-inventory-tools-v2.js`",
+          "category": "integration"
+        },
+        {
+          "description": "Backups: `backups/repack-scripts/2026-02-11_1800/*.gs`",
+          "category": "integration"
+        },
+        {
+          "description": "Wit requested backend/API task reassignments - will handle next",
+          "category": "integration"
+        },
+        {
+          "description": "Tested Browse API - working",
+          "category": "integration"
+        },
+        {
+          "description": "Category 214 = Sports Trading Cards (filters out jerseys/figures)",
+          "category": "email"
+        },
+        {
+          "description": "96-100% accuracy on card filtering",
+          "category": "email"
+        },
+        {
+          "description": "Credentials: `~/.credentials/***` + `token-cache.json`",
+          "category": "integration"
+        },
+        {
+          "description": "Card Ladder has Fanatics partnership (CEO: Chris McGill)",
+          "category": "general"
+        },
+        {
+          "description": "Need enterprise access via Fanatics connection",
+          "category": "general"
+        },
+        {
+          "description": "Card Hedge AI = backup option (has public API)",
+          "category": "integration"
+        },
+        {
+          "description": "$10/year Mirror subscription required for API",
+          "category": "integration"
+        },
+        {
+          "description": "API: addSnipe(itemId, maxBid), getSnipes(), deleteSnipe()",
+          "category": "integration"
+        },
+        {
+          "description": "Moved 1 task (Shipping rate comparison) back to inbox - only had docs, no actual tool built",
+          "category": "email"
+        },
+        {
+          "description": "Final counts: 100 done (verified), 7 blocked (legitimate), 14 review, 5 inbox",
+          "category": "email"
+        },
+        {
+          "description": "API caps at 100 tasks per query (even with limit=500)",
+          "category": "integration"
+        },
+        {
+          "description": "Reset times are per-API-key, not global - MC was using wrong assumptions",
+          "category": "integration"
+        },
+        {
+          "description": "`scripts/claude-console-scraper.js` - Puppeteer automation",
+          "category": "integration"
+        },
+        {
+          "description": "Hourly cron job (a833607f)",
+          "category": "automation"
+        },
+        {
+          "description": "Posts to `/api/costs/ground-truth`",
+          "category": "integration"
+        },
+        {
+          "description": "Auto-filters bot-to-bot tasks out of human queue",
+          "category": "email"
+        },
+        {
+          "description": "Auto-filters bot-to-bot tasks out of human queue",
+          "category": "email"
+        },
+        {
+          "description": "Needs Help buttons weren't working (resolve-blocker API had missing DB column)",
+          "category": "integration"
+        },
+        {
+          "description": "approval_action not in allowedFields for update API (fixed)",
+          "category": "integration"
+        },
+        {
+          "description": "WeTheHobby: 160+ employees, 61K IG, 47K TikTok, 7 studios, physical lounge",
+          "category": "general"
+        }
+      ],
+      "interactions": [
+        {
+          "description": "Matthew decided no physical retail/lounge for now",
+          "type": "matthew"
+        }
+      ],
+      "todoist_activity": [
+        {
+          "action": "created",
+          "description": "#autobidding (1471955357063446568) - Created by Max, all bots configured"
+        },
+        {
+          "action": "updated",
+          "description": "#bnb-app-brainstorming (1472000299144056927) - Under Dross section, for BnB app feature planning"
+        }
+      ],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 7,
+        "tasks_completed_count": 6,
+        "reports_count": 0,
+        "key_actions_count": 31,
+        "todoist_count": 2
+      }
+    },
+    {
+      "date": "2026-02-14",
+      "title": "14 Daily Log",
+      "sections": [
+        {
+          "name": "📚 Learned",
+          "items": [],
+          "subsections": [
+            {
+              "name": "MC Project Detail Page",
+              "items": [
+                "Tasks API needed `project:projects(id, title)` join to include project data",
+                "ProjectSelector was using `p.name` but projects have `title` field — caused empty dropdowns",
+                "Archive button was gray (`text-gray-400`) and invisible — changed to amber"
+              ]
+            },
+            {
+              "name": "Tailwind/CSS Issues",
+              "items": [
+                "Native `<select>` dropdowns on iOS ignore CSS — need custom components for mobile",
+                "Button glow via `box-shadow` creates rectangular corners on text-only buttons",
+                "`button[class*=\"p-\"]` selector catches too many elements — removed",
+                "Tailwind JIT doesn't generate dynamic stroke classes — Wit used inline hex colors"
+              ]
+            },
+            {
+              "name": "Project Archiving",
+              "items": [
+                "Added `archived_at` column to projects table",
+                "API filters: `?archived=true` to show archived, default hides them",
+                "Migration: `ALTER TABLE projects ADD COLUMN IF NOT EXISTS archived_at TIMESTAMPTZ`"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "🎯 Decisions",
+          "items": [
+            "**Archive > Delete** for done tasks — keeps history, stays linked to projects",
+            "**Glass buttons** (transparent cyan + border) instead of solid cyan — Matthew's preference",
+            "**No Clone button** in task modal — removed per Matthew",
+            "**Archived projects section** at bottom of /projects page (collapsible)",
+            "**All bots must link tasks to projects** — created TASK-CREATION-PROTOCOL.md"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "⏳ TODO",
+          "items": [
+            "Custom dropdown component for mobile (Wit offered to build)",
+            "Consider more project-task automation"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "🔗 References",
+          "items": [
+            "Task Creation Protocol: `shared/protocols/TASK-CREATION-PROTOCOL.md`",
+            "Project archive migration: `supabase/migrations/20260214_project_archive.sql`"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Session Stats",
+          "items": [
+            "~30 deploys to MC",
+            "Heavy UI polish session with Matthew + Wit collaboration",
+            "Multiple merge conflicts resolved (Wit and I working same files)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Evening Session (6:30-6:45 PM EST)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Build Issues Fixed",
+              "items": [
+                "**Duplicate style attribute** on SVG circle in projects grid view — caused build failure",
+                "Removed accidental `// deploy trigger` comments from pages",
+                "Vercel GitHub integration missing — had to deploy via CLI"
+              ]
+            },
+            {
+              "name": "Archive Filtering Fix",
+              "items": [
+                "Original: `query.not('archived_at', 'is', null)` — didn't work",
+                "Fixed: `query.filter('archived_at', 'not.is', null)` — proper Supabase syntax for IS NOT NULL",
+                "Result: `/api/projects` returns 32 active, `/api/projects?archived=true` returns 0 (none archived yet)"
+              ]
+            },
+            {
+              "name": "Resource Links Issue",
+              "items": [
+                "Matthew noted some links aren't helpful (eBay API docs redirect)",
+                "eBay developer.ebay.com blocks server requests — shows error from curl",
+                "Need to decide: GitHub links vs file:// refs vs remove unhelpful ones"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Late Night Session (Governance Systems)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "MC Governance Built",
+              "items": [
+                "**Completion notes** — All task completions now prompt for notes",
+                "**next_steps auto-creation** — Bots include follow-ups array, auto-creates linked tasks",
+                "**Task templates** — `/templates` page with create/use/delete UI",
+                "**requires_review system** — Auto-set by tags: `spending`, `external`, `security`, `public`, `protocol`, `refund`, `comms`",
+                "**Blocked task escalation cron** — Big Brother built `scripts/blocked-task-escalation.js`",
+                "**Immediate comment notifications** — Discord pings assignee when human comments on blocked task"
+              ]
+            },
+            {
+              "name": "Protocols Created",
+              "items": [
+                "`shared/protocols/BLOCKED-TASK-PROTOCOL.md` — Type-based escalation timelines",
+                "`shared/protocols/TASK-COMPLETION-PROTOCOL.md` — Attachment requirements",
+                "`shared/protocols/HANDOFF-PROTOCOL.md` — Bot-to-bot handoff rules",
+                "`docs/ESCALATION-RULES.md` — When to escalate to Matthew",
+                "`docs/DAILY-DIGEST.md` — Daily digest spec"
+              ]
+            },
+            {
+              "name": "Blocked Task Escalation Timelines",
+              "items": []
+            },
+            {
+              "name": "Blocker Enforcement (3-Layer)",
+              "items": []
+            },
+            {
+              "name": "Attachments Standard",
+              "items": [
+                "**Documents → Drive PDF** (not GitHub markdown)",
+                "Drive folder: `***REDACTED***`",
+                "Workflow: Create doc → `html-to-pdf.js` → `gdrive-upload.js` → Attach link",
+                "**Added attachments UI** to task detail panel with \"+ Add\" button"
+              ]
+            },
+            {
+              "name": "Key IDs",
+              "items": [
+                "BnB App Backlog project: `***REDACTED***` (planning status)",
+                "VIP tier criteria task: `***REDACTED***`"
+              ]
+            },
+            {
+              "name": "MC Scope Decision",
+              "items": [
+                "✅ Bot status, tasks, messaging, usage, crons, alerts",
+                "✅ Projects for all domains: IR, repacks, content, shipping, analytics",
+                "❌ Still no direct business features (inventory UI, order management) — that's BnB App"
+              ]
+            }
+          ],
+          "rawText": [
+            "| Type | @Here | @Matthew |",
+            "|------|-------|----------|",
+            "| clarification | 1h | 4h |",
+            "| credential/approval | 2h | 6h |",
+            "| dependency | 4h | 12h |",
+            "| external | 6h | never |",
+            "Overnight (12am-8am) doesn't count against clock.",
+            "1. **API validation** — Reject status=blocked without required fields (IN PROGRESS)",
+            "2. **UI validation** — Show errors when blocking without fields (TODO)",
+            "3. **AGENTS.md** — Hard requirement for bots (TODO)",
+            "Required fields: `blocker_type`, `waiting_on`, `blocker_reason`",
+            "Blocker types: `credential`, `clarification`, `approval`, `dependency`, `external`",
+            "**Expanded scope (Feb 14)**: MC now coordinates ALL BnB work done by bots"
+          ]
+        },
+        {
+          "name": "Late Evening Session (7-8:30 PM EST)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Mission Control UI Fixes",
+              "items": [
+                "**Project archive filtering**: Fixed API to return only archived projects when `?archived=true` (was returning all)",
+                "**Report document section**: Removed iframe embeds (showed Google cookie popup), now just a clean `{title}.pdf` link",
+                "**Task detail page**: Built `/tasks/[id]` - click any task in board to open full detail view with edit, status change, blocker notes",
+                "**NeedsHelp buttons**: Unified to glass theme - \"I'll handle it\" (cyan) / \"Dismiss\" (gray) everywhere"
+              ]
+            },
+            {
+              "name": "Report Auto-Linker",
+              "items": [
+                "Script: `scripts/link-reports-to-drive.js`",
+                "Fuzzy matches MC report titles to Drive filenames",
+                "Auto-linked 32/50 reports to their PDFs",
+                "18 reports had no matching PDF on Drive"
+              ]
+            },
+            {
+              "name": "Deployment Notes",
+              "items": [
+                "Vercel GitHub integration not connected - must deploy via CLI: `vercel --prod --yes`",
+                "Use `--force` flag to skip cache if changes aren't showing",
+                "Production alias: mission-control-hazel.vercel.app"
+              ]
+            },
+            {
+              "name": "Button Notifications",
+              "items": [
+                "All NeedsHelp actions (except \"Check status\" and \"Dismiss\") notify the assigned bot via:"
+              ]
+            }
+          ],
+          "rawText": [
+            "- MC inbox message",
+            "- Discord ping to #alerts-oversight"
+          ]
+        }
+      ],
+      "tasks_completed": [
+        {
+          "name": "Bot status, tasks, messaging, usage, crons, alerts",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "Projects for all domains: IR, repacks, content, shipping, analytics",
+          "status": "done",
+          "category": "general"
+        }
+      ],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Tasks API needed `project:projects(id, title)` join to include project data",
+          "category": "integration"
+        },
+        {
+          "description": "API filters: `?archived=true` to show archived, default hides them",
+          "category": "email"
+        },
+        {
+          "description": "Vercel GitHub integration missing — had to deploy via CLI",
+          "category": "integration"
+        },
+        {
+          "description": "Fixed: `query.filter('archived_at', 'not.is', null)` — proper Supabase syntax for IS NOT NULL",
+          "category": "email"
+        },
+        {
+          "description": "Result: `/api/projects` returns 32 active, `/api/projects?archived=true` returns 0 (none archived yet)",
+          "category": "integration"
+        },
+        {
+          "description": "Matthew noted some links aren't helpful (eBay API docs redirect)",
+          "category": "integration"
+        },
+        {
+          "description": "Blocked task escalation cron — Big Brother built `scripts/blocked-task-escalation.js`",
+          "category": "integration"
+        },
+        {
+          "description": "✅ Bot status, tasks, messaging, usage, crons, alerts",
+          "category": "automation"
+        },
+        {
+          "description": "Project archive filtering: Fixed API to return only archived projects when `?archived=true` (was returning all)",
+          "category": "email"
+        },
+        {
+          "description": "Report document section: Removed iframe embeds (showed Google cookie popup), now just a clean `{title}.pdf` link",
+          "category": "general"
+        },
+        {
+          "description": "Script: `scripts/link-reports-to-drive.js`",
+          "category": "integration"
+        },
+        {
+          "description": "Vercel GitHub integration not connected - must deploy via CLI: `vercel --prod --yes`",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [
+        {
+          "action": "created",
+          "description": "All bots must link tasks to projects — created TASK-CREATION-PROTOCOL.md"
+        }
+      ],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 8,
+        "tasks_completed_count": 2,
+        "reports_count": 0,
+        "key_actions_count": 12,
+        "todoist_count": 1
+      }
+    },
+    {
+      "date": "2026-02-15",
+      "title": "15 Daily Log",
+      "sections": [
+        {
+          "name": "📚 Learned",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Cron System Deep Dive (5:42 AM - 6:30 AM session with Matthew)",
+              "items": [
+                "`sessionTarget: main` with `wakeMode: now` is unreliable",
+                "Main session must be idle to receive systemEvents",
+                "At scheduled times (like 8 AM), main session is often busy",
+                "**Fix:** Use `sessionTarget: isolated` for all crons — they run independently",
+                "Old logic: `now - lastRun - interval` (didn't account for restricted schedules)",
+                "New logic: Use `next_run` from gateway directly",
+                "Fixed in commit `38a2c47`",
+                "`wakeMode: now` — runs at scheduled time regardless of heartbeat",
+                "`wakeMode: next-heartbeat` — waits for next heartbeat after scheduled time",
+                "Heartbeats only run `*/30 12-23` (noon-11 PM EST)",
+                "So `next-heartbeat` crons won't fire overnight",
+                "Gateway stores times in UTC",
+                "MC dashboard displays in local time",
+                "`1771153200000` ms = 11:00 UTC = 6:00 AM EST",
+                "BB initially misread UTC as EST"
+              ]
+            }
+          ],
+          "rawText": [
+            "**Root cause of \"never run\" crons:**",
+            "**MC Dashboard \"overdue\" calculation was broken:**",
+            "**wakeMode explained:**",
+            "**Timezone confusion:**"
+          ]
+        },
+        {
+          "name": "🎯 Decisions",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Cron Dashboard Changes",
+              "items": []
+            },
+            {
+              "name": "Cron Run Tracking",
+              "items": [
+                "Created #cron-runs channel (ID: 1472555193320345722)",
+                "Created `cron-run-reporter` cron — runs every 30min, posts summaries",
+                "Script: `scripts/cron-run-reporter.js`"
+              ]
+            },
+            {
+              "name": "Fixed Crons",
+              "items": [
+                "`ir-daily-digest` — changed from main→isolated session (was never running)",
+                "Deleted 7 stale/duplicate crons during audit"
+              ]
+            }
+          ],
+          "rawText": [
+            "1. ✅ Renamed `/calendar` → `/crons` (Matthew approved)",
+            "2. ✅ Removed 3 fake builtin crons (Heartbeat Monitor, Stale Task Alert, Auto Archive)",
+            "3. ✅ Fixed overdue calculation to use `next_run` from gateway"
+          ]
+        },
+        {
+          "name": "📚 Learned (continued)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "SMS Marketing Insert System (5:00 PM session with Matthew + Wit)",
+              "items": [
+                "**Volume:** ~2,000 packages/week, 24hr fulfillment requirement",
+                "**VDP (Variable Data Printing) is out** — 3-5 day turnaround doesn't work",
+                "**Hybrid approach chosen:** Pro-printed base inserts + daily QR label printing in-house",
+                "Auto-detect platform from CSV headers",
+                "Parse username field, dedupe by customer",
+                "Filter out refunded/cancelled/giveaway",
+                "Generate QR: `sms:5742750277?body=RIPS%20{username}`",
+                "Cross-reference SimpleTexting API to skip existing subscribers",
+                "Output: Avery label sheet PDF (1.5\" squares, TBD)",
+                "Sort to match packing slip order (by order number or ship date)",
+                "Generic insert: ~5-10% scan rate",
+                "Personalized (username on mailer): ~15-25% scan rate",
+                "At 2,000/week = +240 extra signups/week if personalized",
+                "35% SMS Giveaway (slots 1, 4, 7, 10, 14, 16, 19)",
+                "30% SMS Updates",
+                "20% PYT Promo",
+                "15% Brand/Logo",
+                "No back-to-back repeats, slot 20→1 loop considered"
+              ]
+            }
+          ],
+          "rawText": [
+            "**Personalized shipping inserts workflow:**",
+            "**CSV structures discovered:**",
+            "| Platform | Username Field | Filter Out |",
+            "|----------|---------------|------------|",
+            "| Whatnot | `buyer` | `cancelled or failed` |",
+            "| Fanatics | `username` | `is refunded`, `is giveaway?` |",
+            "Neither CSV has phone numbers — username is the link.",
+            "**QR label generator script specs (for me to build):**",
+            "**Personalization impact:**",
+            "**Ad rotation for baseball stream (consensus reached):**"
+          ]
+        },
+        {
+          "name": "🔗 References",
+          "items": [
+            "#cron-runs: 1472555193320345722",
+            "`38a2c47` — fix cron dashboard overdue calculation",
+            "`93bd60a` — rename /calendar to /crons + remove fake builtins",
+            "`d917ca7` — fix Clock icon import"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Fleet cron status (post-audit):**",
+            "| Bot | Crons | Status |",
+            "|-----|-------|--------|",
+            "| Dross | 35 | ✅ Healthy |",
+            "| BB | 9 | ✅ Healthy |",
+            "| MacGyver | 5 | ✅ Healthy |",
+            "| Wit | 2 | ✅ Healthy |",
+            "**New Discord channel:**",
+            "**Key commits:**"
+          ]
+        },
+        {
+          "name": "🧩 MrBeast $1M Puzzle Hunt (Matthew request, 10:03 PM)",
+          "items": [
+            "Main site: https://mrbeast.salesforce.com/",
+            "Puzzle playlist: https://www.youtube.com/playlist?list=***REDACTED***",
+            "ARGNet writeup: https://www.argn.com/2026/02/***REDACTED***/",
+            "9 sub-puzzles linked from YouTube comments → yield words: AQUIFER, CHANGE, TEAMSEAS, JOURNEY, SOLITARY, CAMPFIRE, ADOPTION, HIEROGLYPHICS, CIRCLE",
+            "Reddit theory: these spell AGENTFORCE but that wasn't the final answer",
+            "Designed by Lone Shark Games (pro puzzle designers)",
+            "Runs until early April 2026 or until solved",
+            "Slackbot interface for organizing/submitting",
+            "**10511 Homestead Road, Pahrump NV** = CHICKEN RANCH BROTHEL (confirmed real address!)",
+            "Tank 3634826-1 → 36.34826°N latitude (exact match)",
+            "HOMESTEAD=90 from vault bills ($1+5+20+10+2+2+50)",
+            "CSSAC from Slackbot emojis (🎠🦕🌻⚓🏕️)",
+            "Calendar binary 1/1, 2/2, 3/1, 3/3 → 1101 = 13",
+            "Check #6502839795480234354 (6502 CPU reference?)",
+            "Word lengths: 5, 9, 5, 7, 8, 4, 9, 6, 5",
+            "Phone call needed: 337-317-5853 (Morse decode)",
+            "Salesforce account needed to test submissions",
+            "Final vault code format unknown"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Status:** UNSOLVED (as of Feb 10, MrBeast said \"no one is even close\")",
+            "**Resources:**",
+            "**What's known:**",
+            "**Bot coordination posted to #general** — all 4 bots engaged.",
+            "**Key findings from team:**",
+            "**Blockers:**"
+          ]
+        },
+        {
+          "name": "⏳ TODO",
+          "items": [
+            "[ ] Monitor #cron-runs to verify tracking works",
+            "[ ] Consider migrating more `sessionTarget: main` crons to `isolated`",
+            "[ ] Check if 8 AM crons actually run today after fixes",
+            "[ ] **Build QR label generator script** — CSV in → Avery label PDF out (see SMS Marketing Insert System notes above)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Cron Audit & Cleanup (7 AM)",
+          "items": [
+            "Created `cron_runs` table in Supabase (was missing — no run history)",
+            "Built `sync-cron-runs.js` script to track run history to MC",
+            "All 4 bots now have sync in their heartbeats",
+            "Staggered conflicting cron times (8 AM had 4 stacked, now 5 min apart)",
+            "Changed 5 crons from `wakeMode: next-heartbeat` to `now` (were stuck before noon)",
+            "8:00 Morning triage",
+            "8:05 ir-daily-digest",
+            "8:10 MC Summary",
+            "8:15 Action Sweep",
+            "9:00 YouTube Monitor",
+            "9:05 Daily email scan",
+            "9:15 topps-invoice",
+            "9:20 daily-drafts-triage"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Issues fixed:**",
+            "**Cron time stagger (Dross):**",
+            "**Key learning:** `wakeMode: next-heartbeat` crons only fire during heartbeat hours (noon-midnight). Use `wakeMode: now` for crons that need to run 24/7."
+          ]
+        },
+        {
+          "name": "IR Dashboard Major Update (10:48 PM)",
+          "items": [
+            "Color psychology redesign (unanimous bot vote: functional colors)",
+            "Orange dominant, muted purple/cyan tiers",
+            "Hit rate → green (positive signal)",
+            "Budget Pick → orange (brand consistency)",
+            "Progress bar → orange only (simplified)",
+            "98%+ sold packs filtered from feed",
+            "Minimum remaining increased to 10 cards",
+            "Mixed feed algorithm (hot + budget + new + fast movers)",
+            "Random order within curated selection",
+            "Orange = \"do this\" (action/CTAs)",
+            "Red = \"act now\" (urgency/scarcity)",
+            "Green = \"good choice\" (hit rate only)",
+            "Gold = \"this is the prize\" (top grails)",
+            "Muted purple/cyan = tier identifiers (background)",
+            "QR code for SMS signup",
+            "Sport filters (Football/Basketball/etc tabs)",
+            "\"Just Hit\" feed (social proof)",
+            "Sell-out countdown",
+            "Auto-refresh for streams"
+          ],
+          "subsections": [],
+          "rawText": [
+            "Massive session with Matthew and Wit. Dashboard went from raw to stream-ready:",
+            "**Completed:**",
+            "**Color Psychology Consensus:**",
+            "**Parked for future:**",
+            "**Live:** https://breaknbad.github.io/dross-dashboard/"
+          ]
+        },
+        {
+          "name": "IR Dashboard Color Psychology Session - ROLLED BACK (11:25 PM)",
+          "items": [
+            "Matthew asked for color psychology deep dive",
+            "All 4 bots voted unanimously for \"functional colors\" over \"uniform theme\"",
+            "Implemented multiple color schemes:",
+            "100% sold filter (changed from 98% to 100%)",
+            "These were in the update script, not the template",
+            "QR code for SMS signup",
+            "Sport filters",
+            "\"Just Hit\" feed",
+            "Sell-out countdown",
+            "Auto-refresh"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**What happened:**",
+            "1. First: psychology-based (green hit rate, orange budget pick, muted purple/cyan)",
+            "2. Then: simplified 5-color system (orange/gold/cyan/red/white)",
+            "3. Then: orange-only mode (3 colors)",
+            "4. Then: restored vibrant purple/cyan/green",
+            "5. **Final: Rolled back to pre-session version** — Matthew said earlier version \"felt right\"",
+            "**Key lesson:** The gut-feel version was better than the theory-correct version. Too much optimization killed the vibe.",
+            "**Current state:** Dashboard rolled back to commit 38f7bef (before tonight's color changes).",
+            "**Other changes from tonight (kept):**",
+            "**Parked features (not built):**"
+          ]
+        },
+        {
+          "name": "IR Dashboard - FINAL STATE (11:27 PM)",
+          "items": [
+            "Orange — brand, CTAs, prices, progress bars, CHASES text",
+            "Gold — TOP GRAIL badge, rank #1",
+            "Purple — Grails label + values, scarcity badges",
+            "Green — Hit rate",
+            "Cyan — Diamond icons only (not text)"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Final palette:**",
+            "**Key insight:** Vibrancy > organization. The \"messy\" gut-feel version had better energy than the theory-perfect psychology system.",
+            "**Live:** https://breaknbad.github.io/dross-dashboard/"
+          ]
+        },
+        {
+          "name": "🚀 BnB HQ App Launch (11:30 PM - 11:50 PM)",
+          "items": [
+            "Name: **BnB HQ**",
+            "Database: Supabase (new project)",
+            "Frontend: Next.js + Vercel",
+            "MVP: Analytics dashboard first",
+            "Supabase project: `mibyrqopfzaueqsdrlzq`",
+            "URL: https://bnb-hq.vercel.app",
+            "GitHub: https://github.com/breaknbad/bnb-hq",
+            "Credentials: `~/.credentials/***`",
+            "`breaks` — revenue, margin (computed), fill_rate (computed)",
+            "`customers` — tier, LTV",
+            "`orders` — break/customer linkage",
+            "`products`, `inventory_items`, `locations` — ready for Phase 2",
+            "`alerts`, `metrics_daily` — analytics infrastructure",
+            "306 Whatnot orders ($2,534.20)",
+            "25 Fanatics breaks ($17,980.00)",
+            "Total: $20,514.20 revenue loaded",
+            "Total revenue card",
+            "Platform breakdown (Whatnot vs Fanatics)",
+            "Recent orders table",
+            "Real-time data from Supabase"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Matthew directive:** Get the app rolling tonight.",
+            "**Decisions made:**",
+            "**Infrastructure deployed:**",
+            "**Schema deployed:**",
+            "**Data imported:**",
+            "**Dashboard features:**",
+            "**Security note:** Matthew posted service_role key in channel — remind to rotate."
+          ]
+        },
+        {
+          "name": "🚀 BnB HQ App Build Session (11:30 PM - 11:55 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Decisions Made",
+              "items": [
+                "**App name:** BnB HQ",
+                "**Database:** New Supabase project (mibyrqopfzaueqsdrlzq)",
+                "**Frontend:** Next.js + Vercel",
+                "**MVP:** Analytics dashboard first",
+                "**No QuickBooks** — CSV uploads for now"
+              ]
+            },
+            {
+              "name": "Infrastructure Deployed",
+              "items": [
+                "**Supabase URL:** https://***supabase.co",
+                "**App URL:** https://bnb-hq.vercel.app",
+                "**Dashboard:** https://bnb-hq.vercel.app/dashboard",
+                "**GitHub:** https://github.com/breaknbad/bnb-hq",
+                "**Credentials:** `~/.credentials/***`"
+              ]
+            },
+            {
+              "name": "Schema Tables Created",
+              "items": [
+                "`breaks` — revenue, margin (computed), fill_rate (computed)",
+                "`customers` — tier (vip/hot/new), LTV",
+                "`orders` — break/customer linkage",
+                "`products`, `inventory_items`, `locations` — Phase 2 ready",
+                "`alerts`, `metrics_daily` — analytics infrastructure"
+              ]
+            },
+            {
+              "name": "Data Imported",
+              "items": [
+                "**Whatnot:** 306 orders, $2,534.20 revenue",
+                "**Fanatics:** 25 breaks, $17,980.00 revenue",
+                "**Total:** 331 records, $20,514.20"
+              ]
+            },
+            {
+              "name": "Dashboard Features (Wit's Liquid Glass design)",
+              "items": [
+                "Deep space black (#0a0a12) background",
+                "Glass panels with backdrop blur",
+                "Cyan glow on revenue metrics",
+                "Platform breakdown bar (Amber=Fanatics, Emerald=Whatnot)",
+                "Recent breaks table with platform badges"
+              ]
+            },
+            {
+              "name": "Vercel Deploy Fix",
+              "items": [
+                "Changed git author to `matthew@breaknbad.com`",
+                "Now auto-deploys on `git push origin main`",
+                "No manual Vercel commands needed"
+              ]
+            },
+            {
+              "name": "Next Steps Requested",
+              "items": [
+                "**Top Spenders component** — Big Brother spec'd the SQL and component structure",
+                "Need to add `get_top_spenders` RPC function to Supabase",
+                "Wit to style the component"
+              ]
+            },
+            {
+              "name": "Security Note",
+              "items": [
+                "Matthew posted service_role key in Discord — remind to rotate",
+                "Key: `sb_***_REDACTED` (should be rotated)"
+              ]
+            }
+          ],
+          "rawText": []
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Fix: Use `sessionTarget: isolated` for all crons — they run independently",
+          "category": "automation"
+        },
+        {
+          "description": "So `next-heartbeat` crons won't fire overnight",
+          "category": "automation"
+        },
+        {
+          "description": "Created #cron-runs channel (ID: 1472555193320345722)",
+          "category": "automation"
+        },
+        {
+          "description": "Created `cron-run-reporter` cron — runs every 30min, posts summaries",
+          "category": "automation"
+        },
+        {
+          "description": "Script: `scripts/cron-run-reporter.js`",
+          "category": "integration"
+        },
+        {
+          "description": "Deleted 7 stale/duplicate crons during audit",
+          "category": "automation"
+        },
+        {
+          "description": "Filter out refunded/cancelled/giveaway",
+          "category": "email"
+        },
+        {
+          "description": "Cross-reference SimpleTexting API to skip existing subscribers",
+          "category": "integration"
+        },
+        {
+          "description": "#cron-runs: 1472555193320345722",
+          "category": "automation"
+        },
+        {
+          "description": "`38a2c47` — fix cron dashboard overdue calculation",
+          "category": "automation"
+        },
+        {
+          "description": "`93bd60a` — rename /calendar to /crons + remove fake builtins",
+          "category": "calendar"
+        },
+        {
+          "description": "Calendar binary 1/1, 2/2, 3/1, 3/3 → 1101 = 13",
+          "category": "calendar"
+        },
+        {
+          "description": "[ ] Monitor #cron-runs to verify tracking works",
+          "category": "automation"
+        },
+        {
+          "description": "[ ] Consider migrating more `sessionTarget: main` crons to `isolated`",
+          "category": "automation"
+        },
+        {
+          "description": "[ ] Check if 8 AM crons actually run today after fixes",
+          "category": "automation"
+        },
+        {
+          "description": "[ ] Build QR label generator script — CSV in → Avery label PDF out (see SMS Marketing Insert System notes above)",
+          "category": "integration"
+        },
+        {
+          "description": "Created `cron_runs` table in Supabase (was missing — no run history)",
+          "category": "automation"
+        },
+        {
+          "description": "Built `sync-cron-runs.js` script to track run history to MC",
+          "category": "integration"
+        },
+        {
+          "description": "Staggered conflicting cron times (8 AM had 4 stacked, now 5 min apart)",
+          "category": "automation"
+        },
+        {
+          "description": "Changed 5 crons from `wakeMode: next-heartbeat` to `now` (were stuck before noon)",
+          "category": "automation"
+        },
+        {
+          "description": "9:05 Daily email scan",
+          "category": "email"
+        },
+        {
+          "description": "98%+ sold packs filtered from feed",
+          "category": "email"
+        },
+        {
+          "description": "Sport filters (Football/Basketball/etc tabs)",
+          "category": "email"
+        },
+        {
+          "description": "100% sold filter (changed from 98% to 100%)",
+          "category": "email"
+        },
+        {
+          "description": "These were in the update script, not the template",
+          "category": "integration"
+        },
+        {
+          "description": "Sport filters",
+          "category": "email"
+        },
+        {
+          "description": "306 Whatnot orders ($2,534.20)",
+          "category": "general"
+        },
+        {
+          "description": "25 Fanatics breaks ($17,980.00)",
+          "category": "general"
+        },
+        {
+          "description": "Platform breakdown (Whatnot vs Fanatics)",
+          "category": "general"
+        },
+        {
+          "description": "Whatnot: 306 orders, $2,534.20 revenue",
+          "category": "general"
+        },
+        {
+          "description": "Fanatics: 25 breaks, $17,980.00 revenue",
+          "category": "general"
+        },
+        {
+          "description": "Platform breakdown bar (Amber=Fanatics, Emerald=Whatnot)",
+          "category": "general"
+        }
+      ],
+      "interactions": [
+        {
+          "description": "Matthew asked for color psychology deep dive",
+          "type": "matthew"
+        }
+      ],
+      "todoist_activity": [],
+      "infrastructure": [
+        "Created `cron_runs` table in Supabase (was missing — no run history)",
+        "Built `sync-cron-runs.js` script to track run history to MC",
+        "All 4 bots now have sync in their heartbeats",
+        "Staggered conflicting cron times (8 AM had 4 stacked, now 5 min apart)",
+        "Changed 5 crons from `wakeMode: next-heartbeat` to `now` (were stuck before noon)",
+        "8:00 Morning triage",
+        "8:05 ir-daily-digest",
+        "8:10 MC Summary",
+        "8:15 Action Sweep",
+        "9:00 YouTube Monitor",
+        "9:05 Daily email scan",
+        "9:15 topps-invoice",
+        "9:20 daily-drafts-triage"
+      ],
+      "stats": {
+        "sections_count": 12,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 32,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-02-16",
+      "title": "16 Daily Log",
+      "sections": [
+        {
+          "name": "🔧 Context Bloating Fix (6:19 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Problem",
+              "items": []
+            },
+            {
+              "name": "Team Discussion (#tech-support)",
+              "items": [
+                "**Wit** — Suggested tiered memory, expiry tags, shared knowledge → MC",
+                "**Big Brother** — Offered memory size monitoring, retention policies, weekly hygiene checks",
+                "**MacGyver** — Found OpenClaw config options: `bootstrapMaxChars`, `contextPruning`, `memorySearch`",
+                "**Dross** — Synthesized recommendations, applied config patch"
+              ]
+            },
+            {
+              "name": "Solution Applied",
+              "items": [
+                "Reduced file injection from 20KB → 10KB per workspace file",
+                "Forces lazy loading via `memory_search` for overflow content",
+                "Already had `contextPruning` and `memorySearch` enabled"
+              ]
+            },
+            {
+              "name": "What We Already Had (no change needed)",
+              "items": [
+                "`contextPruning.mode: cache-ttl` (5m TTL)",
+                "`compaction.memoryFlush.enabled: true`",
+                "`memorySearch` with local provider"
+              ]
+            },
+            {
+              "name": "Impact",
+              "items": [
+                "MEMORY.md (25KB) now injects first 10KB only",
+                "Rest accessible via `memory_search`",
+                "Should reduce token burn + rate limit errors"
+              ]
+            }
+          ],
+          "rawText": [
+            "Matthew asked about fixing rate limit and usage errors from context bloating.",
+            "All 4 bots collaborated:",
+            "```json",
+            "{\"agents\":{\"defaults\":{\"bootstrapMaxChars\":10000}}}",
+            "```"
+          ]
+        },
+        {
+          "name": "🎯 BnB HQ Dashboard Session (1:30 AM - 4:07 AM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Features Built",
+              "items": [
+                "**Date Range Picker** — Added to dashboard header with presets (Today, 7d, 30d, This month, Last month, YTD, All time)",
+                "**Platform Brand Colors** — Whatnot yellow (#FFD700), Fanatics red (#E31837), Shopify green (#95BF47)",
+                "**Platform Logos** — Added next to customer names in Top Spenders"
+              ]
+            },
+            {
+              "name": "Database Changes (BnB HQ Supabase)",
+              "items": [
+                "**Created `all_customers` view** — Unifies `customers` (Fanatics/Whatnot) + `shopify_customers` tables",
+                "**Updated `get_top_spenders` RPC** — Now queries unified view, returns Shopify whales",
+                "Key type casts needed: `::TEXT` for strings, `::TIMESTAMP` for dates, `gen_random_uuid()` for Shopify IDs"
+              ]
+            },
+            {
+              "name": "🐋 Shopify Whales Discovered",
+              "items": [
+                "**Michael Ramandanes** — $588,167.50 lifetime value (835 orders!)",
+                "**Nicole Lawlor** — $113,499.25 (145 orders)",
+                "Note: May have duplicates to dedupe later"
+              ]
+            },
+            {
+              "name": "Bot Fleet Updates",
+              "items": [
+                "**All bots have push access to BnB HQ** — `github.com/breaknbad/bnb-hq`",
+                "Workflow: branch → push → Dross reviews/merges → auto-deploy to Vercel",
+                "Announced to Wit, Big Brother, MacGyver"
+              ]
+            },
+            {
+              "name": "Tasks Created (8 BnB HQ tasks)",
+              "items": [
+                "eBay API Integration (P2)",
+                "Shopify API Integration (P2)",
+                "Platform Data Import Pipeline (P2)",
+                "Webhook Event Infrastructure (P3)",
+                "Cross-Platform Price Sync Engine (P3)",
+                "Automated Listing Sync (P3)",
+                "Dashboard Widget Framework (P3)",
+                "Mobile-Responsive Dashboard (P3)"
+              ]
+            }
+          ],
+          "rawText": [
+            "- Whatnot: `/public/logos/whatnot.png` (black square, yellow W - Matthew's choice #3)",
+            "- Fanatics: `/public/logos/fanatics.png` (blue/red metallic flame - Matthew's choice #1)",
+            "- Shopify: `/public/logos/shopify.svg` (official green bag from simple-icons)",
+            "- Size: 28px, rounded-full",
+            "**Integrations & APIs:**",
+            "**Platform Automation:**",
+            "**Business Analytics:**"
+          ]
+        },
+        {
+          "name": "📚 Learned",
+          "items": [
+            "Supabase REST API can't run raw DDL (CREATE VIEW, CREATE FUNCTION) — need Dashboard or CLI",
+            "Dashboard-icons CDN has clean logos: `cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/`",
+            "Detailed logos look bad at 18px — need 24-28px minimum or use simplified icons",
+            "UNION ALL views need matching column types (use explicit casts)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "🎯 Data Cleanup Session (4:17 AM - 4:32 AM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Issues Fixed",
+              "items": []
+            },
+            {
+              "name": "Final Solution",
+              "items": [
+                "Simplified `all_customers` view to ONLY use `shopify_customers` (removed duplicate `customers` table from view)",
+                "`customers` table still exists (FK constraint to `orders`) but excluded from unified view",
+                "When real Fanatics/Whatnot data arrives, add back with proper UNION"
+              ]
+            },
+            {
+              "name": "SQL Gotchas Learned",
+              "items": [
+                "`MIN(uuid)` doesn't exist in Postgres — use `(array_agg(id))[1]` instead",
+                "`CREATE OR REPLACE FUNCTION` can't change return types — must `DROP FUNCTION` first",
+                "String columns need `::TEXT` casts when return type declares TEXT",
+                "`TIMESTAMP` vs `TIMESTAMPTZ` must match exactly"
+              ]
+            }
+          ],
+          "rawText": [
+            "1. **Duplicate customers** — `customers` table had 1000 Shopify records that duplicated `shopify_customers`",
+            "2. **Double-counted lifetime values** — Michael Ramandanes showed $1.17M instead of $588K",
+            "3. **Wrong platform badges** — Everyone showed \"Shopify + Fanatics\" due to UNION ALL summing both tables",
+            "4. **Type mismatches in RPC** — VARCHAR vs TEXT, TIMESTAMP vs TIMESTAMPTZ"
+          ]
+        },
+        {
+          "name": "🎯 CSV Import Parser Review (8:13 AM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Spec Review",
+              "items": [
+                "Big Brother completed spec: `mission-control/specs/csv-import-parser-spec.md`",
+                "Comprehensive design for Fanatics/Whatnot CSV imports",
+                "Platform auto-detection, field mappings, customer matching, rollback capability"
+              ]
+            },
+            {
+              "name": "Migration Staged",
+              "items": [
+                "Created `bnb-hq/supabase/migrations/20260216_csv_import_parser.sql`",
+                "Tables: `csv_imports` (audit trail), `order_lines` (normalized P&L data)",
+                "Added `pg_trgm` extension + trigram index for fuzzy product matching",
+                "Helper functions: `get_import_stats()`, `match_product_fuzzy()`",
+                "Commit: `4db0128`"
+              ]
+            },
+            {
+              "name": "Blockers",
+              "items": [
+                "Need sample CSVs from Fanatics + Whatnot (Matthew action item)",
+                "Schema coordination with Michael on products/breaks table linkage"
+              ]
+            },
+            {
+              "name": "Next Steps",
+              "items": [
+                "Build API endpoints (`/api/imports/upload`, etc.) once sample data available",
+                "Build upload UI component"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "🔗 References",
+          "items": [
+            "BnB HQ: https://bnb-hq.vercel.app",
+            "BnB HQ Supabase: mibyrqopfzaueqsdrlzq.supabase.co",
+            "Migration file: `~/clawd/bnb-hq/supabase/migrations/20260216_unified_customers.sql`",
+            "CSV parser spec: `mission-control/specs/csv-import-parser-spec.md`",
+            "CSV parser migration: `bnb-hq/supabase/migrations/20260216_csv_import_parser.sql`"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "🎴 Repack Inventory System (3:06 PM - 3:20 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Request from Max",
+              "items": [
+                "Different permission levels (admin vs repacker)",
+                "Pull over functionality from the repack spreadsheet",
+                "DO NOT edit the spreadsheet, only copy functionality"
+              ]
+            },
+            {
+              "name": "Spreadsheet Analysis",
+              "items": [
+                "`Current Inventory` — Active available cards (currently empty, cards flow through quickly)",
+                "`Used` — 9,881 cards assigned to cases",
+                "`Ebay Incoming`, `Collect Incoming`, `Hicks Incoming` — Cards pending arrival",
+                "`M_S` — Master Settings with tier floor/ceiling ranges",
+                "`Case Tracking` — Archive of completed cases",
+                "Per-tier case sheets (`Extended Cut Cases`, `Matinee Cases`, etc.)"
+              ]
+            },
+            {
+              "name": "Built",
+              "items": []
+            },
+            {
+              "name": "Pending",
+              "items": [
+                "Run migration in Supabase Dashboard (Max/Matthew action)",
+                "Sync script to pull data from spreadsheet",
+                "Case generation logic (Phase 2, after inventory is reliable)"
+              ]
+            }
+          ],
+          "rawText": [
+            "Build a \"sub-app\" in BnB HQ for repack inventory tracking + case generation",
+            "**Spreadsheet ID:** `***REDACTED***`",
+            "**Apps Script ID:** `***REDACTED***`",
+            "**Key sheets:**",
+            "**Column structure (A-AC):**",
+            "```",
+            "A: Purchased By?    | J: % We Paid      | S: Transaction ID  | AB: Case ID",
+            "B: Purchase Date    | K: Repack Type    | T: ItemID          | AC: Priority",
+            "C: Sport            | L: Date Comped    | U: Tracking #",
+            "D: Arrived          | M: Graded         | V: Tracking (URL)",
+            "E: Player           | N: Single?        | W: Carrier",
+            "F: Card             | O: Used?          | X: Shipment Status",
+            "G: Team             | P: Buyback        | Y: Delivery Date",
+            "H: Paid             | Q: Card Ladder    | Z: Shipped Date",
+            "I: Last Comp        | R: Order ID       | AA: Delivery Flag",
+            "```",
+            "**Tier configuration (from M_S):**",
+            "| Tier | Prefix | Floor | Ceiling | Rate |",
+            "|------|--------|-------|---------|------|",
+            "| Extended Cut | EC- | $20-30 | $2200-3000 | 5% |",
+            "| Matinee | MAT- | $30-50 | $400-500 | 20% |",
+            "| Cult Classic | CC- | $50-100 | $600-1000 | 15% |",
+            "| Thriller | TH- | $100-150 | $1000-1500 | 15% |",
+            "| Blockbuster | BB- | $150-250 | $1500-2200 | 13% |",
+            "| Record Breaker | RB- | $250-400 | $3000-4000 | 10% |",
+            "| Hollywood Edition | HE- | $500-600 | $10000-15000 | 8% |",
+            "| GCH | GCH- | $350-450 | N/A | 100% |",
+            "1. **`/repacks` page** — Tier summary cards, card table with filtering, search",
+            "2. **Migration** — `20260216_repack_inventory.sql`",
+            "- `repack_tiers` — Tier config with floor/ceiling ranges",
+            "- `repack_cards` — Unified inventory table matching spreadsheet exactly",
+            "- `repack_cases` — For future case generation",
+            "- Views: `repack_inventory_summary`, `repack_inventory_by_sheet`, `repack_cards_by_team`",
+            "3. **Nav updates** — Added Repacks to all page navs + homepage card"
+          ]
+        },
+        {
+          "name": "🎯 BnB HQ CSV Import Pipeline - SHIPPED",
+          "items": [],
+          "subsections": [
+            {
+              "name": "What We Built",
+              "items": [
+                "**CSV Parser** (`bnb-hq/scripts/csv-parser.js`) - Parses Fanatics + Whatnot exports",
+                "**Schema**: `csv_imports` (batch tracking) + `order_lines` (normalized orders)",
+                "**Stream ID extraction**: From break titles (e.g., \"BREAK #9\" → `fanatics_break_9`)",
+                "**Deduplication**: `UNIQUE(platform, platform_order_id)` + upsert logic"
+              ]
+            },
+            {
+              "name": "Data Loaded",
+              "items": [
+                "**Fanatics**: 1,176 files | 580,874 orders | **$12.40M**",
+                "**Whatnot**: 955 files | 321,644 orders | **$4.75M**",
+                "**Total**: 2,131 files | 902,518 orders | **$17.15M**",
+                "Combined with Shopify ($3.1M) = **~$20.25M total GMV**"
+              ]
+            },
+            {
+              "name": "Google Drive Structure",
+              "items": [
+                "**BnB Data Drops** folder (ID: ***REDACTED***)",
+                "Matthew's export archive: `***REDACTED***`"
+              ]
+            },
+            {
+              "name": "Dashboard Updates",
+              "items": [
+                "Updated to query from `order_lines` for Fanatics/Whatnot",
+                "Added compact number formatting ($20.21M instead of truncated)",
+                "Fast path using pre-aggregated `csv_imports` totals for \"All time\" view"
+              ]
+            },
+            {
+              "name": "Pending",
+              "items": [
+                "Unified Top Spenders migration (SQL file at Drive: `***REDACTED***`)",
+                "Matthew needs to run it in Supabase SQL Editor"
+              ]
+            },
+            {
+              "name": "Key Files",
+              "items": [
+                "Parser: `bnb-hq/scripts/csv-parser.js`",
+                "Migration: `bnb-hq/supabase/migrations/20260216_csv_import_parser.sql`",
+                "Top Spenders fix: `bnb-hq/supabase/migrations/20260216_unified_top_spenders.sql`"
+              ]
+            }
+          ],
+          "rawText": [
+            "- Whatnot/Raw/ | Fanatics/Raw/ | eBay/Raw/ | Processed/"
+          ]
+        },
+        {
+          "name": "BnB HQ Supabase Direct Access (3:30 PM)",
+          "items": [
+            "**Connection string saved:** `~/.credentials/***`",
+            "**psql installed:** `/opt/homebrew/opt/libpq/bin/psql`",
+            "Can now run SQL directly without Matthew pasting in dashboard"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Unified Top Spenders Migration Complete",
+          "items": [
+            "Created `all_customers` view combining: order_lines (Fanatics/Whatnot) + shopify_customers",
+            "Updated `get_top_spenders()` function",
+            "Data summary:",
+            "Top spender: Michael Ramandanes ($588K, Shopify)"
+          ],
+          "subsections": [],
+          "rawText": [
+            "- Fanatics: 24,138 customers ($11.3M)",
+            "- Whatnot: 21,797 customers ($4.6M)",
+            "- Shopify: 1,189 customers ($2.9M)"
+          ]
+        },
+        {
+          "name": "BnB HQ Materialized View (4:15 PM)",
+          "items": [
+            "**Switched `all_customers` from regular VIEW to MATERIALIZED VIEW**",
+            "Regular view timed out (aggregating 900K rows on every query)",
+            "Materialized view: pre-computed, instant queries",
+            "**47,634 unique customers** (532 VIP, 3,021 Hot, 44,081 New)",
+            "**Needs daily refresh:** `REFRESH MATERIALIZED VIEW all_customers;`",
+            "TODO: Set up cron job for daily refresh"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Customer Identity Resolver Built (4:30 PM)",
+          "items": [
+            "`customer_addresses` — 6,566 records (5,149 Fanatics + 1,417 Shopify)",
+            "`customer_identity_graph` — links cross-platform accounts",
+            "`cross_platform_customers` — shows merged LTV for multi-platform buyers",
+            "Found 7 cross-platform customers",
+            "1 customer (Mattn562) buys on ALL THREE platforms",
+            "Manual linking for known customers",
+            "Dedupe within Shopify (found typo email duplicates like bankercards@gmaol.com)"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Tables created:**",
+            "**View created:**",
+            "**Matching method:** Username matching (Fanatics/Whatnot username = Shopify email prefix)",
+            "**Top cross-platform whales:**",
+            "1. brettque (Brett Cusick): $40,720 (Fanatics + Shopify)",
+            "2. Mattn562 (Mathew Norquist): $30,665 (Fanatics + Whatnot + Shopify)",
+            "3. shaynemol (Shayne Olsen): $3,058 (Fanatics + Shopify)",
+            "**Limitation:** Address matching had low accuracy (mostly gift shipping, not same person)",
+            "**Future improvements:**"
+          ]
+        },
+        {
+          "name": "🔐 BnB HQ Authentication (5:17 PM - 5:21 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Built for Max",
+              "items": []
+            },
+            {
+              "name": "Implementation",
+              "items": [
+                "**@supabase/ssr** — Next.js App Router auth package",
+                "**Middleware** — Protects all routes, redirects to `/login` if not authenticated",
+                "**Login page** — Google OAuth with `hd=breaknbad.com` hint",
+                "**Domain restriction** — Server-side check in `/auth/callback` rejects non-@breaknbad.com emails",
+                "**UserMenu component** — Added to all pages (dashboard, customers, sms, repacks, home)",
+                "**Logout** — Clears session and redirects to login"
+              ]
+            },
+            {
+              "name": "Files Created",
+              "items": [
+                "`src/lib/supabase/client.ts` — Browser client",
+                "`src/lib/supabase/server.ts` — Server client",
+                "`src/lib/supabase/middleware.ts` — Middleware client",
+                "`src/middleware.ts` — Route protection",
+                "`src/app/auth/callback/route.ts` — OAuth callback with domain check",
+                "`src/app/auth/logout/route.ts` — Logout handler",
+                "`src/app/login/page.tsx` — Login UI",
+                "`src/components/UserMenu.tsx` — User display + logout button",
+                "`src/components/Header.tsx` — Shared header (created but not used yet)"
+              ]
+            },
+            {
+              "name": "Pending",
+              "items": [
+                "**Supabase Google OAuth setup** — Max/Matthew needs to enable in Supabase dashboard",
+                "Instructions posted to #permissions-&-restrictions"
+              ]
+            },
+            {
+              "name": "Commits",
+              "items": [
+                "`d293c63` — feat: Add Supabase Auth with Google OAuth",
+                "`5ab650e` — fix: Resolve merge conflicts and add UserMenu to sms page"
+              ]
+            }
+          ],
+          "rawText": [
+            "**Task:** Add authentication to BnB HQ (MC-8348ee71)",
+            "**Request from:** Max via Discord #permissions-&-restrictions",
+            "**Spec by:** Big Brother (`specs/bnb-hq-permissions-spec.md`)"
+          ]
+        },
+        {
+          "name": "🎴 Repack Inventory System Build (12:47 PM - 6:00 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "What Was Built",
+              "items": [
+                "**`/repacks` page with 3 sub-tabs:**"
+              ]
+            },
+            {
+              "name": "Database Tables Created",
+              "items": []
+            },
+            {
+              "name": "Data Synced",
+              "items": []
+            },
+            {
+              "name": "Key Technical Decisions",
+              "items": [
+                "**Direct postgres sync** — REST API batch inserts failed (\"All object keys must match\"), switched to direct postgres one-by-one inserts",
+                "**Source sheet dropdown** — Cards split by source_sheet column (Current Inventory, eBay Incoming, Collect Incoming, Used)",
+                "**Removed percent_paid display** — Max said it's meaningless; comp defaults to paid value when empty"
+              ]
+            },
+            {
+              "name": "Credentials Obtained",
+              "items": [
+                "**BnB HQ Database password:** Stored in `~/.credentials/***`",
+                "Format: `postgresql://***@***.supabase.co:5432/postgres`"
+              ]
+            },
+            {
+              "name": "Scripts Created",
+              "items": [
+                "`bnb-hq/scripts/sync-repack-postgres.js` — Direct postgres sync from Google Sheets",
+                "Sync takes ~45 min for 13K cards (one-by-one for reliability)"
+              ]
+            },
+            {
+              "name": "Customer Filters Added",
+              "items": [
+                "Platform (Shopify/Fanatics/Whatnot)",
+                "SMS Status (linked/not linked)",
+                "Last Active (30/60/90 days)",
+                "Spend Range (min/max)",
+                "Order Count (min/max)"
+              ]
+            },
+            {
+              "name": "Bot Jurisdiction Established",
+              "items": [
+                "**#bnb-hq is Dross's channel** — Wit, Big Brother, MacGyver only respond when @'d",
+                "Threads inherit from parent channel (they jumped in before directive was seen)"
+              ]
+            },
+            {
+              "name": "Buyback System Design (with Max)",
+              "items": []
+            },
+            {
+              "name": "Predictive Features Roadmap (Max's questions)",
+              "items": [
+                "Financials: Cash flow forecasting, margin alerts",
+                "Customers: Churn risk, LTV prediction, VIP triggers",
+                "Inventory: Stock-out prediction, case generation timing",
+                "Breaks: Fill rate prediction, optimal scheduling",
+                "Repacks: Tier distribution, ceiling timing optimization"
+              ]
+            }
+          ],
+          "rawText": [
+            "- 📦 Inventory — Card table with source sheet dropdown",
+            "- 🎬 Cases — Placeholder for case generation (future)",
+            "- ⚙️ Master — Admin settings with tier config",
+            "```sql",
+            "repack_tiers — 8 tiers with floor/ceiling ranges",
+            "repack_cards — All 29 columns from spreadsheet",
+            "```",
+            "**Columns stored (matching spreadsheet A-AC):**",
+            "purchased_by, purchase_date, sport, arrived, player, card_name, team, paid, last_comp, percent_paid, repack_type, date_comped, graded, is_single, used, buyback, card_ladder_link, order_id, transaction_id, item_id, tracking_number, tracking_url, carrier, shipment_status, delivery_date, shipped_date, delivery_flag, case_id, priority",
+            "```",
+            "Used:              10,716 cards",
+            "Collect Incoming:     966 cards",
+            "Current Inventory:    831 cards",
+            "Ebay Incoming:        765 cards",
+            "─────────────────────────────",
+            "Total:            13,278 cards",
+            "```",
+            "Matthew requested all filters on `/customers` page:",
+            "Designed customer-friendly buyback flow:",
+            "1. Customer enters platform username (not case ID)",
+            "2. System looks up their purchases by username + timestamp",
+            "3. Shows all their cards organized by break date",
+            "4. They select cards to sell back",
+            "5. Verification via order total or last 4 of card (fraud prevention)",
+            "6. High-value (>$500) requires platform DM confirmation",
+            "**Card ID format:** `{CaseID}-{Position}` (e.g., EC-1234-07)",
+            "**Break ID format:** `BRK-YYYYMMDD-HHMM`",
+            "Documented predictive capabilities by domain:"
+          ]
+        },
+        {
+          "name": "🔗 References",
+          "items": [
+            "Repack Mastersheet: `***REDACTED***`",
+            "Apps Script ID: `***REDACTED***`",
+            "BnB HQ: https://bnb-hq.vercel.app/repacks",
+            "Sync script: `~/clawd/bnb-hq/scripts/sync-repack-postgres.js`"
+          ],
+          "subsections": [],
+          "rawText": []
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Platform Brand Colors — Whatnot yellow (#FFD700), Fanatics red (#E31837), Shopify green (#95BF47)",
+          "category": "general"
+        },
+        {
+          "description": "Created `all_customers` view — Unifies `customers` (Fanatics/Whatnot) + `shopify_customers` tables",
+          "category": "general"
+        },
+        {
+          "description": "Updated `get_top_spenders` RPC — Now queries unified view, returns Shopify whales",
+          "category": "general"
+        },
+        {
+          "description": "Key type casts needed: `::TEXT` for strings, `::TIMESTAMP` for dates, `gen_random_uuid()` for Shopify IDs",
+          "category": "general"
+        },
+        {
+          "description": "eBay API Integration (P2)",
+          "category": "integration"
+        },
+        {
+          "description": "Shopify API Integration (P2)",
+          "category": "integration"
+        },
+        {
+          "description": "Supabase REST API can't run raw DDL (CREATE VIEW, CREATE FUNCTION) — need Dashboard or CLI",
+          "category": "integration"
+        },
+        {
+          "description": "Simplified `all_customers` view to ONLY use `shopify_customers` (removed duplicate `customers` table from view)",
+          "category": "general"
+        },
+        {
+          "description": "When real Fanatics/Whatnot data arrives, add back with proper UNION",
+          "category": "general"
+        },
+        {
+          "description": "Comprehensive design for Fanatics/Whatnot CSV imports",
+          "category": "general"
+        },
+        {
+          "description": "Need sample CSVs from Fanatics + Whatnot (Matthew action item)",
+          "category": "general"
+        },
+        {
+          "description": "Build API endpoints (`/api/imports/upload`, etc.) once sample data available",
+          "category": "integration"
+        },
+        {
+          "description": "Sync script to pull data from spreadsheet",
+          "category": "integration"
+        },
+        {
+          "description": "CSV Parser (`bnb-hq/scripts/csv-parser.js`) - Parses Fanatics + Whatnot exports",
+          "category": "integration"
+        },
+        {
+          "description": "Stream ID extraction: From break titles (e.g., \"BREAK #9\" → `fanatics_break_9`)",
+          "category": "general"
+        },
+        {
+          "description": "Fanatics: 1,176 files | 580,874 orders | $12.40M",
+          "category": "general"
+        },
+        {
+          "description": "Whatnot: 955 files | 321,644 orders | $4.75M",
+          "category": "general"
+        },
+        {
+          "description": "Combined with Shopify ($3.1M) = ~$20.25M total GMV",
+          "category": "general"
+        },
+        {
+          "description": "Updated to query from `order_lines` for Fanatics/Whatnot",
+          "category": "general"
+        },
+        {
+          "description": "Parser: `bnb-hq/scripts/csv-parser.js`",
+          "category": "integration"
+        },
+        {
+          "description": "Created `all_customers` view combining: order_lines (Fanatics/Whatnot) + shopify_customers",
+          "category": "general"
+        },
+        {
+          "description": "Top spender: Michael Ramandanes ($588K, Shopify)",
+          "category": "general"
+        },
+        {
+          "description": "TODO: Set up cron job for daily refresh",
+          "category": "automation"
+        },
+        {
+          "description": "`customer_addresses` — 6,566 records (5,149 Fanatics + 1,417 Shopify)",
+          "category": "general"
+        },
+        {
+          "description": "Dedupe within Shopify (found typo email duplicates like bankercards@gmaol.com)",
+          "category": "email"
+        },
+        {
+          "description": "Login page — Google OAuth with `hd=breaknbad.com` hint",
+          "category": "integration"
+        },
+        {
+          "description": "Domain restriction — Server-side check in `/auth/callback` rejects non-@breaknbad.com emails",
+          "category": "email"
+        },
+        {
+          "description": "`src/app/auth/callback/route.ts` — OAuth callback with domain check",
+          "category": "integration"
+        },
+        {
+          "description": "Supabase Google OAuth setup — Max/Matthew needs to enable in Supabase dashboard",
+          "category": "integration"
+        },
+        {
+          "description": "`d293c63` — feat: Add Supabase Auth with Google OAuth",
+          "category": "integration"
+        },
+        {
+          "description": "Direct postgres sync — REST API batch inserts failed (\"All object keys must match\"), switched to direct postgres one-by-one inserts",
+          "category": "integration"
+        },
+        {
+          "description": "`bnb-hq/scripts/sync-repack-postgres.js` — Direct postgres sync from Google Sheets",
+          "category": "integration"
+        },
+        {
+          "description": "Platform (Shopify/Fanatics/Whatnot)",
+          "category": "general"
+        },
+        {
+          "description": "Apps Script ID: `***REDACTED***`",
+          "category": "integration"
+        },
+        {
+          "description": "Sync script: `~/clawd/bnb-hq/scripts/sync-repack-postgres.js`",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 15,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 35,
+        "todoist_count": 0
+      }
+    }
+  ]
+}
