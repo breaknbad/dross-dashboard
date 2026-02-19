@@ -1,16 +1,16 @@
 {
   "_meta": {
-    "generated_at": "2026-02-17T11:05:14.193Z",
-    "total_days": 14,
+    "generated_at": "2026-02-19T03:08:48.865Z",
+    "total_days": 15,
     "date_range": {
       "start": "2026-02-04",
-      "end": "2026-02-17"
+      "end": "2026-02-18"
     },
     "totals": {
       "tasks_completed": 24,
       "reports_generated": 7,
-      "key_actions": 221,
-      "todoist_activity": 12
+      "key_actions": 257,
+      "todoist_activity": 10
     }
   },
   "days": [
@@ -4380,6 +4380,102 @@
             "**Positioning options:**",
             "**Assignments for Wednesday Mark meeting:**"
           ]
+        },
+        {
+          "name": "🎴 Repack App - eBay Import & Parsing Pipeline (Late Night)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Features Built",
+              "items": [
+                "Pulls orders from eBay Trading API (GetOrders)",
+                "Uses hardcoded token from Apps Script (still valid)",
+                "Deduplication via `repack_ebay_dedupe` table (1,136 unique keys)",
+                "Extracts: title, price, quantity, order date, item ID, tracking info",
+                "API route: `/api/repacks/import`",
+                "Matches imported cards against PlayerDB (5,327 players loaded)",
+                "Extracts: player name, team, card details from eBay titles",
+                "Parses \"Sport\" from category/title patterns",
+                "API route: `/api/repacks/parse`",
+                "eBay Import: every 4h at :00 (ID: `***REDACTED***`)",
+                "Parse Cards: every 4h at :15 (ID: `***REDACTED***`)",
+                "Parse runs 15 min after Import to catch newly imported cards",
+                "Found 437 duplicate eBay imports (same item_id imported multiple times)",
+                "Deleted duplicates, rebuilt dedupe table",
+                "Now has 1,136 unique keys for deduplication"
+              ]
+            },
+            {
+              "name": "UI Improvements",
+              "items": [
+                "Clickable column headers with ↑/↓ indicators",
+                "Default sort: `last_comp DESC` (highest value cards first)",
+                "State: `sortColumn` + `sortDirection` with proper null handling",
+                "`e.stopPropagation()` prevents resize handler from triggering sort",
+                "Drag column edges to resize",
+                "Widths saved to localStorage",
+                "Reset button to restore defaults",
+                "Edit button per row (prevents accidental inline edits)",
+                "Full modal with all editable fields",
+                "Save updates card in database",
+                "Arrived, Graded, Single, Used, Buyback columns",
+                "Click to toggle directly in table",
+                "Updates database immediately",
+                "When marking a card arrived, offers to mark all cards with same Order ID",
+                "Bulk update for multi-card orders",
+                "Delivery Flag column with red row highlighting",
+                "FB/BB Inventory sub-tabs with sport filtering",
+                "\"Case Type\" label (was \"Tier\")",
+                "Default dropdown: \"Ebay Incoming\"",
+                "Card limit: 15,000 (was 5,000)",
+                "Hidden columns: \"Purchased By\", \"Sport\""
+              ]
+            },
+            {
+              "name": "Database",
+              "items": [
+                "Tracks imported eBay items by `item_id + transaction_id + order_id`",
+                "Prevents duplicate imports on re-runs",
+                "Used: 10,716 cards",
+                "Current Inventory: 1,156 cards",
+                "Ebay Incoming: 765 cards",
+                "Collect Incoming: 966 cards",
+                "Total: 13,603 cards"
+              ]
+            },
+            {
+              "name": "Key Files",
+              "items": [
+                "Import route: `src/app/api/repacks/import/route.ts`",
+                "Parse route: `src/app/api/repacks/parse/route.ts`",
+                "Repacks page: `src/app/repacks/page.tsx`",
+                "Import script: `scripts/import-ebay-db.js`",
+                "Parse script: `scripts/parse-repack-cards.js`"
+              ]
+            },
+            {
+              "name": "Next Up",
+              "items": [
+                "Case generation functionality (port from Apps Script)",
+                "Auto-mark used + assign Case ID when cases generated",
+                "Buyback tool (copy cards back to Current Inventory)"
+              ]
+            }
+          ],
+          "rawText": [
+            "**eBay Import Button:**",
+            "**Parse Cards Button:**",
+            "**Automatic Crons:**",
+            "**Duplicate Fix:**",
+            "**Column Sorting:**",
+            "**Resizable Columns:**",
+            "**Edit Modal:**",
+            "**Interactive Checkboxes:**",
+            "**Mark All Arrived Modal:**",
+            "**Other UI Polish:**",
+            "**New table:** `repack_ebay_dedupe`",
+            "**Current data counts:**"
+          ]
         }
       ],
       "tasks_completed": [],
@@ -4528,157 +4624,551 @@
         {
           "description": "Business model: hardware upfront + subscription",
           "category": "integration"
+        },
+        {
+          "description": "Pulls orders from eBay Trading API (GetOrders)",
+          "category": "integration"
+        },
+        {
+          "description": "Uses hardcoded token from Apps Script (still valid)",
+          "category": "integration"
+        },
+        {
+          "description": "API route: `/api/repacks/import`",
+          "category": "integration"
+        },
+        {
+          "description": "API route: `/api/repacks/parse`",
+          "category": "integration"
+        },
+        {
+          "description": "FB/BB Inventory sub-tabs with sport filtering",
+          "category": "email"
+        },
+        {
+          "description": "Import route: `src/app/api/repacks/import/route.ts`",
+          "category": "integration"
+        },
+        {
+          "description": "Parse route: `src/app/api/repacks/parse/route.ts`",
+          "category": "integration"
+        },
+        {
+          "description": "Import script: `scripts/import-ebay-db.js`",
+          "category": "integration"
+        },
+        {
+          "description": "Parse script: `scripts/parse-repack-cards.js`",
+          "category": "integration"
+        },
+        {
+          "description": "Case generation functionality (port from Apps Script)",
+          "category": "integration"
         }
       ],
       "interactions": [],
       "todoist_activity": [],
       "infrastructure": [],
       "stats": {
-        "sections_count": 18,
+        "sections_count": 19,
         "tasks_completed_count": 0,
         "reports_count": 0,
-        "key_actions_count": 36,
+        "key_actions_count": 46,
         "todoist_count": 0
       }
     },
     {
       "date": "2026-02-17",
-      "title": "17 (Monday)",
+      "title": "17 Daily Log",
       "sections": [
         {
-          "name": "Session Summary (Late Night ~7pm-3am)",
+          "name": "🔧 QB API Re-Auth (11:30 PM)",
           "items": [],
           "subsections": [
             {
-              "name": "MrBeast $1M Puzzle Hunt Session",
+              "name": "Issue",
+              "items": []
+            },
+            {
+              "name": "Root Cause",
+              "items": []
+            },
+            {
+              "name": "Fix",
+              "items": []
+            },
+            {
+              "name": "Credentials Location",
               "items": [
-                "**Resumed puzzle hunt** with full bot team (Dross, Wit, Big Brother, MacGyver)",
-                "**Found master list:** delfinadap.github.io/mrbeast-51-locations/all",
-                "**Status:** 22 confirmed, 6 probable, 20 unsolved locations",
-                "**Key discovery:** All Stage 1 answers are CITY NAMES (not addresses)",
-                "**Our theories:**",
-                "**Crossword answer:** EYJAFJALLAJOKULL (Icelandic volcano)",
-                "**Blockers:** Need Salesforce account, onemil.xyz access, phone call 337-317-5853",
-                "**Updated:** memory/mrbeast-puzzle.md with full session progress"
+                "`~/clawd/.credentials/quickbooks-prod.json` — client ID + secret",
+                "`~/clawd/.credentials/quickbooks-tokens.json` — access + refresh tokens",
+                "Realm ID: `9130351871779836`"
               ]
             },
             {
-              "name": "Discord Channel Changes",
+              "name": "Handoff to Big Brother",
               "items": [
-                "Created **#breaker-wellness** (1473092033781432330) — moved to Big Brother category",
-                "Created **#test** (1473175020804243486) — all bots configured"
+                "Shared tokens + client creds in #bookkeeping (internal channel)",
+                "Big Brother verified connection, will own reconciliation automation"
               ]
             },
             {
-              "name": "Bot Fleet Updates",
-              "items": [
-                "**All 4 bots run on separate Macs** (not consolidated as I incorrectly thought)",
-                "**Heartbeat schedule:** All bots run every 30 min, 12pm-midnight EST",
-                "**NEW: Telegram notifications** — all bots now message Matthew (8247529666) after:",
-                "**NEW: Completion requirements** — all tasks must include:"
-              ]
-            },
-            {
-              "name": "Code Statistics",
-              "items": [
-                "**Total lines:** ~77,000 (Mission Control: 59K, BnB HQ: 18K)",
-                "**Last 2 hours:** +844 net lines in BnB HQ (20 commits)",
-                "**Documentation:** Light (~4-6% comment ratio)"
-              ]
-            },
-            {
-              "name": "Credentials Confirmed",
-              "items": [
-                "✅ BnB HQ Supabase: Have full access (URL, anon key, service role key)",
-                "Can run any SQL/migrations without Matthew's help"
-              ]
-            },
-            {
-              "name": "LinkedIn Discussion",
-              "items": [
-                "LinkedIn scraping is risky (aggressive blocking, legal precedent)",
-                "Better options: Sales Navigator, Apollo, ZoomInfo",
-                "No action taken — Matthew didn't specify use case"
-              ]
-            },
-            {
-              "name": "SMS Username Matching",
-              "items": [
-                "Matthew asked about phone→username matching",
-                "Turns out it's already partially built",
-                "No action needed"
-              ]
-            },
-            {
-              "name": "Session End (~3:30am)",
-              "items": [
-                "**Compaction triggered** — session memory saved",
-                "**Still TODO:** Broadcast HEARTBEAT.md update to other bots (Wit, Big Brother, MacGyver)",
-                "**MrBeast puzzle:** Paused, waiting for human to unblock Salesforce/phone/sudoku"
-              ]
+              "name": "New Protocol Added",
+              "items": []
             }
           ],
           "rawText": [
-            "- HOMESTEAD, FL (vault bills sum = 90 → A=1 cipher)",
-            "- ORLANDO, FL (BTS number sequence via MILLIONDOLLAR cipher)",
-            "- Completing heartbeat work",
-            "- Completing any task directly",
-            "- Completion notes (what was done)",
-            "- Links (commit SHA, PR, deployed URL, file paths)",
-            "- Attachments for deliverables"
+            "QB tokens from Feb 5 were invalid — refresh token returned `invalid_grant`. Tokens had been moved to `.credentials-backup/` and the originals were missing from main `.credentials/` folder.",
+            "Credentials got moved/deleted between Feb 16 (when I confirmed working) and today. Backup folder had stale Feb 13 tokens.",
+            "1. Matthew re-authorized via Intuit OAuth Playground",
+            "2. Captured auth code: `***REDACTED***`",
+            "3. Exchanged for fresh tokens server-side",
+            "4. Verified API: 200 OK, Break'n Bad LLC connected",
+            "Created `scripts/find-creds.js` and `CREDENTIAL-SEARCH.md` protocol — must search all common credential paths before declaring anything missing.",
+            "**Lesson:** Always run `node scripts/find-creds.js <service>` before saying credentials don't exist."
           ]
         },
         {
-          "name": "References",
-          "items": [
-            "HEARTBEAT.md updated with Steps 5-6 (completion requirements + Telegram notifications)",
-            "memory/mrbeast-puzzle.md updated with full puzzle hunt progress"
+          "name": "Tags",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "---"
+          ]
+        },
+        {
+          "name": "🏈 Repack Inventory App - Major Progress (Session)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Status",
+              "items": []
+            },
+            {
+              "name": "Completed Features",
+              "items": [
+                "`/repacks` page with 4 sub-tabs: Inventory, Cases, Bidding, Master",
+                "**eBay Import + Smart Parse + Sync** - combined operation on Import click",
+                "**Dedupe DB** - `repack_ebay_dedupe` table (1,136 keys)",
+                "**Auto-move system** - 20s server-side timer, moves arrived+parsed cards to Current Inventory",
+                "**Auto-flag API** - SHIPPED? (7+ days), MISSING (14+ days)",
+                "**Team dropdowns** - official NFL/MLB lists only (no free text)",
+                "**Tier assignment** - computes repack_type from last_comp vs tier floor ranges",
+                "**GHC keywords**: `downtown`, `uptown`, `colorblast`, `color blast`, `kaboom` + `is_single=true` + $350-$450",
+                "**Sticky table headers**, column sorting, resizable columns",
+                "**Tracking sync** from eBay API for un-arrived cards",
+                "**clasp setup** - can pull/push Apps Script via `~/clawd/repack-scripts/`"
+              ]
+            },
+            {
+              "name": "API Routes",
+              "items": []
+            },
+            {
+              "name": "Cron Jobs",
+              "items": [
+                "eBay Import (every 4h): `***REDACTED***`",
+                "Auto-Flag (daily 8AM): `***REDACTED***`",
+                "Auto-Move Timer: `***REDACTED***`"
+              ]
+            },
+            {
+              "name": "Apps Script",
+              "items": [
+                "**Project ID**: `***REDACTED***`",
+                "**Spreadsheet**: `***REDACTED***`",
+                "**Local clone**: `~/clawd/repack-scripts/`",
+                "**Backups**: `~/clawd/backups/repack-scripts/`"
+              ]
+            },
+            {
+              "name": "Key Rules Learned",
+              "items": [
+                "**Never rename functions** in Apps Script — menu options depend on exact names",
+                "**Never create new script files** — replace existing, backups in memory",
+                "**Team dropdowns only** — ensures data consistency",
+                "**Incomplete cases**: Revert cards to unused (Used?=false, clear Case ID)"
+              ]
+            },
+            {
+              "name": "Next Steps",
+              "items": []
+            }
           ],
+          "rawText": [
+            "**App is now SOURCE OF TRUTH** — replacing Football Repack Mastersheet within the week. ~14,000 cards synced.",
+            "| Route | Purpose |",
+            "|-------|---------|",
+            "| `/api/repacks/import` | eBay import + inline parse |",
+            "| `/api/repacks/smart-parse` | Pattern extraction + auto-add players |",
+            "| `/api/repacks/sync` | Tracking updates + tier assignment |",
+            "| `/api/repacks/auto-move` | Moves arrived+parsed cards |",
+            "| `/api/repacks/auto-flag` | Flags SHIPPED?/MISSING |",
+            "| `/api/repacks/assign-tiers` | Standalone tier assignment |",
+            "| `/api/repacks/update-tracking` | Standalone tracking update |",
+            "1. Modify ReplaceCardInCases.js — notify when no replacement cards available",
+            "2. Build Case Generation — port logic from Apps Script",
+            "3. Auto mark used + assign Case ID when cases generated",
+            "4. Buyback tool — copy cards back to Current Inventory"
+          ]
+        },
+        {
+          "name": "Tags",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "---"
+          ]
+        },
+        {
+          "name": "🚚 Carrier Tracking APIs (Added Feb 18)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "FedEx Track API",
+              "items": [
+                "**Credentials:** `~/clawd/.credentials/fedex/api-keys.json`",
+                "**Client ID:** `***REDACTED***`",
+                "**Client Secret:** `***REDACTED***`",
+                "**Vercel env vars:** `FEDEX_CLIENT_ID`, `FEDEX_CLIENT_SECRET`",
+                "**Portal:** https://developer.fedex.com",
+                "**Limit:** 10,000 API calls/day"
+              ]
+            },
+            {
+              "name": "USPS Package Tracking API v3",
+              "items": [
+                "**Credentials:** `~/clawd/.credentials/usps/api-keys.json`",
+                "**Consumer Key:** `***REDACTED***`",
+                "**Consumer Secret:** `***REDACTED***`",
+                "**Vercel env vars:** `USPS_CLIENT_ID`, `USPS_CLIENT_SECRET` ✅",
+                "**Portal:** https://developers.usps.com (docs) / Business Portal (app management)",
+                "**CRID:** 53895849"
+              ]
+            },
+            {
+              "name": "UPS Track API",
+              "items": [
+                "**Portal:** https://developer.ups.com",
+                "**Status:** Not started",
+                "**Vercel env vars needed:** `UPS_CLIENT_ID`, `UPS_CLIENT_SECRET`"
+              ]
+            },
+            {
+              "name": "Carrier Sync API",
+              "items": [
+                "**Endpoint:** `/api/repacks/carrier-sync`",
+                "**Function:** Detects carrier from tracking number, calls carrier API, updates delivery estimates",
+                "**UI:** \"Sync Tracking\" button on Incoming tab"
+              ]
+            }
+          ],
+          "rawText": []
+        },
+        {
+          "name": "Tags",
+          "items": [],
           "subsections": [],
           "rawText": []
         }
       ],
       "tasks_completed": [
         {
-          "name": "BnB HQ Supabase: Have full access (URL, anon key, service role key)",
+          "name": "Vercel env vars: `USPS_CLIENT_ID`, `USPS_CLIENT_SECRET`",
           "status": "done",
-          "category": "general"
+          "category": "engineering"
         }
       ],
       "reports_generated": [],
       "key_actions": [
         {
-          "description": "LinkedIn scraping is risky (aggressive blocking, legal precedent)",
+          "description": "Auto-flag API - SHIPPED? (7+ days), MISSING (14+ days)",
+          "category": "integration"
+        },
+        {
+          "description": "Tracking sync from eBay API for un-arrived cards",
+          "category": "integration"
+        },
+        {
+          "description": "clasp setup - can pull/push Apps Script via `~/clawd/repack-scripts/`",
+          "category": "integration"
+        },
+        {
+          "description": "Local clone: `~/clawd/repack-scripts/`",
+          "category": "integration"
+        },
+        {
+          "description": "Backups: `~/clawd/backups/repack-scripts/`",
+          "category": "integration"
+        },
+        {
+          "description": "Never rename functions in Apps Script — menu options depend on exact names",
+          "category": "integration"
+        },
+        {
+          "description": "Never create new script files — replace existing, backups in memory",
+          "category": "integration"
+        },
+        {
+          "description": "Credentials: `~/clawd/.credentials/fedex/api-keys.json`",
+          "category": "integration"
+        },
+        {
+          "description": "Limit: 10,000 API calls/day",
+          "category": "integration"
+        },
+        {
+          "description": "Credentials: `~/clawd/.credentials/usps/api-keys.json`",
+          "category": "integration"
+        },
+        {
+          "description": "Endpoint: `/api/repacks/carrier-sync`",
+          "category": "integration"
+        },
+        {
+          "description": "Function: Detects carrier from tracking number, calls carrier API, updates delivery estimates",
           "category": "integration"
         }
       ],
-      "interactions": [
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 6,
+        "tasks_completed_count": 1,
+        "reports_count": 0,
+        "key_actions_count": 12,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-02-18",
+      "title": "18 Daily Log",
+      "sections": [
         {
-          "description": "Matthew asked about phone→username matching",
-          "type": "matthew"
+          "name": "Major Work Session (7-7:20 PM EST)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Tasks Shipped (10 total)",
+              "items": [
+                "10-stage inventory lifecycle tracking → commit 5c6fc05",
+                "Box-Level Pricing Engine → commit 5c6fc05",
+                "Box-level inventory pricing system → commit 5c6fc05",
+                "eBay API Integration → commit 3a88ca0",
+                "Shopify API Integration → commit 3a88ca0",
+                "Webhook Event Infrastructure → commit 3a88ca0",
+                "Dashboard Widget Framework → commit ee661d1",
+                "Mobile-Responsive Dashboard → commit c58932b (subagent)"
+              ]
+            },
+            {
+              "name": "New Infrastructure",
+              "items": [
+                "Cron job announces completions every 30 min",
+                "Cron ID: ***REDACTED***",
+                "`--attach` flag for adding attachments on complete",
+                "`--next` flag for next steps",
+                "`attach` command for mid-work attachments",
+                "Auto-announces to Discord on completion"
+              ]
+            },
+            {
+              "name": "Task Queue Cleanup",
+              "items": [
+                "Fixed 22 stuck tasks (had completion_notes but were in inbox)",
+                "Archived 11 duplicates",
+                "Inbox: 180 → 145 tasks"
+              ]
+            },
+            {
+              "name": "Protocol Updates Broadcast",
+              "items": []
+            },
+            {
+              "name": "Pending Matthew Actions",
+              "items": [
+                "Run Supabase migrations 002 + 003 (box pricing + webhooks tables)",
+                "Vercel CLI needs re-login (GitHub auto-deploy working)"
+              ]
+            },
+            {
+              "name": "Key Files Created/Modified",
+              "items": [
+                "`/Users/clawdbot/clawd/bnb-hq/src/app/inventory/page.tsx` - Inventory page with pipeline view",
+                "`/Users/clawdbot/clawd/bnb-hq/src/app/api/inventory/route.ts` - Inventory CRUD API",
+                "`/Users/clawdbot/clawd/bnb-hq/src/app/api/inventory/pricing/route.ts` - Box pricing API",
+                "`/Users/clawdbot/clawd/bnb-hq/src/app/api/integrations/shopify/route.ts`",
+                "`/Users/clawdbot/clawd/bnb-hq/src/app/api/integrations/ebay/route.ts`",
+                "`/Users/clawdbot/clawd/bnb-hq/src/app/api/webhooks/route.ts`",
+                "`/Users/clawdbot/clawd/bnb-hq/src/components/widgets/*` - Widget framework",
+                "`/Users/clawdbot/clawd/bnb-hq/supabase/migrations/002_box_level_pricing.sql`",
+                "`/Users/clawdbot/clawd/bnb-hq/supabase/migrations/003_webhook_events.sql`"
+              ]
+            },
+            {
+              "name": "Credentials Confirmed",
+              "items": [
+                "eBay: `~/clawd/.credentials-backup/ebay.json` (app credentials)",
+                "Shopify: `~/clawd/.credentials-backup/shopify.json` (access token)"
+              ]
+            }
+          ],
+          "rawText": [
+            "Matthew pinged about backlog — 78 unclaimed tasks. Claimed and shipped:",
+            "**Critical P1:**",
+            "**Integrations:**",
+            "**UI/Dashboard:**",
+            "**#task-updates channel created** (ID: 1473833494764589263)",
+            "**mission-control.js enhanced:**",
+            "All bots synced on:",
+            "1. Use `--attach` for deliverables",
+            "2. Use `--next` for next steps",
+            "3. Attach immediately when producing, not just at completion",
+            "4. Retroactive attachment audit assigned"
+          ]
+        },
+        {
+          "name": "Matthew Preference (7:21 PM)",
+          "items": [
+            "Live URLs to working features",
+            "Screenshots showing it works",
+            "Docs/guides/PDFs",
+            "Google Drive reports"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Code is NOT a deliverable.**",
+            "Attachments on completed tasks should be:",
+            "NOT GitHub commits. Commits are receipts for us, not deliverables for Matthew.",
+            "---"
+          ]
+        },
+        {
+          "name": "Session: 9:30 PM — Channel Reset & OpenClaw Update",
+          "items": [],
+          "subsections": [
+            {
+              "name": "New Discord Command: !reset-check",
+              "items": [
+                "Created `shared/protocols/DISCORD-COMMANDS.md` with the protocol",
+                "Bots run `sessions_list` and output formatted table with token counts + 🔴/🟡/🟢 ratings",
+                "Pushed to mission-control repo for other bots to pick up"
+              ]
+            },
+            {
+              "name": "Claude Sonnet 4.6 Released (Feb 17, 2026)",
+              "items": [
+                "API model name: `claude-sonnet-4-6`",
+                "OpenClaw format: `anthropic/claude-sonnet-4-6`",
+                "Features \"adaptive thinking\" instead of fixed token budgets",
+                "Requires OpenClaw 2026.2.17+ to recognize the model"
+              ]
+            },
+            {
+              "name": "OpenClaw Dual Node Install Issue",
+              "items": [
+                "**Homebrew**: `/opt/homebrew/` — what `openclaw` command in PATH uses",
+                "**NVM**: `/Users/clawdbot/.nvm/versions/node/v22.22.0/` — what gateway LaunchAgent runs"
+              ]
+            },
+            {
+              "name": "Channel Moved",
+              "items": [
+                "Moved #api-usage-alerts (1470307842040008835) to 🔥 Active category"
+              ]
+            }
+          ],
+          "rawText": [
+            "Added `!reset-check` command for all bots to report their Discord channel token usage.",
+            "Two Node installations were conflicting:",
+            "When updating OpenClaw, must update BOTH:",
+            "```bash",
+            "/opt/homebrew/bin/npm install -g openclaw@latest",
+            "source ~/.nvm/nvm.sh && nvm use 22 && npm install -g openclaw@latest",
+            "```",
+            "Successfully updated from 2026.2.3-1 → 2026.2.17"
+          ]
         }
       ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "eBay API Integration → commit 3a88ca0",
+          "category": "integration"
+        },
+        {
+          "description": "Shopify API Integration → commit 3a88ca0",
+          "category": "integration"
+        },
+        {
+          "description": "Cron job announces completions every 30 min",
+          "category": "automation"
+        },
+        {
+          "description": "Cron ID: ***REDACTED***",
+          "category": "automation"
+        },
+        {
+          "description": "Fixed 22 stuck tasks (had completion_notes but were in inbox)",
+          "category": "email"
+        },
+        {
+          "description": "Inbox: 180 → 145 tasks",
+          "category": "email"
+        },
+        {
+          "description": "`/Users/clawdbot/clawd/bnb-hq/src/app/api/inventory/route.ts` - Inventory CRUD API",
+          "category": "integration"
+        },
+        {
+          "description": "`/Users/clawdbot/clawd/bnb-hq/src/app/api/inventory/pricing/route.ts` - Box pricing API",
+          "category": "integration"
+        },
+        {
+          "description": "`/Users/clawdbot/clawd/bnb-hq/src/app/api/integrations/shopify/route.ts`",
+          "category": "integration"
+        },
+        {
+          "description": "`/Users/clawdbot/clawd/bnb-hq/src/app/api/integrations/ebay/route.ts`",
+          "category": "integration"
+        },
+        {
+          "description": "`/Users/clawdbot/clawd/bnb-hq/src/app/api/webhooks/route.ts`",
+          "category": "integration"
+        },
+        {
+          "description": "Shopify: `~/clawd/.credentials-backup/shopify.json` (access token)",
+          "category": "general"
+        },
+        {
+          "description": "Google Drive reports",
+          "category": "general"
+        },
+        {
+          "description": "API model name: `claude-sonnet-4-6`",
+          "category": "integration"
+        },
+        {
+          "description": "Moved #api-usage-alerts (1470307842040008835) to 🔥 Active category",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
       "todoist_activity": [
         {
-          "action": "created",
-          "description": "Created #breaker-wellness (1473092033781432330) — moved to Big Brother category"
-        },
-        {
-          "action": "created",
-          "description": "Created #test (1473175020804243486) — all bots configured"
-        },
-        {
           "action": "updated",
-          "description": "NEW: Telegram notifications — all bots now message Matthew (8247529666) after:"
+          "description": "Moved #api-usage-alerts (1470307842040008835) to 🔥 Active category"
         }
       ],
       "infrastructure": [],
       "stats": {
-        "sections_count": 2,
-        "tasks_completed_count": 1,
+        "sections_count": 3,
+        "tasks_completed_count": 0,
         "reports_count": 0,
-        "key_actions_count": 1,
-        "todoist_count": 3
+        "key_actions_count": 15,
+        "todoist_count": 1
       }
     }
   ]
