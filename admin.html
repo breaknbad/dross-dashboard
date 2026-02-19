@@ -1,0 +1,3689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break'n Bad | Hot Packs 🔥</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bnb-dark: #0a0a0a;
+            --bnb-deep: #111111;
+            --bnb-primary: #161616;
+            --bnb-card: rgba(20,20,20,0.9);
+            --bnb-card-hover: rgba(30,30,30,0.95);
+            --bnb-accent: #FF4500;
+            --bnb-accent-light: #ff8a50;
+            --bnb-gold: #ffc107;
+            --bnb-gold-light: #ffd54f;
+            --bnb-border: rgba(255,69,0,0.15);
+            --bnb-border-hover: rgba(255,69,0,0.35);
+            --text: #f5f5f5;
+            --text-muted: #888888;
+            --hot-red: #ff4757;
+            --grail-purple: #b388ff;
+            --grail-glow: rgba(179,136,255,0.25);
+            --chase-blue: #40c4ff;
+            --chase-glow: rgba(64,196,255,0.25);
+            --green: #26de81;
+            --green-glow: rgba(38,222,129,0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bnb-dark);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-glow::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            top: -200px; right: -100px;
+            background: radial-gradient(circle, rgba(255,69,0,0.06) 0%, transparent 70%);
+            animation: float1 20s ease-in-out infinite;
+        }
+        .bg-glow::after {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            bottom: -150px; left: -100px;
+            background: radial-gradient(circle, rgba(255,140,0,0.04) 0%, transparent 70%);
+            animation: float2 25s ease-in-out infinite;
+        }
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-60px, 80px); }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, -70px); }
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 24px 16px 60px;
+        }
+
+        /* ─── Header ─── */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 32px 0 24px;
+        }
+
+        .logo-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 160px; height: 160px;
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+        .logo-mark img {
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
+            transition: filter 0.3s ease;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .header h1 .accent {
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(38,222,129,0.12);
+            border: 1px solid rgba(38,222,129,0.25);
+            color: var(--green);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .live-dot {
+            width: 6px; height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 8px var(--green-glow);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        /* ─── Pack Cards ─── */
+        .pack-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .pack-card {
+            background: var(--bnb-card);
+            border: 1px solid var(--bnb-border);
+            border-radius: 20px;
+            padding: 24px 28px 20px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(16px);
+            animation: cardIn 0.5s ease forwards;
+        }
+
+        .pack-card:nth-child(1) { animation-delay: 0.05s; }
+        .pack-card:nth-child(2) { animation-delay: 0.1s; }
+        .pack-card:nth-child(3) { animation-delay: 0.15s; }
+        .pack-card:nth-child(4) { animation-delay: 0.2s; }
+        .pack-card:nth-child(5) { animation-delay: 0.25s; }
+        .pack-card:nth-child(6) { animation-delay: 0.3s; }
+        .pack-card:nth-child(7) { animation-delay: 0.35s; }
+        .pack-card:nth-child(8) { animation-delay: 0.4s; }
+        .pack-card:nth-child(9) { animation-delay: 0.45s; }
+        .pack-card:nth-child(10) { animation-delay: 0.5s; }
+
+        @keyframes cardIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pack-card:hover {
+            background: var(--bnb-card-hover);
+            border-color: var(--bnb-border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+        }
+
+        /* Featured top-3 glow */
+        .pack-card.featured {
+            border-color: rgba(255,107,53,0.35);
+        }
+
+        .pack-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold), var(--bnb-accent));
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .pack-card.featured:hover {
+            box-shadow: 0 12px 48px rgba(255,107,53,0.15), 0 4px 24px rgba(0,0,0,0.3);
+        }
+
+        /* Rank badge */
+        .rank-badge {
+            position: absolute;
+            top: 14px; left: 14px;
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 800;
+            z-index: 2;
+        }
+
+        .rank-1 { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000; }
+        .rank-2 { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000; }
+        .rank-3 { background: linear-gradient(135deg, #cd7f32, #a0652f); color: #fff; }
+        .rank-n { background: rgba(255,255,255,0.08); color: var(--text-muted); }
+
+        /* Sport icon */
+        .sport-icon {
+            position: absolute;
+            top: 14px; right: 14px;
+            font-size: 1.3rem;
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+        /* Pack info */
+        .pack-info {
+            padding-left: 36px;
+        }
+
+        .pack-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+        }
+
+        /* Tags */
+        .pack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+            font-weight: 900;
+            padding: 10px 18px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .tag.grail {
+            background: rgba(179,136,255,0.12);
+            color: var(--grail-purple);
+            border: 1px solid rgba(179,136,255,0.25);
+        }
+
+        .tag.chase {
+            background: rgba(64,196,255,0.12);
+            color: var(--chase-blue);
+            border: 1px solid rgba(64,196,255,0.25);
+        }
+
+        .tag.hot {
+            background: rgba(255,71,87,0.12);
+            color: var(--hot-red);
+            border: 1px solid rgba(255,71,87,0.25);
+        }
+
+        .tag.scarce {
+            background: rgba(255,193,7,0.12);
+            color: var(--bnb-gold);
+            border: 1px solid rgba(255,193,7,0.25);
+        }
+
+        .tag.velocity {
+            background: rgba(255,107,53,0.15);
+            color: #ff6b35;
+            border: 1px solid rgba(255,107,53,0.3);
+        }
+
+        /* Odds visual bars */
+        .odds-row {
+            display: flex;
+            gap: 24px;
+            align-items: stretch;
+            margin-top: 6px;
+        }
+
+        .odd-block {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .odd-block .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .odd-block .tier-header .count {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .odd-block .tier-header .odds-pct {
+            font-size: 0.7rem;
+            font-weight: 600;
+            opacity: 0.6;
+        }
+
+        .odd-block .value-range {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .odd-block .value-range.grail-color { color: var(--grail-purple); }
+        .odd-block .value-range.chase-color { color: var(--chase-blue); }
+
+        .odd-block .label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .odd-block .label span:first-child {
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .odd-block .label .pct {
+            font-weight: 800;
+            font-size: 0.85rem;
+        }
+
+        .odd-block .label .pct.grail-color { color: var(--grail-purple); }
+        .odd-block .label .pct.chase-color { color: var(--chase-blue); }
+
+        .bar-track {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        .bar-fill.grail {
+            background: linear-gradient(90deg, var(--grail-purple), #d1c4e9);
+            box-shadow: 0 0 8px var(--grail-glow);
+        }
+
+        .bar-fill.chase {
+            background: linear-gradient(90deg, var(--chase-blue), #80d8ff);
+            box-shadow: 0 0 8px var(--chase-glow);
+        }
+
+        .cards-left {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* Right side */
+        .pack-stats {
+            text-align: right;
+            min-width: 90px;
+        }
+
+        .pack-price {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pack-remaining {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .pack-remaining.low {
+            color: var(--hot-red);
+            font-weight: 700;
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            text-align: center;
+            margin-top: 44px;
+        }
+
+        .shop-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: -0.3px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 24px rgba(255,107,53,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shop-link::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; right: 0; bottom: 0;
+            width: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            animation: btnShine 4s ease-in-out infinite;
+        }
+
+        @keyframes btnShine {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(50%); }
+        }
+
+        .shop-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(255,107,53,0.4);
+        }
+
+        /* ─── Footer ─── */
+        .footer {
+            text-align: center;
+            margin-top: 36px;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            line-height: 1.6;
+        }
+
+        .footer .timestamp {
+            font-weight: 600;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ─── Empty state ─── */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
+        .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--text); }
+
+        /* ─── Mobile ─── */
+        @media (max-width: 600px) {
+            .page { padding: 16px 12px 40px; }
+            .header h1 { font-size: 1.7rem; }
+            .header { margin-bottom: 28px; padding: 20px 0 16px; }
+
+            .pack-card {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                padding: 18px 16px;
+                border-radius: 16px;
+            }
+
+            .pack-info { padding-left: 32px; }
+
+            .pack-stats {
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding-left: 32px;
+            }
+
+            .pack-price { font-size: 1.3rem; }
+
+            .odds-row { gap: 12px; }
+            .odd-block { max-width: none; }
+
+            .rank-badge { top: 12px; left: 12px; width: 24px; height: 24px; font-size: 0.65rem; }
+            .sport-icon { top: 12px; right: 12px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <div class="page">
+        <div class="header">
+            <div class="logo-mark"><img src="data:image/png;base64,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" alt="Break'n Bad" style="width:100%;height:100%;object-fit:contain;"></div>
+            <h1>IR Pack Intel <span class="accent">Admin</span></h1>
+            <p class="subtitle">
+                <span class="live-badge"><span class="live-dot"></span> Live</span>
+                <span id="summaryBadge" style="color:var(--text-muted);font-size:0.8rem;margin-left:8px"></span>
+            </p>
+        </div>
+
+        <div class="pack-list" id="packList"></div>
+
+        <div class="cta-section">
+            <a href="https://get.fanatics.live/X8WW/hsobapek" class="shop-link">
+                Open in Fanatics Live <span style="font-size:1.1rem">→</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Last update: <span class="timestamp" id="timestamp"></span></p>
+            <p>Odds are calculated from remaining cards in pool and are subject to change. Not financial advice. Break'n Bad IR Intelligence.</p>
+        </div>
+    </div>
+
+    <script>
+        const PACK_DATA = {
+  "timestamp": "2026-02-19T03:28:53.635Z",
+  "totalPacks": 25,
+  "plusEV": 0,
+  "packs": [
+    {
+      "title": "Basketball: Ultra Pack $500",
+      "price": 500,
+      "remaining": 70,
+      "totalOriginal": 751,
+      "grailCount": 1,
+      "chaseCount": 14,
+      "baseCount": 55,
+      "grailRangeLow": 1055,
+      "grailRangeHigh": 1201,
+      "chaseRangeLow": 650,
+      "chaseRangeHigh": 800,
+      "grailPct": 1.43,
+      "chasePct": 20,
+      "evRatio": 0.962,
+      "trueEV": 481.09,
+      "poolValue": 33676.08,
+      "tierAvgValues": {
+        "grailAvg": 1045,
+        "chaseAvg": 728.71,
+        "baseAvg": 407.8
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Basketball: Ultra Pack $500",
+        "price": 500,
+        "evRatio": 0.962,
+        "totalRemaining": 70,
+        "pool": {
+          "grails": 1,
+          "grailAvgValue": 1045,
+          "chases": 14,
+          "chaseAvgValue": 729,
+          "base": 55,
+          "baseAvgValue": 408
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 1000,
+            "probability": 38.5
+          },
+          "50pct": {
+            "packs": 3,
+            "cost": 1500,
+            "probability": 52.1
+          },
+          "75pct": {
+            "packs": 6,
+            "cost": 3000,
+            "probability": 77.9
+          },
+          "90pct": {
+            "packs": 9,
+            "cost": 4500,
+            "probability": 90.2
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 18,
+            "cost": 9000,
+            "probability": 25.7
+          },
+          "50pct": {
+            "packs": 35,
+            "cost": 17500,
+            "probability": 50
+          },
+          "75pct": {
+            "packs": 53,
+            "cost": 26500,
+            "probability": 75.7
+          },
+          "90pct": {
+            "packs": 63,
+            "cost": 31500,
+            "probability": 90
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 500,
+            "profitProb": 20.7,
+            "avgReturn": 479,
+            "avgProfit": -21
+          },
+          "3_packs": {
+            "cost": 1500,
+            "profitProb": 39.4,
+            "avgReturn": 1439,
+            "avgProfit": -61
+          },
+          "5_packs": {
+            "cost": 2500,
+            "profitProb": 33.9,
+            "avgReturn": 2404,
+            "avgProfit": -96
+          },
+          "10_packs": {
+            "cost": 5000,
+            "profitProb": 32.4,
+            "avgReturn": 4814,
+            "avgProfit": -186
+          },
+          "15_packs": {
+            "cost": 7500,
+            "profitProb": 29.4,
+            "avgReturn": 7225,
+            "avgProfit": -275
+          },
+          "20_packs": {
+            "cost": 10000,
+            "profitProb": 26.5,
+            "avgReturn": 9633,
+            "avgProfit": -367
+          }
+        }
+      }
+    },
+    {
+      "title": "Pokemon: Ultra Pack $500",
+      "price": 500,
+      "remaining": 216,
+      "totalOriginal": 2782,
+      "grailCount": 4,
+      "chaseCount": 17,
+      "baseCount": 195,
+      "grailRangeLow": 2500,
+      "grailRangeHigh": 5500,
+      "chaseRangeLow": 850,
+      "chaseRangeHigh": 2432,
+      "grailPct": 1.85,
+      "chasePct": 7.87,
+      "evRatio": 0.961,
+      "trueEV": 480.68,
+      "poolValue": 103827.43,
+      "tierAvgValues": {
+        "grailAvg": 3004,
+        "chaseAvg": 1132.24,
+        "baseAvg": 372.12
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Pokemon: Ultra Pack $500",
+        "price": 500,
+        "evRatio": 0.961,
+        "totalRemaining": 216,
+        "pool": {
+          "grails": 4,
+          "grailAvgValue": 3004,
+          "chases": 17,
+          "chaseAvgValue": 1132,
+          "base": 195,
+          "baseAvgValue": 372
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 3,
+            "cost": 1500,
+            "probability": 26.5
+          },
+          "50pct": {
+            "packs": 7,
+            "cost": 3500,
+            "probability": 51.6
+          },
+          "75pct": {
+            "packs": 14,
+            "cost": 7000,
+            "probability": 77.2
+          },
+          "90pct": {
+            "packs": 22,
+            "cost": 11000,
+            "probability": 90.7
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 15,
+            "cost": 7500,
+            "probability": 25.2
+          },
+          "50pct": {
+            "packs": 35,
+            "cost": 17500,
+            "probability": 51
+          },
+          "75pct": {
+            "packs": 63,
+            "cost": 31500,
+            "probability": 75.1
+          },
+          "90pct": {
+            "packs": 94,
+            "cost": 47000,
+            "probability": 90
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 500,
+            "profitProb": 9.7,
+            "avgReturn": 538,
+            "avgProfit": 38
+          },
+          "3_packs": {
+            "cost": 1500,
+            "profitProb": 26.5,
+            "avgReturn": 1620,
+            "avgProfit": 120
+          },
+          "5_packs": {
+            "cost": 2500,
+            "profitProb": 38.3,
+            "avgReturn": 2718,
+            "avgProfit": 218
+          },
+          "10_packs": {
+            "cost": 5000,
+            "profitProb": 49.1,
+            "avgReturn": 5416,
+            "avgProfit": 416
+          },
+          "15_packs": {
+            "cost": 7500,
+            "profitProb": 50,
+            "avgReturn": 8069,
+            "avgProfit": 569
+          },
+          "20_packs": {
+            "cost": 10000,
+            "profitProb": 54.5,
+            "avgReturn": 10810,
+            "avgProfit": 810
+          }
+        }
+      }
+    },
+    {
+      "title": "Baseball: Ultra Pack $500",
+      "price": 500,
+      "remaining": 98,
+      "totalOriginal": 1204,
+      "grailCount": 2,
+      "chaseCount": 15,
+      "baseCount": 81,
+      "grailRangeLow": 1050,
+      "grailRangeHigh": 1155,
+      "chaseRangeLow": 660,
+      "chaseRangeHigh": 1000,
+      "grailPct": 2.04,
+      "chasePct": 15.31,
+      "evRatio": 0.942,
+      "trueEV": 470.76,
+      "poolValue": 46134.68,
+      "tierAvgValues": {
+        "grailAvg": 1163,
+        "chaseAvg": 777.21,
+        "baseAvg": 396.92
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Baseball: Ultra Pack $500",
+        "price": 500,
+        "evRatio": 0.942,
+        "totalRemaining": 98,
+        "pool": {
+          "grails": 2,
+          "grailAvgValue": 1163,
+          "chases": 15,
+          "chaseAvgValue": 777,
+          "base": 81,
+          "baseAvgValue": 397
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 1000,
+            "probability": 31.8
+          },
+          "50pct": {
+            "packs": 4,
+            "cost": 2000,
+            "probability": 53.9
+          },
+          "75pct": {
+            "packs": 8,
+            "cost": 4000,
+            "probability": 79.6
+          },
+          "90pct": {
+            "packs": 12,
+            "cost": 6000,
+            "probability": 91.3
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 14,
+            "cost": 7000,
+            "probability": 26.7
+          },
+          "50pct": {
+            "packs": 29,
+            "cost": 14500,
+            "probability": 50.6
+          },
+          "75pct": {
+            "packs": 49,
+            "cost": 24500,
+            "probability": 75.3
+          },
+          "90pct": {
+            "packs": 67,
+            "cost": 33500,
+            "probability": 90.2
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 500,
+            "profitProb": 17.6,
+            "avgReturn": 478,
+            "avgProfit": -22
+          },
+          "3_packs": {
+            "cost": 1500,
+            "profitProb": 38.1,
+            "avgReturn": 1433,
+            "avgProfit": -67
+          },
+          "5_packs": {
+            "cost": 2500,
+            "profitProb": 36.6,
+            "avgReturn": 2390,
+            "avgProfit": -110
+          },
+          "10_packs": {
+            "cost": 5000,
+            "profitProb": 33.2,
+            "avgReturn": 4781,
+            "avgProfit": -219
+          },
+          "15_packs": {
+            "cost": 7500,
+            "profitProb": 29.6,
+            "avgReturn": 7166,
+            "avgProfit": -334
+          },
+          "20_packs": {
+            "cost": 10000,
+            "profitProb": 27.4,
+            "avgReturn": 9550,
+            "avgProfit": -450
+          }
+        }
+      }
+    },
+    {
+      "title": "Pokemon: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 76,
+      "totalOriginal": 863,
+      "grailCount": 1,
+      "chaseCount": 7,
+      "baseCount": 68,
+      "grailRangeLow": 4200,
+      "grailRangeHigh": 7505,
+      "chaseRangeLow": 1096,
+      "chaseRangeHigh": 3600,
+      "grailPct": 1.32,
+      "chasePct": 9.21,
+      "evRatio": 0.934,
+      "trueEV": 933.96,
+      "poolValue": 70980.85,
+      "tierAvgValues": {
+        "grailAvg": 4500,
+        "chaseAvg": 2319.57,
+        "baseAvg": 738.88
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Pokemon: Infinity Pack $1,000",
+        "price": 1000,
+        "evRatio": 0.934,
+        "totalRemaining": 76,
+        "pool": {
+          "grails": 1,
+          "grailAvgValue": 4500,
+          "chases": 7,
+          "chaseAvgValue": 2320,
+          "base": 68,
+          "baseAvgValue": 739
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 3,
+            "cost": 3000,
+            "probability": 28.7
+          },
+          "50pct": {
+            "packs": 7,
+            "cost": 7000,
+            "probability": 55.7
+          },
+          "75pct": {
+            "packs": 12,
+            "cost": 12000,
+            "probability": 76.5
+          },
+          "90pct": {
+            "packs": 19,
+            "cost": 19000,
+            "probability": 91.2
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 20,
+            "cost": 20000,
+            "probability": 26.3
+          },
+          "50pct": {
+            "packs": 38,
+            "cost": 38000,
+            "probability": 50
+          },
+          "75pct": {
+            "packs": 57,
+            "cost": 57000,
+            "probability": 75
+          },
+          "90pct": {
+            "packs": 69,
+            "cost": 69000,
+            "probability": 90.8
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 1000,
+            "profitProb": 10.2,
+            "avgReturn": 953,
+            "avgProfit": -47
+          },
+          "3_packs": {
+            "cost": 3000,
+            "profitProb": 23.7,
+            "avgReturn": 2868,
+            "avgProfit": -132
+          },
+          "5_packs": {
+            "cost": 5000,
+            "profitProb": 30.9,
+            "avgReturn": 4761,
+            "avgProfit": -239
+          },
+          "10_packs": {
+            "cost": 10000,
+            "profitProb": 33.9,
+            "avgReturn": 9542,
+            "avgProfit": -458
+          },
+          "15_packs": {
+            "cost": 15000,
+            "profitProb": 35.2,
+            "avgReturn": 14374,
+            "avgProfit": -626
+          },
+          "20_packs": {
+            "cost": 20000,
+            "profitProb": 35.7,
+            "avgReturn": 19102,
+            "avgProfit": -898
+          }
+        }
+      }
+    },
+    {
+      "title": "Football: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 90,
+      "totalOriginal": 391,
+      "grailCount": 2,
+      "chaseCount": 15,
+      "baseCount": 73,
+      "grailRangeLow": 2000,
+      "grailRangeHigh": 2387,
+      "chaseRangeLow": 1251,
+      "chaseRangeHigh": 1600,
+      "grailPct": 2.22,
+      "chasePct": 16.67,
+      "evRatio": 0.906,
+      "trueEV": 906.31,
+      "poolValue": 81568.14,
+      "tierAvgValues": {
+        "grailAvg": 2198.5,
+        "chaseAvg": 1346.57,
+        "baseAvg": 780.45
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Football: Infinity Pack $1,000",
+        "price": 1000,
+        "evRatio": 0.906,
+        "totalRemaining": 90,
+        "pool": {
+          "grails": 2,
+          "grailAvgValue": 2199,
+          "chases": 15,
+          "chaseAvgValue": 1347,
+          "base": 73,
+          "baseAvgValue": 780
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 2000,
+            "probability": 34.4
+          },
+          "50pct": {
+            "packs": 4,
+            "cost": 4000,
+            "probability": 57.4
+          },
+          "75pct": {
+            "packs": 7,
+            "cost": 7000,
+            "probability": 78.2
+          },
+          "90pct": {
+            "packs": 11,
+            "cost": 11000,
+            "probability": 91.4
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 12,
+            "cost": 12000,
+            "probability": 25
+          },
+          "50pct": {
+            "packs": 27,
+            "cost": 27000,
+            "probability": 51.2
+          },
+          "75pct": {
+            "packs": 45,
+            "cost": 45000,
+            "probability": 75.3
+          },
+          "90pct": {
+            "packs": 62,
+            "cost": 62000,
+            "probability": 90.6
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 1000,
+            "profitProb": 17.6,
+            "avgReturn": 911,
+            "avgProfit": -89
+          },
+          "3_packs": {
+            "cost": 3000,
+            "profitProb": 27.9,
+            "avgReturn": 2746,
+            "avgProfit": -254
+          },
+          "5_packs": {
+            "cost": 5000,
+            "profitProb": 26.7,
+            "avgReturn": 4618,
+            "avgProfit": -382
+          },
+          "10_packs": {
+            "cost": 10000,
+            "profitProb": 19.8,
+            "avgReturn": 9202,
+            "avgProfit": -798
+          },
+          "15_packs": {
+            "cost": 15000,
+            "profitProb": 15.3,
+            "avgReturn": 13804,
+            "avgProfit": -1196
+          },
+          "20_packs": {
+            "cost": 20000,
+            "profitProb": 11.2,
+            "avgReturn": 18394,
+            "avgProfit": -1606
+          }
+        }
+      }
+    },
+    {
+      "title": "Baseball: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 99,
+      "totalOriginal": 966,
+      "grailCount": 2,
+      "chaseCount": 15,
+      "baseCount": 82,
+      "grailRangeLow": 2359,
+      "grailRangeHigh": 2482,
+      "chaseRangeLow": 1253,
+      "chaseRangeHigh": 1600,
+      "grailPct": 2.02,
+      "chasePct": 15.15,
+      "evRatio": 0.905,
+      "trueEV": 905.28,
+      "poolValue": 89622.6,
+      "tierAvgValues": {
+        "grailAvg": 2420.5,
+        "chaseAvg": 1428.8,
+        "baseAvg": 772.56
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Baseball: Infinity Pack $1,000",
+        "price": 1000,
+        "evRatio": 0.905,
+        "totalRemaining": 99,
+        "pool": {
+          "grails": 2,
+          "grailAvgValue": 2421,
+          "chases": 15,
+          "chaseAvgValue": 1429,
+          "base": 82,
+          "baseAvgValue": 773
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 2000,
+            "probability": 31.5
+          },
+          "50pct": {
+            "packs": 4,
+            "cost": 4000,
+            "probability": 53.5
+          },
+          "75pct": {
+            "packs": 8,
+            "cost": 8000,
+            "probability": 79.2
+          },
+          "90pct": {
+            "packs": 12,
+            "cost": 12000,
+            "probability": 91
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 14,
+            "cost": 14000,
+            "probability": 26.4
+          },
+          "50pct": {
+            "packs": 29,
+            "cost": 29000,
+            "probability": 50.2
+          },
+          "75pct": {
+            "packs": 50,
+            "cost": 50000,
+            "probability": 75.8
+          },
+          "90pct": {
+            "packs": 68,
+            "cost": 68000,
+            "probability": 90.4
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 1000,
+            "profitProb": 17.2,
+            "avgReturn": 906,
+            "avgProfit": -94
+          },
+          "3_packs": {
+            "cost": 3000,
+            "profitProb": 26.1,
+            "avgReturn": 2721,
+            "avgProfit": -279
+          },
+          "5_packs": {
+            "cost": 5000,
+            "profitProb": 22.8,
+            "avgReturn": 4521,
+            "avgProfit": -479
+          },
+          "10_packs": {
+            "cost": 10000,
+            "profitProb": 17.1,
+            "avgReturn": 9032,
+            "avgProfit": -968
+          },
+          "15_packs": {
+            "cost": 15000,
+            "profitProb": 12.4,
+            "avgReturn": 13580,
+            "avgProfit": -1420
+          },
+          "20_packs": {
+            "cost": 20000,
+            "profitProb": 8.8,
+            "avgReturn": 18079,
+            "avgProfit": -1921
+          }
+        }
+      }
+    },
+    {
+      "title": "Football: Ultra Pack $500",
+      "price": 500,
+      "remaining": 93,
+      "totalOriginal": 656,
+      "grailCount": 0,
+      "chaseCount": 15,
+      "baseCount": 78,
+      "grailRangeLow": 2600,
+      "grailRangeHigh": 2820,
+      "chaseRangeLow": 660,
+      "chaseRangeHigh": 1000,
+      "grailPct": 0,
+      "chasePct": 16.13,
+      "evRatio": 0.896,
+      "trueEV": 448.05,
+      "poolValue": 41668.67,
+      "tierAvgValues": {
+        "grailAvg": 2710,
+        "chaseAvg": 1093.14,
+        "baseAvg": 323.99
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Football: Ultra Pack $500",
+        "price": 500,
+        "evRatio": 0.877,
+        "totalRemaining": 78,
+        "pool": {
+          "grails": 2,
+          "grailAvgValue": 1263,
+          "chases": 11,
+          "chaseAvgValue": 687,
+          "base": 65,
+          "baseAvgValue": 371
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 1000,
+            "probability": 30.7
+          },
+          "50pct": {
+            "packs": 4,
+            "cost": 2000,
+            "probability": 52.5
+          },
+          "75pct": {
+            "packs": 8,
+            "cost": 4000,
+            "probability": 78.5
+          },
+          "90pct": {
+            "packs": 12,
+            "cost": 6000,
+            "probability": 90.7
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 11,
+            "cost": 5500,
+            "probability": 26.4
+          },
+          "50pct": {
+            "packs": 23,
+            "cost": 11500,
+            "probability": 50.5
+          },
+          "75pct": {
+            "packs": 39,
+            "cost": 19500,
+            "probability": 75.3
+          },
+          "90pct": {
+            "packs": 53,
+            "cost": 26500,
+            "probability": 90
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 500,
+            "profitProb": 17,
+            "avgReturn": 445,
+            "avgProfit": -55
+          },
+          "3_packs": {
+            "cost": 1500,
+            "profitProb": 23.3,
+            "avgReturn": 1327,
+            "avgProfit": -173
+          },
+          "5_packs": {
+            "cost": 2500,
+            "profitProb": 22.5,
+            "avgReturn": 2216,
+            "avgProfit": -284
+          },
+          "10_packs": {
+            "cost": 5000,
+            "profitProb": 14.5,
+            "avgReturn": 4420,
+            "avgProfit": -580
+          },
+          "15_packs": {
+            "cost": 7500,
+            "profitProb": 9.6,
+            "avgReturn": 6632,
+            "avgProfit": -868
+          },
+          "20_packs": {
+            "cost": 10000,
+            "profitProb": 6.3,
+            "avgReturn": 8857,
+            "avgProfit": -1143
+          }
+        }
+      }
+    },
+    {
+      "title": "Mixed Sport: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 85,
+      "totalOriginal": 814,
+      "grailCount": 2,
+      "chaseCount": 12,
+      "baseCount": 71,
+      "grailRangeLow": 2000,
+      "grailRangeHigh": 2021,
+      "chaseRangeLow": 1250,
+      "chaseRangeHigh": 1559,
+      "grailPct": 2.35,
+      "chasePct": 14.12,
+      "evRatio": 0.877,
+      "trueEV": 876.65,
+      "poolValue": 74515.23,
+      "tierAvgValues": {
+        "grailAvg": 2028,
+        "chaseAvg": 1318.64,
+        "baseAvg": 769.52
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Mixed Sport: Infinity Pack $1,000",
+        "price": 1000,
+        "evRatio": 0.877,
+        "totalRemaining": 85,
+        "pool": {
+          "grails": 2,
+          "grailAvgValue": 2028,
+          "chases": 12,
+          "chaseAvgValue": 1319,
+          "base": 71,
+          "baseAvgValue": 770
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 2000,
+            "probability": 30.4
+          },
+          "50pct": {
+            "packs": 4,
+            "cost": 4000,
+            "probability": 52
+          },
+          "75pct": {
+            "packs": 8,
+            "cost": 8000,
+            "probability": 77.9
+          },
+          "90pct": {
+            "packs": 12,
+            "cost": 12000,
+            "probability": 90.3
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 12,
+            "cost": 12000,
+            "probability": 26.4
+          },
+          "50pct": {
+            "packs": 25,
+            "cost": 25000,
+            "probability": 50.4
+          },
+          "75pct": {
+            "packs": 43,
+            "cost": 43000,
+            "probability": 75.9
+          },
+          "90pct": {
+            "packs": 58,
+            "cost": 58000,
+            "probability": 90.2
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 1000,
+            "profitProb": 17.1,
+            "avgReturn": 894,
+            "avgProfit": -106
+          },
+          "3_packs": {
+            "cost": 3000,
+            "profitProb": 23.1,
+            "avgReturn": 2655,
+            "avgProfit": -345
+          },
+          "5_packs": {
+            "cost": 5000,
+            "profitProb": 18.9,
+            "avgReturn": 4437,
+            "avgProfit": -563
+          },
+          "10_packs": {
+            "cost": 10000,
+            "profitProb": 11.7,
+            "avgReturn": 8882,
+            "avgProfit": -1118
+          },
+          "15_packs": {
+            "cost": 15000,
+            "profitProb": 6.7,
+            "avgReturn": 13337,
+            "avgProfit": -1663
+          },
+          "20_packs": {
+            "cost": 20000,
+            "profitProb": 3.1,
+            "avgReturn": 17752,
+            "avgProfit": -2248
+          }
+        }
+      }
+    },
+    {
+      "title": "Pokemon: Mega Pack $250",
+      "price": 250,
+      "remaining": 284,
+      "totalOriginal": 6263,
+      "grailCount": 4,
+      "chaseCount": 46,
+      "baseCount": 234,
+      "grailRangeLow": 1250,
+      "grailRangeHigh": 1500,
+      "chaseRangeLow": 425,
+      "chaseRangeHigh": 500,
+      "grailPct": 1.41,
+      "chasePct": 16.2,
+      "evRatio": 0.877,
+      "trueEV": 219.32,
+      "poolValue": 62287.27,
+      "tierAvgValues": {
+        "grailAvg": 1177.25,
+        "chaseAvg": 507.48,
+        "baseAvg": 146.3
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Pokemon: Mega Pack $250",
+        "price": 250,
+        "evRatio": 0.877,
+        "totalRemaining": 284,
+        "pool": {
+          "grails": 4,
+          "grailAvgValue": 1177,
+          "chases": 46,
+          "chaseAvgValue": 507,
+          "base": 234,
+          "baseAvgValue": 146
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 500,
+            "probability": 32.2
+          },
+          "50pct": {
+            "packs": 4,
+            "cost": 1000,
+            "probability": 54.1
+          },
+          "75pct": {
+            "packs": 8,
+            "cost": 2000,
+            "probability": 79.2
+          },
+          "90pct": {
+            "packs": 12,
+            "cost": 3000,
+            "probability": 90.7
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 20,
+            "cost": 5000,
+            "probability": 25.5
+          },
+          "50pct": {
+            "packs": 45,
+            "cost": 11250,
+            "probability": 50
+          },
+          "75pct": {
+            "packs": 83,
+            "cost": 20750,
+            "probability": 75.1
+          },
+          "90pct": {
+            "packs": 124,
+            "cost": 31000,
+            "probability": 90.1
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 250,
+            "profitProb": 17.1,
+            "avgReturn": 215,
+            "avgProfit": -35
+          },
+          "3_packs": {
+            "cost": 750,
+            "profitProb": 29.4,
+            "avgReturn": 645,
+            "avgProfit": -105
+          },
+          "5_packs": {
+            "cost": 1250,
+            "profitProb": 23.9,
+            "avgReturn": 1062,
+            "avgProfit": -188
+          },
+          "10_packs": {
+            "cost": 2500,
+            "profitProb": 19.6,
+            "avgReturn": 2153,
+            "avgProfit": -347
+          },
+          "15_packs": {
+            "cost": 3750,
+            "profitProb": 20.9,
+            "avgReturn": 3229,
+            "avgProfit": -521
+          },
+          "20_packs": {
+            "cost": 5000,
+            "profitProb": 18.2,
+            "avgReturn": 4308,
+            "avgProfit": -692
+          }
+        }
+      }
+    },
+    {
+      "title": "Basketball: Infinity Pack $1,000",
+      "price": 1000,
+      "remaining": 86,
+      "totalOriginal": 265,
+      "grailCount": 2,
+      "chaseCount": 11,
+      "baseCount": 73,
+      "grailRangeLow": 2011,
+      "grailRangeHigh": 2107,
+      "chaseRangeLow": 1250,
+      "chaseRangeHigh": 1590,
+      "grailPct": 2.33,
+      "chasePct": 12.79,
+      "evRatio": 0.86,
+      "trueEV": 860.36,
+      "poolValue": 73990.58,
+      "tierAvgValues": {
+        "grailAvg": 2087.5,
+        "chaseAvg": 1297.17,
+        "baseAvg": 760.91
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Basketball: Infinity Pack $1,000",
+        "price": 1000,
+        "evRatio": 0.86,
+        "totalRemaining": 86,
+        "pool": {
+          "grails": 2,
+          "grailAvgValue": 2088,
+          "chases": 11,
+          "chaseAvgValue": 1297,
+          "base": 73,
+          "baseAvgValue": 761
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 2000,
+            "probability": 28.1
+          },
+          "50pct": {
+            "packs": 5,
+            "cost": 5000,
+            "probability": 56.9
+          },
+          "75pct": {
+            "packs": 9,
+            "cost": 9000,
+            "probability": 78.9
+          },
+          "90pct": {
+            "packs": 13,
+            "cost": 13000,
+            "probability": 90.1
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 12,
+            "cost": 12000,
+            "probability": 26.1
+          },
+          "50pct": {
+            "packs": 26,
+            "cost": 26000,
+            "probability": 51.6
+          },
+          "75pct": {
+            "packs": 43,
+            "cost": 43000,
+            "probability": 75.3
+          },
+          "90pct": {
+            "packs": 59,
+            "cost": 59000,
+            "probability": 90.4
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 1000,
+            "profitProb": 14.9,
+            "avgReturn": 873,
+            "avgProfit": -127
+          },
+          "3_packs": {
+            "cost": 3000,
+            "profitProb": 21.5,
+            "avgReturn": 2627,
+            "avgProfit": -373
+          },
+          "5_packs": {
+            "cost": 5000,
+            "profitProb": 17.8,
+            "avgReturn": 4375,
+            "avgProfit": -625
+          },
+          "10_packs": {
+            "cost": 10000,
+            "profitProb": 9.6,
+            "avgReturn": 8760,
+            "avgProfit": -1240
+          },
+          "15_packs": {
+            "cost": 15000,
+            "profitProb": 4.5,
+            "avgReturn": 13118,
+            "avgProfit": -1882
+          },
+          "20_packs": {
+            "cost": 20000,
+            "profitProb": 2.3,
+            "avgReturn": 17475,
+            "avgProfit": -2525
+          }
+        }
+      }
+    },
+    {
+      "title": "Basketball: Mega Pack $250",
+      "price": 250,
+      "remaining": 187,
+      "totalOriginal": 1018,
+      "grailCount": 4,
+      "chaseCount": 25,
+      "baseCount": 158,
+      "grailRangeLow": 1250,
+      "grailRangeHigh": 1450,
+      "chaseRangeLow": 425.22,
+      "chaseRangeHigh": 500,
+      "grailPct": 2.14,
+      "chasePct": 13.37,
+      "evRatio": 0.836,
+      "trueEV": 209.04,
+      "poolValue": 39089.95,
+      "tierAvgValues": {
+        "grailAvg": 1380.5,
+        "chaseAvg": 468.81,
+        "baseAvg": 138.28
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Basketball: Mega Pack $250",
+        "price": 250,
+        "evRatio": 0.836,
+        "totalRemaining": 187,
+        "pool": {
+          "grails": 4,
+          "grailAvgValue": 1381,
+          "chases": 25,
+          "chaseAvgValue": 469,
+          "base": 158,
+          "baseAvgValue": 138
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 500,
+            "probability": 28.7
+          },
+          "50pct": {
+            "packs": 5,
+            "cost": 1250,
+            "probability": 57.4
+          },
+          "75pct": {
+            "packs": 9,
+            "cost": 2250,
+            "probability": 78.8
+          },
+          "90pct": {
+            "packs": 14,
+            "cost": 3500,
+            "probability": 91.4
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 13,
+            "cost": 3250,
+            "probability": 25.2
+          },
+          "50pct": {
+            "packs": 30,
+            "cost": 7500,
+            "probability": 50.6
+          },
+          "75pct": {
+            "packs": 55,
+            "cost": 13750,
+            "probability": 75.5
+          },
+          "90pct": {
+            "packs": 82,
+            "cost": 20500,
+            "probability": 90.3
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 250,
+            "profitProb": 15.4,
+            "avgReturn": 207,
+            "avgProfit": -43
+          },
+          "3_packs": {
+            "cost": 750,
+            "profitProb": 21.6,
+            "avgReturn": 616,
+            "avgProfit": -134
+          },
+          "5_packs": {
+            "cost": 1250,
+            "profitProb": 22.6,
+            "avgReturn": 1033,
+            "avgProfit": -217
+          },
+          "10_packs": {
+            "cost": 2500,
+            "profitProb": 22.1,
+            "avgReturn": 2079,
+            "avgProfit": -421
+          },
+          "15_packs": {
+            "cost": 3750,
+            "profitProb": 19.5,
+            "avgReturn": 3116,
+            "avgProfit": -634
+          },
+          "20_packs": {
+            "cost": 5000,
+            "profitProb": 15.6,
+            "avgReturn": 4127,
+            "avgProfit": -873
+          }
+        }
+      }
+    },
+    {
+      "title": "Football: $75",
+      "price": 75,
+      "remaining": 85,
+      "totalOriginal": 9125,
+      "grailCount": 1,
+      "chaseCount": 15,
+      "baseCount": 69,
+      "grailRangeLow": 375,
+      "grailRangeHigh": 408,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 1.18,
+      "chasePct": 17.65,
+      "evRatio": 0.83,
+      "trueEV": 62.25,
+      "poolValue": 5291.21,
+      "tierAvgValues": {
+        "grailAvg": 376,
+        "chaseAvg": 134.71,
+        "baseAvg": 41.95
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Football: $75",
+        "price": 75,
+        "evRatio": 0.83,
+        "totalRemaining": 85,
+        "pool": {
+          "grails": 1,
+          "grailAvgValue": 376,
+          "chases": 15,
+          "chaseAvgValue": 135,
+          "base": 69,
+          "baseAvgValue": 42
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 150,
+            "probability": 34.3
+          },
+          "50pct": {
+            "packs": 4,
+            "cost": 300,
+            "probability": 57.3
+          },
+          "75pct": {
+            "packs": 7,
+            "cost": 525,
+            "probability": 78.1
+          },
+          "90pct": {
+            "packs": 11,
+            "cost": 825,
+            "probability": 91.5
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 22,
+            "cost": 1650,
+            "probability": 25.9
+          },
+          "50pct": {
+            "packs": 43,
+            "cost": 3225,
+            "probability": 50.6
+          },
+          "75pct": {
+            "packs": 64,
+            "cost": 4800,
+            "probability": 75.3
+          },
+          "90pct": {
+            "packs": 77,
+            "cost": 5775,
+            "probability": 90.6
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 75,
+            "profitProb": 19.2,
+            "avgReturn": 64,
+            "avgProfit": -11
+          },
+          "3_packs": {
+            "cost": 225,
+            "profitProb": 26.9,
+            "avgReturn": 188,
+            "avgProfit": -37
+          },
+          "5_packs": {
+            "cost": 375,
+            "profitProb": 25.7,
+            "avgReturn": 316,
+            "avgProfit": -59
+          },
+          "10_packs": {
+            "cost": 750,
+            "profitProb": 18.5,
+            "avgReturn": 634,
+            "avgProfit": -116
+          },
+          "15_packs": {
+            "cost": 1125,
+            "profitProb": 17.1,
+            "avgReturn": 949,
+            "avgProfit": -176
+          },
+          "20_packs": {
+            "cost": 1500,
+            "profitProb": 13.6,
+            "avgReturn": 1269,
+            "avgProfit": -231
+          }
+        }
+      }
+    },
+    {
+      "title": "Baseball: Mega Pack $250",
+      "price": 250,
+      "remaining": 148,
+      "totalOriginal": 3013,
+      "grailCount": 2,
+      "chaseCount": 16,
+      "baseCount": 130,
+      "grailRangeLow": 1352,
+      "grailRangeHigh": 1454,
+      "chaseRangeLow": 425,
+      "chaseRangeHigh": 500,
+      "grailPct": 1.35,
+      "chasePct": 10.81,
+      "evRatio": 0.825,
+      "trueEV": 206.26,
+      "poolValue": 30526.24,
+      "tierAvgValues": {
+        "grailAvg": 1503.5,
+        "chaseAvg": 430.85,
+        "baseAvg": 158.66
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Baseball: Mega Pack $250",
+        "price": 250,
+        "evRatio": 0.825,
+        "totalRemaining": 148,
+        "pool": {
+          "grails": 2,
+          "grailAvgValue": 1504,
+          "chases": 16,
+          "chaseAvgValue": 431,
+          "base": 130,
+          "baseAvgValue": 159
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 3,
+            "cost": 750,
+            "probability": 32.4
+          },
+          "50pct": {
+            "packs": 6,
+            "cost": 1500,
+            "probability": 54.7
+          },
+          "75pct": {
+            "packs": 11,
+            "cost": 2750,
+            "probability": 77.3
+          },
+          "90pct": {
+            "packs": 17,
+            "cost": 4250,
+            "probability": 90.4
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 20,
+            "cost": 5000,
+            "probability": 25.3
+          },
+          "50pct": {
+            "packs": 44,
+            "cost": 11000,
+            "probability": 50.8
+          },
+          "75pct": {
+            "packs": 74,
+            "cost": 18500,
+            "probability": 75.2
+          },
+          "90pct": {
+            "packs": 101,
+            "cost": 25250,
+            "probability": 90.1
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 250,
+            "profitProb": 12,
+            "avgReturn": 206,
+            "avgProfit": -44
+          },
+          "3_packs": {
+            "cost": 750,
+            "profitProb": 26.7,
+            "avgReturn": 622,
+            "avgProfit": -128
+          },
+          "5_packs": {
+            "cost": 1250,
+            "profitProb": 15.3,
+            "avgReturn": 1040,
+            "avgProfit": -210
+          },
+          "10_packs": {
+            "cost": 2500,
+            "profitProb": 17.1,
+            "avgReturn": 2078,
+            "avgProfit": -422
+          },
+          "15_packs": {
+            "cost": 3750,
+            "profitProb": 18,
+            "avgReturn": 3133,
+            "avgProfit": -617
+          },
+          "20_packs": {
+            "cost": 5000,
+            "profitProb": 15.4,
+            "avgReturn": 4180,
+            "avgProfit": -820
+          }
+        }
+      }
+    },
+    {
+      "title": "Mixed Sport: Ultra Pack $500",
+      "price": 500,
+      "remaining": 80,
+      "totalOriginal": 2552,
+      "grailCount": 2,
+      "chaseCount": 6,
+      "baseCount": 72,
+      "grailRangeLow": 2500,
+      "grailRangeHigh": 2996,
+      "chaseRangeLow": 850,
+      "chaseRangeHigh": 1000,
+      "grailPct": 2.5,
+      "chasePct": 7.5,
+      "evRatio": 0.816,
+      "trueEV": 407.84,
+      "poolValue": 32627.26,
+      "tierAvgValues": {
+        "grailAvg": 2892,
+        "chaseAvg": 910.47,
+        "baseAvg": 296.95
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Mixed Sport: Ultra Pack $500",
+        "price": 500,
+        "evRatio": 0.816,
+        "totalRemaining": 80,
+        "pool": {
+          "grails": 2,
+          "grailAvgValue": 2892,
+          "chases": 6,
+          "chaseAvgValue": 910,
+          "base": 72,
+          "baseAvgValue": 297
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 3,
+            "cost": 1500,
+            "probability": 27.4
+          },
+          "50pct": {
+            "packs": 7,
+            "cost": 3500,
+            "probability": 53.6
+          },
+          "75pct": {
+            "packs": 13,
+            "cost": 6500,
+            "probability": 77.5
+          },
+          "90pct": {
+            "packs": 20,
+            "cost": 10000,
+            "probability": 91.2
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 11,
+            "cost": 5500,
+            "probability": 25.8
+          },
+          "50pct": {
+            "packs": 24,
+            "cost": 12000,
+            "probability": 51.3
+          },
+          "75pct": {
+            "packs": 40,
+            "cost": 20000,
+            "probability": 75.3
+          },
+          "90pct": {
+            "packs": 55,
+            "cost": 27500,
+            "probability": 90.5
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 500,
+            "profitProb": 10.4,
+            "avgReturn": 412,
+            "avgProfit": -88
+          },
+          "3_packs": {
+            "cost": 1500,
+            "profitProb": 19.8,
+            "avgReturn": 1211,
+            "avgProfit": -289
+          },
+          "5_packs": {
+            "cost": 2500,
+            "profitProb": 16.1,
+            "avgReturn": 2027,
+            "avgProfit": -473
+          },
+          "10_packs": {
+            "cost": 5000,
+            "profitProb": 24,
+            "avgReturn": 4066,
+            "avgProfit": -934
+          },
+          "15_packs": {
+            "cost": 7500,
+            "profitProb": 18.3,
+            "avgReturn": 6063,
+            "avgProfit": -1437
+          },
+          "20_packs": {
+            "cost": 10000,
+            "profitProb": 12.2,
+            "avgReturn": 8117,
+            "avgProfit": -1883
+          }
+        }
+      }
+    },
+    {
+      "title": "Basketball: Super Pack $150",
+      "price": 150,
+      "remaining": 166,
+      "totalOriginal": 2623,
+      "grailCount": 3,
+      "chaseCount": 22,
+      "baseCount": 141,
+      "grailRangeLow": 754,
+      "grailRangeHigh": 890,
+      "chaseRangeLow": 261,
+      "chaseRangeHigh": 300,
+      "grailPct": 1.81,
+      "chasePct": 13.25,
+      "evRatio": 0.806,
+      "trueEV": 120.84,
+      "poolValue": 20059.09,
+      "tierAvgValues": {
+        "grailAvg": 899.33,
+        "chaseAvg": 279.6,
+        "baseAvg": 79.5
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Basketball: Super Pack $150",
+        "price": 150,
+        "evRatio": 0.806,
+        "totalRemaining": 166,
+        "pool": {
+          "grails": 3,
+          "grailAvgValue": 899,
+          "chases": 22,
+          "chaseAvgValue": 280,
+          "base": 141,
+          "baseAvgValue": 80
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 300,
+            "probability": 27.9
+          },
+          "50pct": {
+            "packs": 5,
+            "cost": 750,
+            "probability": 56.3
+          },
+          "75pct": {
+            "packs": 9,
+            "cost": 1350,
+            "probability": 77.9
+          },
+          "90pct": {
+            "packs": 14,
+            "cost": 2100,
+            "probability": 90.8
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 16,
+            "cost": 2400,
+            "probability": 26.4
+          },
+          "50pct": {
+            "packs": 35,
+            "cost": 5250,
+            "probability": 51.1
+          },
+          "75pct": {
+            "packs": 62,
+            "cost": 9300,
+            "probability": 75.7
+          },
+          "90pct": {
+            "packs": 89,
+            "cost": 13350,
+            "probability": 90.2
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 150,
+            "profitProb": 14.5,
+            "avgReturn": 118,
+            "avgProfit": -32
+          },
+          "3_packs": {
+            "cost": 450,
+            "profitProb": 18.4,
+            "avgReturn": 359,
+            "avgProfit": -91
+          },
+          "5_packs": {
+            "cost": 750,
+            "profitProb": 20.9,
+            "avgReturn": 596,
+            "avgProfit": -154
+          },
+          "10_packs": {
+            "cost": 1500,
+            "profitProb": 18.9,
+            "avgReturn": 1199,
+            "avgProfit": -301
+          },
+          "15_packs": {
+            "cost": 2250,
+            "profitProb": 16.1,
+            "avgReturn": 1798,
+            "avgProfit": -452
+          },
+          "20_packs": {
+            "cost": 3000,
+            "profitProb": 12.5,
+            "avgReturn": 2395,
+            "avgProfit": -605
+          }
+        }
+      }
+    },
+    {
+      "title": "Mixed Sport: Super Pack $150",
+      "price": 150,
+      "remaining": 37,
+      "totalOriginal": 4516,
+      "grailCount": 1,
+      "chaseCount": 1,
+      "baseCount": 35,
+      "grailRangeLow": 750,
+      "grailRangeHigh": 793,
+      "chaseRangeLow": 268,
+      "chaseRangeHigh": 325,
+      "grailPct": 2.7,
+      "chasePct": 2.7,
+      "evRatio": 0.797,
+      "trueEV": 119.58,
+      "poolValue": 4424.49,
+      "tierAvgValues": {
+        "grailAvg": 869,
+        "chaseAvg": 225,
+        "baseAvg": 95.16
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Mixed Sport: Super Pack $150",
+        "price": 150,
+        "evRatio": 0.797,
+        "totalRemaining": 37,
+        "pool": {
+          "grails": 1,
+          "grailAvgValue": 869,
+          "chases": 1,
+          "chaseAvgValue": 225,
+          "base": 35,
+          "baseAvgValue": 95
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 5,
+            "cost": 750,
+            "probability": 25.5
+          },
+          "50pct": {
+            "packs": 11,
+            "cost": 1650,
+            "probability": 51.2
+          },
+          "75pct": {
+            "packs": 19,
+            "cost": 2850,
+            "probability": 77
+          },
+          "90pct": {
+            "packs": 25,
+            "cost": 3750,
+            "probability": 90.1
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 10,
+            "cost": 1500,
+            "probability": 27
+          },
+          "50pct": {
+            "packs": 19,
+            "cost": 2850,
+            "probability": 51.4
+          },
+          "75pct": {
+            "packs": 28,
+            "cost": 4200,
+            "probability": 75.7
+          },
+          "90pct": {
+            "packs": 34,
+            "cost": 5100,
+            "probability": 91.9
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 150,
+            "profitProb": 5.2,
+            "avgReturn": 119,
+            "avgProfit": -31
+          },
+          "3_packs": {
+            "cost": 450,
+            "profitProb": 14.9,
+            "avgReturn": 353,
+            "avgProfit": -97
+          },
+          "5_packs": {
+            "cost": 750,
+            "profitProb": 14.1,
+            "avgReturn": 598,
+            "avgProfit": -152
+          },
+          "10_packs": {
+            "cost": 1500,
+            "profitProb": 26.9,
+            "avgReturn": 1188,
+            "avgProfit": -312
+          },
+          "15_packs": {
+            "cost": 2250,
+            "profitProb": 15,
+            "avgReturn": 1788,
+            "avgProfit": -462
+          },
+          "20_packs": {
+            "cost": 3000,
+            "profitProb": 0,
+            "avgReturn": 2373,
+            "avgProfit": -627
+          }
+        }
+      }
+    },
+    {
+      "title": "Pokemon: $75",
+      "price": 75,
+      "remaining": 1246,
+      "totalOriginal": 41781,
+      "grailCount": 22,
+      "chaseCount": 154,
+      "baseCount": 1070,
+      "grailRangeLow": 375,
+      "grailRangeHigh": 500,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 1.77,
+      "chasePct": 12.36,
+      "evRatio": 0.78,
+      "trueEV": 58.47,
+      "poolValue": 72854.12,
+      "tierAvgValues": {
+        "grailAvg": 424.61,
+        "chaseAvg": 141.98,
+        "baseAvg": 38.92
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Pokemon: $75",
+        "price": 75,
+        "evRatio": 0.78,
+        "totalRemaining": 1246,
+        "pool": {
+          "grails": 22,
+          "grailAvgValue": 425,
+          "chases": 154,
+          "chaseAvgValue": 142,
+          "base": 1070,
+          "baseAvgValue": 39
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 150,
+            "probability": 26.3
+          },
+          "50pct": {
+            "packs": 5,
+            "cost": 375,
+            "probability": 53.4
+          },
+          "75pct": {
+            "packs": 10,
+            "cost": 750,
+            "probability": 78.3
+          },
+          "90pct": {
+            "packs": 16,
+            "cost": 1200,
+            "probability": 91.4
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 17,
+            "cost": 1275,
+            "probability": 26.3
+          },
+          "50pct": {
+            "packs": 39,
+            "cost": 2925,
+            "probability": 50.6
+          },
+          "75pct": {
+            "packs": 76,
+            "cost": 5700,
+            "probability": 75.3
+          },
+          "90pct": {
+            "packs": 123,
+            "cost": 9225,
+            "probability": 90
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 75,
+            "profitProb": 14.5,
+            "avgReturn": 59,
+            "avgProfit": -16
+          },
+          "3_packs": {
+            "cost": 225,
+            "profitProb": 14.9,
+            "avgReturn": 175,
+            "avgProfit": -50
+          },
+          "5_packs": {
+            "cost": 375,
+            "profitProb": 19.7,
+            "avgReturn": 293,
+            "avgProfit": -82
+          },
+          "10_packs": {
+            "cost": 750,
+            "profitProb": 17.7,
+            "avgReturn": 583,
+            "avgProfit": -167
+          },
+          "15_packs": {
+            "cost": 1125,
+            "profitProb": 15.6,
+            "avgReturn": 877,
+            "avgProfit": -248
+          },
+          "20_packs": {
+            "cost": 1500,
+            "profitProb": 11.8,
+            "avgReturn": 1169,
+            "avgProfit": -331
+          }
+        }
+      }
+    },
+    {
+      "title": "Pokemon: Super Pack $150",
+      "price": 150,
+      "remaining": 812,
+      "totalOriginal": 7014,
+      "grailCount": 13,
+      "chaseCount": 103,
+      "baseCount": 696,
+      "grailRangeLow": 750,
+      "grailRangeHigh": 900,
+      "chaseRangeLow": 260,
+      "chaseRangeHigh": 300,
+      "grailPct": 1.6,
+      "chasePct": 12.68,
+      "evRatio": 0.776,
+      "trueEV": 116.4,
+      "poolValue": 94515.41,
+      "tierAvgValues": {
+        "grailAvg": 831.85,
+        "chaseAvg": 286.23,
+        "baseAvg": 77.9
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Pokemon: Super Pack $150",
+        "price": 150,
+        "evRatio": 0.776,
+        "totalRemaining": 812,
+        "pool": {
+          "grails": 13,
+          "grailAvgValue": 832,
+          "chases": 103,
+          "chaseAvgValue": 286,
+          "base": 696,
+          "baseAvgValue": 78
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 300,
+            "probability": 26.5
+          },
+          "50pct": {
+            "packs": 5,
+            "cost": 750,
+            "probability": 53.8
+          },
+          "75pct": {
+            "packs": 9,
+            "cost": 1350,
+            "probability": 75.2
+          },
+          "90pct": {
+            "packs": 15,
+            "cost": 2250,
+            "probability": 90.3
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 18,
+            "cost": 2700,
+            "probability": 25.4
+          },
+          "50pct": {
+            "packs": 42,
+            "cost": 6300,
+            "probability": 50.1
+          },
+          "75pct": {
+            "packs": 82,
+            "cost": 12300,
+            "probability": 75.2
+          },
+          "90pct": {
+            "packs": 131,
+            "cost": 19650,
+            "probability": 90
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 150,
+            "profitProb": 14.7,
+            "avgReturn": 115,
+            "avgProfit": -35
+          },
+          "3_packs": {
+            "cost": 450,
+            "profitProb": 14.6,
+            "avgReturn": 345,
+            "avgProfit": -105
+          },
+          "5_packs": {
+            "cost": 750,
+            "profitProb": 18.9,
+            "avgReturn": 580,
+            "avgProfit": -170
+          },
+          "10_packs": {
+            "cost": 1500,
+            "profitProb": 15.5,
+            "avgReturn": 1146,
+            "avgProfit": -354
+          },
+          "15_packs": {
+            "cost": 2250,
+            "profitProb": 13.1,
+            "avgReturn": 1729,
+            "avgProfit": -521
+          },
+          "20_packs": {
+            "cost": 3000,
+            "profitProb": 10.2,
+            "avgReturn": 2317,
+            "avgProfit": -683
+          }
+        }
+      }
+    },
+    {
+      "title": "Mixed Sport: Mega Pack $250",
+      "price": 250,
+      "remaining": 231,
+      "totalOriginal": 2892,
+      "grailCount": 3,
+      "chaseCount": 30,
+      "baseCount": 198,
+      "grailRangeLow": 1350,
+      "grailRangeHigh": 1491,
+      "chaseRangeLow": 425,
+      "chaseRangeHigh": 499,
+      "grailPct": 1.3,
+      "chasePct": 12.99,
+      "evRatio": 0.756,
+      "trueEV": 189.11,
+      "poolValue": 43685.27,
+      "tierAvgValues": {
+        "grailAvg": 1433,
+        "chaseAvg": 451.87,
+        "baseAvg": 130.46
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Mixed Sport: Mega Pack $250",
+        "price": 250,
+        "evRatio": 0.756,
+        "totalRemaining": 231,
+        "pool": {
+          "grails": 3,
+          "grailAvgValue": 1433,
+          "chases": 30,
+          "chaseAvgValue": 452,
+          "base": 198,
+          "baseAvgValue": 130
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 500,
+            "probability": 26.6
+          },
+          "50pct": {
+            "packs": 5,
+            "cost": 1250,
+            "probability": 54.1
+          },
+          "75pct": {
+            "packs": 9,
+            "cost": 2250,
+            "probability": 75.7
+          },
+          "90pct": {
+            "packs": 15,
+            "cost": 3750,
+            "probability": 90.9
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 22,
+            "cost": 5500,
+            "probability": 26
+          },
+          "50pct": {
+            "packs": 48,
+            "cost": 12000,
+            "probability": 50.5
+          },
+          "75pct": {
+            "packs": 86,
+            "cost": 21500,
+            "probability": 75.5
+          },
+          "90pct": {
+            "packs": 124,
+            "cost": 31000,
+            "probability": 90.2
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 250,
+            "profitProb": 14,
+            "avgReturn": 190,
+            "avgProfit": -60
+          },
+          "3_packs": {
+            "cost": 750,
+            "profitProb": 14.3,
+            "avgReturn": 573,
+            "avgProfit": -177
+          },
+          "5_packs": {
+            "cost": 1250,
+            "profitProb": 17.9,
+            "avgReturn": 950,
+            "avgProfit": -300
+          },
+          "10_packs": {
+            "cost": 2500,
+            "profitProb": 13.9,
+            "avgReturn": 1886,
+            "avgProfit": -614
+          },
+          "15_packs": {
+            "cost": 3750,
+            "profitProb": 11.5,
+            "avgReturn": 2853,
+            "avgProfit": -897
+          },
+          "20_packs": {
+            "cost": 5000,
+            "profitProb": 6.9,
+            "avgReturn": 3798,
+            "avgProfit": -1202
+          }
+        }
+      }
+    },
+    {
+      "title": "Football: Super Pack $150",
+      "price": 150,
+      "remaining": 176,
+      "totalOriginal": 3233,
+      "grailCount": 3,
+      "chaseCount": 22,
+      "baseCount": 151,
+      "grailRangeLow": 790,
+      "grailRangeHigh": 869,
+      "chaseRangeLow": 260,
+      "chaseRangeHigh": 300,
+      "grailPct": 1.7,
+      "chasePct": 12.5,
+      "evRatio": 0.749,
+      "trueEV": 112.3,
+      "poolValue": 19763.99,
+      "tierAvgValues": {
+        "grailAvg": 841.33,
+        "chaseAvg": 273.84,
+        "baseAvg": 74.28
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Football: Super Pack $150",
+        "price": 150,
+        "evRatio": 0.749,
+        "totalRemaining": 176,
+        "pool": {
+          "grails": 3,
+          "grailAvgValue": 841,
+          "chases": 22,
+          "chaseAvgValue": 274,
+          "base": 151,
+          "baseAvgValue": 74
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 300,
+            "probability": 26.5
+          },
+          "50pct": {
+            "packs": 5,
+            "cost": 750,
+            "probability": 54
+          },
+          "75pct": {
+            "packs": 9,
+            "cost": 1350,
+            "probability": 75.7
+          },
+          "90pct": {
+            "packs": 15,
+            "cost": 2250,
+            "probability": 91
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 17,
+            "cost": 2550,
+            "probability": 26.4
+          },
+          "50pct": {
+            "packs": 37,
+            "cost": 5550,
+            "probability": 51
+          },
+          "75pct": {
+            "packs": 65,
+            "cost": 9750,
+            "probability": 75.2
+          },
+          "90pct": {
+            "packs": 94,
+            "cost": 14100,
+            "probability": 90.1
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 150,
+            "profitProb": 14.1,
+            "avgReturn": 111,
+            "avgProfit": -39
+          },
+          "3_packs": {
+            "cost": 450,
+            "profitProb": 11.7,
+            "avgReturn": 337,
+            "avgProfit": -113
+          },
+          "5_packs": {
+            "cost": 750,
+            "profitProb": 18.4,
+            "avgReturn": 563,
+            "avgProfit": -187
+          },
+          "10_packs": {
+            "cost": 1500,
+            "profitProb": 16.2,
+            "avgReturn": 1134,
+            "avgProfit": -366
+          },
+          "15_packs": {
+            "cost": 2250,
+            "profitProb": 13,
+            "avgReturn": 1695,
+            "avgProfit": -555
+          },
+          "20_packs": {
+            "cost": 3000,
+            "profitProb": 8.7,
+            "avgReturn": 2264,
+            "avgProfit": -736
+          }
+        }
+      }
+    },
+    {
+      "title": "Football: Mega Pack $250",
+      "price": 250,
+      "remaining": 115,
+      "totalOriginal": 2582,
+      "grailCount": 2,
+      "chaseCount": 12,
+      "baseCount": 101,
+      "grailRangeLow": 1250,
+      "grailRangeHigh": 1367,
+      "chaseRangeLow": 425,
+      "chaseRangeHigh": 458,
+      "grailPct": 1.74,
+      "chasePct": 10.43,
+      "evRatio": 0.747,
+      "trueEV": 186.73,
+      "poolValue": 21473.84,
+      "tierAvgValues": {
+        "grailAvg": 1312.5,
+        "chaseAvg": 432.5,
+        "baseAvg": 135.24
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Football: Mega Pack $250",
+        "price": 250,
+        "evRatio": 0.747,
+        "totalRemaining": 115,
+        "pool": {
+          "grails": 2,
+          "grailAvgValue": 1313,
+          "chases": 12,
+          "chaseAvgValue": 433,
+          "base": 101,
+          "baseAvgValue": 135
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 3,
+            "cost": 750,
+            "probability": 32.5
+          },
+          "50pct": {
+            "packs": 6,
+            "cost": 1500,
+            "probability": 55
+          },
+          "75pct": {
+            "packs": 11,
+            "cost": 2750,
+            "probability": 77.7
+          },
+          "90pct": {
+            "packs": 17,
+            "cost": 4250,
+            "probability": 90.8
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": {
+            "packs": 16,
+            "cost": 4000,
+            "probability": 26
+          },
+          "50pct": {
+            "packs": 34,
+            "cost": 8500,
+            "probability": 50.6
+          },
+          "75pct": {
+            "packs": 58,
+            "cost": 14500,
+            "probability": 75.7
+          },
+          "90pct": {
+            "packs": 79,
+            "cost": 19750,
+            "probability": 90.4
+          }
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 250,
+            "profitProb": 12.1,
+            "avgReturn": 187,
+            "avgProfit": -63
+          },
+          "3_packs": {
+            "cost": 750,
+            "profitProb": 10.2,
+            "avgReturn": 569,
+            "avgProfit": -181
+          },
+          "5_packs": {
+            "cost": 1250,
+            "profitProb": 16.1,
+            "avgReturn": 943,
+            "avgProfit": -307
+          },
+          "10_packs": {
+            "cost": 2500,
+            "profitProb": 14.7,
+            "avgReturn": 1872,
+            "avgProfit": -628
+          },
+          "15_packs": {
+            "cost": 3750,
+            "profitProb": 10.5,
+            "avgReturn": 2814,
+            "avgProfit": -936
+          },
+          "20_packs": {
+            "cost": 5000,
+            "profitProb": 6.2,
+            "avgReturn": 3749,
+            "avgProfit": -1251
+          }
+        }
+      }
+    },
+    {
+      "title": "Basketball: $75",
+      "price": 75,
+      "remaining": 131,
+      "totalOriginal": 6954,
+      "grailCount": 0,
+      "chaseCount": 16,
+      "baseCount": 115,
+      "grailRangeLow": 375,
+      "grailRangeHigh": 434,
+      "chaseRangeLow": 96,
+      "chaseRangeHigh": 221,
+      "grailPct": 0,
+      "chasePct": 12.21,
+      "evRatio": 0.738,
+      "trueEV": 55.36,
+      "poolValue": 7252.21,
+      "tierAvgValues": {
+        "grailAvg": 404.5,
+        "chaseAvg": 140.32,
+        "baseAvg": 43.54
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Basketball: $75",
+        "price": 75,
+        "evRatio": 0.738,
+        "totalRemaining": 131,
+        "pool": {
+          "grails": 0,
+          "grailAvgValue": 405,
+          "chases": 16,
+          "chaseAvgValue": 140,
+          "base": 115,
+          "baseAvgValue": 44
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 3,
+            "cost": 225,
+            "probability": 32.6
+          },
+          "50pct": {
+            "packs": 6,
+            "cost": 450,
+            "probability": 55
+          },
+          "75pct": {
+            "packs": 11,
+            "cost": 825,
+            "probability": 77.6
+          },
+          "90pct": {
+            "packs": 17,
+            "cost": 1275,
+            "probability": 90.7
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": null,
+          "50pct": null,
+          "75pct": null,
+          "90pct": null
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 75,
+            "profitProb": 12.7,
+            "avgReturn": 58,
+            "avgProfit": -17
+          },
+          "3_packs": {
+            "cost": 225,
+            "profitProb": 22.2,
+            "avgReturn": 172,
+            "avgProfit": -53
+          },
+          "5_packs": {
+            "cost": 375,
+            "profitProb": 17.6,
+            "avgReturn": 289,
+            "avgProfit": -86
+          },
+          "10_packs": {
+            "cost": 750,
+            "profitProb": 9.3,
+            "avgReturn": 576,
+            "avgProfit": -174
+          },
+          "15_packs": {
+            "cost": 1125,
+            "profitProb": 4.9,
+            "avgReturn": 863,
+            "avgProfit": -262
+          },
+          "20_packs": {
+            "cost": 1500,
+            "profitProb": 2.8,
+            "avgReturn": 1151,
+            "avgProfit": -349
+          }
+        }
+      }
+    },
+    {
+      "title": "Baseball: Super Pack $150",
+      "price": 150,
+      "remaining": 47,
+      "totalOriginal": 4900,
+      "grailCount": 0,
+      "chaseCount": 7,
+      "baseCount": 40,
+      "grailRangeLow": 750,
+      "grailRangeHigh": 900,
+      "chaseRangeLow": 260,
+      "chaseRangeHigh": 300,
+      "grailPct": 0,
+      "chasePct": 14.89,
+      "evRatio": 0.727,
+      "trueEV": 109.01,
+      "poolValue": 5123.55,
+      "tierAvgValues": {
+        "grailAvg": 825,
+        "chaseAvg": 268.86,
+        "baseAvg": 81.04
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Baseball: Super Pack $150",
+        "price": 150,
+        "evRatio": 0.727,
+        "totalRemaining": 47,
+        "pool": {
+          "grails": 0,
+          "grailAvgValue": 825,
+          "chases": 7,
+          "chaseAvgValue": 269,
+          "base": 40,
+          "baseAvgValue": 81
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 2,
+            "cost": 300,
+            "probability": 27.8
+          },
+          "50pct": {
+            "packs": 5,
+            "cost": 750,
+            "probability": 57.1
+          },
+          "75pct": {
+            "packs": 8,
+            "cost": 1200,
+            "probability": 75.5
+          },
+          "90pct": {
+            "packs": 13,
+            "cost": 1950,
+            "probability": 91.4
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": null,
+          "50pct": null,
+          "75pct": null,
+          "90pct": null
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 150,
+            "profitProb": 14.9,
+            "avgReturn": 111,
+            "avgProfit": -39
+          },
+          "3_packs": {
+            "cost": 450,
+            "profitProb": 16.7,
+            "avgReturn": 330,
+            "avgProfit": -120
+          },
+          "5_packs": {
+            "cost": 750,
+            "profitProb": 15.8,
+            "avgReturn": 555,
+            "avgProfit": -195
+          },
+          "10_packs": {
+            "cost": 1500,
+            "profitProb": 2.8,
+            "avgReturn": 1106,
+            "avgProfit": -394
+          },
+          "15_packs": {
+            "cost": 2250,
+            "profitProb": 0.6,
+            "avgReturn": 1658,
+            "avgProfit": -592
+          },
+          "20_packs": {
+            "cost": 3000,
+            "profitProb": 0.1,
+            "avgReturn": 2212,
+            "avgProfit": -788
+          }
+        }
+      }
+    },
+    {
+      "title": "Mixed Sport: $75",
+      "price": 75,
+      "remaining": 53,
+      "totalOriginal": 19307,
+      "grailCount": 0,
+      "chaseCount": 7,
+      "baseCount": 46,
+      "grailRangeLow": 375,
+      "grailRangeHigh": 435,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 0,
+      "chasePct": 13.21,
+      "evRatio": 0.683,
+      "trueEV": 51.24,
+      "poolValue": 2715.53,
+      "tierAvgValues": {
+        "grailAvg": 405,
+        "chaseAvg": 137.29,
+        "baseAvg": 38.14
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Mixed Sport: $75",
+        "price": 75,
+        "evRatio": 0.683,
+        "totalRemaining": 53,
+        "pool": {
+          "grails": 0,
+          "grailAvgValue": 405,
+          "chases": 7,
+          "chaseAvgValue": 137,
+          "base": 46,
+          "baseAvgValue": 38
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 3,
+            "cost": 225,
+            "probability": 35.2
+          },
+          "50pct": {
+            "packs": 5,
+            "cost": 375,
+            "probability": 52.2
+          },
+          "75pct": {
+            "packs": 9,
+            "cost": 675,
+            "probability": 75.1
+          },
+          "90pct": {
+            "packs": 14,
+            "cost": 1050,
+            "probability": 90
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": null,
+          "50pct": null,
+          "75pct": null,
+          "90pct": null
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 75,
+            "profitProb": 12.2,
+            "avgReturn": 51,
+            "avgProfit": -24
+          },
+          "3_packs": {
+            "cost": 225,
+            "profitProb": 9.8,
+            "avgReturn": 154,
+            "avgProfit": -71
+          },
+          "5_packs": {
+            "cost": 375,
+            "profitProb": 12.3,
+            "avgReturn": 258,
+            "avgProfit": -117
+          },
+          "10_packs": {
+            "cost": 750,
+            "profitProb": 1.7,
+            "avgReturn": 518,
+            "avgProfit": -232
+          },
+          "15_packs": {
+            "cost": 1125,
+            "profitProb": 0.1,
+            "avgReturn": 776,
+            "avgProfit": -349
+          },
+          "20_packs": {
+            "cost": 1500,
+            "profitProb": 0,
+            "avgReturn": 1030,
+            "avgProfit": -470
+          }
+        }
+      }
+    },
+    {
+      "title": "Baseball: $75",
+      "price": 75,
+      "remaining": 84,
+      "totalOriginal": 14410,
+      "grailCount": 0,
+      "chaseCount": 2,
+      "baseCount": 82,
+      "grailRangeLow": 380,
+      "grailRangeHigh": 425,
+      "chaseRangeLow": 130,
+      "chaseRangeHigh": 150,
+      "grailPct": 0,
+      "chasePct": 2.38,
+      "evRatio": 0.568,
+      "trueEV": 42.6,
+      "poolValue": 3578.45,
+      "tierAvgValues": {
+        "grailAvg": 402.5,
+        "chaseAvg": 148.25,
+        "baseAvg": 40.02
+      },
+      "categories": [],
+      "minPacks": {
+        "title": "Baseball: $75",
+        "price": 75,
+        "evRatio": 0.568,
+        "totalRemaining": 84,
+        "pool": {
+          "grails": 0,
+          "grailAvgValue": 403,
+          "chases": 2,
+          "chaseAvgValue": 148,
+          "base": 82,
+          "baseAvgValue": 40
+        },
+        "minPacksForChaseOrGrail": {
+          "25pct": {
+            "packs": 12,
+            "cost": 900,
+            "probability": 26.7
+          },
+          "50pct": {
+            "packs": 25,
+            "cost": 1875,
+            "probability": 50.9
+          },
+          "75pct": {
+            "packs": 42,
+            "cost": 3150,
+            "probability": 75.3
+          },
+          "90pct": {
+            "packs": 58,
+            "cost": 4350,
+            "probability": 90.7
+          }
+        },
+        "minPacksForGrail": {
+          "25pct": null,
+          "50pct": null,
+          "75pct": null,
+          "90pct": null
+        },
+        "breakevenByQuantity": {
+          "1_packs": {
+            "cost": 75,
+            "profitProb": 2.7,
+            "avgReturn": 43,
+            "avgProfit": -32
+          },
+          "3_packs": {
+            "cost": 225,
+            "profitProb": 2.8,
+            "avgReturn": 128,
+            "avgProfit": -97
+          },
+          "5_packs": {
+            "cost": 375,
+            "profitProb": 0.3,
+            "avgReturn": 212,
+            "avgProfit": -163
+          },
+          "10_packs": {
+            "cost": 750,
+            "profitProb": 0,
+            "avgReturn": 424,
+            "avgProfit": -326
+          },
+          "15_packs": {
+            "cost": 1125,
+            "profitProb": 0,
+            "avgReturn": 635,
+            "avgProfit": -490
+          },
+          "20_packs": {
+            "cost": 1500,
+            "profitProb": 0,
+            "avgReturn": 848,
+            "avgProfit": -652
+          }
+        }
+      }
+    }
+  ]
+};
+
+        const SPORT_ICONS = {
+            'baseball': '⚾',
+            'basketball': '🏀',
+            'football': '🏈',
+            'pokemon': '⚡',
+            'mixed': '🎯',
+            'og pokemon': '✨',
+            'other': '🃏'
+        };
+
+        function getSport(title) {
+            const t = title.toLowerCase();
+            if (t.includes('og pokemon')) return 'og pokemon';
+            if (t.includes('pokemon')) return 'pokemon';
+            if (t.includes('basketball')) return 'basketball';
+            if (t.includes('football')) return 'football';
+            if (t.includes('baseball')) return 'baseball';
+            if (t.includes('mixed')) return 'mixed';
+            return 'other';
+        }
+
+        function render() {
+            const container = document.getElementById('packList');
+            const packs = PACK_DATA.packs || [];
+
+            if (!packs.length) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">📦</div>
+                        <h3>No hot packs right now</h3>
+                        <p>Check back soon — new data drops regularly</p>
+                    </div>
+                `;
+                return;
+            }
+
+            document.getElementById('timestamp').textContent =
+                new Date(PACK_DATA.timestamp).toLocaleString('en-US', {
+                    month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+                });
+
+            // Summary badge
+            const plusEV = PACK_DATA.plusEV || 0;
+            const total = PACK_DATA.totalPacks || packs.length;
+            document.getElementById('summaryBadge').textContent = `${total} packs · ${plusEV} +EV`;
+
+            container.innerHTML = packs.map((pack, i) => {
+                const remaining = pack.remaining || 0;
+                const price = pack.price || 0;
+                const sport = getSport(pack.title);
+                const icon = SPORT_ICONS[sport] || '🃏';
+
+                const grailCount = pack.grailCount || 0;
+                const chaseCount = pack.chaseCount || 0;
+                const baseCount = pack.baseCount || 0;
+                const grailPct = parseFloat(pack.grailPct) || 0;
+                const chasePct = parseFloat(pack.chasePct) || 0;
+
+                const evRatio = pack.evRatio || 0;
+                const trueEV = pack.trueEV || 0;
+                const poolValue = pack.poolValue || 0;
+                const tierAvg = pack.tierAvgValues || {};
+
+                const fmtDollar = (v) => '$' + Math.round(v).toLocaleString();
+
+                // EV color + label
+                let evColor = '#ff4757';
+                let evLabel = '−EV';
+                let borderColor = 'var(--bnb-border)';
+                if (evRatio >= 1.2) { evColor = '#00e676'; evLabel = '🔥 Strong +EV'; borderColor = 'rgba(0,230,118,0.3)'; }
+                else if (evRatio >= 1.05) { evColor = '#69f0ae'; evLabel = '+EV'; borderColor = 'rgba(105,240,174,0.2)'; }
+                else if (evRatio >= 0.95) { evColor = '#ffd740'; evLabel = '~Even'; borderColor = 'rgba(255,215,64,0.2)'; }
+                else { borderColor = 'rgba(255,71,87,0.15)'; }
+
+                // Margin per pack
+                const margin = trueEV > 0 ? trueEV - price : 0;
+                const marginColor = margin >= 0 ? evColor : '#ff4757';
+
+                // Pool depletion
+                const totalOrig = pack.totalOriginal || 0;
+                const soldPct = totalOrig > remaining ? Math.round(((totalOrig - remaining) / totalOrig) * 100) : 0;
+
+                return `
+                    <div class="pack-card" style="border-color:${borderColor}">
+                        <div class="sport-icon">${icon}</div>
+
+                        <div class="pack-info" style="padding-left:0">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+                                <h3 style="margin-bottom:0">${pack.title}</h3>
+                                <div style="text-align:right;min-width:100px">
+                                    <div style="font-size:2rem;font-weight:900;color:${evColor};letter-spacing:-1px;line-height:1">${evRatio > 0 ? evRatio.toFixed(2) + 'x' : 'N/A'}</div>
+                                    <div style="font-size:0.7rem;font-weight:700;color:${evColor}">${evLabel}</div>
+                                </div>
+                            </div>
+
+                            <!-- Key Numbers Row -->
+                            <div class="odds-row" style="margin-bottom:8px">
+                                <div class="odd-block" style="background:rgba(255,255,255,0.04)">
+                                    <div style="color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;font-weight:600;letter-spacing:0.5px">Price</div>
+                                    <div style="font-size:1.1rem;font-weight:800">${fmtDollar(price)}</div>
+                                </div>
+                                <div class="odd-block" style="background:rgba(255,255,255,0.04)">
+                                    <div style="color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;font-weight:600;letter-spacing:0.5px">True EV</div>
+                                    <div style="font-size:1.1rem;font-weight:800;color:${evColor}">${trueEV > 0 ? fmtDollar(trueEV) : 'N/A'}</div>
+                                </div>
+                                <div class="odd-block" style="background:rgba(255,255,255,0.04)">
+                                    <div style="color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;font-weight:600;letter-spacing:0.5px">Margin</div>
+                                    <div style="font-size:1.1rem;font-weight:800;color:${marginColor}">${margin !== 0 ? (margin > 0 ? '+' : '') + fmtDollar(margin) : '—'}</div>
+                                </div>
+                                <div class="odd-block" style="background:rgba(255,255,255,0.04)">
+                                    <div style="color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;font-weight:600;letter-spacing:0.5px">Pool Value</div>
+                                    <div style="font-size:1.1rem;font-weight:800">${poolValue > 0 ? fmtDollar(poolValue) : '—'}</div>
+                                </div>
+                            </div>
+
+                            <!-- Pool Breakdown -->
+                            <div style="display:flex;gap:16px;font-size:0.75rem;color:var(--text-muted);margin-bottom:6px">
+                                <span style="color:var(--grail-purple);font-weight:700">💎 ${grailCount} Grails (${grailPct}%)</span>
+                                <span style="color:var(--chase-blue);font-weight:700">🎯 ${chaseCount} Chases (${chasePct}%)</span>
+                                <span>📦 ${baseCount} Base</span>
+                                <span>🏷️ ${remaining} remaining</span>
+                                ${soldPct > 0 ? `<span style="color:var(--bnb-accent-light)">${soldPct}% sold</span>` : ''}
+                            </div>
+
+                            <!-- Tier Avg Values -->
+                            ${tierAvg.grailAvg || tierAvg.chaseAvg ? `
+                            <div style="font-size:0.7rem;color:var(--text-muted)">
+                                Avg values: ${tierAvg.grailAvg ? `Grail ${fmtDollar(tierAvg.grailAvg)}` : ''}${tierAvg.grailAvg && tierAvg.chaseAvg ? ' · ' : ''}${tierAvg.chaseAvg ? `Chase ${fmtDollar(tierAvg.chaseAvg)}` : ''}${tierAvg.baseAvg ? ` · Base ${fmtDollar(tierAvg.baseAvg)}` : ''}
+                            </div>` : ''}
+
+                            <!-- Min-Packs Data -->
+                            ${pack.minPacks ? `
+                            <div style="margin-top:12px;background:rgba(255,255,255,0.02);border-radius:8px;padding:12px">
+                                <div style="font-size:0.7rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Min-Packs Analysis</div>
+                                
+                                <!-- 50% Odds Table -->
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px">
+                                    <div>
+                                        <div style="font-size:0.75rem;color:var(--chase-blue);font-weight:700">Chase/Grail (50%)</div>
+                                        <div style="font-size:0.85rem;font-weight:800">${pack.minPacks.minPacksForChaseOrGrail?.['50pct']?.packs || '—'} packs</div>
+                                        <div style="font-size:0.65rem;color:var(--text-muted)">${pack.minPacks.minPacksForChaseOrGrail?.['50pct']?.cost ? fmtDollar(pack.minPacks.minPacksForChaseOrGrail['50pct'].cost) : '—'}</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:0.75rem;color:var(--grail-purple);font-weight:700">Grail Only (50%)</div>
+                                        <div style="font-size:0.85rem;font-weight:800">${pack.minPacks.minPacksForGrail?.['50pct']?.packs || 'N/A'} packs</div>
+                                        <div style="font-size:0.65rem;color:var(--text-muted)">${pack.minPacks.minPacksForGrail?.['50pct']?.cost ? fmtDollar(pack.minPacks.minPacksForGrail['50pct'].cost) : 'N/A'}</div>
+                                    </div>
+                                </div>
+
+                                <!-- Breakeven Probabilities -->
+                                <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:4px;font-weight:600">Breakeven probability:</div>
+                                <div style="display:flex;gap:16px;font-size:0.65rem;color:var(--text-muted)">
+                                    ${pack.minPacks.breakevenByQuantity ? ['1_packs', '3_packs', '5_packs', '10_packs'].map(qty => {
+                                        const data = pack.minPacks.breakevenByQuantity[qty];
+                                        const qtyNum = qty.split('_')[0];
+                                        return data ? `<span>${qtyNum}: ${data.profitProb}%</span>` : '';
+                                    }).filter(Boolean).join('') : '—'}
+                                </div>
+                            </div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        render();
+    </script>
+</body>
+</html>
