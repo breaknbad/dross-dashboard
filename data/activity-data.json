@@ -1,15 +1,15 @@
 {
   "_meta": {
-    "generated_at": "2026-02-20T01:35:40.589Z",
+    "generated_at": "2026-02-20T02:05:12.669Z",
     "total_days": 16,
     "date_range": {
       "start": "2026-02-04",
       "end": "2026-02-19"
     },
     "totals": {
-      "tasks_completed": 26,
+      "tasks_completed": 24,
       "reports_generated": 7,
-      "key_actions": 276,
+      "key_actions": 259,
       "todoist_activity": 10
     }
   },
@@ -5173,281 +5173,107 @@
     },
     {
       "date": "2026-02-19",
-      "title": "Daily Log — 2026-02-19",
+      "title": "Memory Log",
       "sections": [
         {
-          "name": "Overnight Issues (logged ~2 AM)",
+          "name": "AI Training Document Consolidation (8:39 PM)",
           "items": [],
           "subsections": [
             {
-              "name": "🔧 NEEDS DAYTIME FIX — eBay Credential Path Mismatch",
+              "name": "Task Completed",
               "items": [
-                "Heartbeat monitor expects: `/clawd/.credentials/ebay/api-keys.json`",
-                "Actual location: `.credentials-backup/ebay.json`",
-                "Root cause: Feb 17 security hardening script changed permissions/paths",
-                "Fix: update heartbeat monitor script to point to correct path",
-                "Status: deferred to daytime hours"
+                "**File 1**: \"AI Fluency: From ChatGPT User to AI Director\" (3 pages, original format)",
+                "**File 2**: \"AI Fluency: From Chatbot User to AI Director\" (3 pages, internal training format)",
+                "**File 3**: \"AI Training Document - Break'n Bad Internal\" (3 pages, branded version)"
               ]
             },
             {
-              "name": "⚠️ 3 Crons Failing — \"cron announce delivery failed\"",
-              "items": [
-                "Affected: dashboard-deploy, cron-run-reporter, Claude usage scraper",
-                "All hitting API rate limits when running concurrently",
-                "Fix: stagger their schedules so they don't pile up",
-                "Status: pending"
-              ]
-            },
-            {
-              "name": "⚠️ Repack Auto-Move Timer — Timing Out",
-              "items": [
-                "1-min cron with 30s timeout — too tight",
-                "Fix: either extend timeout or increase cron interval",
-                "Status: pending"
-              ]
-            },
-            {
-              "name": "✅ SMS Polling Cron",
-              "items": [
-                "No longer in active list — confirmed fixed (was spamming Telegram)"
-              ]
-            }
-          ],
-          "rawText": []
-        },
-        {
-          "name": "Config Changes Made Tonight",
-          "items": [
-            "Removed `ackReactionScope: \"all\"` from openclaw.json (was auto-reacting to every Telegram message)",
-            "Set to `\"group-mentions\"` — now only reacts in group chats, not DMs"
-          ],
-          "subsections": [],
-          "rawText": []
-        },
-        {
-          "name": "Streams Page Build (completed ~2:10 AM EST)",
-          "items": [
-            "**URL:** https://bnb-hq.vercel.app/streams",
-            "**Data source:** `order_lines` table (854K rows) — NOT `breaks` (331 rows was incomplete)",
-            "**Real revenue:** $11.17M Fanatics + $4.58M Whatnot = **$15.74M total**",
-            "**Streams:** 2,026 | **Orders:** 854,825 | **New customers:** 5,841",
-            "**Architecture:** Materialized view `stream_summaries` + 4 RPC functions for fast queries (~285ms)",
-            "**Data hierarchy:** Stream = `import_batch_id`, Break = `stream_id`, Order = individual row",
-            "**Bugs fixed:** pagination aggregate bug, JSON serialization, new_customers field",
-            "**Pending (MC tasks):**",
-            "**Protocol added:** `SUBAGENT-MODEL-PROTOCOL.md` — all sub-agents must specify `model=sonnet` explicitly",
-            "**Dross hit rate limit** mid-build (~midnight EST); Wit + MacGyver + Big Brother held context and kept Matthew informed; Wit built a working skeleton against `breaks` while I was down"
-          ],
-          "subsections": [],
-          "rawText": [
-            "- `get_stream_stats_fast` — global stats",
-            "- `get_streams_list_fast` — paginated stream list",
-            "- `get_streams_count_fast` — total count",
-            "- `get_stream_breaks` — breaks within a stream (on expand)",
-            "- MC-ede70e36: product_cost + platform_fee pipeline (Fanatics/Whatnot payout CSVs)",
-            "- MC-bf3d189a: fill rate data integrity check",
-            "- MC-ff88ff4f: platform fees pipeline"
-          ]
-        },
-        {
-          "name": "Streams Page — Updates Post-2 AM (3:06 AM EST)",
-          "items": [],
-          "subsections": [
-            {
-              "name": "Stream Detail Page Added",
-              "items": [
-                "Built `/streams/[batch_id]` — dedicated detail page per stream session",
-                "Clicking a stream card now navigates to full detail page (not dropdown expand)",
-                "API route: `/api/streams/[batch_id]` uses `get_stream_breaks` RPC + `stream_summaries` table",
-                "Fixed TypeScript error: Next.js 15 dynamic params need `await params` (Promise<{...}>)",
-                "Committed: `89cbc2b` + detail page commit on main"
-              ]
-            },
-            {
-              "name": "Vercel Token Path",
-              "items": [
-                "Token moved to: `~/clawd/.credentials-backup/vercel-token.txt` (NOT `.credentials/`)"
-              ]
-            },
-            {
-              "name": "psql Available At",
-              "items": [
-                "`/opt/homebrew/opt/postgresql@14/bin/psql` — use `export PATH=\"/opt/homebrew/opt/postgresql@14/bin:$PATH\"` before running"
-              ]
-            },
-            {
-              "name": "BnB HQ DB — SQL Functions Created",
-              "items": [
-                "`get_stream_stats` / `get_stream_stats_fast` — global revenue stats",
-                "`get_streams_list` / `get_streams_list_fast` — paginated stream list",
-                "`get_streams_count` / `get_streams_count_fast` — total stream count",
-                "`get_stream_breaks(p_batch_id text)` — breaks within a stream",
-                "`stream_summaries` — materialized view, pre-aggregated from order_lines, refresh needed when data changes"
-              ]
-            },
-            {
-              "name": "Bot Fleet Outage (2-3 AM EST)",
-              "items": [
-                "All 4 bots hit rate limits during/after the build",
-                "Wit (Sonnet 4.6) got stuck in 401 auth error loop — needs gateway restart or API key refresh",
-                "MacGyver, Big Brother also rate limited",
-                "Cause: iterative sub-agent steering + multiple deploys burned tokens fast",
-                "Protocol fix: `SUBAGENT-MODEL-PROTOCOL.md` — spawn all build agents on `model=sonnet` explicitly"
-              ]
-            },
-            {
-              "name": "Streams Page Final State",
-              "items": [
-                "List page: https://bnb-hq.vercel.app/streams",
-                "Detail page: https://bnb-hq.vercel.app/streams/[import_batch_id]",
-                "Revenue: $15.74M | Streams: 2,026 | Orders: 854,825",
-                "Stats load: ~285ms (materialized view), breaks load: ~3-5s on demand"
-              ]
-            }
-          ],
-          "rawText": []
-        },
-        {
-          "name": "🎯 8 AM Heartbeat - Major Progress",
-          "items": [],
-          "subsections": [
-            {
-              "name": "✅ QuickBooks Integration (COMPLETED - P1 Task f1046632)",
-              "items": [
-                "eBay credential directory had broken permissions from Feb 17 security hardening",
-                "QuickBooks OAuth tokens were expired (401 errors)",
-                "Restored `~/clawd/.credentials/ebay/` directory permissions (chmod 700)",
-                "Created token refresh script (`scripts/qb-token-refresh.js`)",
-                "Successfully refreshed OAuth tokens",
-                "Verified API connection: 200 OK",
-                "Realm ID: 9130351871779836 (BnB company)",
-                "Credentials: `quickbooks-prod.json` (client_id, client_secret)",
-                "Tokens: `quickbooks-tokens.json` (auto-refreshed hourly)",
-                "Cron: \"QuickBooks Token Refresh\" runs at :45 every hour",
-                "`qb-test.js` — test API connection",
-                "`qb-token-refresh.js` — refresh OAuth tokens",
-                "`qb-pl-automation.js` — P&L automation",
-                "`quickbooks-integration.js` — full integration logic"
-              ]
-            },
-            {
-              "name": "🔧 eBay Credential Fix",
+              "name": "Process Used",
               "items": []
+            },
+            {
+              "name": "Output Delivered",
+              "items": [
+                "**File**: `combined_ai_training.pdf` (655KB)",
+                "**Content Structure**:"
+              ]
+            },
+            {
+              "name": "Key Features Added",
+              "items": [
+                "Professional styling with consistent formatting",
+                "Comparison tables for complex concepts",
+                "Resource boxes with links to additional materials",
+                "Visual organization with color-coded sections",
+                "Page breaks for logical document flow",
+                "Comprehensive resource list from all three original documents"
+              ]
             }
           ],
           "rawText": [
-            "**Fixed:** QuickBooks API connection is now working!",
-            "**What was broken:**",
-            "**What I fixed:**",
-            "**QuickBooks Setup:**",
-            "**Scripts available:**",
-            "**Next:** Build P&L dashboard in BnB HQ",
-            "Also fixed `~/clawd/.credentials/ebay/api-keys.json` permissions, which unblocked the heartbeat monitors. Business intelligence now tracking 14 players, 69 cards in repack tier range."
+            "Combined three separate AI training PDFs into a single comprehensive training guide:",
+            "1. Extracted text content from all three PDFs using `pdftotext`",
+            "2. Analyzed and structured the content to avoid duplication while preserving unique insights from each document",
+            "3. Created comprehensive HTML version with professional styling and clear section divisions",
+            "4. Generated final PDF using `scripts/html-to-pdf.js`",
+            "- Part I: Beyond the Chatbot - Understanding the Technology",
+            "- Part II: Getting Competent Fast - Practical Skills",
+            "- Part III: OpenClaw + The Agent Stack - Production Systems",
+            "- Conclusion with key takeaways",
+            "The combined document provides a complete foundation in AI fluency from basic concepts through advanced agent deployment strategies."
+          ]
+        },
+        {
+          "name": "Gmail Search Tool Creation & Mark Matuska Email (10:43 PM)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Gmail Search Tool Built",
+              "items": [
+                "`scripts/gmail-search.js` — Search Gmail by query, extract basic email details",
+                "`scripts/gmail-get-message.js` — Get full email content by message ID"
+              ]
+            },
+            {
+              "name": "Mark Matuska Contact Information Found",
+              "items": [
+                "**Date:** Feb 19, 2026 at 7:14 PM",
+                "**Subject:** \"Draft 1\"",
+                "**Recipients:** kent@breaknbad.com, matthew@breaknbad.com, sheridan@breaknbad.com",
+                "**Content:** Brief message asking for thoughts on something he's been thinking about, offering to move in a different direction if way off"
+              ]
+            }
+          ],
+          "rawText": [
+            "Created two new scripts for Gmail functionality:",
+            "**Email Address:** `matuskawalleye@hotmail.com`",
+            "**Name:** Mark Matuska",
+            "**Recent Email Details:**",
+            "**Message:** \"Let me know your thoughts....I haven't stopped thinking about it. If this is way off...let me know. I can move it a different direction. Mark\"",
+            "The email appears to be referencing some kind of draft or proposal that Mark sent for review/feedback."
           ]
         }
       ],
-      "tasks_completed": [
-        {
-          "name": "SMS Polling Cron",
-          "status": "done",
-          "category": "engineering"
-        },
-        {
-          "name": "QuickBooks Integration (COMPLETED - P1 Task f1046632)",
-          "status": "done",
-          "category": "engineering"
-        }
-      ],
+      "tasks_completed": [],
       "reports_generated": [],
       "key_actions": [
         {
-          "description": "Heartbeat monitor expects: `/clawd/.credentials/ebay/api-keys.json`",
-          "category": "integration"
+          "description": "`scripts/gmail-search.js` — Search Gmail by query, extract basic email details",
+          "category": "email"
         },
         {
-          "description": "Root cause: Feb 17 security hardening script changed permissions/paths",
-          "category": "integration"
-        },
-        {
-          "description": "Fix: update heartbeat monitor script to point to correct path",
-          "category": "integration"
-        },
-        {
-          "description": "Affected: dashboard-deploy, cron-run-reporter, Claude usage scraper",
-          "category": "automation"
-        },
-        {
-          "description": "All hitting API rate limits when running concurrently",
-          "category": "integration"
-        },
-        {
-          "description": "1-min cron with 30s timeout — too tight",
-          "category": "automation"
-        },
-        {
-          "description": "Fix: either extend timeout or increase cron interval",
-          "category": "automation"
-        },
-        {
-          "description": "Real revenue: $11.17M Fanatics + $4.58M Whatnot = $15.74M total",
-          "category": "general"
-        },
-        {
-          "description": "API route: `/api/streams/[batch_id]` uses `get_stream_breaks` RPC + `stream_summaries` table",
-          "category": "integration"
-        },
-        {
-          "description": "Fixed TypeScript error: Next.js 15 dynamic params need `await params` (Promise<{...}>)",
-          "category": "integration"
-        },
-        {
-          "description": "Wit (Sonnet 4.6) got stuck in 401 auth error loop — needs gateway restart or API key refresh",
-          "category": "integration"
-        },
-        {
-          "description": "QuickBooks OAuth tokens were expired (401 errors)",
-          "category": "integration"
-        },
-        {
-          "description": "Created token refresh script (`scripts/qb-token-refresh.js`)",
-          "category": "integration"
-        },
-        {
-          "description": "Successfully refreshed OAuth tokens",
-          "category": "integration"
-        },
-        {
-          "description": "Verified API connection: 200 OK",
-          "category": "integration"
-        },
-        {
-          "description": "Cron: \"QuickBooks Token Refresh\" runs at :45 every hour",
-          "category": "automation"
-        },
-        {
-          "description": "`qb-test.js` — test API connection",
-          "category": "integration"
-        },
-        {
-          "description": "`qb-token-refresh.js` — refresh OAuth tokens",
-          "category": "integration"
-        },
-        {
-          "description": "`quickbooks-integration.js` — full integration logic",
-          "category": "integration"
+          "description": "`scripts/gmail-get-message.js` — Get full email content by message ID",
+          "category": "email"
         }
       ],
       "interactions": [],
       "todoist_activity": [],
-      "infrastructure": [
-        "Removed `ackReactionScope: \"all\"` from openclaw.json (was auto-reacting to every Telegram message)",
-        "Set to `\"group-mentions\"` — now only reacts in group chats, not DMs"
-      ],
+      "infrastructure": [],
       "stats": {
-        "sections_count": 5,
-        "tasks_completed_count": 2,
+        "sections_count": 2,
+        "tasks_completed_count": 0,
         "reports_count": 0,
-        "key_actions_count": 19,
+        "key_actions_count": 2,
         "todoist_count": 0
       }
     }
