@@ -1319,6 +1319,136 @@
                 'page_location': window.location.href
             });
         }
+
+        // ═══════════════════════════════════════════════════════════
+        // TV MODE - Auto-scroll for stream display
+        // Add ?tv=true to URL to enable
+        // Options: ?tv=true&speed=30&pause=3000
+        // ═══════════════════════════════════════════════════════════
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const tvMode = params.get('tv') === 'true';
+            const scrollSpeed = parseInt(params.get('speed')) || 30; // pixels per second
+            const pauseTime = parseInt(params.get('pause')) || 3000; // ms to pause at top/bottom
+            
+            if (!tvMode) return;
+            
+            // Hide banner in TV mode
+            const banner = document.getElementById('alertsBanner');
+            if (banner) banner.style.display = 'none';
+            
+            // Add TV mode styles
+            const style = document.createElement('style');
+            style.textContent = `
+                body.tv-mode {
+                    overflow: hidden;
+                }
+                body.tv-mode .header {
+                    position: sticky;
+                    top: 0;
+                    z-index: 100;
+                    background: var(--bnb-dark);
+                    padding-bottom: 16px;
+                    margin-bottom: 0;
+                }
+                body.tv-mode .page {
+                    padding-top: 16px;
+                }
+                .tv-indicator {
+                    position: fixed;
+                    bottom: 16px;
+                    right: 16px;
+                    background: rgba(38,222,129,0.15);
+                    border: 1px solid rgba(38,222,129,0.3);
+                    color: var(--green);
+                    padding: 6px 12px;
+                    border-radius: 20px;
+                    font-size: 0.7rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    z-index: 1000;
+                }
+                .tv-indicator .dot {
+                    width: 6px;
+                    height: 6px;
+                    background: var(--green);
+                    border-radius: 50%;
+                    animation: pulse 2s infinite;
+                }
+            `;
+            document.head.appendChild(style);
+            document.body.classList.add('tv-mode');
+            
+            // Add TV indicator
+            const indicator = document.createElement('div');
+            indicator.className = 'tv-indicator';
+            indicator.innerHTML = '<span class="dot"></span> TV Mode';
+            document.body.appendChild(indicator);
+            
+            // Auto-scroll logic
+            let scrollDirection = 1; // 1 = down, -1 = up
+            let isPaused = false;
+            let lastTime = performance.now();
+            
+            function getMaxScroll() {
+                return document.documentElement.scrollHeight - window.innerHeight;
+            }
+            
+            function autoScroll(currentTime) {
+                if (isPaused) {
+                    requestAnimationFrame(autoScroll);
+                    return;
+                }
+                
+                const deltaTime = (currentTime - lastTime) / 1000;
+                lastTime = currentTime;
+                
+                const scrollAmount = scrollSpeed * deltaTime * scrollDirection;
+                window.scrollBy(0, scrollAmount);
+                
+                const currentScroll = window.scrollY;
+                const maxScroll = getMaxScroll();
+                
+                // Hit bottom - pause then reverse
+                if (scrollDirection === 1 && currentScroll >= maxScroll - 5) {
+                    isPaused = true;
+                    setTimeout(() => {
+                        scrollDirection = -1;
+                        isPaused = false;
+                    }, pauseTime);
+                }
+                
+                // Hit top - pause then reverse
+                if (scrollDirection === -1 && currentScroll <= 5) {
+                    isPaused = true;
+                    setTimeout(() => {
+                        scrollDirection = 1;
+                        isPaused = false;
+                    }, pauseTime);
+                }
+                
+                requestAnimationFrame(autoScroll);
+            }
+            
+            // Start after a brief delay to let content load
+            setTimeout(() => {
+                requestAnimationFrame(autoScroll);
+            }, 1000);
+            
+            // Keyboard controls (space to pause)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === ' ' || e.key === 'p') {
+                    isPaused = !isPaused;
+                    indicator.innerHTML = isPaused 
+                        ? '<span class="dot" style="background:var(--bnb-gold);animation:none"></span> Paused'
+                        : '<span class="dot"></span> TV Mode';
+                }
+            });
+        })();
     </script>
 </body>
 </html>
