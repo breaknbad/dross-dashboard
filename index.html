@@ -1321,6 +1321,141 @@
         }
 
         // ═══════════════════════════════════════════════════════════
+        // AUTO-PILOT MODE - Inactivity-based auto-scroll + pack cycling
+        // Activates after 15 seconds of no user interaction
+        // Scrolls through list, clicks into each pack detail page
+        // Any user activity pauses it; resumes after inactivity
+        // ═══════════════════════════════════════════════════════════
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('tv') === 'true') return; // Skip if TV mode is active
+            
+            const INACTIVITY_TIMEOUT = 15000; // 15 seconds before auto-pilot starts
+            const SCROLL_INTERVAL = 100; // ms between scroll steps
+            const SCROLL_SPEED = 2; // pixels per step
+            const PACK_VIEW_TIME = 8000; // 8 seconds viewing each pack detail
+            const PAUSE_AT_PACK = 3000; // 3 seconds pause when highlighting a pack
+            
+            const packs = PACK_DATA.packs || [];
+            if (!packs.length) return;
+            
+            let inactivityTimer = null;
+            let autoPilotActive = false;
+            let scrollInterval = null;
+            let currentPackIndex = 0;
+            let isPaused = false;
+            
+            // Create status indicator
+            const indicator = document.createElement('div');
+            indicator.id = 'autoPilotIndicator';
+            indicator.innerHTML = '🎬 Auto-pilot paused';
+            indicator.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: rgba(0,0,0,0.8);
+                color: #888;
+                padding: 10px 16px;
+                border-radius: 20px;
+                font-size: 0.85rem;
+                z-index: 9999;
+                transition: all 0.3s ease;
+                opacity: 0.6;
+            `;
+            document.body.appendChild(indicator);
+            
+            function updateIndicator(active) {
+                if (active) {
+                    indicator.innerHTML = '🎬 Auto-pilot active';
+                    indicator.style.background = 'rgba(255,69,0,0.9)';
+                    indicator.style.color = '#fff';
+                    indicator.style.opacity = '1';
+                } else {
+                    indicator.innerHTML = '🎬 Auto-pilot paused';
+                    indicator.style.background = 'rgba(0,0,0,0.8)';
+                    indicator.style.color = '#888';
+                    indicator.style.opacity = '0.6';
+                }
+            }
+            
+            function highlightPack(index) {
+                const cards = document.querySelectorAll('.pack-card');
+                cards.forEach((card, i) => {
+                    if (i === index) {
+                        card.style.outline = '3px solid #FF4500';
+                        card.style.outlineOffset = '4px';
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        card.style.outline = 'none';
+                    }
+                });
+            }
+            
+            function clearHighlights() {
+                document.querySelectorAll('.pack-card').forEach(card => {
+                    card.style.outline = 'none';
+                });
+            }
+            
+            async function runAutoPilot() {
+                if (!autoPilotActive || isPaused) return;
+                
+                // Highlight current pack
+                highlightPack(currentPackIndex);
+                
+                // Wait a moment to show the highlight
+                await new Promise(r => setTimeout(r, PAUSE_AT_PACK));
+                if (!autoPilotActive || isPaused) return;
+                
+                // Navigate to pack detail page
+                const pack = packs[currentPackIndex];
+                const packUrl = `pack.html?id=${pack.repackId || pack.productId}&autopilot=true&next=${(currentPackIndex + 1) % packs.length}`;
+                window.location.href = packUrl;
+            }
+            
+            function startAutoPilot() {
+                if (autoPilotActive) return;
+                autoPilotActive = true;
+                isPaused = false;
+                updateIndicator(true);
+                
+                // Check if returning from a pack page
+                const params = new URLSearchParams(window.location.search);
+                const nextIndex = params.get('next');
+                if (nextIndex !== null) {
+                    currentPackIndex = parseInt(nextIndex) || 0;
+                }
+                
+                runAutoPilot();
+            }
+            
+            function stopAutoPilot() {
+                autoPilotActive = false;
+                isPaused = true;
+                updateIndicator(false);
+                clearHighlights();
+                if (scrollInterval) {
+                    clearInterval(scrollInterval);
+                    scrollInterval = null;
+                }
+            }
+            
+            function resetInactivityTimer() {
+                stopAutoPilot();
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(startAutoPilot, INACTIVITY_TIMEOUT);
+            }
+            
+            // User activity listeners
+            ['mousemove', 'mousedown', 'touchstart', 'touchmove', 'keydown', 'scroll', 'wheel'].forEach(event => {
+                document.addEventListener(event, resetInactivityTimer, { passive: true });
+            });
+            
+            // Start the inactivity timer
+            resetInactivityTimer();
+        })();
+
+        // ═══════════════════════════════════════════════════════════
         // TV MODE - Full-screen pack carousel for stream display
         // Add ?tv=true to URL to enable
         // Options: ?tv=true&time=8 (seconds per pack, default 8)

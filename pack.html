@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pack Details | Break'n Bad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --surface: #141414;
+            --surface-hover: #1a1a1a;
+            --text-primary: #fff;
+            --text-secondary: #888;
+            --bnb-accent: #FF4500;
+            --bnb-gold: #ffc107;
+            --grail-purple: #b388ff;
+            --chase-blue: #40c4ff;
+            --hit-green: #26de81;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 40px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            transition: color 0.2s;
+        }
+        
+        .back-btn:hover {
+            color: var(--text-primary);
+        }
+        
+        .pack-header {
+            margin-bottom: 40px;
+        }
+        
+        .pack-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        
+        .pack-price {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+        }
+        
+        .pack-meta {
+            display: flex;
+            gap: 24px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .stat-card h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        
+        .stat-card .value.grail { color: var(--grail-purple); }
+        .stat-card .value.chase { color: var(--chase-blue); }
+        .stat-card .value.hit { color: var(--hit-green); }
+        
+        .stat-card .sub {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+        
+        .tags-section {
+            margin-bottom: 40px;
+        }
+        
+        .tags-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+        
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .tag {
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        .tag.grail { background: rgba(179,136,255,0.15); color: var(--grail-purple); }
+        .tag.chase { background: rgba(64,196,255,0.15); color: var(--chase-blue); }
+        .tag.hot { background: rgba(255,71,87,0.15); color: #ff4757; }
+        .tag.budget { background: rgba(38,222,129,0.15); color: var(--hit-green); }
+        .tag.topGrail { background: rgba(255,193,7,0.15); color: var(--bnb-gold); }
+        
+        .progress-section {
+            margin-bottom: 40px;
+        }
+        
+        .progress-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+        
+        .progress-bar {
+            height: 24px;
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold));
+            border-radius: 12px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-label {
+            margin-top: 12px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        
+        #autopilotIndicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,69,0,0.9);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            z-index: 9999;
+            display: none;
+        }
+        
+        #autopilotIndicator.active {
+            display: block;
+        }
+        
+        .autopilot-progress {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold));
+            transition: width 0.1s linear;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            color: var(--text-secondary);
+        }
+        
+        .not-found {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .not-found h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        
+        .not-found a {
+            color: var(--bnb-accent);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back to Hot Packs</a>
+    
+    <div id="content">
+        <div class="loading">Loading pack data...</div>
+    </div>
+    
+    <div id="autopilotIndicator">🎬 Auto-pilot: Next pack in <span id="countdown">8</span>s</div>
+    <div class="autopilot-progress" id="autopilotProgress"></div>
+    
+    <script>
+        // Fetch pack data from the main data file
+        async function loadPackData() {
+            try {
+                const response = await fetch('ev-data.json');
+                const data = await response.json();
+                return data.packs || [];
+            } catch (e) {
+                console.error('Failed to load pack data:', e);
+                return [];
+            }
+        }
+        
+        function fmtDollar(v) {
+            return '$' + Math.round(v).toLocaleString();
+        }
+        
+        async function init() {
+            const params = new URLSearchParams(window.location.search);
+            const packId = params.get('id');
+            const autopilot = params.get('autopilot') === 'true';
+            const nextIndex = parseInt(params.get('next')) || 0;
+            
+            if (!packId) {
+                document.getElementById('content').innerHTML = `
+                    <div class="not-found">
+                        <h2>No pack specified</h2>
+                        <p><a href="index.html">← Back to Hot Packs</a></p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const packs = await loadPackData();
+            const pack = packs.find(p => p.repackId === packId || p.productId === packId);
+            
+            if (!pack) {
+                document.getElementById('content').innerHTML = `
+                    <div class="not-found">
+                        <h2>Pack not found</h2>
+                        <p>This pack may no longer be available.</p>
+                        <p><a href="index.html">← Back to Hot Packs</a></p>
+                    </div>
+                `;
+                return;
+            }
+            
+            renderPack(pack);
+            
+            // Auto-pilot mode
+            if (autopilot) {
+                startAutopilot(nextIndex, packs.length);
+            }
+        }
+        
+        function renderPack(pack) {
+            const grailCount = pack.grailCount || 0;
+            const chaseCount = pack.chaseCount || 0;
+            const grailPct = parseFloat(pack.grailPct) || 0;
+            const chasePct = parseFloat(pack.chasePct) || 0;
+            const combinedPct = grailPct + chasePct;
+            
+            const grailLow = pack.grailRangeLow || 0;
+            const grailHigh = pack.grailRangeHigh || 0;
+            const chaseLow = pack.chaseRangeLow || 0;
+            const chaseHigh = pack.chaseRangeHigh || 0;
+            
+            const grailRange = grailHigh > 0
+                ? (grailCount === 1 ? fmtDollar((grailLow + grailHigh) / 2) : `${fmtDollar(grailLow)} – ${fmtDollar(grailHigh)}`)
+                : '—';
+            const chaseRange = chaseHigh > 0
+                ? (chaseCount === 1 ? fmtDollar((chaseLow + chaseHigh) / 2) : `${fmtDollar(chaseLow)} – ${fmtDollar(chaseHigh)}`)
+                : '—';
+            
+            const remaining = pack.remaining || 0;
+            const total = pack.totalOriginal || 0;
+            const soldPct = total > 0 ? Math.round(((total - remaining) / total) * 100) : 0;
+            
+            const tags = (pack.tags || []).map(t => 
+                `<span class="tag ${t.type || 'hot'}">${t.icon || ''} ${t.label}</span>`
+            ).join('');
+            
+            document.getElementById('content').innerHTML = `
+                <div class="pack-header">
+                    <h1 class="pack-title">${pack.title}</h1>
+                    <div class="pack-price">$${pack.price || 0}</div>
+                    <div class="pack-meta">
+                        <span>📦 ${remaining} remaining</span>
+                        <span>🎯 ${Math.round(combinedPct)}% hit rate</span>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>💎 Grails</h3>
+                        <div class="value grail">${grailCount}</div>
+                        <div class="sub">${grailRange}</div>
+                        ${grailPct > 0 ? `<div class="sub">${grailPct.toFixed(1)}% chance</div>` : ''}
+                    </div>
+                    <div class="stat-card">
+                        <h3>⚡ Chases</h3>
+                        <div class="value chase">${chaseCount}</div>
+                        <div class="sub">${chaseRange}</div>
+                        ${chasePct > 0 ? `<div class="sub">${chasePct.toFixed(1)}% chance</div>` : ''}
+                    </div>
+                    <div class="stat-card">
+                        <h3>🎯 Combined Hit Rate</h3>
+                        <div class="value hit">${Math.round(combinedPct)}%</div>
+                        <div class="sub">${grailCount + chaseCount} hits live</div>
+                    </div>
+                </div>
+                
+                ${tags ? `
+                <div class="tags-section">
+                    <h3>Tags</h3>
+                    <div class="tags-list">${tags}</div>
+                </div>
+                ` : ''}
+                
+                <div class="progress-section">
+                    <h3>Sold Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${soldPct}%"></div>
+                    </div>
+                    <div class="progress-label">${soldPct}% sold (${total - remaining} of ${total})</div>
+                </div>
+            `;
+        }
+        
+        function startAutopilot(nextIndex, totalPacks) {
+            const PACK_VIEW_TIME = 8000; // 8 seconds
+            const indicator = document.getElementById('autopilotIndicator');
+            const progress = document.getElementById('autopilotProgress');
+            const countdown = document.getElementById('countdown');
+            
+            indicator.classList.add('active');
+            
+            let elapsed = 0;
+            let isPaused = false;
+            
+            function updateProgress() {
+                if (isPaused) return;
+                
+                elapsed += 100;
+                const pct = (elapsed / PACK_VIEW_TIME) * 100;
+                progress.style.width = pct + '%';
+                countdown.textContent = Math.ceil((PACK_VIEW_TIME - elapsed) / 1000);
+                
+                if (elapsed >= PACK_VIEW_TIME) {
+                    // Navigate back to main page with next pack index
+                    window.location.href = `index.html?next=${nextIndex}`;
+                }
+            }
+            
+            const interval = setInterval(updateProgress, 100);
+            
+            // Pause on user activity
+            function pauseAutopilot() {
+                isPaused = true;
+                indicator.innerHTML = '🎬 Auto-pilot paused (activity detected)';
+                indicator.style.background = 'rgba(0,0,0,0.8)';
+                clearInterval(interval);
+                
+                // Remove autopilot params from URL
+                const url = new URL(window.location);
+                url.searchParams.delete('autopilot');
+                url.searchParams.delete('next');
+                window.history.replaceState({}, '', url);
+            }
+            
+            ['mousemove', 'mousedown', 'touchstart', 'keydown'].forEach(event => {
+                document.addEventListener(event, pauseAutopilot, { once: true, passive: true });
+            });
+        }
+        
+        init();
+    </script>
+</body>
+</html>
