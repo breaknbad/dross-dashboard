@@ -313,25 +313,22 @@
         /* Autopilot */
         /* Promo Banner */
         .promo-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10,10,20,0.95);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--chase-glow);
-            padding: 20px 40px;
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            border-radius: 12px;
+            padding: 16px 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            z-index: 9990;
-            animation: bannerPulse 3s ease-in-out infinite;
+            margin-bottom: 32px;
+            animation: bannerGlow 3s ease-in-out infinite;
         }
         
-        @keyframes bannerPulse {
-            0%, 100% { box-shadow: 0 -5px 30px rgba(0,212,255,0.1); }
-            50% { box-shadow: 0 -5px 40px rgba(0,212,255,0.25); }
+        @keyframes bannerGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.15); }
+            50% { box-shadow: 0 0 30px rgba(0,212,255,0.3); }
         }
         
         .promo-banner .promo-icon {
@@ -366,10 +363,9 @@
             -webkit-text-fill-color: transparent;
         }
         
-        /* Adjust autopilot position for banner */
         #autopilotIndicator {
             position: fixed;
-            bottom: 90px;
+            bottom: 24px;
             right: 24px;
             background: rgba(255,69,0,0.95);
             color: #fff;
@@ -425,15 +421,16 @@
 <body>
     <div class="container">
         <a href="index.html" class="back-btn">← Back to Hot Packs</a>
+        
+        <div class="promo-banner">
+            <span class="promo-icon">📱</span>
+            <span class="promo-text">Text <span class="promo-number">RIPS</span> to <span class="promo-number">574-275-0277</span> for a chance to win</span>
+            <span class="promo-prize">$1,000 credit!</span>
+        </div>
+        
         <div id="content">
             <div class="loading">Loading pack data...</div>
         </div>
-    </div>
-    
-    <div class="promo-banner">
-        <span class="promo-icon">📱</span>
-        <span class="promo-text">Text <span class="promo-number">RIPS</span> to <span class="promo-number">574-275-0277</span> for a chance to win</span>
-        <span class="promo-prize">$1,000 credit!</span>
     </div>
     
     <div id="autopilotIndicator">🎬 Next pack in <span id="countdown">8</span>s</div>
