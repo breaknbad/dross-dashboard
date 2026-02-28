@@ -325,10 +325,11 @@
         async function init() {
             const params = new URLSearchParams(window.location.search);
             const packId = params.get('id');
+            const packTitle = params.get('title');
             const autopilot = params.get('autopilot') === 'true';
             const nextIndex = parseInt(params.get('next')) || 0;
             
-            if (!packId) {
+            if (!packId && !packTitle) {
                 document.getElementById('content').innerHTML = `
                     <div class="not-found">
                         <h2>No pack specified</h2>
@@ -339,18 +340,26 @@
             }
             
             const packs = await loadPackData();
-            // Try multiple ways to match - IDs might differ between data sources
-            let pack = packs.find(p => p.repackId === packId || p.productId === packId);
+            let pack = null;
             
-            // If not found by ID, try by index (for auto-pilot mode)
-            if (!pack && !isNaN(parseInt(packId))) {
-                pack = packs[parseInt(packId)];
+            // Primary: match by title (most reliable across data sources)
+            if (packTitle) {
+                const searchTitle = decodeURIComponent(packTitle).toLowerCase();
+                pack = packs.find(p => p.title && p.title.toLowerCase() === searchTitle);
+                // Fuzzy match if exact doesn't work
+                if (!pack) {
+                    pack = packs.find(p => p.title && p.title.toLowerCase().includes(searchTitle.split(':')[0]));
+                }
             }
             
-            // Still not found? Try matching by title similarity
-            if (!pack) {
-                const searchTerm = decodeURIComponent(packId).toLowerCase();
-                pack = packs.find(p => p.title && p.title.toLowerCase().includes(searchTerm));
+            // Fallback: try by ID
+            if (!pack && packId) {
+                pack = packs.find(p => p.repackId === packId || p.productId === packId);
+            }
+            
+            // Fallback: try by index
+            if (!pack && packId && !isNaN(parseInt(packId))) {
+                pack = packs[parseInt(packId)];
             }
             
             if (!pack) {
