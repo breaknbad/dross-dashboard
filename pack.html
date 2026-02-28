@@ -65,23 +65,29 @@
         
         /* Hero Section */
         .hero {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 24px;
-            align-items: center;
-            margin-bottom: 40px;
-            padding: 20px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+            padding: 16px 20px;
             background: var(--surface-glass);
-            border-radius: 20px;
+            border-radius: 16px;
             border: 1px solid var(--surface-border);
             backdrop-filter: blur(20px);
         }
         
+        .hero-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
         /* Hero Promo Block */
         .hero-promo {
-            margin-top: 16px;
-            padding: 12px 20px;
-            border-radius: 12px;
+            flex: 1;
+            padding: 8px 16px;
+            border-radius: 10px;
             background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(179,136,255,0.1));
             position: relative;
             overflow: hidden;
@@ -160,42 +166,64 @@
             100% { background-position: 200% 50%; }
         }
         
-        .hero-content h1 {
-            font-size: 1.6rem;
+        .hero-title {
+            font-size: 1.3rem;
             font-weight: 800;
-            margin-bottom: 4px;
             line-height: 1.2;
             letter-spacing: -0.5px;
         }
         
         .hero-price {
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             font-weight: 900;
             background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 16px;
             letter-spacing: -1px;
+        }
+        
+        .hero-remaining {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--surface-glass);
+            border: 1px solid var(--chase-glow);
+            border-radius: 8px;
+            padding: 6px 12px;
+            margin-left: auto;
+        }
+        
+        .remaining-value {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--bnb-accent);
+        }
+        
+        .remaining-label {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .hero-stats {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
         }
         
         .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             background: var(--surface-glass);
             border: 1px solid var(--chase-glow);
-            border-radius: 12px;
-            padding: 10px 16px;
-            text-align: center;
-            backdrop-filter: blur(12px);
-            min-width: 80px;
+            border-radius: 8px;
+            padding: 6px 12px;
         }
         
         .hero-stat-value {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             font-weight: 800;
         }
         
@@ -204,36 +232,10 @@
         .hero-stat-value.hit { color: var(--money-green); }
         
         .hero-stat-label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
-        }
-        
-        .hero-remaining {
-            background: var(--surface-glass);
-            border: 1px solid var(--chase-glow);
-            border-radius: 14px;
-            padding: 16px 20px;
-            text-align: center;
-            min-width: 100px;
-            backdrop-filter: blur(12px);
-        }
-        
-        .remaining-value {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--bnb-accent);
-            letter-spacing: -1px;
-        }
-        
-        .remaining-label {
-            font-size: 0.65rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
+            letter-spacing: 0.5px;
         }
         
         /* Cards Section */
@@ -450,15 +452,14 @@
         .not-found a { color: var(--bnb-accent); }
         
         @media (max-width: 900px) {
-            body { padding: 24px; }
-            .hero { grid-template-columns: 1fr; padding: 32px; gap: 32px; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-price { font-size: 3.5rem; }
-            .hero-remaining { min-width: unset; }
-            .hero-promo { margin-top: 24px; padding: 16px 20px; }
-            .hero-promo-content { gap: 8px; }
-            .hero-promo .promo-text { font-size: 0.95rem; }
-            .hero-promo .promo-prize { font-size: 1.2rem; }
+            body { padding: 16px; }
+            .hero { padding: 12px 16px; gap: 10px; }
+            .hero-row { gap: 10px; }
+            .hero-title { font-size: 1.1rem; }
+            .hero-price { font-size: 1.5rem; }
+            .hero-promo { padding: 6px 12px; }
+            .hero-promo .promo-text { font-size: 0.75rem; }
+            .hero-promo .promo-prize { font-size: 0.85rem; }
             .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .card-item { padding: 16px; }
             .card-image-wrap { max-width: 140px; }
@@ -467,6 +468,9 @@
         }
         
         @media (max-width: 500px) {
+            .hero-row { flex-wrap: wrap; }
+            .hero-stats { width: 100%; }
+            .hero-promo { width: 100%; }
             .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .card-item { padding: 12px; }
             .card-image-wrap { max-width: 120px; }
@@ -598,21 +602,27 @@
             
             document.getElementById('content').innerHTML = `
                 <div class="hero">
-                    <div class="hero-content">
-                        <h1>${pack.title}</h1>
-                        <div class="hero-price">$${pack.price || 0}</div>
+                    <div class="hero-row">
+                        <span class="hero-title">${pack.title}</span>
+                        <span class="hero-price">$${pack.price || 0}</span>
+                        <div class="hero-remaining">
+                            <span class="remaining-value">${remaining}</span>
+                            <span class="remaining-label">left</span>
+                        </div>
+                    </div>
+                    <div class="hero-row">
                         <div class="hero-stats">
                             <div class="hero-stat">
-                                <div class="hero-stat-value grail">${grails.length}</div>
-                                <div class="hero-stat-label">💎 Grails</div>
+                                <span class="hero-stat-value grail">${grails.length}</span>
+                                <span class="hero-stat-label">💎 Grails</span>
                             </div>
                             <div class="hero-stat">
-                                <div class="hero-stat-value chase">${chases.length}</div>
-                                <div class="hero-stat-label">⚡ Chases</div>
+                                <span class="hero-stat-value chase">${chases.length}</span>
+                                <span class="hero-stat-label">⚡ Chases</span>
                             </div>
                             <div class="hero-stat">
-                                <div class="hero-stat-value hit">${(grailPct + chasePct).toFixed(0)}%</div>
-                                <div class="hero-stat-label">🎯 Hit Rate</div>
+                                <span class="hero-stat-value hit">${(grailPct + chasePct).toFixed(0)}%</span>
+                                <span class="hero-stat-label">🎯 Hit</span>
                             </div>
                         </div>
                         <div class="hero-promo">
@@ -622,10 +632,6 @@
                                 <span class="promo-prize">$1,000 credit giveaway!</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="hero-remaining">
-                        <div class="remaining-value">${remaining}</div>
-                        <div class="remaining-label">Cards Left</div>
                     </div>
                 </div>
                 
