@@ -311,9 +311,65 @@
         }
         
         /* Autopilot */
+        /* Promo Banner */
+        .promo-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10,10,20,0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--chase-glow);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            z-index: 9990;
+            animation: bannerPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes bannerPulse {
+            0%, 100% { box-shadow: 0 -5px 30px rgba(0,212,255,0.1); }
+            50% { box-shadow: 0 -5px 40px rgba(0,212,255,0.25); }
+        }
+        
+        .promo-banner .promo-icon {
+            font-size: 1.5rem;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        .promo-banner .promo-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .promo-banner .promo-number {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--chase-cyan);
+            letter-spacing: 1px;
+        }
+        
+        .promo-banner .promo-prize {
+            font-weight: 900;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, var(--chase-cyan), var(--money-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Adjust autopilot position for banner */
         #autopilotIndicator {
             position: fixed;
-            bottom: 24px;
+            bottom: 90px;
             right: 24px;
             background: rgba(255,69,0,0.95);
             color: #fff;
@@ -372,6 +428,12 @@
         <div id="content">
             <div class="loading">Loading pack data...</div>
         </div>
+    </div>
+    
+    <div class="promo-banner">
+        <span class="promo-icon">📱</span>
+        <span class="promo-text">Text <span class="promo-number">RIPS</span> to <span class="promo-number">574-275-0277</span> for a chance to win</span>
+        <span class="promo-prize">$1,000 credit!</span>
     </div>
     
     <div id="autopilotIndicator">🎬 Next pack in <span id="countdown">8</span>s</div>
