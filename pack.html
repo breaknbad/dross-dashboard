@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pack Details | Break'n Bad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #0d1117 50%, #0a0a0a 100%);
+            --surface: rgba(255,255,255,0.02);
+            --surface-glass: rgba(255,255,255,0.04);
+            --surface-border: rgba(255,255,255,0.06);
+            --text-primary: #fff;
+            --text-secondary: rgba(255,255,255,0.5);
+            --bnb-accent: #FF4500;
+            --bnb-gold: #ffc107;
+            --grail-purple: #b388ff;
+            --grail-glow: rgba(179,136,255,0.25);
+            --chase-cyan: #00d4ff;
+            --chase-glow: rgba(0,212,255,0.2);
+            --money-green: #26de81;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            background-image: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 40px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: var(--surface-glass);
+            border: 1px solid var(--surface-border);
+            backdrop-filter: blur(10px);
+            transition: all 0.2s;
+            margin-bottom: 40px;
+        }
+        
+        .back-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.12);
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+            padding: 16px 20px;
+            background: var(--surface-glass);
+            border-radius: 16px;
+            border: 1px solid var(--surface-border);
+            backdrop-filter: blur(20px);
+        }
+        
+        .hero-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        /* Hero Promo Block */
+        .hero-promo {
+            flex: 1;
+            padding: 8px 16px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(179,136,255,0.1));
+            position: relative;
+            overflow: hidden;
+            animation: promoGlow 2s ease-in-out infinite;
+        }
+        
+        .hero-promo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(90deg, var(--chase-cyan), var(--grail-purple), var(--chase-cyan));
+            background-size: 200% 100%;
+            animation: borderPulse 3s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+        
+        @keyframes borderPulse {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        @keyframes promoGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.2), 0 0 40px rgba(179,136,255,0.1); }
+            50% { box-shadow: 0 0 30px rgba(0,212,255,0.4), 0 0 60px rgba(179,136,255,0.2); }
+        }
+        
+        .hero-promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .promo-sparkle {
+            font-size: 1rem;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(10deg); opacity: 0.8; }
+        }
+        
+        .hero-promo .promo-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .hero-promo .promo-number {
+            font-family: 'SF Mono', 'Monaco', monospace;
+            font-weight: 800;
+            color: var(--chase-cyan);
+        }
+        
+        .hero-promo .promo-prize {
+            font-weight: 900;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #00d4ff, #26de81, #00d4ff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: prizeShine 2s linear infinite;
+        }
+        
+        @keyframes prizeShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .hero-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+        
+        .hero-remaining {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--surface-glass);
+            border: 1px solid var(--chase-glow);
+            border-radius: 10px;
+            padding: 12px 20px;
+            margin-left: auto;
+        }
+        
+        .remaining-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--bnb-accent);
+        }
+        
+        .remaining-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 12px;
+            flex: 1;
+        }
+        
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--surface-glass);
+            border: 1px solid var(--chase-glow);
+            border-radius: 10px;
+            padding: 12px 20px;
+            flex: 1;
+        }
+        
+        .hero-stat-value {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+        
+        .hero-stat-value.grail { color: var(--grail-purple); }
+        .hero-stat-value.chase { color: var(--chase-cyan); }
+        .hero-stat-value.hit { color: var(--money-green); }
+        
+        .hero-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Cards Section */
+        .cards-section {
+            margin-bottom: 70px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--surface-border);
+        }
+        
+        .section-header h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .section-header .count {
+            background: var(--surface-glass);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--surface-border);
+        }
+        
+        .cards-section.grails .section-header h2 { color: var(--grail-purple); }
+        .cards-section.chases .section-header h2 { color: var(--chase-cyan); }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        
+        .card-item {
+            background: var(--surface-glass);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid var(--chase-glow);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: cardIn 0.5s ease backwards;
+        }
+        
+        .card-item:hover {
+            transform: scale(1.03) translateY(-6px);
+            border-color: var(--chase-cyan);
+            box-shadow: 0 20px 60px rgba(0,212,255,0.2), 0 0 40px rgba(0,212,255,0.15);
+        }
+        
+        .card-item.grail {
+            border-color: var(--grail-glow);
+        }
+        
+        .card-item.grail:hover {
+            border-color: var(--grail-purple);
+            box-shadow: 0 20px 60px rgba(179,136,255,0.2), 0 0 40px rgba(179,136,255,0.15);
+        }
+        
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .card-item:nth-child(1) { animation-delay: 0.05s; }
+        .card-item:nth-child(2) { animation-delay: 0.1s; }
+        .card-item:nth-child(3) { animation-delay: 0.15s; }
+        .card-item:nth-child(4) { animation-delay: 0.2s; }
+        .card-item:nth-child(5) { animation-delay: 0.25s; }
+        .card-item:nth-child(6) { animation-delay: 0.3s; }
+        .card-item:nth-child(7) { animation-delay: 0.35s; }
+        .card-item:nth-child(8) { animation-delay: 0.4s; }
+        
+        .card-tier {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .card-tier.grail { 
+            color: var(--grail-purple); 
+            background: rgba(179,136,255,0.15);
+            border: 1px solid rgba(179,136,255,0.3);
+        }
+        .card-tier.chase { 
+            color: var(--chase-cyan); 
+            background: rgba(0,212,255,0.15);
+            border: 1px solid rgba(0,212,255,0.3);
+        }
+        
+        .card-image-wrap {
+            width: 100%;
+            max-width: 180px;
+            aspect-ratio: 5/7;
+            border-radius: 12px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0d0d15 100%);
+            position: relative;
+            border: 1px solid var(--surface-border);
+            margin-bottom: 16px;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .card-image-wrap::after {
+            content: '🃏';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+        .card-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .card-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 12px;
+            min-height: 2.4em;
+        }
+        
+        .card-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--money-green);
+            letter-spacing: -1px;
+        }
+        
+        .no-cards {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            background: var(--surface-glass);
+            border-radius: 20px;
+            border: 1px solid var(--surface-border);
+        }
+        
+        /* Autopilot */
+        #autopilotIndicator {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(255,69,0,0.95);
+            color: #fff;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            z-index: 9999;
+            display: none;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(255,69,0,0.3);
+        }
+        
+        #autopilotIndicator.active { display: flex; align-items: center; gap: 10px; }
+        
+        .autopilot-progress {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold));
+            transition: width 0.1s linear;
+            z-index: 9998;
+        }
+        
+        .loading, .not-found {
+            text-align: center;
+            padding: 120px 20px;
+        }
+        
+        .loading { color: var(--text-secondary); font-size: 1.2rem; }
+        
+        .not-found h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .not-found p { color: var(--text-secondary); margin-bottom: 12px; }
+        .not-found a { color: var(--bnb-accent); }
+        
+        @media (max-width: 900px) {
+            body { padding: 16px; }
+            .hero { padding: 12px 16px; gap: 10px; }
+            .hero-row { gap: 10px; }
+            .hero-title { font-size: 1.1rem; }
+            .hero-price { font-size: 1.5rem; }
+            .hero-promo { padding: 6px 12px; }
+            .hero-promo .promo-text { font-size: 0.75rem; }
+            .hero-promo .promo-prize { font-size: 0.85rem; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .card-item { padding: 16px; }
+            .card-image-wrap { max-width: 140px; }
+            .card-title { font-size: 0.75rem; }
+            .card-value { font-size: 1.4rem; }
+        }
+        
+        @media (max-width: 500px) {
+            .hero-row { flex-wrap: wrap; }
+            .hero-stats { width: 100%; }
+            .hero-promo { width: 100%; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .card-item { padding: 12px; }
+            .card-image-wrap { max-width: 120px; }
+            .card-value { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Hot Packs</a>
+        
+        <div id="content">
+            <div class="loading">Loading pack data...</div>
+        </div>
+    </div>
+    
+    <div id="autopilotIndicator">🎬 Next pack in <span id="countdown">8</span>s</div>
+    <div class="autopilot-progress" id="autopilotProgress"></div>
+    
+    <script>
+        async function loadPackData() {
+            try {
+                const response = await fetch('cards-data.json');
+                const data = await response.json();
+                return data.packs || [];
+            } catch (e) {
+                console.error('Failed to load pack data:', e);
+                return [];
+            }
+        }
+        
+        function fmtDollar(v) {
+            if (typeof v !== 'number') return '—';
+            const dollars = v > 1000 ? v / 100 : v;
+            return '$' + Math.round(dollars).toLocaleString();
+        }
+        
+        async function init() {
+            const params = new URLSearchParams(window.location.search);
+            const packTitle = params.get('title');
+            const packId = params.get('id');
+            const autopilot = params.get('autopilot') === 'true';
+            const nextIndex = parseInt(params.get('next')) || 0;
+            
+            if (!packId && !packTitle) {
+                document.getElementById('content').innerHTML = `
+                    <div class="not-found">
+                        <h2>No pack specified</h2>
+                        <p><a href="index.html">← Back to Hot Packs</a></p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const packs = await loadPackData();
+            let pack = null;
+            
+            if (packTitle) {
+                const searchTitle = decodeURIComponent(packTitle).toLowerCase().trim();
+                const matches = packs.filter(p => 
+                    p.title && p.title.toLowerCase().trim() === searchTitle
+                );
+                if (matches.length > 0) {
+                    pack = matches.reduce((best, current) => {
+                        const bestCards = (best.cards || []).length;
+                        const currentCards = (current.cards || []).length;
+                        return currentCards > bestCards ? current : best;
+                    });
+                }
+                if (!pack) {
+                    const sportMatch = searchTitle.split(':')[0];
+                    pack = packs.find(p => p.title && p.title.toLowerCase().includes(sportMatch));
+                }
+            }
+            
+            if (!pack && packId) {
+                pack = packs.find(p => p.repackId === packId || p.productId === packId);
+                if (!pack && !isNaN(parseInt(packId))) {
+                    pack = packs[parseInt(packId)];
+                }
+            }
+            
+            if (!pack) {
+                document.getElementById('content').innerHTML = `
+                    <div class="not-found">
+                        <h2>Pack not found</h2>
+                        <p>Looking for: ${packTitle || packId}</p>
+                        <p><a href="index.html">← Back to Hot Packs</a></p>
+                    </div>
+                `;
+                return;
+            }
+            
+            renderPack(pack);
+            
+            if (autopilot) {
+                startAutopilot(nextIndex, packs.length);
+            }
+        }
+        
+        function renderPack(pack) {
+            const cards = pack.cards || [];
+            const grails = cards.filter(c => c.tier === 'GRAIL');
+            const chases = cards.filter(c => c.tier === 'CHASE');
+            
+            const remaining = pack.totalRemaining || 0;
+            const odds = pack.odds || {};
+            const grailPct = odds.grail || 0;
+            const chasePct = odds.chase || 0;
+            
+            function renderCards(cardList, tierClass) {
+                if (!cardList.length) {
+                    return '<div class="no-cards">No cards in this tier remaining</div>';
+                }
+                return cardList.map(card => `
+                    <div class="card-item ${tierClass}">
+                        <div class="card-tier ${tierClass}">${card.tier}</div>
+                        <div class="card-image-wrap">
+                            <img src="${card.image || ''}" alt="" class="card-image" 
+                                 onerror="this.style.opacity='0'">
+                        </div>
+                        <div class="card-info">
+                            <div class="card-title">${card.title || 'Unknown Card'}</div>
+                            <div class="card-value">${card.valueDisplay || fmtDollar(card.value)}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            document.getElementById('content').innerHTML = `
+                <div class="hero">
+                    <div class="hero-row">
+                        <span class="hero-title">${pack.title}</span>
+                        <span class="hero-price">$${pack.price || 0}</span>
+                        <div class="hero-remaining">
+                            <span class="remaining-value">${remaining}</span>
+                            <span class="remaining-label">left</span>
+                        </div>
+                    </div>
+                    <div class="hero-row">
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <span class="hero-stat-value grail">${grails.length}</span>
+                                <span class="hero-stat-label">💎 Grails</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-value chase">${chases.length}</span>
+                                <span class="hero-stat-label">⚡ Chases</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-value hit">${(grailPct + chasePct).toFixed(0)}%</span>
+                                <span class="hero-stat-label">🎯 Hit</span>
+                            </div>
+                        </div>
+                        <div class="hero-promo">
+                            <div class="hero-promo-content">
+                                <span class="promo-sparkle">📱</span>
+                                <span class="promo-text">Text <span class="promo-number">RIPS</span> to <span class="promo-number">574-275-0277</span> to enter our</span>
+                                <span class="promo-prize">$1,000 credit giveaway!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cards-section grails">
+                    <div class="section-header">
+                        <h2>💎 Grails</h2>
+                        <span class="count">${grails.length} remaining · ${grailPct.toFixed(1)}% chance</span>
+                    </div>
+                    <div class="cards-grid">${renderCards(grails, 'grail')}</div>
+                </div>
+                
+                <div class="cards-section chases">
+                    <div class="section-header">
+                        <h2>⚡ Chases</h2>
+                        <span class="count">${chases.length} remaining · ${chasePct.toFixed(1)}% chance</span>
+                    </div>
+                    <div class="cards-grid">${renderCards(chases, 'chase')}</div>
+                </div>
+            `;
+            
+            document.title = `${pack.title} | Break'n Bad`;
+        }
+        
+        function startAutopilot(nextIndex, totalPacks) {
+            const PACK_VIEW_TIME = 8000;
+            const indicator = document.getElementById('autopilotIndicator');
+            const progress = document.getElementById('autopilotProgress');
+            const countdown = document.getElementById('countdown');
+            
+            indicator.classList.add('active');
+            
+            let elapsed = 0;
+            let isPaused = false;
+            
+            const interval = setInterval(() => {
+                if (isPaused) return;
+                
+                elapsed += 100;
+                const pct = (elapsed / PACK_VIEW_TIME) * 100;
+                progress.style.width = pct + '%';
+                countdown.textContent = Math.ceil((PACK_VIEW_TIME - elapsed) / 1000);
+                
+                if (elapsed >= PACK_VIEW_TIME) {
+                    clearInterval(interval);
+                    window.location.href = `index.html?next=${nextIndex}`;
+                }
+            }, 100);
+            
+            function pauseAutopilot() {
+                isPaused = true;
+                indicator.innerHTML = '🎬 Paused';
+                indicator.style.background = 'rgba(0,0,0,0.8)';
+                clearInterval(interval);
+                
+                const url = new URL(window.location);
+                url.searchParams.delete('autopilot');
+                url.searchParams.delete('next');
+                window.history.replaceState({}, '', url);
+            }
+            
+            ['mousemove', 'mousedown', 'touchstart', 'keydown'].forEach(event => {
+                document.addEventListener(event, pauseAutopilot, { once: true, passive: true });
+            });
+        }
+        
+        init();
+    </script>
+</body>
+</html>

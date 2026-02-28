@@ -156,6 +156,53 @@
             50% { opacity: 0.5; transform: scale(0.85); }
         }
 
+        /* ─── Promo Banner ─── */
+        .promo-banner {
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            border-radius: 12px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            animation: bannerGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes bannerGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.15); }
+            50% { box-shadow: 0 0 30px rgba(0,212,255,0.3); }
+        }
+
+        .promo-banner .promo-icon {
+            font-size: 1.3rem;
+        }
+
+        .promo-banner .promo-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .promo-banner .promo-number {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #00d4ff;
+            letter-spacing: 0.5px;
+        }
+
+        .promo-banner .promo-prize {
+            font-weight: 800;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #00d4ff, #26de81);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         /* ─── Pack Cards ─── */
         .pack-list {
             display: flex;
@@ -579,56 +626,135 @@
         .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--text); }
 
         /* ─── IR Alerts Banner ─── */
-        /* Promo Banner */
-        .promo-banner {
-            background: rgba(26, 26, 46, 0.9);
+        .alerts-banner {
+            background: linear-gradient(135deg, var(--bnb-card), rgba(255,69,0,0.08));
+            border: 2px solid var(--bnb-border-hover);
+            border-radius: 16px;
+            padding: 20px 28px;
+            margin-bottom: 32px;
+            position: relative;
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 212, 255, 0.4);
-            border-radius: 12px;
-            padding: 16px 28px;
+            -webkit-backdrop-filter: blur(12px);
+            animation: bannerSlide 0.8s ease;
+            box-shadow: 0 8px 32px rgba(255,69,0,0.1);
+        }
+
+        @keyframes bannerSlide {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .banner-main {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .banner-text {
+            white-space: nowrap;
+        }
+        
+        .banner-text h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .banner-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .banner-actions {
+            flex-shrink: 0;
+        }
+
+        .banner-icon {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 32px;
-            animation: bannerGlow 3s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
-        @keyframes bannerGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.15); }
-            50% { box-shadow: 0 0 30px rgba(0,212,255,0.3); }
+        .quick-signup {
+            text-align: center;
         }
 
-        .promo-banner .promo-icon {
-            font-size: 1.5rem;
-            animation: iconBounce 2s ease-in-out infinite;
-        }
-
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-        }
-
-        .promo-banner .promo-text {
+        .keyword-text {
             font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
+            font-weight: 700;
+            line-height: 1.2;
         }
 
-        .promo-banner .promo-number {
-            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
-            font-weight: 800;
+        .keyword-text strong {
+            font-family: monospace;
             font-size: 1.2rem;
-            color: #00d4ff;
-            letter-spacing: 1px;
         }
 
-        .promo-banner .promo-prize {
-            font-weight: 900;
-            font-size: 1.3rem;
-            background: linear-gradient(135deg, #00d4ff, #26de81);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .phone-text {
+            font-size: 0.95rem;
+        }
+
+        .quick-signup-link {
+            text-decoration: none;
+            display: block;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .quick-signup-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,107,53,0.3);
+        }
+
+        .quick-signup-link .keyword-text,
+        .quick-signup-link .phone-text {
+            color: white;
+        }
+
+        .quick-signup-link .keyword-text strong {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .banner-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: var(--text-muted);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .banner-close:hover {
+            background: rgba(255,69,0,0.2);
             color: var(--bnb-accent);
         }
 
@@ -716,11 +842,28 @@
             </p>
         </div>
 
-        <!-- Promo Banner -->
         <div class="promo-banner">
             <span class="promo-icon">📱</span>
-            <span class="promo-text">Text <span class="promo-number">RIPS</span> to <span class="promo-number">574-275-0277</span> for a chance to win</span>
-            <span class="promo-prize">$1,000 credit!</span>
+            <span class="promo-text">Text <span class="promo-number">RIPS</span> to <span class="promo-number">574-275-0277</span> to enter our</span>
+            <span class="promo-prize">$1,000 credit giveaway!</span>
+        </div>
+
+        <!-- IR Alerts Signup Banner -->
+        <div class="alerts-banner" id="alertsBanner">
+            <div class="banner-content">
+                <div class="banner-main">
+                    <div class="banner-icon">🔥</div>
+                    <div class="banner-text">
+                        <h3>Never Miss a Grail</h3>
+                        <p>Get alerts when hot packs drop</p>
+                    </div>
+                </div>
+                <div class="banner-actions">
+                    <a href="sms:+15742750277&body=RIPS" class="quick-signup-link">
+                        <span class="keyword-text">Text <strong>RIPS</strong> to (574) 275-0277</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="pack-list" id="packList"></div>
@@ -738,309 +881,7 @@
     </div>
 
     <script>
-        const PACK_DATA = {
-  "timestamp": "2026-02-27T18:03:21.815Z",
-  "packs": [
-    {
-      "title": "Basketball: Ultra Pack $500",
-      "repackId": "65c882c7-8bd9-46c9-a085-1a2d05a6aa5b",
-      "productId": "5e4a5805-f4ae-4c52-8700-f88e9d515162",
-      "price": 500,
-      "remaining": 88,
-      "totalOriginal": 776,
-      "grailCount": 2,
-      "chaseCount": 13,
-      "grailRangeLow": 1011,
-      "grailRangeHigh": 1084,
-      "chaseRangeLow": 650,
-      "chaseRangeHigh": 800,
-      "grailPct": 2.27,
-      "chasePct": 14.77,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
-        },
-        {
-          "type": "topGrail",
-          "icon": "👑",
-          "label": "Top Grail: $1,088.00",
-          "weight": 90
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Baseball: Ultra Pack $500",
-      "repackId": "dd5f577b-2f82-4826-8fea-c0d774b28853",
-      "productId": "9565c788-b485-4f43-bcb7-d278c495a7e3",
-      "price": 500,
-      "remaining": 43,
-      "totalOriginal": 1254,
-      "grailCount": 1,
-      "chaseCount": 7,
-      "grailRangeLow": 1050,
-      "grailRangeHigh": 1155,
-      "chaseRangeLow": 660,
-      "chaseRangeHigh": 1000,
-      "grailPct": 2.33,
-      "chasePct": 16.28,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 1 Grail Left!",
-          "weight": 95
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Football: $75",
-      "repackId": "38426242-455c-4957-9f66-78280eabe50f",
-      "productId": "80668e47-c6ab-48a8-9133-b9fcb09d5866",
-      "price": 75,
-      "remaining": 194,
-      "totalOriginal": 9696,
-      "grailCount": 4,
-      "chaseCount": 25,
-      "grailRangeLow": 180,
-      "grailRangeHigh": 248,
-      "chaseRangeLow": 85,
-      "chaseRangeHigh": 100.1,
-      "grailPct": 2.06,
-      "chasePct": 12.89,
-      "tags": [
-        {
-          "type": "budget",
-          "icon": "💰",
-          "label": "Budget Pick",
-          "weight": 70
-        },
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "4 Grails Live",
-          "weight": 30
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Football: Infinity Pack $1,000",
-      "repackId": "775dfe0e-c7b7-4bae-8fae-949258a69c22",
-      "productId": "bc5aef09-1a2c-4819-8784-4d52de745fa3",
-      "price": 1000,
-      "remaining": 40,
-      "totalOriginal": 437,
-      "grailCount": 1,
-      "chaseCount": 9,
-      "grailRangeLow": 2000,
-      "grailRangeHigh": 2387,
-      "chaseRangeLow": 1251,
-      "chaseRangeHigh": 1600,
-      "grailPct": 2.5,
-      "chasePct": 22.5,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 1 Grail Left!",
-          "weight": 95
-        },
-        {
-          "type": "topGrail",
-          "icon": "👑",
-          "label": "Top Grail: $2,131.00",
-          "weight": 90
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Baseball: $75",
-      "repackId": "c5bb7288-bf56-48f6-96ee-a5b512cee2ed",
-      "productId": "dbfe37c3-0fc5-484a-829a-c783f816f0a3",
-      "price": 75,
-      "remaining": 76,
-      "totalOriginal": 15180,
-      "grailCount": 1,
-      "chaseCount": 8,
-      "grailRangeLow": 183.99,
-      "grailRangeHigh": 235,
-      "chaseRangeLow": 85,
-      "chaseRangeHigh": 110,
-      "grailPct": 1.32,
-      "chasePct": 10.53,
-      "tags": [
-        {
-          "type": "budget",
-          "icon": "💰",
-          "label": "Budget Pick",
-          "weight": 70
-        },
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 1 Grail Left!",
-          "weight": 95
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Basketball: Infinity Pack $1,000",
-      "repackId": "bd8407c5-e834-4837-b8f1-fc489c4ce383",
-      "productId": "e47a164a-0c3a-4ca9-a14a-d460434d3719",
-      "price": 1000,
-      "remaining": 83,
-      "totalOriginal": 266,
-      "grailCount": 2,
-      "chaseCount": 11,
-      "grailRangeLow": 2011,
-      "grailRangeHigh": 2107,
-      "chaseRangeLow": 1250,
-      "chaseRangeHigh": 1590,
-      "grailPct": 2.41,
-      "chasePct": 13.25,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
-        },
-        {
-          "type": "topGrail",
-          "icon": "👑",
-          "label": "Top Grail: $2,178.00",
-          "weight": 90
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Mixed Sport: Ultra Pack $500",
-      "repackId": "eb85b878-82ef-47cd-8fe5-878beffe2793",
-      "productId": "4f8cbef1-4af1-4bae-9247-0d13e0730387",
-      "price": 500,
-      "remaining": 89,
-      "totalOriginal": 2618,
-      "grailCount": 2,
-      "chaseCount": 11,
-      "grailRangeLow": 1826,
-      "grailRangeHigh": 2139,
-      "chaseRangeLow": 700,
-      "chaseRangeHigh": 846,
-      "grailPct": 2.25,
-      "chasePct": 12.36,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
-        },
-        {
-          "type": "topGrail",
-          "icon": "👑",
-          "label": "Top Grail: $2,139.00",
-          "weight": 90
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Mixed Sport: Infinity Pack $1,000",
-      "repackId": "a0d95ad0-590a-4b61-be6d-41453a00b061",
-      "productId": "db3982e3-5e20-47a6-acfb-48ea25039a10",
-      "price": 1000,
-      "remaining": 80,
-      "totalOriginal": 818,
-      "grailCount": 2,
-      "chaseCount": 10,
-      "grailRangeLow": 2000,
-      "grailRangeHigh": 2021,
-      "chaseRangeLow": 1250,
-      "chaseRangeHigh": 1559,
-      "grailPct": 2.5,
-      "chasePct": 12.5,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
-        },
-        {
-          "type": "topGrail",
-          "icon": "👑",
-          "label": "Top Grail: $730.00",
-          "weight": 90
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Pokemon: Infinity Pack $1,000",
-      "repackId": "4cbd75dd-4669-4561-a887-36e38ddac500",
-      "productId": "8d4c37f8-5d96-490e-b9ff-64b5fd836cb4",
-      "price": 1000,
-      "remaining": 35,
-      "totalOriginal": 1083,
-      "grailCount": 0,
-      "chaseCount": 9,
-      "grailRangeLow": 4084,
-      "grailRangeHigh": 4299,
-      "chaseRangeLow": 1700,
-      "chaseRangeHigh": 2178,
-      "grailPct": 0,
-      "chasePct": 25.71,
-      "tags": [
-        {
-          "type": "chase",
-          "icon": "🎯",
-          "label": "Chase Heavy",
-          "weight": 60
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Basketball: Super Pack $150",
-      "repackId": "f147af39-a73f-477e-95da-a7763a4c5b58",
-      "productId": "f9f052eb-9c13-4c68-a528-33d5d01a812f",
-      "price": 150,
-      "remaining": 96,
-      "totalOriginal": 2919,
-      "grailCount": 2,
-      "chaseCount": 13,
-      "grailRangeLow": 750,
-      "grailRangeHigh": 868.8,
-      "chaseRangeLow": 260,
-      "chaseRangeHigh": 299.19,
-      "grailPct": 2.08,
-      "chasePct": 13.54,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
-        },
-        {
-          "type": "topGrail",
-          "icon": "👑",
-          "label": "Top Grail: $755.00",
-          "weight": 90
-        }
-      ],
-      "categories": []
-    }
-  ]
-};
+        const PACK_DATA = /*PACK_DATA_PLACEHOLDER*/;
 
         const SPORT_ICONS = {
             'baseball': '⚾',
@@ -1202,409 +1043,161 @@
 
         render();
 
-        // ═══════════════════════════════════════════════════════════
-        // AUTO-PILOT MODE - Inactivity-based auto-scroll + pack cycling
-        // Activates after 15 seconds of no user interaction
-        // Scrolls through list, clicks into each pack detail page
-        // Any user activity pauses it; resumes after inactivity
-        // ═══════════════════════════════════════════════════════════
-        (function() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('tv') === 'true') return; // Skip if TV mode is active
+        // IR Alerts Banner Functions
+        function hideBanner() {
+            document.getElementById('alertsBanner').style.display = 'none';
             
-            const INACTIVITY_TIMEOUT = 15000; // 15 seconds before auto-pilot starts
-            const SCROLL_INTERVAL = 100; // ms between scroll steps
-            const SCROLL_SPEED = 2; // pixels per step
-            const PACK_VIEW_TIME = 8000; // 8 seconds viewing each pack detail
-            const PAUSE_AT_PACK = 3000; // 3 seconds pause when highlighting a pack
-            
-            const packs = PACK_DATA.packs || [];
-            if (!packs.length) return;
-            
-            let inactivityTimer = null;
-            let autoPilotActive = false;
-            let scrollInterval = null;
-            let currentPackIndex = 0;
-            let isPaused = false;
-            
-            // Create status indicator
-            const indicator = document.createElement('div');
-            indicator.id = 'autoPilotIndicator';
-            indicator.innerHTML = '🎬 Auto-pilot paused';
-            indicator.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                background: rgba(0,0,0,0.8);
-                color: #888;
-                padding: 10px 16px;
-                border-radius: 20px;
-                font-size: 0.85rem;
-                z-index: 9999;
-                transition: all 0.3s ease;
-                opacity: 0.6;
-            `;
-            document.body.appendChild(indicator);
-            
-            function updateIndicator(active) {
-                if (active) {
-                    indicator.innerHTML = '🎬 Auto-pilot active';
-                    indicator.style.background = 'rgba(255,69,0,0.9)';
-                    indicator.style.color = '#fff';
-                    indicator.style.opacity = '1';
-                } else {
-                    indicator.innerHTML = '🎬 Auto-pilot paused';
-                    indicator.style.background = 'rgba(0,0,0,0.8)';
-                    indicator.style.color = '#888';
-                    indicator.style.opacity = '0.6';
-                }
-            }
-            
-            function highlightPack(index) {
-                const cards = document.querySelectorAll('.pack-card');
-                cards.forEach((card, i) => {
-                    if (i === index) {
-                        card.style.outline = '3px solid #FF4500';
-                        card.style.outlineOffset = '4px';
-                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    } else {
-                        card.style.outline = 'none';
-                    }
+            // Track banner dismissal
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'ir_banner_dismissed', {
+                    'event_category': 'engagement'
                 });
             }
             
-            function clearHighlights() {
-                document.querySelectorAll('.pack-card').forEach(card => {
-                    card.style.outline = 'none';
-                });
-            }
-            
-            async function runAutoPilot() {
-                if (!autoPilotActive || isPaused) return;
-                
-                // Highlight current pack
-                highlightPack(currentPackIndex);
-                
-                // Wait a moment to show the highlight
-                await new Promise(r => setTimeout(r, PAUSE_AT_PACK));
-                if (!autoPilotActive || isPaused) return;
-                
-                // Navigate to pack detail page (use title for reliable matching across data sources)
-                const pack = packs[currentPackIndex];
-                const packTitle = encodeURIComponent(pack.title);
-                const packUrl = `pack.html?title=${packTitle}&autopilot=true&next=${(currentPackIndex + 1) % packs.length}`;
-                window.location.href = packUrl;
-            }
-            
-            function startAutoPilot() {
-                if (autoPilotActive) return;
-                autoPilotActive = true;
-                isPaused = false;
-                updateIndicator(true);
-                
-                // Check if returning from a pack page
-                const params = new URLSearchParams(window.location.search);
-                const nextIndex = params.get('next');
-                if (nextIndex !== null) {
-                    currentPackIndex = parseInt(nextIndex) || 0;
-                }
-                
-                runAutoPilot();
-            }
-            
-            function stopAutoPilot() {
-                autoPilotActive = false;
-                isPaused = true;
-                updateIndicator(false);
-                clearHighlights();
-                if (scrollInterval) {
-                    clearInterval(scrollInterval);
-                    scrollInterval = null;
-                }
-            }
-            
-            function resetInactivityTimer() {
-                stopAutoPilot();
-                clearTimeout(inactivityTimer);
-                inactivityTimer = setTimeout(startAutoPilot, INACTIVITY_TIMEOUT);
-            }
-            
-            // User activity listeners
-            ['mousemove', 'mousedown', 'touchstart', 'touchmove', 'keydown', 'scroll', 'wheel'].forEach(event => {
-                document.addEventListener(event, resetInactivityTimer, { passive: true });
+            // Remember preference for session
+            sessionStorage.setItem('ir_banner_dismissed', 'true');
+        }
+        
+        // Check if banner should be hidden
+        if (sessionStorage.getItem('ir_banner_dismissed') === 'true') {
+            document.getElementById('alertsBanner').style.display = 'none';
+        }
+        
+        // Track page view for analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_title': 'IR Dashboard',
+                'page_location': window.location.href
             });
-            
-            // Start the inactivity timer
-            resetInactivityTimer();
-        })();
+        }
 
         // ═══════════════════════════════════════════════════════════
-        // TV MODE - Full-screen pack carousel for stream display
+        // TV MODE - Auto-scroll for stream display
         // Add ?tv=true to URL to enable
-        // Options: ?tv=true&time=8 (seconds per pack, default 8)
         // ═══════════════════════════════════════════════════════════
         (function() {
             const params = new URLSearchParams(window.location.search);
             const tvMode = params.get('tv') === 'true';
-            const timePerPack = (parseInt(params.get('time')) || 8) * 1000;
+            const scrollSpeed = parseInt(params.get('speed')) || 30; // pixels per second
+            const pauseTime = parseInt(params.get('pause')) || 3000; // ms to pause at top/bottom
             
             if (!tvMode) return;
             
-            const packs = PACK_DATA.packs || [];
-            if (!packs.length) return;
-            
-            // Hide everything and inject TV view
-            document.body.innerHTML = '';
-            document.body.classList.add('tv-mode');
+            // Hide banner in TV mode
+            const banner = document.getElementById('alertsBanner');
+            if (banner) banner.style.display = 'none';
             
             // Add TV mode styles
             const style = document.createElement('style');
             style.textContent = `
                 body.tv-mode {
-                    background: #0a0a0a;
                     overflow: hidden;
-                    margin: 0;
-                    padding: 0;
                 }
-                .tv-container {
-                    width: 100vw;
-                    height: 100vh;
-                    display: flex;
-                    flex-direction: column;
-                    padding: 40px 60px;
-                    box-sizing: border-box;
+                body.tv-mode .header {
+                    position: sticky;
+                    top: 0;
+                    z-index: 100;
+                    background: var(--bnb-dark);
+                    padding-bottom: 16px;
+                    margin-bottom: 0;
                 }
-                .tv-header {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-bottom: 30px;
+                body.tv-mode .page {
+                    padding-top: 16px;
                 }
-                .tv-logo {
-                    display: flex;
-                    align-items: center;
-                    gap: 16px;
-                }
-                .tv-logo img {
-                    height: 60px;
-                    filter: drop-shadow(0 0 20px rgba(255,255,255,0.1));
-                }
-                .tv-logo h1 {
-                    font-size: 1.8rem;
-                    font-weight: 800;
-                    color: #fff;
-                }
-                .tv-logo h1 span {
-                    background: linear-gradient(135deg, #FF4500, #ffc107);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-                .tv-counter {
-                    font-size: 1.2rem;
-                    color: #888;
-                }
-                .tv-pack {
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    animation: fadeIn 0.5s ease;
-                }
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: scale(0.98); }
-                    to { opacity: 1; transform: scale(1); }
-                }
-                .tv-pack-title {
-                    font-size: 3rem;
-                    font-weight: 900;
-                    color: #fff;
-                    margin-bottom: 24px;
-                    line-height: 1.2;
-                }
-                .tv-pack-price {
-                    font-size: 5rem;
-                    font-weight: 900;
-                    background: linear-gradient(135deg, #FF4500, #ffc107);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    margin-bottom: 40px;
-                }
-                .tv-stats {
-                    display: flex;
-                    gap: 60px;
-                    margin-bottom: 40px;
-                }
-                .tv-stat {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 8px;
-                }
-                .tv-stat-label {
-                    font-size: 1rem;
-                    color: #666;
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
-                }
-                .tv-stat-value {
-                    font-size: 2.5rem;
-                    font-weight: 700;
-                }
-                .tv-stat-value.grail { color: #b388ff; }
-                .tv-stat-value.chase { color: #ff8c5a; }
-                .tv-stat-value.hit { color: #26de81; }
-                .tv-tags {
-                    display: flex;
-                    gap: 12px;
-                    flex-wrap: wrap;
-                }
-                .tv-tag {
-                    font-size: 1.1rem;
-                    font-weight: 700;
-                    padding: 12px 24px;
-                    border-radius: 12px;
-                    text-transform: uppercase;
-                }
-                .tv-tag.grail { background: rgba(179,136,255,0.15); color: #b388ff; }
-                .tv-tag.chase { background: rgba(255,140,90,0.15); color: #ff8c5a; }
-                .tv-tag.hot { background: rgba(255,71,87,0.15); color: #ff4757; }
-                .tv-progress {
+                .tv-indicator {
                     position: fixed;
-                    bottom: 0;
-                    left: 0;
-                    height: 4px;
-                    background: linear-gradient(90deg, #FF4500, #ffc107);
-                    transition: width 0.1s linear;
-                }
-                .tv-dots {
-                    position: fixed;
-                    bottom: 30px;
-                    left: 50%;
-                    transform: translateX(-50%);
+                    bottom: 16px;
+                    right: 16px;
+                    background: rgba(38,222,129,0.15);
+                    border: 1px solid rgba(38,222,129,0.3);
+                    color: var(--green);
+                    padding: 6px 12px;
+                    border-radius: 20px;
+                    font-size: 0.7rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
                     display: flex;
-                    gap: 12px;
+                    align-items: center;
+                    gap: 6px;
+                    z-index: 1000;
                 }
-                .tv-dot {
-                    width: 10px;
-                    height: 10px;
+                .tv-indicator .dot {
+                    width: 6px;
+                    height: 6px;
+                    background: var(--green);
                     border-radius: 50%;
-                    background: rgba(255,255,255,0.2);
-                    transition: all 0.3s;
-                }
-                .tv-dot.active {
-                    background: #FF4500;
-                    transform: scale(1.3);
+                    animation: pulse 2s infinite;
                 }
             `;
             document.head.appendChild(style);
+            document.body.classList.add('tv-mode');
             
-            // Create TV container
-            const container = document.createElement('div');
-            container.className = 'tv-container';
-            container.innerHTML = `
-                <div class="tv-header">
-                    <div class="tv-logo">
-                        <img src="data:image/png;base64,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" alt="Break'n Bad">
-                        <h1>Hot Packs <span>Right Now</span></h1>
-                    </div>
-                    <div class="tv-counter" id="tvCounter">1 / ${packs.length}</div>
-                </div>
-                <div class="tv-pack" id="tvPack"></div>
-                <div class="tv-progress" id="tvProgress"></div>
-                <div class="tv-dots" id="tvDots"></div>
-            `;
-            document.body.appendChild(container);
+            // Add TV indicator
+            const indicator = document.createElement('div');
+            indicator.className = 'tv-indicator';
+            indicator.innerHTML = '<span class="dot"></span> TV Mode';
+            document.body.appendChild(indicator);
             
-            // Create dots
-            const dotsContainer = document.getElementById('tvDots');
-            packs.forEach((_, i) => {
-                const dot = document.createElement('div');
-                dot.className = 'tv-dot' + (i === 0 ? ' active' : '');
-                dotsContainer.appendChild(dot);
-            });
-            
-            const packContainer = document.getElementById('tvPack');
-            const counter = document.getElementById('tvCounter');
-            const progress = document.getElementById('tvProgress');
-            const dots = dotsContainer.querySelectorAll('.tv-dot');
-            
-            let currentIndex = 0;
-            let progressValue = 0;
+            // Auto-scroll logic
+            let scrollDirection = 1; // 1 = down, -1 = up
+            let isPaused = false;
             let lastTime = performance.now();
             
-            function fmtDollar(v) {
-                return '$' + Math.round(v).toLocaleString();
+            function getMaxScroll() {
+                return document.documentElement.scrollHeight - window.innerHeight;
             }
             
-            function renderPack(index) {
-                const pack = packs[index];
-                const grailCount = pack.grailCount || 0;
-                const chaseCount = pack.chaseCount || 0;
-                const grailPct = parseFloat(pack.grailPct) || 0;
-                const chasePct = parseFloat(pack.chasePct) || 0;
-                const combinedPct = grailPct + chasePct;
-                
-                const grailLow = pack.grailRangeLow || 0;
-                const grailHigh = pack.grailRangeHigh || 0;
-                const chaseLow = pack.chaseRangeLow || 0;
-                const chaseHigh = pack.chaseRangeHigh || 0;
-                
-                const grailRange = grailHigh > 0
-                    ? (grailCount === 1 ? fmtDollar(Math.round((grailLow + grailHigh) / 2)) : fmtDollar(grailLow) + ' – ' + fmtDollar(grailHigh))
-                    : '—';
-                const chaseRange = chaseHigh > 0
-                    ? (chaseCount === 1 ? fmtDollar(Math.round((chaseLow + chaseHigh) / 2)) : fmtDollar(chaseLow) + ' – ' + fmtDollar(chaseHigh))
-                    : '—';
-                
-                const tags = (pack.tags || []).map(t => {
-                    const cls = t.type || 'hot';
-                    return '<span class="tv-tag ' + cls + '">' + (t.icon || '') + ' ' + t.label + '</span>';
-                }).join('');
-                
-                packContainer.innerHTML = `
-                    <div class="tv-pack-title">${pack.title}</div>
-                    <div class="tv-pack-price">$${pack.price || 0}</div>
-                    <div class="tv-stats">
-                        <div class="tv-stat">
-                            <div class="tv-stat-label">💎 Grails</div>
-                            <div class="tv-stat-value grail">${grailRange}</div>
-                        </div>
-                        <div class="tv-stat">
-                            <div class="tv-stat-label">⚡ Chases</div>
-                            <div class="tv-stat-value chase">${chaseRange}</div>
-                        </div>
-                        ${combinedPct >= 5 ? `
-                        <div class="tv-stat">
-                            <div class="tv-stat-label">🎯 Hit Rate</div>
-                            <div class="tv-stat-value hit">${Math.round(combinedPct)}%</div>
-                        </div>
-                        ` : ''}
-                    </div>
-                    <div class="tv-tags">${tags}</div>
-                `;
-                
-                counter.textContent = (index + 1) + ' / ' + packs.length;
-                dots.forEach((d, i) => d.classList.toggle('active', i === index));
-            }
-            
-            function animate(currentTime) {
-                const delta = currentTime - lastTime;
-                lastTime = currentTime;
-                
-                progressValue += (delta / timePerPack) * 100;
-                progress.style.width = progressValue + '%';
-                
-                if (progressValue >= 100) {
-                    progressValue = 0;
-                    currentIndex = (currentIndex + 1) % packs.length;
-                    renderPack(currentIndex);
+            function autoScroll(currentTime) {
+                if (isPaused) {
+                    requestAnimationFrame(autoScroll);
+                    return;
                 }
                 
-                requestAnimationFrame(animate);
+                const deltaTime = (currentTime - lastTime) / 1000;
+                lastTime = currentTime;
+                
+                const scrollAmount = scrollSpeed * deltaTime * scrollDirection;
+                window.scrollBy(0, scrollAmount);
+                
+                const currentScroll = window.scrollY;
+                const maxScroll = getMaxScroll();
+                
+                // Hit bottom - pause then reverse
+                if (scrollDirection === 1 && currentScroll >= maxScroll - 5) {
+                    isPaused = true;
+                    setTimeout(() => {
+                        scrollDirection = -1;
+                        isPaused = false;
+                    }, pauseTime);
+                }
+                
+                // Hit top - pause then reverse
+                if (scrollDirection === -1 && currentScroll <= 5) {
+                    isPaused = true;
+                    setTimeout(() => {
+                        scrollDirection = 1;
+                        isPaused = false;
+                    }, pauseTime);
+                }
+                
+                requestAnimationFrame(autoScroll);
             }
             
-            // Start
-            renderPack(0);
-            requestAnimationFrame(animate);
+            // Start after a brief delay to let content load
+            setTimeout(() => {
+                requestAnimationFrame(autoScroll);
+            }, 1000);
+            
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                if (e.key === ' ' || e.key === 'p') {
+                    isPaused = !isPaused;
+                    indicator.innerHTML = isPaused 
+                        ? '<span class="dot" style="background:var(--bnb-gold);animation:none"></span> Paused'
+                        : '<span class="dot"></span> TV Mode';
+                }
+            });
         })();
     </script>
 </body>
