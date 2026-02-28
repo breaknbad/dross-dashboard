@@ -174,6 +174,80 @@
             color: var(--text-secondary);
         }
         
+        .cards-section {
+            margin-bottom: 40px;
+        }
+        
+        .cards-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .card-item {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .card-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card-item.grail {
+            border-color: rgba(179,136,255,0.3);
+        }
+        
+        .card-item.chase {
+            border-color: rgba(64,196,255,0.3);
+        }
+        
+        .card-image {
+            width: 80px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #1a1a1a;
+        }
+        
+        .card-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .card-title {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .card-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--hit-green);
+        }
+        
+        .no-cards {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
         #autopilotIndicator {
             position: fixed;
             bottom: 20px;
@@ -232,10 +306,10 @@
     <div class="autopilot-progress" id="autopilotProgress"></div>
     
     <script>
-        // Fetch pack data from packs.json (same data as main page)
+        // Fetch pack data from cards-data.json (has full card details)
         async function loadPackData() {
             try {
-                const response = await fetch('packs.json');
+                const response = await fetch('cards-data.json');
                 const data = await response.json();
                 return data.packs || [];
             } catch (e) {
@@ -265,7 +339,19 @@
             }
             
             const packs = await loadPackData();
-            const pack = packs.find(p => p.repackId === packId || p.productId === packId);
+            // Try multiple ways to match - IDs might differ between data sources
+            let pack = packs.find(p => p.repackId === packId || p.productId === packId);
+            
+            // If not found by ID, try by index (for auto-pilot mode)
+            if (!pack && !isNaN(parseInt(packId))) {
+                pack = packs[parseInt(packId)];
+            }
+            
+            // Still not found? Try matching by title similarity
+            if (!pack) {
+                const searchTerm = decodeURIComponent(packId).toLowerCase();
+                pack = packs.find(p => p.title && p.title.toLowerCase().includes(searchTerm));
+            }
             
             if (!pack) {
                 document.getElementById('content').innerHTML = `
@@ -287,31 +373,28 @@
         }
         
         function renderPack(pack) {
-            const grailCount = pack.grailCount || 0;
-            const chaseCount = pack.chaseCount || 0;
-            const grailPct = parseFloat(pack.grailPct) || 0;
-            const chasePct = parseFloat(pack.chasePct) || 0;
+            const cards = pack.cards || [];
+            const grails = cards.filter(c => c.tier === 'GRAIL');
+            const chases = cards.filter(c => c.tier === 'CHASE');
+            
+            const remaining = pack.totalRemaining || 0;
+            const odds = pack.odds || {};
+            const grailPct = odds.grail || 0;
+            const chasePct = odds.chase || 0;
             const combinedPct = grailPct + chasePct;
             
-            const grailLow = pack.grailRangeLow || 0;
-            const grailHigh = pack.grailRangeHigh || 0;
-            const chaseLow = pack.chaseRangeLow || 0;
-            const chaseHigh = pack.chaseRangeHigh || 0;
-            
-            const grailRange = grailHigh > 0
-                ? (grailCount === 1 ? fmtDollar((grailLow + grailHigh) / 2) : `${fmtDollar(grailLow)} – ${fmtDollar(grailHigh)}`)
-                : '—';
-            const chaseRange = chaseHigh > 0
-                ? (chaseCount === 1 ? fmtDollar((chaseLow + chaseHigh) / 2) : `${fmtDollar(chaseLow)} – ${fmtDollar(chaseHigh)}`)
-                : '—';
-            
-            const remaining = pack.remaining || 0;
-            const total = pack.totalOriginal || 0;
-            const soldPct = total > 0 ? Math.round(((total - remaining) / total) * 100) : 0;
-            
-            const tags = (pack.tags || []).map(t => 
-                `<span class="tag ${t.type || 'hot'}">${t.icon || ''} ${t.label}</span>`
-            ).join('');
+            function renderCards(cardList, tier) {
+                if (!cardList.length) return '<p class="no-cards">None remaining</p>';
+                return cardList.map(card => `
+                    <div class="card-item ${tier.toLowerCase()}">
+                        <img src="${card.image}" alt="${card.title}" class="card-image" onerror="this.style.display='none'">
+                        <div class="card-info">
+                            <div class="card-title">${card.title}</div>
+                            <div class="card-value">${card.valueDisplay || fmtDollar(card.value / 100)}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
             
             document.getElementById('content').innerHTML = `
                 <div class="pack-header">
@@ -319,43 +402,37 @@
                     <div class="pack-price">$${pack.price || 0}</div>
                     <div class="pack-meta">
                         <span>📦 ${remaining} remaining</span>
-                        <span>🎯 ${Math.round(combinedPct)}% hit rate</span>
+                        <span>🎯 ${combinedPct.toFixed(1)}% hit rate</span>
+                        ${pack.evRatio ? `<span>📈 ${pack.evRatio.toFixed(2)}x EV</span>` : ''}
                     </div>
                 </div>
                 
                 <div class="stats-grid">
                     <div class="stat-card">
                         <h3>💎 Grails</h3>
-                        <div class="value grail">${grailCount}</div>
-                        <div class="sub">${grailRange}</div>
-                        ${grailPct > 0 ? `<div class="sub">${grailPct.toFixed(1)}% chance</div>` : ''}
+                        <div class="value grail">${grails.length}</div>
+                        <div class="sub">${grailPct.toFixed(1)}% chance</div>
                     </div>
                     <div class="stat-card">
                         <h3>⚡ Chases</h3>
-                        <div class="value chase">${chaseCount}</div>
-                        <div class="sub">${chaseRange}</div>
-                        ${chasePct > 0 ? `<div class="sub">${chasePct.toFixed(1)}% chance</div>` : ''}
+                        <div class="value chase">${chases.length}</div>
+                        <div class="sub">${chasePct.toFixed(1)}% chance</div>
                     </div>
                     <div class="stat-card">
-                        <h3>🎯 Combined Hit Rate</h3>
-                        <div class="value hit">${Math.round(combinedPct)}%</div>
-                        <div class="sub">${grailCount + chaseCount} hits live</div>
+                        <h3>📈 True EV</h3>
+                        <div class="value hit">${pack.trueEV ? fmtDollar(pack.trueEV) : '—'}</div>
+                        <div class="sub">${pack.evRatio ? pack.evRatio.toFixed(2) + 'x ratio' : ''}</div>
                     </div>
                 </div>
                 
-                ${tags ? `
-                <div class="tags-section">
-                    <h3>Tags</h3>
-                    <div class="tags-list">${tags}</div>
+                <div class="cards-section">
+                    <h3>💎 Grails (${grails.length})</h3>
+                    <div class="cards-grid">${renderCards(grails, 'GRAIL')}</div>
                 </div>
-                ` : ''}
                 
-                <div class="progress-section">
-                    <h3>Sold Progress</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${soldPct}%"></div>
-                    </div>
-                    <div class="progress-label">${soldPct}% sold (${total - remaining} of ${total})</div>
+                <div class="cards-section">
+                    <h3>⚡ Chases (${chases.length})</h3>
+                    <div class="cards-grid">${renderCards(chases, 'CHASE')}</div>
                 </div>
             `;
         }
