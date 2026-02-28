@@ -8,24 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bnb-dark: #080c1f;
-            --bnb-deep: #0d1130;
-            --bnb-primary: #1a237e;
-            --bnb-card: rgba(18,22,56,0.85);
-            --bnb-card-hover: rgba(28,34,72,0.95);
-            --bnb-accent: #ff6b35;
+            --bnb-dark: #0a0a0a;
+            --bnb-deep: #111111;
+            --bnb-primary: #161616;
+            --bnb-card: rgba(20,20,20,0.9);
+            --bnb-card-hover: rgba(30,30,30,0.95);
+            --bnb-accent: #FF4500;
             --bnb-accent-light: #ff8a50;
             --bnb-gold: #ffc107;
             --bnb-gold-light: #ffd54f;
-            --bnb-border: rgba(57,73,171,0.2);
-            --bnb-border-hover: rgba(57,73,171,0.45);
-            --text: #f0f0f8;
-            --text-muted: #7b85a4;
+            --bnb-border: rgba(255,69,0,0.15);
+            --bnb-border-hover: rgba(255,69,0,0.35);
+            --text: #f5f5f5;
+            --text-muted: #888888;
             --hot-red: #ff4757;
             --grail-purple: #b388ff;
             --grail-glow: rgba(179,136,255,0.25);
-            --chase-blue: #40c4ff;
-            --chase-glow: rgba(64,196,255,0.25);
+            --chase-blue: #ff8c5a;
+            --chase-glow: rgba(255,140,90,0.25);
             --green: #26de81;
             --green-glow: rgba(38,222,129,0.3);
         }
@@ -53,7 +53,7 @@
             position: absolute;
             width: 600px; height: 600px;
             top: -200px; right: -100px;
-            background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,69,0,0.06) 0%, transparent 70%);
             animation: float1 20s ease-in-out infinite;
         }
         .bg-glow::after {
@@ -61,7 +61,7 @@
             position: absolute;
             width: 500px; height: 500px;
             bottom: -150px; left: -100px;
-            background: radial-gradient(circle, rgba(179,136,255,0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,140,0,0.04) 0%, transparent 70%);
             animation: float2 25s ease-in-out infinite;
         }
         @keyframes float1 {
@@ -473,7 +473,7 @@
 
         /* ─── Alerts Banner ─── */
         .alerts-banner {
-            background: linear-gradient(135deg, var(--bnb-card), rgba(255,107,53,0.08));
+            background: linear-gradient(135deg, var(--bnb-card), rgba(255,69,0,0.08));
             border: 2px solid var(--bnb-border-hover);
             border-radius: 16px;
             padding: 20px 28px;
@@ -482,7 +482,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             animation: bannerSlide 0.8s ease;
-            box-shadow: 0 8px 32px rgba(255,107,53,0.1);
+            box-shadow: 0 8px 32px rgba(255,69,0,0.1);
         }
 
         @keyframes bannerSlide {
@@ -723,6 +723,37 @@
       "categories": []
     },
     {
+      "title": "Baseball: Infinity Pack $1,000",
+      "repackId": "d3f9111d-c4a0-4cbe-94ce-7091c0a71bc2",
+      "productId": "eee3ae1d-8d3a-494e-8120-ad2473a61079",
+      "price": 1000,
+      "remaining": 72,
+      "totalOriginal": 1089,
+      "grailCount": 2,
+      "chaseCount": 13,
+      "grailRangeLow": 3578,
+      "grailRangeHigh": 4483,
+      "chaseRangeLow": 1403,
+      "chaseRangeHigh": 1750,
+      "grailPct": 2.78,
+      "chasePct": 18.06,
+      "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "Only 2 Grails Left!",
+          "weight": 95
+        },
+        {
+          "type": "topGrail",
+          "icon": "👑",
+          "label": "Top Grail: $4,481.00",
+          "weight": 90
+        }
+      ],
+      "categories": []
+    },
+    {
       "title": "Baseball: Ultra Pack $500",
       "repackId": "dd5f577b-2f82-4826-8fea-c0d774b28853",
       "productId": "9565c788-b485-4f43-bcb7-d278c495a7e3",
@@ -738,6 +769,37 @@
       "grailPct": 2.86,
       "chasePct": 14.29,
       "tags": [
+        {
+          "type": "grail",
+          "icon": "💎",
+          "label": "Only 1 Grail Left!",
+          "weight": 95
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "Pokemon 10s Only: $75",
+      "repackId": "7685e0aa-0662-470a-9f60-047dcf60f418",
+      "productId": "67a9969e-e3de-49b9-8a93-bb3e1e425741",
+      "price": 75,
+      "remaining": 54,
+      "totalOriginal": 290,
+      "grailCount": 1,
+      "chaseCount": 7,
+      "grailRangeLow": 410,
+      "grailRangeHigh": 421.48,
+      "chaseRangeLow": 140,
+      "chaseRangeHigh": 170,
+      "grailPct": 1.85,
+      "chasePct": 12.96,
+      "tags": [
+        {
+          "type": "budget",
+          "icon": "💰",
+          "label": "Budget Pick",
+          "weight": 70
+        },
         {
           "type": "grail",
           "icon": "💎",
@@ -779,20 +841,20 @@
       "categories": []
     },
     {
-      "title": "Baseball: Infinity Pack $1,000",
-      "repackId": "d3f9111d-c4a0-4cbe-94ce-7091c0a71bc2",
-      "productId": "eee3ae1d-8d3a-494e-8120-ad2473a61079",
-      "price": 1000,
-      "remaining": 72,
-      "totalOriginal": 1089,
+      "title": "Pokemon: Ultra Pack $500",
+      "repackId": "8bea4c34-f295-45a6-a759-8e1812cb42c2",
+      "productId": "6985f25f-291f-4fea-811a-5a58d3633811",
+      "price": 500,
+      "remaining": 97,
+      "totalOriginal": 3035,
       "grailCount": 2,
-      "chaseCount": 13,
-      "grailRangeLow": 3578,
-      "grailRangeHigh": 4483,
-      "chaseRangeLow": 1403,
-      "chaseRangeHigh": 1750,
-      "grailPct": 2.78,
-      "chasePct": 18.06,
+      "chaseCount": 17,
+      "grailRangeLow": 2499.98,
+      "grailRangeHigh": 3447.39,
+      "chaseRangeLow": 850,
+      "chaseRangeHigh": 1000,
+      "grailPct": 2.06,
+      "chasePct": 17.53,
       "tags": [
         {
           "type": "grail",
@@ -803,8 +865,33 @@
         {
           "type": "topGrail",
           "icon": "👑",
-          "label": "Top Grail: $4,481.00",
+          "label": "Top Grail: $3,447.39",
           "weight": 90
+        }
+      ],
+      "categories": []
+    },
+    {
+      "title": "Football: Infinity Pack $1,000",
+      "repackId": "775dfe0e-c7b7-4bae-8fae-949258a69c22",
+      "productId": "bc5aef09-1a2c-4819-8784-4d52de745fa3",
+      "price": 1000,
+      "remaining": 25,
+      "totalOriginal": 452,
+      "grailCount": 0,
+      "chaseCount": 6,
+      "grailRangeLow": 2000,
+      "grailRangeHigh": 2387,
+      "chaseRangeLow": 1251,
+      "chaseRangeHigh": 1600,
+      "grailPct": 0,
+      "chasePct": 24,
+      "tags": [
+        {
+          "type": "chase",
+          "icon": "🎯",
+          "label": "Chase Heavy",
+          "weight": 60
         }
       ],
       "categories": []
@@ -872,62 +959,6 @@
       "categories": []
     },
     {
-      "title": "Pokemon 10s Only: $75",
-      "repackId": "7685e0aa-0662-470a-9f60-047dcf60f418",
-      "productId": "67a9969e-e3de-49b9-8a93-bb3e1e425741",
-      "price": 75,
-      "remaining": 54,
-      "totalOriginal": 290,
-      "grailCount": 1,
-      "chaseCount": 7,
-      "grailRangeLow": 410,
-      "grailRangeHigh": 421.48,
-      "chaseRangeLow": 140,
-      "chaseRangeHigh": 170,
-      "grailPct": 1.85,
-      "chasePct": 12.96,
-      "tags": [
-        {
-          "type": "budget",
-          "icon": "💰",
-          "label": "Budget Pick",
-          "weight": 70
-        },
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 1 Grail Left!",
-          "weight": 95
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Football: Infinity Pack $1,000",
-      "repackId": "775dfe0e-c7b7-4bae-8fae-949258a69c22",
-      "productId": "bc5aef09-1a2c-4819-8784-4d52de745fa3",
-      "price": 1000,
-      "remaining": 25,
-      "totalOriginal": 452,
-      "grailCount": 0,
-      "chaseCount": 6,
-      "grailRangeLow": 2000,
-      "grailRangeHigh": 2387,
-      "chaseRangeLow": 1251,
-      "chaseRangeHigh": 1600,
-      "grailPct": 0,
-      "chasePct": 24,
-      "tags": [
-        {
-          "type": "chase",
-          "icon": "🎯",
-          "label": "Chase Heavy",
-          "weight": 60
-        }
-      ],
-      "categories": []
-    },
-    {
       "title": "Mixed Sport: Super Pack $150",
       "repackId": "73820da4-689f-4b98-a2b8-a382766db4c9",
       "productId": "9121dad6-494c-4954-9af8-4af9826623bf",
@@ -953,37 +984,6 @@
           "type": "topGrail",
           "icon": "👑",
           "label": "Top Grail: $900.00",
-          "weight": 90
-        }
-      ],
-      "categories": []
-    },
-    {
-      "title": "Pokemon: Ultra Pack $500",
-      "repackId": "8bea4c34-f295-45a6-a759-8e1812cb42c2",
-      "productId": "6985f25f-291f-4fea-811a-5a58d3633811",
-      "price": 500,
-      "remaining": 97,
-      "totalOriginal": 3035,
-      "grailCount": 2,
-      "chaseCount": 17,
-      "grailRangeLow": 2499.98,
-      "grailRangeHigh": 3447.39,
-      "chaseRangeLow": 850,
-      "chaseRangeHigh": 1000,
-      "grailPct": 2.06,
-      "chasePct": 17.53,
-      "tags": [
-        {
-          "type": "grail",
-          "icon": "💎",
-          "label": "Only 2 Grails Left!",
-          "weight": 95
-        },
-        {
-          "type": "topGrail",
-          "icon": "👑",
-          "label": "Top Grail: $3,447.39",
           "weight": 90
         }
       ],
