@@ -10,18 +10,19 @@
     <style>
         :root {
             --bg-dark: #0a0a0a;
-            --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            --surface: rgba(255,255,255,0.03);
+            --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #0d1117 50%, #0a0a0a 100%);
+            --surface: rgba(255,255,255,0.02);
+            --surface-glass: rgba(255,255,255,0.04);
             --surface-border: rgba(255,255,255,0.06);
             --text-primary: #fff;
             --text-secondary: rgba(255,255,255,0.5);
             --bnb-accent: #FF4500;
             --bnb-gold: #ffc107;
             --grail-purple: #b388ff;
-            --grail-glow: rgba(179,136,255,0.3);
-            --chase-blue: #40c4ff;
-            --chase-glow: rgba(64,196,255,0.3);
-            --hit-green: #26de81;
+            --grail-glow: rgba(179,136,255,0.25);
+            --chase-cyan: #00d4ff;
+            --chase-glow: rgba(0,212,255,0.2);
+            --money-green: #26de81;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,7 +33,7 @@
             background-image: var(--bg-gradient);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 30px;
+            padding: 40px;
         }
         
         .container {
@@ -47,17 +48,19 @@
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.95rem;
-            padding: 10px 16px;
-            border-radius: 8px;
-            background: var(--surface);
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: var(--surface-glass);
             border: 1px solid var(--surface-border);
+            backdrop-filter: blur(10px);
             transition: all 0.2s;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
         .back-btn:hover {
             color: var(--text-primary);
             background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.12);
         }
         
         /* Hero Section */
@@ -66,143 +69,158 @@
             grid-template-columns: 1fr auto;
             gap: 40px;
             align-items: start;
-            margin-bottom: 50px;
-            padding: 40px;
-            background: var(--surface);
-            border-radius: 24px;
+            margin-bottom: 60px;
+            padding: 48px;
+            background: var(--surface-glass);
+            border-radius: 28px;
             border: 1px solid var(--surface-border);
+            backdrop-filter: blur(20px);
         }
         
         .hero-content h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 900;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             line-height: 1.1;
+            letter-spacing: -1px;
         }
         
         .hero-price {
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 900;
             background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+            margin-bottom: 32px;
+            letter-spacing: -2px;
         }
         
         .hero-stats {
             display: flex;
-            gap: 30px;
+            gap: 24px;
             flex-wrap: wrap;
         }
         
         .hero-stat {
+            background: var(--surface-glass);
+            border: 1px solid var(--chase-glow);
+            border-radius: 16px;
+            padding: 20px 28px;
             text-align: center;
+            backdrop-filter: blur(12px);
+            min-width: 120px;
         }
         
         .hero-stat-value {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
         }
         
         .hero-stat-value.grail { color: var(--grail-purple); }
-        .hero-stat-value.chase { color: var(--chase-blue); }
-        .hero-stat-value.ev { color: var(--hit-green); }
+        .hero-stat-value.chase { color: var(--chase-cyan); }
+        .hero-stat-value.hit { color: var(--money-green); }
         
         .hero-stat-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
+            letter-spacing: 1.5px;
+            margin-top: 6px;
         }
         
         .hero-remaining {
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 16px;
-            padding: 30px;
+            background: var(--surface-glass);
+            border: 1px solid var(--chase-glow);
+            border-radius: 20px;
+            padding: 36px;
             text-align: center;
-            min-width: 180px;
+            min-width: 200px;
+            backdrop-filter: blur(12px);
         }
         
         .remaining-value {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 900;
             color: var(--bnb-accent);
+            letter-spacing: -2px;
         }
         
         .remaining-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            margin-top: 8px;
         }
         
         /* Cards Section */
+        .cards-section {
+            margin-bottom: 70px;
+        }
+        
         .section-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
             border-bottom: 1px solid var(--surface-border);
         }
         
         .section-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
         
         .section-header .count {
-            background: var(--surface);
-            padding: 6px 14px;
+            background: var(--surface-glass);
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
-        }
-        
-        .cards-section {
-            margin-bottom: 50px;
+            border: 1px solid var(--surface-border);
         }
         
         .cards-section.grails .section-header h2 { color: var(--grail-purple); }
-        .cards-section.chases .section-header h2 { color: var(--chase-blue); }
+        .cards-section.chases .section-header h2 { color: var(--chase-cyan); }
         
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 28px;
         }
         
         .card-item {
-            background: var(--surface);
+            background: var(--surface-glass);
             border-radius: 20px;
-            padding: 24px;
+            padding: 28px;
             display: flex;
-            gap: 24px;
-            border: 1px solid var(--surface-border);
-            transition: all 0.3s ease;
-            animation: cardIn 0.4s ease backwards;
+            gap: 28px;
+            border: 1px solid var(--chase-glow);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: cardIn 0.5s ease backwards;
         }
         
         .card-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: scale(1.02) translateY(-4px);
+            border-color: var(--chase-cyan);
+            box-shadow: 0 20px 60px rgba(0,212,255,0.15), 0 0 40px rgba(0,212,255,0.1);
         }
         
         .card-item.grail {
             border-color: var(--grail-glow);
-            box-shadow: 0 0 30px rgba(179,136,255,0.1);
         }
         
-        .card-item.chase {
-            border-color: var(--chase-glow);
-            box-shadow: 0 0 30px rgba(64,196,255,0.1);
+        .card-item.grail:hover {
+            border-color: var(--grail-purple);
+            box-shadow: 0 20px 60px rgba(179,136,255,0.15), 0 0 40px rgba(179,136,255,0.1);
         }
         
         @keyframes cardIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         
         .card-item:nth-child(1) { animation-delay: 0.05s; }
@@ -211,15 +229,18 @@
         .card-item:nth-child(4) { animation-delay: 0.2s; }
         .card-item:nth-child(5) { animation-delay: 0.25s; }
         .card-item:nth-child(6) { animation-delay: 0.3s; }
+        .card-item:nth-child(7) { animation-delay: 0.35s; }
+        .card-item:nth-child(8) { animation-delay: 0.4s; }
         
         .card-image-wrap {
             flex-shrink: 0;
-            width: 140px;
-            height: 195px;
-            border-radius: 10px;
+            width: 150px;
+            height: 210px;
+            border-radius: 12px;
             overflow: hidden;
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0d0d15 100%);
             position: relative;
+            border: 1px solid var(--surface-border);
         }
         
         .card-image {
@@ -235,13 +256,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            opacity: 0.3;
+            font-size: 2.5rem;
+            opacity: 0.2;
             pointer-events: none;
-        }
-        
-        .card-image-wrap:has(img[src]:not([src=""])) ::after {
-            display: none;
         }
         
         .card-info {
@@ -255,53 +272,59 @@
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0.8;
         }
         
         .card-tier.grail { color: var(--grail-purple); }
-        .card-tier.chase { color: var(--chase-blue); }
+        .card-tier.chase { color: var(--chase-cyan); }
         
         .card-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             color: var(--text-primary);
-            line-height: 1.4;
-            margin-bottom: 16px;
+            line-height: 1.5;
+            margin-bottom: auto;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
         
         .card-value {
-            margin-top: auto;
-            font-size: 1.8rem;
+            margin-top: 16px;
+            font-size: 2rem;
             font-weight: 800;
-            color: var(--hit-green);
+            color: var(--money-green);
+            letter-spacing: -1px;
         }
         
         .no-cards {
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             color: var(--text-secondary);
             font-size: 1.1rem;
+            background: var(--surface-glass);
+            border-radius: 20px;
+            border: 1px solid var(--surface-border);
         }
         
-        /* Autopilot indicator */
+        /* Autopilot */
         #autopilotIndicator {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 24px;
+            right: 24px;
             background: rgba(255,69,0,0.95);
             color: #fff;
-            padding: 14px 24px;
-            border-radius: 30px;
-            font-size: 0.95rem;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-size: 1rem;
             font-weight: 600;
             z-index: 9999;
             display: none;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(255,69,0,0.3);
         }
         
         #autopilotIndicator.active { display: flex; align-items: center; gap: 10px; }
@@ -310,7 +333,7 @@
             position: fixed;
             bottom: 0;
             left: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold));
             transition: width 0.1s linear;
             z-index: 9998;
@@ -318,24 +341,28 @@
         
         .loading, .not-found {
             text-align: center;
-            padding: 100px 20px;
+            padding: 120px 20px;
         }
         
-        .loading { color: var(--text-secondary); }
+        .loading { color: var(--text-secondary); font-size: 1.2rem; }
         
         .not-found h2 {
-            font-size: 2rem;
-            margin-bottom: 16px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
         
+        .not-found p { color: var(--text-secondary); margin-bottom: 12px; }
         .not-found a { color: var(--bnb-accent); }
         
-        @media (max-width: 768px) {
-            body { padding: 20px; }
-            .hero { grid-template-columns: 1fr; padding: 24px; }
-            .hero-content h1 { font-size: 2rem; }
-            .hero-price { font-size: 3rem; }
+        @media (max-width: 900px) {
+            body { padding: 24px; }
+            .hero { grid-template-columns: 1fr; padding: 32px; gap: 32px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-price { font-size: 3.5rem; }
+            .hero-remaining { min-width: unset; }
             .cards-grid { grid-template-columns: 1fr; }
+            .card-item { padding: 20px; gap: 20px; }
+            .card-image-wrap { width: 120px; height: 168px; }
         }
     </style>
 </head>
@@ -364,7 +391,6 @@
         
         function fmtDollar(v) {
             if (typeof v !== 'number') return '—';
-            // Values in cards-data are in cents
             const dollars = v > 1000 ? v / 100 : v;
             return '$' + Math.round(dollars).toLocaleString();
         }
@@ -389,13 +415,11 @@
             const packs = await loadPackData();
             let pack = null;
             
-            // Match by title - find the one with the MOST cards (best data)
             if (packTitle) {
                 const searchTitle = decodeURIComponent(packTitle).toLowerCase().trim();
                 const matches = packs.filter(p => 
                     p.title && p.title.toLowerCase().trim() === searchTitle
                 );
-                // Pick the match with most cards
                 if (matches.length > 0) {
                     pack = matches.reduce((best, current) => {
                         const bestCards = (best.cards || []).length;
@@ -403,14 +427,12 @@
                         return currentCards > bestCards ? current : best;
                     });
                 }
-                // Fuzzy match fallback
                 if (!pack) {
                     const sportMatch = searchTitle.split(':')[0];
                     pack = packs.find(p => p.title && p.title.toLowerCase().includes(sportMatch));
                 }
             }
             
-            // Fallback by ID
             if (!pack && packId) {
                 pack = packs.find(p => p.repackId === packId || p.productId === packId);
                 if (!pack && !isNaN(parseInt(packId))) {
@@ -480,7 +502,7 @@
                                 <div class="hero-stat-label">⚡ Chases</div>
                             </div>
                             <div class="hero-stat">
-                                <div class="hero-stat-value" style="color: var(--bnb-gold)">${(grailPct + chasePct).toFixed(1)}%</div>
+                                <div class="hero-stat-value hit">${(grailPct + chasePct).toFixed(0)}%</div>
                                 <div class="hero-stat-label">🎯 Hit Rate</div>
                             </div>
                         </div>
@@ -508,7 +530,6 @@
                 </div>
             `;
             
-            // Update page title
             document.title = `${pack.title} | Break'n Bad`;
         }
         
