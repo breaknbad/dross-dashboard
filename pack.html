@@ -67,21 +67,21 @@
         .hero {
             display: grid;
             grid-template-columns: 1fr auto;
-            gap: 40px;
-            align-items: start;
-            margin-bottom: 60px;
-            padding: 48px;
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px 28px;
             background: var(--surface-glass);
-            border-radius: 28px;
+            border-radius: 20px;
             border: 1px solid var(--surface-border);
             backdrop-filter: blur(20px);
         }
         
         /* Hero Promo Block */
         .hero-promo {
-            margin-top: 32px;
-            padding: 20px 28px;
-            border-radius: 16px;
+            margin-top: 16px;
+            padding: 12px 20px;
+            border-radius: 12px;
             background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(179,136,255,0.1));
             position: relative;
             overflow: hidden;
@@ -124,7 +124,7 @@
         }
         
         .promo-sparkle {
-            font-size: 1.4rem;
+            font-size: 1rem;
             animation: sparkle 1.5s ease-in-out infinite;
         }
         
@@ -134,7 +134,7 @@
         }
         
         .hero-promo .promo-text {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-primary);
         }
@@ -147,13 +147,12 @@
         
         .hero-promo .promo-prize {
             font-weight: 900;
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             background: linear-gradient(135deg, #00d4ff, #26de81, #00d4ff);
             background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: prizeShine 2s linear infinite;
-            text-shadow: 0 0 30px rgba(38,222,129,0.5);
         }
         
         @keyframes prizeShine {
@@ -162,41 +161,41 @@
         }
         
         .hero-content h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 16px;
-            line-height: 1.1;
-            letter-spacing: -1px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
         }
         
         .hero-price {
-            font-size: 5rem;
+            font-size: 2.4rem;
             font-weight: 900;
             background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 32px;
-            letter-spacing: -2px;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
         }
         
         .hero-stats {
             display: flex;
-            gap: 24px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         
         .hero-stat {
             background: var(--surface-glass);
             border: 1px solid var(--chase-glow);
-            border-radius: 16px;
-            padding: 20px 28px;
+            border-radius: 12px;
+            padding: 10px 16px;
             text-align: center;
             backdrop-filter: blur(12px);
-            min-width: 120px;
+            min-width: 80px;
         }
         
         .hero-stat-value {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             font-weight: 800;
         }
         
@@ -205,36 +204,36 @@
         .hero-stat-value.hit { color: var(--money-green); }
         
         .hero-stat-label {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 6px;
+            letter-spacing: 1px;
+            margin-top: 4px;
         }
         
         .hero-remaining {
             background: var(--surface-glass);
             border: 1px solid var(--chase-glow);
-            border-radius: 20px;
-            padding: 36px;
+            border-radius: 14px;
+            padding: 16px 20px;
             text-align: center;
-            min-width: 200px;
+            min-width: 100px;
             backdrop-filter: blur(12px);
         }
         
         .remaining-value {
-            font-size: 4rem;
+            font-size: 2rem;
             font-weight: 900;
             color: var(--bnb-accent);
-            letter-spacing: -2px;
+            letter-spacing: -1px;
         }
         
         .remaining-label {
-            font-size: 0.8rem;
+            font-size: 0.65rem;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 8px;
+            letter-spacing: 1px;
+            margin-top: 4px;
         }
         
         /* Cards Section */
