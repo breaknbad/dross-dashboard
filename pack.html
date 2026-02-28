@@ -170,16 +170,16 @@
         
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
         }
         
         .card-item {
             background: var(--surface);
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 24px;
             display: flex;
-            gap: 20px;
+            gap: 24px;
             border: 1px solid var(--surface-border);
             transition: all 0.3s ease;
             animation: cardIn 0.4s ease backwards;
@@ -214,8 +214,8 @@
         
         .card-image-wrap {
             flex-shrink: 0;
-            width: 100px;
-            height: 140px;
+            width: 140px;
+            height: 195px;
             border-radius: 10px;
             overflow: hidden;
             background: #1a1a1a;
@@ -263,11 +263,11 @@
         .card-tier.chase { color: var(--chase-blue); }
         
         .card-title {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             font-weight: 500;
             color: var(--text-primary);
             line-height: 1.4;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -276,7 +276,7 @@
         
         .card-value {
             margin-top: auto;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--hit-green);
         }
@@ -478,10 +478,6 @@
                             <div class="hero-stat">
                                 <div class="hero-stat-value chase">${chases.length}</div>
                                 <div class="hero-stat-label">⚡ Chases</div>
-                            </div>
-                            <div class="hero-stat">
-                                <div class="hero-stat-value ev">${pack.evRatio ? pack.evRatio.toFixed(2) + 'x' : '—'}</div>
-                                <div class="hero-stat-label">📈 EV Ratio</div>
                             </div>
                             <div class="hero-stat">
                                 <div class="hero-stat-value" style="color: var(--bnb-gold)">${(grailPct + chasePct).toFixed(1)}%</div>
