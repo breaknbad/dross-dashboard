@@ -10,29 +10,34 @@
     <style>
         :root {
             --bg-dark: #0a0a0a;
-            --surface: #141414;
-            --surface-hover: #1a1a1a;
+            --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            --surface: rgba(255,255,255,0.03);
+            --surface-border: rgba(255,255,255,0.06);
             --text-primary: #fff;
-            --text-secondary: #888;
+            --text-secondary: rgba(255,255,255,0.5);
             --bnb-accent: #FF4500;
             --bnb-gold: #ffc107;
             --grail-purple: #b388ff;
+            --grail-glow: rgba(179,136,255,0.3);
             --chase-blue: #40c4ff;
+            --chase-glow: rgba(64,196,255,0.3);
             --hit-green: #26de81;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Space Grotesk', sans-serif;
             background: var(--bg-dark);
+            background-image: var(--bg-gradient);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 40px;
+            padding: 30px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
         .back-btn {
@@ -41,196 +46,228 @@
             gap: 8px;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            transition: all 0.2s;
             margin-bottom: 30px;
-            transition: color 0.2s;
         }
         
         .back-btn:hover {
             color: var(--text-primary);
+            background: rgba(255,255,255,0.08);
         }
         
-        .pack-header {
-            margin-bottom: 40px;
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 50px;
+            padding: 40px;
+            background: var(--surface);
+            border-radius: 24px;
+            border: 1px solid var(--surface-border);
         }
         
-        .pack-title {
-            font-size: 3rem;
+        .hero-content h1 {
+            font-size: 2.8rem;
             font-weight: 900;
-            margin-bottom: 16px;
-            line-height: 1.2;
+            margin-bottom: 12px;
+            line-height: 1.1;
         }
         
-        .pack-price {
-            font-size: 4rem;
+        .hero-price {
+            font-size: 4.5rem;
             font-weight: 900;
             background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
         
-        .pack-meta {
+        .hero-stats {
             display: flex;
-            gap: 24px;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
+            gap: 30px;
+            flex-wrap: wrap;
         }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
+        .hero-stat {
+            text-align: center;
         }
         
-        .stat-card {
-            background: var(--surface);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .stat-card h3 {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-        
-        .stat-card .value {
-            font-size: 2.5rem;
+        .hero-stat-value {
+            font-size: 2rem;
             font-weight: 800;
         }
         
-        .stat-card .value.grail { color: var(--grail-purple); }
-        .stat-card .value.chase { color: var(--chase-blue); }
-        .stat-card .value.hit { color: var(--hit-green); }
+        .hero-stat-value.grail { color: var(--grail-purple); }
+        .hero-stat-value.chase { color: var(--chase-blue); }
+        .hero-stat-value.ev { color: var(--hit-green); }
         
-        .stat-card .sub {
-            font-size: 1rem;
+        .hero-stat-label {
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
         }
         
-        .tags-section {
-            margin-bottom: 40px;
-        }
-        
-        .tags-section h3 {
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-        }
-        
-        .tags-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        
-        .tag {
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-        
-        .tag.grail { background: rgba(179,136,255,0.15); color: var(--grail-purple); }
-        .tag.chase { background: rgba(64,196,255,0.15); color: var(--chase-blue); }
-        .tag.hot { background: rgba(255,71,87,0.15); color: #ff4757; }
-        .tag.budget { background: rgba(38,222,129,0.15); color: var(--hit-green); }
-        .tag.topGrail { background: rgba(255,193,7,0.15); color: var(--bnb-gold); }
-        
-        .progress-section {
-            margin-bottom: 40px;
-        }
-        
-        .progress-section h3 {
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-        }
-        
-        .progress-bar {
-            height: 24px;
+        .hero-remaining {
             background: var(--surface);
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            min-width: 180px;
         }
         
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold));
-            border-radius: 12px;
-            transition: width 0.5s ease;
+        .remaining-value {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--bnb-accent);
         }
         
-        .progress-label {
-            margin-top: 12px;
-            font-size: 1.1rem;
+        .remaining-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Cards Section */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--surface-border);
+        }
+        
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .section-header .count {
+            background: var(--surface);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             color: var(--text-secondary);
         }
         
         .cards-section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
-        .cards-section h3 {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
+        .cards-section.grails .section-header h2 { color: var(--grail-purple); }
+        .cards-section.chases .section-header h2 { color: var(--chase-blue); }
         
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
         }
         
         .card-item {
             background: var(--surface);
-            border-radius: 12px;
-            padding: 16px;
+            border-radius: 16px;
+            padding: 20px;
             display: flex;
-            gap: 16px;
-            align-items: center;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.2s, border-color 0.2s;
+            gap: 20px;
+            border: 1px solid var(--surface-border);
+            transition: all 0.3s ease;
+            animation: cardIn 0.4s ease backwards;
         }
         
         .card-item:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         
         .card-item.grail {
-            border-color: rgba(179,136,255,0.3);
+            border-color: var(--grail-glow);
+            box-shadow: 0 0 30px rgba(179,136,255,0.1);
         }
         
         .card-item.chase {
-            border-color: rgba(64,196,255,0.3);
+            border-color: var(--chase-glow);
+            box-shadow: 0 0 30px rgba(64,196,255,0.1);
+        }
+        
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card-item:nth-child(1) { animation-delay: 0.05s; }
+        .card-item:nth-child(2) { animation-delay: 0.1s; }
+        .card-item:nth-child(3) { animation-delay: 0.15s; }
+        .card-item:nth-child(4) { animation-delay: 0.2s; }
+        .card-item:nth-child(5) { animation-delay: 0.25s; }
+        .card-item:nth-child(6) { animation-delay: 0.3s; }
+        
+        .card-image-wrap {
+            flex-shrink: 0;
+            width: 100px;
+            height: 140px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #1a1a1a;
+            position: relative;
         }
         
         .card-image {
-            width: 80px;
-            height: 110px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 8px;
-            background: #1a1a1a;
+        }
+        
+        .card-image-wrap::after {
+            content: '🃏';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .card-image-wrap:has(img[src]:not([src=""])) ::after {
+            display: none;
         }
         
         .card-info {
             flex: 1;
             min-width: 0;
+            display: flex;
+            flex-direction: column;
         }
         
+        .card-tier {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        
+        .card-tier.grail { color: var(--grail-purple); }
+        .card-tier.chase { color: var(--chase-blue); }
+        
         .card-title {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
             color: var(--text-primary);
-            margin-bottom: 8px;
-            line-height: 1.3;
+            line-height: 1.4;
+            margin-bottom: 12px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -238,32 +275,36 @@
         }
         
         .card-value {
-            font-size: 1.2rem;
-            font-weight: 700;
+            margin-top: auto;
+            font-size: 1.5rem;
+            font-weight: 800;
             color: var(--hit-green);
         }
         
         .no-cards {
+            text-align: center;
+            padding: 60px 20px;
             color: var(--text-secondary);
-            font-style: italic;
+            font-size: 1.1rem;
         }
         
+        /* Autopilot indicator */
         #autopilotIndicator {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: rgba(255,69,0,0.9);
+            background: rgba(255,69,0,0.95);
             color: #fff;
-            padding: 12px 20px;
-            border-radius: 24px;
-            font-size: 0.9rem;
+            padding: 14px 24px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
             z-index: 9999;
             display: none;
+            backdrop-filter: blur(10px);
         }
         
-        #autopilotIndicator.active {
-            display: block;
-        }
+        #autopilotIndicator.active { display: flex; align-items: center; gap: 10px; }
         
         .autopilot-progress {
             position: fixed;
@@ -272,41 +313,44 @@
             height: 4px;
             background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold));
             transition: width 0.1s linear;
+            z-index: 9998;
         }
         
-        .loading {
-            text-align: center;
-            padding: 100px 20px;
-            color: var(--text-secondary);
-        }
-        
-        .not-found {
+        .loading, .not-found {
             text-align: center;
             padding: 100px 20px;
         }
+        
+        .loading { color: var(--text-secondary); }
         
         .not-found h2 {
             font-size: 2rem;
             margin-bottom: 16px;
         }
         
-        .not-found a {
-            color: var(--bnb-accent);
+        .not-found a { color: var(--bnb-accent); }
+        
+        @media (max-width: 768px) {
+            body { padding: 20px; }
+            .hero { grid-template-columns: 1fr; padding: 24px; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-price { font-size: 3rem; }
+            .cards-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-btn">← Back to Hot Packs</a>
-    
-    <div id="content">
-        <div class="loading">Loading pack data...</div>
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Hot Packs</a>
+        <div id="content">
+            <div class="loading">Loading pack data...</div>
+        </div>
     </div>
     
-    <div id="autopilotIndicator">🎬 Auto-pilot: Next pack in <span id="countdown">8</span>s</div>
+    <div id="autopilotIndicator">🎬 Next pack in <span id="countdown">8</span>s</div>
     <div class="autopilot-progress" id="autopilotProgress"></div>
     
     <script>
-        // Fetch pack data from cards-data.json (has full card details)
         async function loadPackData() {
             try {
                 const response = await fetch('cards-data.json');
@@ -319,13 +363,16 @@
         }
         
         function fmtDollar(v) {
-            return '$' + Math.round(v).toLocaleString();
+            if (typeof v !== 'number') return '—';
+            // Values in cards-data are in cents
+            const dollars = v > 1000 ? v / 100 : v;
+            return '$' + Math.round(dollars).toLocaleString();
         }
         
         async function init() {
             const params = new URLSearchParams(window.location.search);
-            const packId = params.get('id');
             const packTitle = params.get('title');
+            const packId = params.get('id');
             const autopilot = params.get('autopilot') === 'true';
             const nextIndex = parseInt(params.get('next')) || 0;
             
@@ -342,31 +389,40 @@
             const packs = await loadPackData();
             let pack = null;
             
-            // Primary: match by title (most reliable across data sources)
+            // Match by title - find the one with the MOST cards (best data)
             if (packTitle) {
-                const searchTitle = decodeURIComponent(packTitle).toLowerCase();
-                pack = packs.find(p => p.title && p.title.toLowerCase() === searchTitle);
-                // Fuzzy match if exact doesn't work
+                const searchTitle = decodeURIComponent(packTitle).toLowerCase().trim();
+                const matches = packs.filter(p => 
+                    p.title && p.title.toLowerCase().trim() === searchTitle
+                );
+                // Pick the match with most cards
+                if (matches.length > 0) {
+                    pack = matches.reduce((best, current) => {
+                        const bestCards = (best.cards || []).length;
+                        const currentCards = (current.cards || []).length;
+                        return currentCards > bestCards ? current : best;
+                    });
+                }
+                // Fuzzy match fallback
                 if (!pack) {
-                    pack = packs.find(p => p.title && p.title.toLowerCase().includes(searchTitle.split(':')[0]));
+                    const sportMatch = searchTitle.split(':')[0];
+                    pack = packs.find(p => p.title && p.title.toLowerCase().includes(sportMatch));
                 }
             }
             
-            // Fallback: try by ID
+            // Fallback by ID
             if (!pack && packId) {
                 pack = packs.find(p => p.repackId === packId || p.productId === packId);
-            }
-            
-            // Fallback: try by index
-            if (!pack && packId && !isNaN(parseInt(packId))) {
-                pack = packs[parseInt(packId)];
+                if (!pack && !isNaN(parseInt(packId))) {
+                    pack = packs[parseInt(packId)];
+                }
             }
             
             if (!pack) {
                 document.getElementById('content').innerHTML = `
                     <div class="not-found">
                         <h2>Pack not found</h2>
-                        <p>This pack may no longer be available.</p>
+                        <p>Looking for: ${packTitle || packId}</p>
                         <p><a href="index.html">← Back to Hot Packs</a></p>
                     </div>
                 `;
@@ -375,7 +431,6 @@
             
             renderPack(pack);
             
-            // Auto-pilot mode
             if (autopilot) {
                 startAutopilot(nextIndex, packs.length);
             }
@@ -390,64 +445,79 @@
             const odds = pack.odds || {};
             const grailPct = odds.grail || 0;
             const chasePct = odds.chase || 0;
-            const combinedPct = grailPct + chasePct;
             
-            function renderCards(cardList, tier) {
-                if (!cardList.length) return '<p class="no-cards">None remaining</p>';
+            function renderCards(cardList, tierClass) {
+                if (!cardList.length) {
+                    return '<div class="no-cards">No cards in this tier remaining</div>';
+                }
                 return cardList.map(card => `
-                    <div class="card-item ${tier.toLowerCase()}">
-                        <img src="${card.image}" alt="${card.title}" class="card-image" onerror="this.style.display='none'">
+                    <div class="card-item ${tierClass}">
+                        <div class="card-image-wrap">
+                            <img src="${card.image || ''}" alt="" class="card-image" 
+                                 onerror="this.style.opacity='0'">
+                        </div>
                         <div class="card-info">
-                            <div class="card-title">${card.title}</div>
-                            <div class="card-value">${card.valueDisplay || fmtDollar(card.value / 100)}</div>
+                            <div class="card-tier ${tierClass}">${card.tier}</div>
+                            <div class="card-title">${card.title || 'Unknown Card'}</div>
+                            <div class="card-value">${card.valueDisplay || fmtDollar(card.value)}</div>
                         </div>
                     </div>
                 `).join('');
             }
             
             document.getElementById('content').innerHTML = `
-                <div class="pack-header">
-                    <h1 class="pack-title">${pack.title}</h1>
-                    <div class="pack-price">$${pack.price || 0}</div>
-                    <div class="pack-meta">
-                        <span>📦 ${remaining} remaining</span>
-                        <span>🎯 ${combinedPct.toFixed(1)}% hit rate</span>
-                        ${pack.evRatio ? `<span>📈 ${pack.evRatio.toFixed(2)}x EV</span>` : ''}
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>${pack.title}</h1>
+                        <div class="hero-price">$${pack.price || 0}</div>
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <div class="hero-stat-value grail">${grails.length}</div>
+                                <div class="hero-stat-label">💎 Grails</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-value chase">${chases.length}</div>
+                                <div class="hero-stat-label">⚡ Chases</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-value ev">${pack.evRatio ? pack.evRatio.toFixed(2) + 'x' : '—'}</div>
+                                <div class="hero-stat-label">📈 EV Ratio</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-value" style="color: var(--bnb-gold)">${(grailPct + chasePct).toFixed(1)}%</div>
+                                <div class="hero-stat-label">🎯 Hit Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-remaining">
+                        <div class="remaining-value">${remaining}</div>
+                        <div class="remaining-label">Cards Left</div>
                     </div>
                 </div>
                 
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>💎 Grails</h3>
-                        <div class="value grail">${grails.length}</div>
-                        <div class="sub">${grailPct.toFixed(1)}% chance</div>
+                <div class="cards-section grails">
+                    <div class="section-header">
+                        <h2>💎 Grails</h2>
+                        <span class="count">${grails.length} remaining · ${grailPct.toFixed(1)}% chance</span>
                     </div>
-                    <div class="stat-card">
-                        <h3>⚡ Chases</h3>
-                        <div class="value chase">${chases.length}</div>
-                        <div class="sub">${chasePct.toFixed(1)}% chance</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>📈 True EV</h3>
-                        <div class="value hit">${pack.trueEV ? fmtDollar(pack.trueEV) : '—'}</div>
-                        <div class="sub">${pack.evRatio ? pack.evRatio.toFixed(2) + 'x ratio' : ''}</div>
-                    </div>
+                    <div class="cards-grid">${renderCards(grails, 'grail')}</div>
                 </div>
                 
-                <div class="cards-section">
-                    <h3>💎 Grails (${grails.length})</h3>
-                    <div class="cards-grid">${renderCards(grails, 'GRAIL')}</div>
-                </div>
-                
-                <div class="cards-section">
-                    <h3>⚡ Chases (${chases.length})</h3>
-                    <div class="cards-grid">${renderCards(chases, 'CHASE')}</div>
+                <div class="cards-section chases">
+                    <div class="section-header">
+                        <h2>⚡ Chases</h2>
+                        <span class="count">${chases.length} remaining · ${chasePct.toFixed(1)}% chance</span>
+                    </div>
+                    <div class="cards-grid">${renderCards(chases, 'chase')}</div>
                 </div>
             `;
+            
+            // Update page title
+            document.title = `${pack.title} | Break'n Bad`;
         }
         
         function startAutopilot(nextIndex, totalPacks) {
-            const PACK_VIEW_TIME = 8000; // 8 seconds
+            const PACK_VIEW_TIME = 8000;
             const indicator = document.getElementById('autopilotIndicator');
             const progress = document.getElementById('autopilotProgress');
             const countdown = document.getElementById('countdown');
@@ -457,7 +527,7 @@
             let elapsed = 0;
             let isPaused = false;
             
-            function updateProgress() {
+            const interval = setInterval(() => {
                 if (isPaused) return;
                 
                 elapsed += 100;
@@ -466,21 +536,17 @@
                 countdown.textContent = Math.ceil((PACK_VIEW_TIME - elapsed) / 1000);
                 
                 if (elapsed >= PACK_VIEW_TIME) {
-                    // Navigate back to main page with next pack index
+                    clearInterval(interval);
                     window.location.href = `index.html?next=${nextIndex}`;
                 }
-            }
+            }, 100);
             
-            const interval = setInterval(updateProgress, 100);
-            
-            // Pause on user activity
             function pauseAutopilot() {
                 isPaused = true;
-                indicator.innerHTML = '🎬 Auto-pilot paused (activity detected)';
+                indicator.innerHTML = '🎬 Paused';
                 indicator.style.background = 'rgba(0,0,0,0.8)';
                 clearInterval(interval);
                 
-                // Remove autopilot params from URL
                 const url = new URL(window.location);
                 url.searchParams.delete('autopilot');
                 url.searchParams.delete('next');
