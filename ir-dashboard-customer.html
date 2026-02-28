@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break'n Bad | Hot Packs 🔥</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bnb-dark: #0a0a0a;
+            --bnb-deep: #111111;
+            --bnb-primary: #161616;
+            --bnb-card: rgba(20,20,20,0.9);
+            --bnb-card-hover: rgba(30,30,30,0.95);
+            --bnb-accent: #FF4500;
+            --bnb-accent-light: #ff8a50;
+            --bnb-gold: #ffc107;
+            --bnb-gold-light: #ffd54f;
+            --bnb-border: rgba(255,69,0,0.15);
+            --bnb-border-hover: rgba(255,69,0,0.35);
+            --text: #f5f5f5;
+            --text-muted: #888888;
+            --hot-red: #ff4757;
+            --grail-purple: #b388ff;
+            --grail-glow: rgba(179,136,255,0.25);
+            --chase-blue: #ff8c5a;
+            --chase-glow: rgba(255,140,90,0.25);
+            --green: #26de81;
+            --green-glow: rgba(38,222,129,0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bnb-dark);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-glow::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            top: -200px; right: -100px;
+            background: radial-gradient(circle, rgba(255,69,0,0.06) 0%, transparent 70%);
+            animation: float1 20s ease-in-out infinite;
+        }
+        .bg-glow::after {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            bottom: -150px; left: -100px;
+            background: radial-gradient(circle, rgba(255,140,0,0.04) 0%, transparent 70%);
+            animation: float2 25s ease-in-out infinite;
+        }
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-60px, 80px); }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, -70px); }
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 24px 16px 60px;
+        }
+
+        /* ─── Header ─── */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 32px 0 24px;
+        }
+
+        .logo-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 180px; height: 180px;
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+        .logo-mark img {
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
+            transition: filter 0.3s ease;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .header h1 .accent {
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(38,222,129,0.12);
+            border: 1px solid rgba(38,222,129,0.25);
+            color: var(--green);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .live-dot {
+            width: 6px; height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 8px var(--green-glow);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        /* ─── Pack Cards ─── */
+        .pack-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .pack-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .pack-card {
+            background: var(--bnb-card);
+            border: 1px solid var(--bnb-border);
+            border-radius: 20px;
+            padding: 24px 28px 20px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(16px);
+            animation: cardIn 0.5s ease forwards;
+        }
+
+        .pack-card:nth-child(1) { animation-delay: 0.05s; }
+        .pack-card:nth-child(2) { animation-delay: 0.1s; }
+        .pack-card:nth-child(3) { animation-delay: 0.15s; }
+        .pack-card:nth-child(4) { animation-delay: 0.2s; }
+        .pack-card:nth-child(5) { animation-delay: 0.25s; }
+        .pack-card:nth-child(6) { animation-delay: 0.3s; }
+        .pack-card:nth-child(7) { animation-delay: 0.35s; }
+        .pack-card:nth-child(8) { animation-delay: 0.4s; }
+        .pack-card:nth-child(9) { animation-delay: 0.45s; }
+        .pack-card:nth-child(10) { animation-delay: 0.5s; }
+
+        @keyframes cardIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pack-card:hover {
+            background: var(--bnb-card-hover);
+            border-color: var(--bnb-border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+        }
+
+        /* Featured top-3 glow */
+        .pack-card.featured {
+            border-color: rgba(255,107,53,0.35);
+        }
+
+        .pack-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold), var(--bnb-accent));
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .pack-card.featured:hover {
+            box-shadow: 0 12px 48px rgba(255,107,53,0.15), 0 4px 24px rgba(0,0,0,0.3);
+        }
+
+        /* Rank badge */
+        .rank-badge {
+            position: absolute;
+            top: 14px; left: 14px;
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 800;
+            z-index: 2;
+        }
+
+        .rank-1 { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000; }
+        .rank-2 { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000; }
+        .rank-3 { background: linear-gradient(135deg, #cd7f32, #a0652f); color: #fff; }
+        .rank-n { background: rgba(255,255,255,0.08); color: var(--text-muted); }
+
+        /* Sport icon */
+        .sport-icon {
+            position: absolute;
+            top: 14px; right: 14px;
+            font-size: 1.3rem;
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+        /* Pack info */
+        .pack-info {
+            padding-left: 36px;
+        }
+
+        .pack-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+        }
+
+        /* Tags */
+        .pack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+            font-weight: 900;
+            padding: 10px 18px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .tag.grail {
+            background: rgba(179,136,255,0.12);
+            color: var(--grail-purple);
+            border: 1px solid rgba(179,136,255,0.25);
+        }
+
+        .tag.chase {
+            background: rgba(64,196,255,0.12);
+            color: var(--chase-blue);
+            border: 1px solid rgba(64,196,255,0.25);
+        }
+
+        .tag.hot {
+            background: rgba(255,71,87,0.12);
+            color: var(--hot-red);
+            border: 1px solid rgba(255,71,87,0.25);
+        }
+
+        .tag.scarce {
+            background: rgba(255,193,7,0.12);
+            color: var(--bnb-gold);
+            border: 1px solid rgba(255,193,7,0.25);
+        }
+
+        .tag.velocity {
+            background: rgba(255,107,53,0.15);
+            color: #ff6b35;
+            border: 1px solid rgba(255,107,53,0.3);
+        }
+
+        .tag.new {
+            background: rgba(76,175,80,0.15);
+            color: #4caf50;
+            border: 1px solid rgba(76,175,80,0.3);
+        }
+
+        .tag.budget {
+            background: rgba(255,215,0,0.15);
+            color: #ffd700;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+
+        .tag.topGrail {
+            background: rgba(255,193,7,0.12);
+            color: var(--bnb-gold);
+            border: 1px solid rgba(255,193,7,0.25);
+        }
+
+        /* Combined hit rate */
+        .combined-stat {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--bnb-accent-light);
+            margin: 8px 0 4px;
+            letter-spacing: -0.3px;
+        }
+
+        /* Odds visual bars */
+        .odds-row {
+            display: flex;
+            gap: 24px;
+            align-items: stretch;
+            margin-top: 6px;
+        }
+
+        .odd-block {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .odd-block .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .odd-block .tier-header .count {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .odd-block .tier-header .odds-pct {
+            font-size: 0.7rem;
+            font-weight: 600;
+            opacity: 0.6;
+        }
+
+        .odd-block .value-range {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .odd-block .value-range.grail-color { color: var(--grail-purple); }
+        .odd-block .value-range.chase-color { color: var(--chase-blue); }
+
+        .odd-block .label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .odd-block .label span:first-child {
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .odd-block .label .pct {
+            font-weight: 800;
+            font-size: 0.85rem;
+        }
+
+        .odd-block .label .pct.grail-color { color: var(--grail-purple); }
+        .odd-block .label .pct.chase-color { color: var(--chase-blue); }
+
+        .bar-track {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        .bar-fill.grail {
+            background: linear-gradient(90deg, var(--grail-purple), #d1c4e9);
+            box-shadow: 0 0 8px var(--grail-glow);
+        }
+
+        .bar-fill.chase {
+            background: linear-gradient(90deg, var(--chase-blue), #80d8ff);
+            box-shadow: 0 0 8px var(--chase-glow);
+        }
+
+        .pitch-line {
+            color: var(--text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        .odds-line {
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-top: 4px;
+            opacity: 0.8;
+        }
+
+        .sold-bar-wrap {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sold-bar-wrap .bar-track {
+            flex: 1;
+        }
+
+        .bar-fill.sold {
+            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-gold));
+            box-shadow: 0 0 8px rgba(255,107,53,0.3);
+        }
+
+        .sold-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--bnb-accent-light);
+            white-space: nowrap;
+        }
+
+        /* Right side */
+        .pack-stats {
+            text-align: right;
+            min-width: 90px;
+        }
+
+        .pack-price {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pack-remaining {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .pack-remaining.low {
+            color: var(--hot-red);
+            font-weight: 700;
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            text-align: center;
+            margin-top: 44px;
+        }
+
+        .shop-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: -0.3px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 24px rgba(255,107,53,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shop-link::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; right: 0; bottom: 0;
+            width: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            animation: btnShine 4s ease-in-out infinite;
+        }
+
+        @keyframes btnShine {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(50%); }
+        }
+
+        .shop-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(255,107,53,0.4);
+        }
+
+        /* ─── Footer ─── */
+        .footer {
+            text-align: center;
+            margin-top: 36px;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            line-height: 1.6;
+        }
+
+        .footer .timestamp {
+            font-weight: 600;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ─── Empty state ─── */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
+        .empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--text); }
+
+        /* ─── IR Alerts Banner ─── */
+        .alerts-banner {
+            background: linear-gradient(135deg, var(--bnb-card), rgba(255,69,0,0.08));
+            border: 2px solid var(--bnb-border-hover);
+            border-radius: 16px;
+            padding: 20px 28px;
+            margin-bottom: 32px;
+            position: relative;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            animation: bannerSlide 0.8s ease;
+            box-shadow: 0 8px 32px rgba(255,69,0,0.1);
+        }
+
+        @keyframes bannerSlide {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .banner-main {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .banner-text {
+            white-space: nowrap;
+        }
+        
+        .banner-text h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .banner-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .banner-actions {
+            flex-shrink: 0;
+        }
+
+        .banner-icon {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-gold));
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .quick-signup {
+            text-align: center;
+        }
+
+        .keyword-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .keyword-text strong {
+            font-family: monospace;
+            font-size: 1.2rem;
+        }
+
+        .phone-text {
+            font-size: 0.95rem;
+        }
+
+        .quick-signup-link {
+            text-decoration: none;
+            display: block;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--bnb-accent), var(--bnb-accent-light));
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .quick-signup-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,107,53,0.3);
+        }
+
+        .quick-signup-link .keyword-text,
+        .quick-signup-link .phone-text {
+            color: white;
+        }
+
+        .quick-signup-link .keyword-text strong {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .banner-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: var(--text-muted);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .banner-close:hover {
+            background: rgba(255,69,0,0.2);
+            color: var(--bnb-accent);
+        }
+
+        /* ─── Mobile ─── */
+        @media (max-width: 600px) {
+            .page { padding: 16px 12px 40px; }
+            .header h1 { font-size: 1.7rem; }
+            .header { margin-bottom: 28px; padding: 20px 0 16px; }
+
+            .pack-card {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                padding: 18px 16px;
+                border-radius: 16px;
+            }
+
+            .pack-info { padding-left: 32px; }
+
+            .pack-stats {
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding-left: 32px;
+            }
+
+            .pack-price { font-size: 1.3rem; }
+
+            .odds-row { gap: 12px; }
+            .odd-block { max-width: none; }
+
+            .rank-badge { top: 12px; left: 12px; width: 24px; height: 24px; font-size: 0.65rem; }
+            .sport-icon { top: 12px; right: 12px; font-size: 1.1rem; }
+            
+            /* Banner mobile styles */
+            .alerts-banner {
+                padding: 20px;
+                margin-bottom: 24px;
+            }
+            
+            .banner-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+            
+            .banner-main {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            
+            .banner-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+            }
+            
+            .banner-text h3 {
+                font-size: 1.1rem;
+            }
+            
+            .banner-actions {
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+            }
+            
+            .quick-signup-link {
+                width: 100%;
+                padding: 16px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <div class="page">
+        <div class="header">
+            <div class="logo-mark"><img src="data:image/png;base64,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" alt="Break'n Bad" style="width:100%;height:100%;object-fit:contain;"></div>
+            <h1>Hot Packs <span class="accent">Right Now</span></h1>
+            <p class="subtitle">
+                <span class="live-badge"><span class="live-dot"></span> Live</span>
+            </p>
+        </div>
+
+        <!-- IR Alerts Signup Banner -->
+        <div class="alerts-banner" id="alertsBanner">
+            <div class="banner-content">
+                <div class="banner-main">
+                    <div class="banner-icon">🔥</div>
+                    <div class="banner-text">
+                        <h3>Never Miss a Grail</h3>
+                        <p>Get alerts when hot packs drop</p>
+                    </div>
+                </div>
+                <div class="banner-actions">
+                    <a href="sms:+15742750277&body=RIPS" class="quick-signup-link">
+                        <span class="keyword-text">Text <strong>RIPS</strong> to (574) 275-0277</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pack-list" id="packList"></div>
+
+        <div class="cta-section">
+            <a href="https://get.fanatics.live/X8WW/hsobapek" class="shop-link">
+                Open in Fanatics Live <span style="font-size:1.1rem">→</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Last update: <span class="timestamp" id="timestamp"></span></p>
+            <p>Odds are calculated from remaining cards in pool and are subject to change. Not financial advice. Break'n Bad IR Intelligence.</p>
+        </div>
+    </div>
+
+    <script>
+        const PACK_DATA = /*PACK_DATA_PLACEHOLDER*/;
+
+        const SPORT_ICONS = {
+            'baseball': '⚾',
+            'basketball': '🏀',
+            'football': '🏈',
+            'pokemon': '⚡',
+            'mixed': '🎯',
+            'og pokemon': '✨',
+            'other': '🃏'
+        };
+
+        function getSport(title) {
+            const t = title.toLowerCase();
+            if (t.includes('og pokemon')) return 'og pokemon';
+            if (t.includes('pokemon')) return 'pokemon';
+            if (t.includes('basketball')) return 'basketball';
+            if (t.includes('football')) return 'football';
+            if (t.includes('baseball')) return 'baseball';
+            if (t.includes('mixed')) return 'mixed';
+            return 'other';
+        }
+
+        function render() {
+            const container = document.getElementById('packList');
+            const packs = PACK_DATA.packs || [];
+
+            if (!packs.length) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">📦</div>
+                        <h3>No hot packs right now</h3>
+                        <p>Check back soon — new data drops regularly</p>
+                    </div>
+                `;
+                return;
+            }
+
+            document.getElementById('timestamp').textContent =
+                new Date(PACK_DATA.timestamp).toLocaleString('en-US', {
+                    month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+                });
+
+            container.innerHTML = packs.map((pack, i) => {
+                const tags = (pack.tags || []).map(t => {
+                    const cls = t.type || 'hot';
+                    return `<span class="tag ${cls}">${t.icon || ''} ${t.label}</span>`;
+                }).join('');
+
+                const remaining = pack.remaining || 0;
+                const lowClass = remaining < 50 ? 'low' : '';
+                const featured = i < 3 ? 'featured' : '';
+                const price = pack.price || 0;
+                const sport = getSport(pack.title);
+                const icon = SPORT_ICONS[sport] || '🃏';
+
+                // Grail & chase data
+                const grailCount = pack.grailCount || 0;
+                const chaseCount = pack.chaseCount || 0;
+                const grailLow = pack.grailRangeLow || 0;
+                const grailHigh = pack.grailRangeHigh || 0;
+                const chaseLow = pack.chaseRangeLow || 0;
+                const chaseHigh = pack.chaseRangeHigh || 0;
+                const fmtDollar = (v) => '$' + Math.round(v).toLocaleString();
+
+                // Odds
+                const grailPct = parseFloat(pack.grailPct) || 0;
+                const chasePct = parseFloat(pack.chasePct) || 0;
+
+                // Value display — single value if 1 card, range if multiple
+                const grailRange = grailHigh > 0
+                    ? (grailCount === 1 ? fmtDollar(Math.round((grailLow + grailHigh) / 2)) : `${fmtDollar(grailLow)}–${fmtDollar(grailHigh)}`)
+                    : '';
+                const chaseRange = chaseHigh > 0
+                    ? (chaseCount === 1 ? fmtDollar(Math.round((chaseLow + chaseHigh) / 2)) : `${fmtDollar(chaseLow)}–${fmtDollar(chaseHigh)}`)
+                    : '';
+
+                // "1 in X" odds — only when notable
+                const grailOneIn = grailPct > 0 ? Math.round(100 / grailPct) : 0;
+                const chaseOneIn = chasePct > 0 ? Math.round(100 / chasePct) : 0;
+                const showGrailOdds = grailPct >= 3;
+                const showChaseOdds = chasePct >= 10;
+
+                // Combined hit rate
+                const combinedPct = grailPct + chasePct;
+                const combinedCount = grailCount + chaseCount;
+                const combinedLine = combinedPct >= 10 
+                    ? `🎯 ${Math.round(combinedPct)}% hit rate`
+                    : combinedCount > 0 
+                        ? `🎯 ${combinedCount} hits live`
+                        : '';
+
+                // Sold progress — need totalOriginal from data
+                const totalOrig = pack.totalOriginal || 0;
+                const soldPct = totalOrig > remaining ? Math.round(((totalOrig - remaining) / totalOrig) * 100) : 0;
+
+                // Rank badge
+                let rankClass = 'rank-n';
+                if (i === 0) rankClass = 'rank-1';
+                else if (i === 1) rankClass = 'rank-2';
+                else if (i === 2) rankClass = 'rank-3';
+
+                const packUrl = `pack.html?id=${pack.repackId || pack.productId}`;
+                return `
+                    <a href="${packUrl}" class="pack-card-link">
+                    <div class="pack-card ${featured}">
+                        <div class="rank-badge ${rankClass}">${i + 1}</div>
+                        <div class="sport-icon">${icon}</div>
+
+                        <div class="pack-info">
+                            <h3>${pack.title}</h3>
+                            <div class="pack-tags">${tags}</div>
+                            ${combinedLine ? `<div class="combined-stat">${combinedLine}</div>` : ''}
+                            <div class="odds-row">
+                                <div class="odd-block">
+                                    <div class="tier-header">
+                                        <span class="count" style="color:var(--grail-purple)">💎 Grails</span>
+                                    </div>
+                                    ${grailRange ? `<div class="value-range grail-color">${grailRange}</div>` : ''}
+                                    ${grailPct >= 10 
+                                        ? `<div class="odds-line grail-color">${Math.round(grailPct)}% chance</div>`
+                                        : grailOneIn <= 10 && grailOneIn > 0
+                                            ? `<div class="odds-line grail-color">1 in ${grailOneIn} chance</div>`
+                                            : grailCount > 0
+                                                ? `<div class="odds-line grail-color">${grailCount} live</div>` 
+                                                : ''}
+                                </div>
+                                <div class="odd-block">
+                                    <div class="tier-header">
+                                        <span class="count" style="color:var(--chase-blue)">⚡ Chases</span>
+                                    </div>
+                                    ${chaseRange ? `<div class="value-range chase-color">${chaseRange}</div>` : ''}
+                                    ${chasePct >= 20 
+                                        ? `<div class="odds-line chase-color">${Math.round(chasePct)}% chance</div>`
+                                        : chaseOneIn <= 10 && chaseOneIn > 0
+                                            ? `<div class="odds-line chase-color">1 in ${chaseOneIn} chance</div>`
+                                            : chaseCount > 0
+                                                ? `<div class="odds-line chase-color">${chaseCount} live</div>` 
+                                                : ''}
+                                </div>
+                            </div>
+                            ${soldPct >= 15 ? `
+                            <div class="sold-bar-wrap">
+                                <div class="bar-track"><div class="bar-fill sold" style="width:${soldPct}%"></div></div>
+                                <div class="sold-label">${soldPct}% sold</div>
+                            </div>` : ''}
+                        </div>
+
+                        <div class="pack-stats">
+                            <div class="pack-price">$${price}</div>
+                            <div class="pack-remaining ${lowClass}">
+                                ${remaining < 50 ? '⚡ Low stock' : ''}
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                `;
+            }).join('');
+        }
+
+        render();
+
+        // IR Alerts Banner Functions
+        function hideBanner() {
+            document.getElementById('alertsBanner').style.display = 'none';
+            
+            // Track banner dismissal
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'ir_banner_dismissed', {
+                    'event_category': 'engagement'
+                });
+            }
+            
+            // Remember preference for session
+            sessionStorage.setItem('ir_banner_dismissed', 'true');
+        }
+        
+        // Check if banner should be hidden
+        if (sessionStorage.getItem('ir_banner_dismissed') === 'true') {
+            document.getElementById('alertsBanner').style.display = 'none';
+        }
+        
+        // Track page view for analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_title': 'IR Dashboard',
+                'page_location': window.location.href
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // TV MODE - Auto-scroll for stream display
+        // Add ?tv=true to URL to enable
+        // ═══════════════════════════════════════════════════════════
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const tvMode = params.get('tv') === 'true';
+            const scrollSpeed = parseInt(params.get('speed')) || 30; // pixels per second
+            const pauseTime = parseInt(params.get('pause')) || 3000; // ms to pause at top/bottom
+            
+            if (!tvMode) return;
+            
+            // Hide banner in TV mode
+            const banner = document.getElementById('alertsBanner');
+            if (banner) banner.style.display = 'none';
+            
+            // Add TV mode styles
+            const style = document.createElement('style');
+            style.textContent = `
+                body.tv-mode {
+                    overflow: hidden;
+                }
+                body.tv-mode .header {
+                    position: sticky;
+                    top: 0;
+                    z-index: 100;
+                    background: var(--bnb-dark);
+                    padding-bottom: 16px;
+                    margin-bottom: 0;
+                }
+                body.tv-mode .page {
+                    padding-top: 16px;
+                }
+                .tv-indicator {
+                    position: fixed;
+                    bottom: 16px;
+                    right: 16px;
+                    background: rgba(38,222,129,0.15);
+                    border: 1px solid rgba(38,222,129,0.3);
+                    color: var(--green);
+                    padding: 6px 12px;
+                    border-radius: 20px;
+                    font-size: 0.7rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    z-index: 1000;
+                }
+                .tv-indicator .dot {
+                    width: 6px;
+                    height: 6px;
+                    background: var(--green);
+                    border-radius: 50%;
+                    animation: pulse 2s infinite;
+                }
+            `;
+            document.head.appendChild(style);
+            document.body.classList.add('tv-mode');
+            
+            // Add TV indicator
+            const indicator = document.createElement('div');
+            indicator.className = 'tv-indicator';
+            indicator.innerHTML = '<span class="dot"></span> TV Mode';
+            document.body.appendChild(indicator);
+            
+            // Auto-scroll logic
+            let scrollDirection = 1; // 1 = down, -1 = up
+            let isPaused = false;
+            let lastTime = performance.now();
+            
+            function getMaxScroll() {
+                return document.documentElement.scrollHeight - window.innerHeight;
+            }
+            
+            function autoScroll(currentTime) {
+                if (isPaused) {
+                    requestAnimationFrame(autoScroll);
+                    return;
+                }
+                
+                const deltaTime = (currentTime - lastTime) / 1000;
+                lastTime = currentTime;
+                
+                const scrollAmount = scrollSpeed * deltaTime * scrollDirection;
+                window.scrollBy(0, scrollAmount);
+                
+                const currentScroll = window.scrollY;
+                const maxScroll = getMaxScroll();
+                
+                // Hit bottom - pause then reverse
+                if (scrollDirection === 1 && currentScroll >= maxScroll - 5) {
+                    isPaused = true;
+                    setTimeout(() => {
+                        scrollDirection = -1;
+                        isPaused = false;
+                    }, pauseTime);
+                }
+                
+                // Hit top - pause then reverse
+                if (scrollDirection === -1 && currentScroll <= 5) {
+                    isPaused = true;
+                    setTimeout(() => {
+                        scrollDirection = 1;
+                        isPaused = false;
+                    }, pauseTime);
+                }
+                
+                requestAnimationFrame(autoScroll);
+            }
+            
+            // Start after a brief delay to let content load
+            setTimeout(() => {
+                requestAnimationFrame(autoScroll);
+            }, 1000);
+            
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                if (e.key === ' ' || e.key === 'p') {
+                    isPaused = !isPaused;
+                    indicator.innerHTML = isPaused 
+                        ? '<span class="dot" style="background:var(--bnb-gold);animation:none"></span> Paused'
+                        : '<span class="dot"></span> TV Mode';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
