@@ -232,10 +232,10 @@
     <div class="autopilot-progress" id="autopilotProgress"></div>
     
     <script>
-        // Fetch pack data from the main data file
+        // Fetch pack data from packs.json (same data as main page)
         async function loadPackData() {
             try {
-                const response = await fetch('ev-data.json');
+                const response = await fetch('packs.json');
                 const data = await response.json();
                 return data.packs || [];
             } catch (e) {
