@@ -1062,6 +1062,18 @@
                 const featured = i < 3 ? 'featured' : '';
                 const grailPct = parseFloat(pack.grailPct) || 0;
                 const chasePct = parseFloat(pack.chasePct) || 0;
+                
+                // Format as "1 in X" if under 10%, otherwise show percentage
+                const formatOdds = (pct) => {
+                    if (pct === 0) return '0%';
+                    if (pct < 10) {
+                        const oneIn = Math.round(100 / pct);
+                        return `1 in ${oneIn}`;
+                    }
+                    return `${pct}%`;
+                };
+                const grailDisplay = formatOdds(grailPct);
+                const chaseDisplay = formatOdds(chasePct);
                 const price = pack.price || 0;
                 const sport = getSport(pack.title);
                 const icon = SPORT_ICONS[sport] || '🃏';
@@ -1092,7 +1104,7 @@
                                 <div class="odd-block">
                                     <div class="label">
                                         <span>Grail</span>
-                                        <span class="pct grail-color">${grailPct}%</span>
+                                        <span class="pct grail-color">${grailDisplay}</span>
                                     </div>
                                     <div class="bar-track">
                                         <div class="bar-fill grail" style="width:${grailWidth}%"></div>
@@ -1101,7 +1113,7 @@
                                 <div class="odd-block">
                                     <div class="label">
                                         <span>Chase</span>
-                                        <span class="pct chase-color">${chasePct}%</span>
+                                        <span class="pct chase-color">${chaseDisplay}</span>
                                     </div>
                                     <div class="bar-track">
                                         <div class="bar-fill chase" style="width:${chaseWidth}%"></div>
