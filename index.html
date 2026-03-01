@@ -471,6 +471,64 @@
             color: rgba(255,255,255,0.35);
         }
 
+        /* ─── Giveaway Promo Banner ─── */
+        .promo-banner {
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            border-radius: 12px;
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            animation: bannerGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes bannerGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.15); }
+            50% { box-shadow: 0 0 30px rgba(0,212,255,0.3); }
+        }
+
+        .promo-banner .promo-icon {
+            font-size: 1.5rem;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .promo-banner .promo-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .promo-banner .promo-number {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #00d4ff;
+            letter-spacing: 0.5px;
+        }
+
+        .promo-banner .promo-link {
+            text-decoration: underline;
+            text-decoration-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .promo-banner .promo-prize {
+            font-weight: 900;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #00d4ff, #26de81);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         /* ─── Alerts Banner ─── */
         .alerts-banner {
             background: linear-gradient(135deg, var(--bnb-card), rgba(255,69,0,0.08));
@@ -603,6 +661,20 @@
             .rank-badge { top: 12px; left: 12px; width: 24px; height: 24px; font-size: 0.65rem; }
             .sport-icon { top: 12px; right: 12px; font-size: 1.1rem; }
 
+            .promo-banner {
+                flex-wrap: wrap;
+                padding: 14px 20px;
+                gap: 8px;
+            }
+            
+            .promo-banner .promo-text {
+                font-size: 1rem;
+            }
+            
+            .promo-banner .promo-prize {
+                font-size: 1.1rem;
+            }
+
             .alerts-banner {
                 padding: 20px;
                 margin-bottom: 24px;
@@ -653,6 +725,13 @@
             <p class="subtitle">
                 <span class="live-badge"><span class="live-dot"></span> Live</span>
             </p>
+        </div>
+
+        <!-- Giveaway Banner -->
+        <div class="promo-banner">
+            <span class="promo-icon">🎁</span>
+            <span class="promo-text">Text <span class="promo-number">RIPS</span> to <a href="sms:+15742750277&body=RIPS" class="promo-number promo-link">574-275-0277</a> to enter our</span>
+            <span class="promo-prize">$1,000 credit giveaway!</span>
         </div>
 
         <!-- IR Alerts Signup Banner -->
