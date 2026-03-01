@@ -5,566 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Break'n Bad | Hot Packs TV</title>
     <style>
-        :root {
-            --bnb-dark: #0a0a0a;
-            --bnb-accent: #FF4500;
-            --bnb-accent-light: #ff8a50;
-            --bnb-gold: #ffc107;
-            --bnb-green: #4ade80;
-            --bnb-blue: #60a5fa;
-        }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background: var(--bnb-dark);
-            color: #fff;
-            min-height: 100vh;
+            background: #0a0a0a;
             overflow: hidden;
         }
-        
-        .slide {
-            display: none;
+        iframe {
             width: 100vw;
             height: 100vh;
-            padding: 40px 60px;
-            flex-direction: column;
+            border: none;
         }
-        
-        .slide.active {
-            display: flex;
-        }
-        
-        /* Overview Slide */
-        .overview-slide {
-            background: radial-gradient(ellipse at top, rgba(255,69,0,0.15) 0%, transparent 50%),
-                        linear-gradient(180deg, #0a0a0a 0%, #111 100%);
-        }
-        
-        .overview-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .overview-header img {
-            width: 200px;
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));
-            margin-bottom: 20px;
-        }
-        
-        .overview-header h1 {
-            font-size: 4rem;
-            font-weight: 900;
-        }
-        
-        .overview-header h1 .accent {
-            color: var(--bnb-accent);
-        }
-        
-        .live-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(34,197,94,0.2);
-            border: 1px solid rgba(34,197,94,0.5);
-            padding: 8px 20px;
-            border-radius: 20px;
-            margin-top: 15px;
-            font-size: 1.2rem;
-        }
-        
-        .live-dot {
-            width: 12px;
-            height: 12px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-        
-        .pack-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            flex: 1;
-        }
-        
-        .pack-mini {
-            background: rgba(20,20,20,0.9);
-            border: 2px solid rgba(255,69,0,0.3);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .pack-mini.featured {
-            border-color: var(--bnb-accent);
-            box-shadow: 0 0 30px rgba(255,69,0,0.2);
-        }
-        
-        .pack-mini h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-        
-        .pack-mini .price {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--bnb-accent);
-            margin-bottom: 10px;
-        }
-        
-        .pack-mini .odds {
-            font-size: 1rem;
-            color: #aaa;
-        }
-        
-        .pack-mini .odds span {
-            color: var(--bnb-gold);
-        }
-        
-        /* Pack Detail Slide */
-        .pack-slide {
-            background: radial-gradient(ellipse at center, rgba(255,69,0,0.1) 0%, transparent 60%),
-                        linear-gradient(180deg, #0a0a0a 0%, #111 100%);
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .pack-detail {
-            max-width: 1400px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        
-        .pack-left {
-            text-align: center;
-        }
-        
-        .pack-number {
-            font-size: 8rem;
-            font-weight: 900;
-            color: var(--bnb-accent);
-            opacity: 0.3;
-            line-height: 1;
-        }
-        
-        .pack-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin: 20px 0;
-        }
-        
-        .pack-price-big {
-            font-size: 6rem;
-            font-weight: 900;
-            color: var(--bnb-accent);
-        }
-        
-        .pack-tags {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        
-        .tag.grail {
-            background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(139,92,246,0.1));
-            border: 1px solid rgba(139,92,246,0.5);
-            color: #a78bfa;
-        }
-        
-        .tag.budget {
-            background: linear-gradient(135deg, rgba(34,197,94,0.3), rgba(34,197,94,0.1));
-            border: 1px solid rgba(34,197,94,0.5);
-            color: #4ade80;
-        }
-        
-        .tag.topGrail {
-            background: linear-gradient(135deg, rgba(255,193,7,0.3), rgba(255,193,7,0.1));
-            border: 1px solid rgba(255,193,7,0.5);
-            color: #ffc107;
-        }
-        
-        .pack-right {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-        
-        .odds-block {
-            background: rgba(20,20,20,0.8);
-            border-radius: 20px;
-            padding: 30px 40px;
-        }
-        
-        .odds-block h4 {
-            font-size: 1.5rem;
-            color: #888;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .odds-value {
-            font-size: 4rem;
-            font-weight: 800;
-        }
-        
-        .odds-value.grail-color {
-            color: #a78bfa;
-        }
-        
-        .odds-value.chase-color {
-            color: var(--bnb-accent);
-        }
-        
-        .odds-bar {
-            height: 16px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            margin-top: 15px;
-            overflow: hidden;
-        }
-        
-        .odds-bar-fill {
-            height: 100%;
-            border-radius: 8px;
-            transition: width 0.5s ease;
-        }
-        
-        .odds-bar-fill.grail {
-            background: linear-gradient(90deg, #8b5cf6, #a78bfa);
-        }
-        
-        .odds-bar-fill.chase {
-            background: linear-gradient(90deg, var(--bnb-accent), var(--bnb-accent-light));
-        }
-        
-        .cards-remaining {
-            text-align: center;
-            font-size: 2rem;
-            color: #666;
-        }
-        
-        .cards-remaining strong {
-            color: #fff;
-            font-size: 3rem;
-        }
-        
-        /* Progress indicator */
         .progress-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             height: 6px;
-            background: var(--bnb-accent);
+            background: #FF4500;
+            z-index: 9999;
             transition: width 0.1s linear;
-        }
-        
-        /* CTA Banner */
-        .tv-cta {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, rgba(20,60,80,0.95), rgba(30,80,100,0.9));
-            border: 2px solid rgba(100,200,255,0.4);
-            border-radius: 20px;
-            padding: 20px 50px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.5rem;
-        }
-        
-        .tv-cta .keyword {
-            color: var(--bnb-green);
-            font-weight: 700;
-        }
-        
-        .tv-cta .phone {
-            color: var(--bnb-blue);
-        }
-        
-        .tv-cta .prize {
-            color: var(--bnb-green);
-            font-weight: 700;
         }
     </style>
 </head>
 <body>
-    <!-- Slides container -->
-    <div id="slides"></div>
-    
-    <!-- Progress bar -->
+    <iframe id="frame" src="index.html"></iframe>
     <div class="progress-bar" id="progress"></div>
-    
-    <!-- CTA Banner -->
-    <div class="tv-cta">
-        <span>🎁</span>
-        <span>Text <span class="keyword">RIPS</span> to <span class="phone">574-275-0277</span> to enter our <span class="prize">$1,000 credit giveaway!</span></span>
-    </div>
 
     <script>
-        const PACK_DATA = {
-  "timestamp": "2026-02-28T18:02:51.579Z",
-  "packs": [
-    {
-      "title": "Football: $75",
-      "repackId": "38426242-455c-4957-9f66-78280eabe50f",
-      "price": 75,
-      "remaining": 121,
-      "grailPct": 1.65,
-      "chasePct": 13.22,
-      "tags": [
-        { "type": "budget", "icon": "💰", "label": "Budget Pick" },
-        { "type": "grail", "icon": "💎", "label": "Only 2 Grails Left!" }
-      ]
-    },
-    {
-      "title": "Baseball: Infinity Pack $1,000",
-      "price": 1000,
-      "remaining": 72,
-      "grailPct": 2.78,
-      "chasePct": 18.06,
-      "tags": [
-        { "type": "grail", "icon": "💎", "label": "Only 2 Grails Left!" },
-        { "type": "topGrail", "icon": "👑", "label": "Top Grail: $4,481" }
-      ]
-    },
-    {
-      "title": "Baseball: Ultra Pack $500",
-      "price": 500,
-      "remaining": 35,
-      "grailPct": 2.86,
-      "chasePct": 14.29,
-      "tags": [
-        { "type": "grail", "icon": "💎", "label": "Only 1 Grail Left!" }
-      ]
-    },
-    {
-      "title": "Pokemon 10s Only: $75",
-      "price": 75,
-      "remaining": 54,
-      "grailPct": 1.85,
-      "chasePct": 12.96,
-      "tags": [
-        { "type": "budget", "icon": "💰", "label": "Budget Pick" },
-        { "type": "grail", "icon": "💎", "label": "Only 1 Grail Left!" }
-      ]
-    },
-    {
-      "title": "Basketball: Ultra Pack $500",
-      "price": 500,
-      "remaining": 84,
-      "grailPct": 2.38,
-      "chasePct": 15.48,
-      "tags": [
-        { "type": "grail", "icon": "💎", "label": "Only 2 Grails Left!" },
-        { "type": "topGrail", "icon": "👑", "label": "Top Grail: $1,087" }
-      ]
-    },
-    {
-      "title": "Football: Ultra Pack $500",
-      "price": 500,
-      "remaining": 97,
-      "grailPct": 2.06,
-      "chasePct": 17.53,
-      "tags": [
-        { "type": "grail", "icon": "💎", "label": "Only 2 Grails Left!" }
-      ]
-    },
-    {
-      "title": "Pokemon: Infinity Pack $500",
-      "price": 500,
-      "remaining": 50,
-      "grailPct": 0,
-      "chasePct": 24,
-      "tags": [
-        { "type": "hot", "icon": "🔥", "label": "Hot Chase Odds!" }
-      ]
-    },
-    {
-      "title": "Baseball: $75",
-      "price": 75,
-      "remaining": 40,
-      "grailPct": 2.5,
-      "chasePct": 12.5,
-      "tags": [
-        { "type": "budget", "icon": "💰", "label": "Budget Pick" }
-      ]
-    },
-    {
-      "title": "Basketball: $75",
-      "price": 75,
-      "remaining": 83,
-      "grailPct": 2.41,
-      "chasePct": 13.25,
-      "tags": [
-        { "type": "budget", "icon": "💰", "label": "Budget Pick" }
-      ]
-    },
-    {
-      "title": "Football: $250",
-      "price": 250,
-      "remaining": 104,
-      "grailPct": 2.88,
-      "chasePct": 15.38,
-      "tags": [
-        { "type": "grail", "icon": "💎", "label": "Only 3 Grails Left!" }
-      ]
-    }
-  ]
-};
+        // Pack IDs from the main dashboard
+        const PACK_IDS = [
+            '38426242-455c-4957-9f66-78280eabe50f',
+            'd3f9111d-c4a0-4cbe-94ce-7091c0a71bc2',
+            'dd5f577b-2f82-4826-8fea-c0d774b28853',
+            '7685e0aa-0662-470a-9f60-047dcf60f418',
+            '65c882c7-8bd9-46c9-a085-1a2d05a6aa5b',
+            '8bea4c34-f295-45a6-a759-8e1812cb42c2',
+            '775dfe0e-c7b7-4bae-8fae-949258a69c22',
+            'a0d95ad0-590a-4b61-be6d-41453a00b061',
+            'bd8407c5-e834-4837-b8f1-fc489c4ce383',
+            '73820da4-689f-4b98-a2b8-a382766db4c9'
+        ];
 
-        const SLIDE_DURATION = 8000; // 8 seconds per slide
-        const packs = PACK_DATA.packs.slice(0, 10);
-        let currentSlide = 0;
-        let progressInterval;
+        const MAIN_PAGE_DURATION = 15000;  // 15 seconds on main page (scrolling)
+        const PACK_PAGE_DURATION = 8000;   // 8 seconds per pack page
+        const SCROLL_INTERVAL = 50;        // Scroll every 50ms
+        const SCROLL_AMOUNT = 2;           // Pixels per scroll tick
+
+        const frame = document.getElementById('frame');
+        const progress = document.getElementById('progress');
         
-        // Format odds
-        function formatOdds(pct) {
-            if (pct === 0) return '0%';
-            if (pct < 10) {
-                const oneIn = Math.round(100 / pct);
-                return `1 in ${oneIn}`;
-            }
-            return `${pct}%`;
-        }
-        
-        // Build overview slide
-        function buildOverviewSlide() {
-            const packCards = packs.map((pack, i) => `
-                <div class="pack-mini ${i < 3 ? 'featured' : ''}">
-                    <h3>${pack.title.split(':')[0]}</h3>
-                    <div class="price">$${pack.price}</div>
-                    <div class="odds">Grail: <span>${formatOdds(pack.grailPct)}</span></div>
-                </div>
-            `).join('');
-            
-            return `
-                <div class="slide overview-slide" data-slide="0">
-                    <div class="overview-header">
-                        <img src="logo.png" alt="Break'n Bad">
-                        <h1>Hot Packs <span class="accent">Right Now</span></h1>
-                        <div class="live-badge">
-                            <div class="live-dot"></div>
-                            LIVE
-                        </div>
-                    </div>
-                    <div class="pack-grid">
-                        ${packCards}
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Build pack detail slide
-        function buildPackSlide(pack, index) {
-            const grailWidth = Math.min(pack.grailPct / 5 * 100, 100);
-            const chaseWidth = Math.min(pack.chasePct / 20 * 100, 100);
-            
-            const tags = (pack.tags || []).map(t => `
-                <span class="tag ${t.type}">${t.icon} ${t.label}</span>
-            `).join('');
-            
-            return `
-                <div class="slide pack-slide" data-slide="${index + 1}">
-                    <div class="pack-detail">
-                        <div class="pack-left">
-                            <div class="pack-number">#${index + 1}</div>
-                            <h2 class="pack-title">${pack.title.replace(/\$[\d,]+/, '')}</h2>
-                            <div class="pack-price-big">$${pack.price.toLocaleString()}</div>
-                            <div class="pack-tags">${tags}</div>
-                        </div>
-                        <div class="pack-right">
-                            <div class="odds-block">
-                                <h4>Grail Odds</h4>
-                                <div class="odds-value grail-color">${formatOdds(pack.grailPct)}</div>
-                                <div class="odds-bar">
-                                    <div class="odds-bar-fill grail" style="width: ${grailWidth}%"></div>
-                                </div>
-                            </div>
-                            <div class="odds-block">
-                                <h4>Chase Odds</h4>
-                                <div class="odds-value chase-color">${formatOdds(pack.chasePct)}</div>
-                                <div class="odds-bar">
-                                    <div class="odds-bar-fill chase" style="width: ${chaseWidth}%"></div>
-                                </div>
-                            </div>
-                            <div class="cards-remaining">
-                                <strong>${pack.remaining.toLocaleString()}</strong> cards remaining
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Initialize slides
-        function init() {
-            const container = document.getElementById('slides');
-            let html = buildOverviewSlide();
-            packs.forEach((pack, i) => {
-                html += buildPackSlide(pack, i);
-            });
-            container.innerHTML = html;
-            
-            showSlide(0);
-            startAutoPlay();
-        }
-        
-        // Show specific slide
-        function showSlide(index) {
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(s => s.classList.remove('active'));
-            slides[index].classList.add('active');
-            currentSlide = index;
-            resetProgress();
-        }
-        
-        // Progress bar
-        function resetProgress() {
-            const progress = document.getElementById('progress');
+        let currentPage = 'main'; // 'main' or pack index 0-9
+        let scrollTimer;
+        let pageTimer;
+        let progressTimer;
+
+        function resetProgress(duration) {
             progress.style.width = '0%';
-            
-            clearInterval(progressInterval);
+            clearInterval(progressTimer);
             let elapsed = 0;
-            progressInterval = setInterval(() => {
+            progressTimer = setInterval(() => {
                 elapsed += 100;
-                progress.style.width = (elapsed / SLIDE_DURATION * 100) + '%';
+                progress.style.width = (elapsed / duration * 100) + '%';
             }, 100);
         }
-        
-        // Auto play
-        function startAutoPlay() {
-            setInterval(() => {
-                const totalSlides = packs.length + 1; // overview + pack slides
-                currentSlide = (currentSlide + 1) % totalSlides;
-                showSlide(currentSlide);
-            }, SLIDE_DURATION);
+
+        function scrollMainPage() {
+            try {
+                const doc = frame.contentDocument || frame.contentWindow.document;
+                const scrollHeight = doc.body.scrollHeight;
+                const viewHeight = frame.clientHeight;
+                let scrollPos = 0;
+                
+                // Start at top
+                doc.documentElement.scrollTop = 0;
+                
+                scrollTimer = setInterval(() => {
+                    scrollPos += SCROLL_AMOUNT;
+                    doc.documentElement.scrollTop = scrollPos;
+                    
+                    // When we hit bottom, reset to top and keep going
+                    if (scrollPos >= scrollHeight - viewHeight) {
+                        scrollPos = 0;
+                    }
+                }, SCROLL_INTERVAL);
+            } catch (e) {
+                console.log('Scroll error:', e);
+            }
         }
-        
-        init();
+
+        function showMainPage() {
+            currentPage = 'main';
+            frame.src = 'index.html';
+            resetProgress(MAIN_PAGE_DURATION);
+            
+            // Wait for load then start scrolling
+            frame.onload = () => {
+                setTimeout(scrollMainPage, 500);
+            };
+            
+            // After duration, go to first pack
+            clearTimeout(pageTimer);
+            pageTimer = setTimeout(() => {
+                clearInterval(scrollTimer);
+                showPackPage(0);
+            }, MAIN_PAGE_DURATION);
+        }
+
+        function showPackPage(index) {
+            if (index >= 10) {
+                // Loop back to main
+                showMainPage();
+                return;
+            }
+            
+            currentPage = index;
+            frame.src = `pack.html?id=${PACK_IDS[index]}`;
+            resetProgress(PACK_PAGE_DURATION);
+            
+            // After duration, go to next pack
+            clearTimeout(pageTimer);
+            pageTimer = setTimeout(() => {
+                showPackPage(index + 1);
+            }, PACK_PAGE_DURATION);
+        }
+
+        // Start the cycle
+        showMainPage();
     </script>
 </body>
 </html>
