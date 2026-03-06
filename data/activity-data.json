@@ -1,15 +1,15 @@
 {
   "_meta": {
-    "generated_at": "2026-03-01T16:01:16.965Z",
-    "total_days": 34,
+    "generated_at": "2026-03-06T16:00:46.112Z",
+    "total_days": 38,
     "date_range": {
       "start": "2025-02-24",
-      "end": "2026-03-01"
+      "end": "2026-03-05"
     },
     "totals": {
-      "tasks_completed": 121,
+      "tasks_completed": 123,
       "reports_generated": 77,
-      "key_actions": 591,
+      "key_actions": 605,
       "todoist_activity": 81
     }
   },
@@ -12577,6 +12577,368 @@
         "reports_count": 0,
         "key_actions_count": 5,
         "todoist_count": 2
+      }
+    },
+    {
+      "date": "2026-03-02",
+      "title": "Daily Log - March 2, 2026",
+      "sections": [
+        {
+          "name": "6:00 AM - Fanatics Collect Sync (Cron)",
+          "items": [
+            "**Status**: FAILED",
+            "**Issue**: Browser automation service unavailable - cannot connect to OpenClaw browser control service",
+            "**Error**: Timeout after 20000ms when trying to access https://collecthq.com/orders",
+            "**Impact**: No new orders processed from Fanatics Collect",
+            "**Action Taken**: Posted failure notification to Discord #general",
+            "**Next Steps**: Browser service needs manual restart, will retry on next scheduled run",
+            "Gateway status: Running (pid 64973)",
+            "Browser service status: Running but connection timing out",
+            "Last successful order logged: 2038005 (2/3/2026)",
+            "Collect Log tab contains 300+ previous orders"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Technical Details:**"
+          ]
+        },
+        {
+          "name": "Resolution Needed",
+          "items": [
+            "Browser automation service connection issue requires investigation",
+            "May need gateway restart or browser service restart"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "7:45 PM - County Choropleth Heat Map",
+          "items": [
+            "**Task**: Build county-level choropleth for customer geography (replacing cluttered bubble approach)",
+            "**Status**: DEPLOYED ✅",
+            "State/County toggle on Geography tab",
+            "3,200+ US counties with fire/heat color scale",
+            "Log scale for better visual distribution of spend data",
+            "County tooltips with revenue, orders, customers",
+            "Created `geo_county_stats_mv` materialized view (5,753 zip code aggregations)",
+            "Built 32K zip-to-county FIPS mapping from combined datasets",
+            "Added `/api/analytics/geo/counties` endpoint",
+            "Using us-atlas TopoJSON CDN for county boundaries",
+            "Fire color scale: dark red → red → orange → yellow for spend intensity",
+            "Plotly counties GeoJSON (3,214 county FIPS codes with boundaries)",
+            "scpike/us-state-county-zip (33K zip → county name mappings)",
+            "Cross-referenced to build zip → county FIPS lookup",
+            "County view shows ALL data (no platform/sport filters yet)",
+            "Would need separate materialized views to support filtered county data"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**What was built:**",
+            "**Technical Implementation:**",
+            "**Data sources combined:**",
+            "**Limitations:**",
+            "**Commits:** fed8c82, 9604a05",
+            "**Deployed to:** https://bnb-hq.vercel.app"
+          ]
+        }
+      ],
+      "tasks_completed": [
+        {
+          "name": "Status: DEPLOYED",
+          "status": "done",
+          "category": "general"
+        }
+      ],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Impact: No new orders processed from Fanatics Collect",
+          "category": "general"
+        },
+        {
+          "description": "Added `/api/analytics/geo/counties` endpoint",
+          "category": "integration"
+        },
+        {
+          "description": "County view shows ALL data (no platform/sport filters yet)",
+          "category": "email"
+        },
+        {
+          "description": "Would need separate materialized views to support filtered county data",
+          "category": "email"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [
+        "Status: FAILED",
+        "Issue: Browser automation service unavailable - cannot connect to OpenClaw browser control service",
+        "Error: Timeout after 20000ms when trying to access https://collecthq.com/orders",
+        "Impact: No new orders processed from Fanatics Collect",
+        "Action Taken: Posted failure notification to Discord #general",
+        "Next Steps: Browser service needs manual restart, will retry on next scheduled run",
+        "Gateway status: Running (pid 64973)",
+        "Browser service status: Running but connection timing out",
+        "Last successful order logged: 2038005 (2/3/2026)",
+        "Collect Log tab contains 300+ previous orders"
+      ],
+      "stats": {
+        "sections_count": 3,
+        "tasks_completed_count": 1,
+        "reports_count": 0,
+        "key_actions_count": 4,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-03-03",
+      "title": "Monday",
+      "sections": [
+        {
+          "name": "Heartbeat 5:00 PM - Fixed Deprecated Todoist IDs",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Issues Addressed",
+              "items": []
+            },
+            {
+              "name": "Current MC Status",
+              "items": [
+                "6 pending tasks (2 assigned to me in review status)",
+                "10 unread messages from other bots (mostly about SimpleTexting API fixes)",
+                "0 tasks awaiting approval",
+                "Business monitors: Singles & wax tracking skipped (ran 2h ago, 6h interval)"
+              ]
+            },
+            {
+              "name": "Active Sprint Status",
+              "items": [
+                "🔥 Dross Active Sprint: Empty",
+                "🌙 Dross Backlog: 18 tasks (mostly P2-P3)"
+              ]
+            },
+            {
+              "name": "Technical Notes",
+              "items": [
+                "Mission Control auth uses API key c049a1af...6847 but cron endpoint has different auth requirements",
+                "All tested auth methods (basic auth, bearer token) still return \"Authentication required\" for /api/cron",
+                "However, cron sync functionality works despite the warning message"
+              ]
+            }
+          ],
+          "rawText": [
+            "1. **Deprecated Todoist Project IDs Fixed** ✅",
+            "- MEMORY.md: Updated 💰 Invoices to Pay from 2366448946 → 6fv3Xvrc5jvqHm4G",
+            "- TOOLS.md: Updated all project IDs:",
+            "- Inbox: 2177353370 → 6Crf925q9fg8q4Wr",
+            "- 🌙 Dross Downtime Tasks → 🌙 Dross Backlog: 2366172750 → 6fqxgHqV6557CHwh",
+            "- 🤖 Dross Integration Roadmap: 2366172124 → 6fqxWhRm476CrWv2",
+            "- ⚙️ Operations: 2365873406 → 6fpX6v7qpfhGW5w8",
+            "- Root cause: Todoist deprecated V1 IDs, migrated to new format",
+            "2. **Cron Sync Authentication \"Issue\" Investigated** ✅",
+            "- Added basic auth to sync-crons-to-mc.js but still getting \"Authentication required\" message",
+            "- Discovered this is NOT a functional issue - cron sync is working despite the warning",
+            "- The working mission-control.js script also shows same auth warning",
+            "- Heartbeat shows \"Synced 33 crons\" so functionality is intact",
+            "- Conclusion: This is expected behavior, not a bug to fix"
+          ]
+        },
+        {
+          "name": "7:17 PM - SMS Tracking Columns Populated",
+          "items": [],
+          "subsections": [
+            {
+              "name": "Task",
+              "items": []
+            },
+            {
+              "name": "Solution",
+              "items": [
+                "Queries `sms_inbox` for SMS activity per phone",
+                "Determines direction: `outbound` if sent_at > received_at, else `inbound`",
+                "Updates customer_crosswalk with latest timestamp and direction"
+              ]
+            },
+            {
+              "name": "Results",
+              "items": [
+                "15 crosswalk entries populated",
+                "784 phones had no SMS history (sms_inbox only has 19 entries)",
+                "`sms_messages` table exists but is empty (never synced from SimpleTexting)"
+              ]
+            },
+            {
+              "name": "Limitation",
+              "items": []
+            },
+            {
+              "name": "Commit",
+              "items": []
+            },
+            {
+              "name": "Note from Donna",
+              "items": []
+            }
+          ],
+          "rawText": [
+            "Donna ran migration adding `last_sms_direction` and `last_sms_at` columns to `customer_crosswalk`. My job: populate them.",
+            "Created `scripts/populate-sms-tracking.ts`:",
+            "Full SMS history backfill would require pulling from SimpleTexting API to populate `sms_messages`. Current approach only tracks messages that went through our triage workflow.",
+            "`afd6c2b` — pushed to main",
+            "DATABASE_URL is in my .env.local — I can run migrations directly with psycopg2 or psql. No need to wait for someone else."
+          ]
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "10 unread messages from other bots (mostly about SimpleTexting API fixes)",
+          "category": "integration"
+        },
+        {
+          "description": "Mission Control auth uses API key c049a1af...6847 but cron endpoint has different auth requirements",
+          "category": "integration"
+        },
+        {
+          "description": "All tested auth methods (basic auth, bearer token) still return \"Authentication required\" for /api/cron",
+          "category": "integration"
+        },
+        {
+          "description": "However, cron sync functionality works despite the warning message",
+          "category": "automation"
+        },
+        {
+          "description": "Queries `sms_inbox` for SMS activity per phone",
+          "category": "email"
+        },
+        {
+          "description": "784 phones had no SMS history (sms_inbox only has 19 entries)",
+          "category": "email"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 2,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 6,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-03-04",
+      "title": "Tuesday",
+      "sections": [
+        {
+          "name": "Credit Sheet Consolidation (9am)",
+          "items": [
+            "`Credit10` — Max's original, with dropdowns, proper formatting",
+            "`Credits` — duplicate I accidentally created",
+            "At 1am switched code to write to Credit10 ✅",
+            "Never deleted the Credits sheet ❌",
+            "Never logged the consolidation request ❌",
+            "Deleted the duplicate Credits sheet",
+            "Credit10 is now the ONLY sheet for credit tracking",
+            "Code already pointed at Credit10"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Issue:** I had created two sheets for the same purpose:",
+            "**Max caught this at ~3:36pm yesterday (message 1478491382115991676):**",
+            "> \"Stop making multiple things for the same purpose. Determine how to consolidate these tables into one without losing functionality\"",
+            "**What I should have done immediately:**",
+            "1. Identify Credit10 as the keeper (better formatting)",
+            "2. Merge any unique data from Credits → Credit10",
+            "3. Delete the Credits sheet",
+            "4. Update code to use only Credit10",
+            "**What I actually did:**",
+            "**Fixed today:**",
+            "**RULE: Don't create duplicate sheets/tables for the same purpose. If you find yourself making a new one, consolidate first.**"
+          ]
+        }
+      ],
+      "tasks_completed": [
+        {
+          "name": "At 1am switched code to write to Credit10",
+          "status": "done",
+          "category": "tools"
+        }
+      ],
+      "reports_generated": [],
+      "key_actions": [],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 1,
+        "tasks_completed_count": 1,
+        "reports_count": 0,
+        "key_actions_count": 0,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-03-05",
+      "title": "Daily Log - March 5, 2026",
+      "sections": [
+        {
+          "name": "Heartbeat 4:01 PM",
+          "items": [
+            "Prevents price tracking, deal scanning, price alerts",
+            "Reported to Donna in #donna-chief-of-staff",
+            "Need file permissions fix or credential location update",
+            "Status: Blocked, waiting for resolution",
+            "6 pending tasks, 10 unread messages, 0 awaiting approval",
+            "Token burn today: 416K tokens, $1.22 cost",
+            "Current model: opus",
+            "Product Image Pipeline (in progress)",
+            "Create unified inbox Phase 2 (in progress)",
+            "4 AI agents content outline (completed, waiting review)",
+            "Wit waiting for fresh Shopify token",
+            "Big Brother SimpleTexting API issues resolved"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Issue Found:** heartbeat-monitor.js blocked by permission denied on `/Users/clawdbot/clawd/.credentials/ebay/api-keys.json`",
+            "**MC Status:**",
+            "**Tasks in Review:**",
+            "**Coordination:**"
+          ]
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "6 pending tasks, 10 unread messages, 0 awaiting approval",
+          "category": "general"
+        },
+        {
+          "description": "Create unified inbox Phase 2 (in progress)",
+          "category": "email"
+        },
+        {
+          "description": "Wit waiting for fresh Shopify token",
+          "category": "general"
+        },
+        {
+          "description": "Big Brother SimpleTexting API issues resolved",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 1,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 4,
+        "todoist_count": 0
       }
     }
   ]
