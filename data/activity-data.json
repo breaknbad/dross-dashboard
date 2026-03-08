@@ -1,15 +1,15 @@
 {
   "_meta": {
-    "generated_at": "2026-03-07T16:00:11.162Z",
-    "total_days": 39,
+    "generated_at": "2026-03-08T15:00:07.712Z",
+    "total_days": 41,
     "date_range": {
       "start": "2025-02-24",
-      "end": "2026-03-06"
+      "end": "2026-03-08"
     },
     "totals": {
-      "tasks_completed": 123,
+      "tasks_completed": 134,
       "reports_generated": 77,
-      "key_actions": 609,
+      "key_actions": 621,
       "todoist_activity": 81
     }
   },
@@ -13006,6 +13006,266 @@
         "tasks_completed_count": 0,
         "reports_count": 0,
         "key_actions_count": 4,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-03-07",
+      "title": "Dross Daily Log",
+      "sections": [
+        {
+          "name": "5:00 PM - Heartbeat Issues",
+          "items": [
+            "**Permission denied**: `/Users/clawdbot/clawd/.credentials/ebay/api-keys.json` and entire `.credentials/ebay/` directory",
+            "Blocks `scripts/heartbeat-monitor.js` business monitoring (price tracking, deal scanner)",
+            "Reported to Donna in #donna-chief-of-staff (msg ID: 1479962405243977911)",
+            "MC status: 6 pending tasks, 10 unread messages, 0 approval queue",
+            "My assigned tasks: 3 in review status (Product Image Pipeline, Unified Inbox, 4 AI agents outline)"
+          ],
+          "subsections": [],
+          "rawText": []
+        },
+        {
+          "name": "Action Required",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "System-level fix needed for eBay credentials permissions before business monitoring can resume."
+          ]
+        }
+      ],
+      "tasks_completed": [],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "Permission denied: `/Users/clawdbot/clawd/.credentials/ebay/api-keys.json` and entire `.credentials/ebay/` directory",
+          "category": "integration"
+        },
+        {
+          "description": "Blocks `scripts/heartbeat-monitor.js` business monitoring (price tracking, deal scanner)",
+          "category": "integration"
+        },
+        {
+          "description": "MC status: 6 pending tasks, 10 unread messages, 0 approval queue",
+          "category": "general"
+        },
+        {
+          "description": "My assigned tasks: 3 in review status (Product Image Pipeline, Unified Inbox, 4 AI agents outline)",
+          "category": "email"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 2,
+        "tasks_completed_count": 0,
+        "reports_count": 0,
+        "key_actions_count": 4,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-03-08",
+      "title": "08 Daily Log",
+      "sections": [
+        {
+          "name": "🎯 Autobidding System - Major Progress (1 AM - 4 AM Session)",
+          "items": [],
+          "subsections": [
+            {
+              "name": "What We Built Tonight",
+              "items": [
+                "✅ Gixen account setup (breaknbad, Mirror until Mar 2027)",
+                "✅ Gixen Node wrapper (`scripts/gixen.js`) - API needs enable via support email",
+                "✅ BidSlammer account (break_n_bad, Unlimited subscription until Apr 8)",
+                "✅ BidSlammer Node wrapper (`scripts/bidslammer.js`) - API WORKING",
+                "✅ Credentials stored: `~/.credentials/***`, `~/.credentials/***`",
+                "✅ Browse API confirmed working with existing Repack app credentials",
+                "✅ Token generation working (`~/.credentials/***`)",
+                "✅ Can search by seller, price range, end date, auction type",
+                "✅ Tested with 9 trusted sellers - works perfectly",
+                "✅ Quick Links spreadsheet (`***REDACTED***`)",
+                "✅ CompSniper userscript saved (`scripts/reference/compsniper-v1.2.4.js`)"
+              ]
+            },
+            {
+              "name": "Volume Analysis (9 Trusted Sellers, Football $20-$150)",
+              "items": []
+            },
+            {
+              "name": "What's Left to Build",
+              "items": []
+            },
+            {
+              "name": "Credentials Created",
+              "items": []
+            },
+            {
+              "name": "Scripts Created",
+              "items": []
+            },
+            {
+              "name": "Key Decisions",
+              "items": [
+                "**Primary sniper:** BidSlammer (working now)",
+                "**Backup sniper:** Gixen (waiting on support email to enable API)",
+                "**Comp source:** TBD - Card Ladder vs 130Point",
+                "**Processing strategy:** Run every 3 hours, ~100 auctions per run, ~5 min each"
+              ]
+            },
+            {
+              "name": "Action Items",
+              "items": [
+                "[ ] Wait for Gixen support email response (API enable)",
+                "[ ] Port CompSniper comp logic to Node",
+                "[ ] Test end-to-end with a real cheap auction",
+                "[ ] Define tier margins with Matthew",
+                "[ ] Build orchestrator cron job"
+              ]
+            },
+            {
+              "name": "Tags",
+              "items": []
+            }
+          ],
+          "rawText": [
+            "**Sniping Infrastructure:**",
+            "**eBay API Access:**",
+            "**Resources Discovered:**",
+            "- 9 trusted sellers with pre-built eBay search URLs",
+            "- Sellers: 4_sharp_corners, comc_consignment, dcsports87, probstein123, 5_star_cards, quickconsign, psa, mc_sportscards, pc_sportscards",
+            "- Recency-weighted comp logic (90d=100%, 180d=70%, 365d=40%)",
+            "- Bucket bidding system",
+            "- Card Ladder integration",
+            "- Title cleaning rules",
+            "| Metric | Count |",
+            "|--------|-------|",
+            "| Total active auction pool | 5,764 |",
+            "| Ending per day | ~820 |",
+            "| Ending per 3-hour window | ~100 |",
+            "| Processing time per run | ~5 min |",
+            "| Component | Effort | Status |",
+            "|-----------|--------|--------|",
+            "| Comp Lookup Service | Medium | Port CompSniper to Node |",
+            "| Tier Matcher | Easy | Check vs repack tiers |",
+            "| Bid Calculator | Easy | Comp × margin = max bid |",
+            "| Orchestrator Script | Medium | Cron-driven pipeline |",
+            "| Outcome Tracker | Easy | Log wins/losses |",
+            "| Spending Cap | Easy | Daily/weekly limits |",
+            "```",
+            "~/.credentials/***       # breaknbad, Mirror subscriber",
+            "~/.credentials/***  # break_n_bad, Unlimited plan",
+            "~/.credentials/***  # Auto-generated, 2hr expiry",
+            "```",
+            "```",
+            "scripts/gixen.js          # Gixen API wrapper (pending API enable)",
+            "scripts/bidslammer.js     # BidSlammer API wrapper (WORKING)",
+            "scripts/reference/compsniper-v1.2.4.js  # Reference for comp logic",
+            "```"
+          ]
+        }
+      ],
+      "tasks_completed": [
+        {
+          "name": "Gixen account setup (breaknbad, Mirror until Mar 2027)",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Gixen Node wrapper (`scripts/gixen.js`) - API needs enable via support email",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "BidSlammer account (break_n_bad, Unlimited subscription until Apr 8)",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "BidSlammer Node wrapper (`scripts/bidslammer.js`) - API WORKING",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "Credentials stored: `~/.credentials/***`, `~/.credentials/***`",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Browse API confirmed working with existing Repack app credentials",
+          "status": "done",
+          "category": "engineering"
+        },
+        {
+          "name": "Token generation working (`~/.credentials/***`)",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Can search by seller, price range, end date, auction type",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Tested with 9 trusted sellers - works perfectly",
+          "status": "done",
+          "category": "general"
+        },
+        {
+          "name": "Quick Links spreadsheet (`***REDACTED***`)",
+          "status": "done",
+          "category": "tools"
+        },
+        {
+          "name": "CompSniper userscript saved (`scripts/reference/compsniper-v1.2.4.js`)",
+          "status": "done",
+          "category": "engineering"
+        }
+      ],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "✅ Gixen Node wrapper (`scripts/gixen.js`) - API needs enable via support email",
+          "category": "email"
+        },
+        {
+          "description": "✅ BidSlammer account (break_n_bad, Unlimited subscription until Apr 8)",
+          "category": "integration"
+        },
+        {
+          "description": "✅ BidSlammer Node wrapper (`scripts/bidslammer.js`) - API WORKING",
+          "category": "integration"
+        },
+        {
+          "description": "✅ Browse API confirmed working with existing Repack app credentials",
+          "category": "integration"
+        },
+        {
+          "description": "✅ CompSniper userscript saved (`scripts/reference/compsniper-v1.2.4.js`)",
+          "category": "integration"
+        },
+        {
+          "description": "Backup sniper: Gixen (waiting on support email to enable API)",
+          "category": "email"
+        },
+        {
+          "description": "[ ] Wait for Gixen support email response (API enable)",
+          "category": "email"
+        },
+        {
+          "description": "[ ] Build orchestrator cron job",
+          "category": "automation"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 1,
+        "tasks_completed_count": 11,
+        "reports_count": 0,
+        "key_actions_count": 8,
         "todoist_count": 0
       }
     }
