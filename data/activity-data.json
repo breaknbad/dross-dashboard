@@ -1,15 +1,15 @@
 {
   "_meta": {
-    "generated_at": "2026-03-09T15:00:14.841Z",
-    "total_days": 41,
+    "generated_at": "2026-03-10T15:00:12.960Z",
+    "total_days": 42,
     "date_range": {
       "start": "2025-02-24",
-      "end": "2026-03-08"
+      "end": "2026-03-09"
     },
     "totals": {
-      "tasks_completed": 134,
+      "tasks_completed": 136,
       "reports_generated": 77,
-      "key_actions": 621,
+      "key_actions": 627,
       "todoist_activity": 81
     }
   },
@@ -13266,6 +13266,118 @@
         "tasks_completed_count": 11,
         "reports_count": 0,
         "key_actions_count": 8,
+        "todoist_count": 0
+      }
+    },
+    {
+      "date": "2026-03-09",
+      "title": "Daily Log - March 9, 2026",
+      "sections": [
+        {
+          "name": "Heartbeat 1:30 PM",
+          "items": [
+            "MC check-in: ✅ Working, 6 pending tasks, 10 unread messages",
+            "Cron sync: ⚠️ Authentication issue (34 crons synced but auth required error)",
+            "Git sync: ✅ Complete",
+            "Business monitors: ❌ Permission denied on `/Users/clawdbot/clawd/.credentials/ebay/api-keys.json`",
+            "Mostly acknowledgments from Big Brother (SimpleTexting API fixes) and Wit (Shopify tokens)",
+            "No urgent requests",
+            "Fix eBay credentials permission issue preventing heartbeat monitors from running",
+            "Cron sync authentication error needs investigation"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**System Status:**",
+            "**My Tasks (all in review status):**",
+            "1. Draft outline: 4 AI agents - completed, waiting for feedback",
+            "2. Product Image Pipeline - in progress, no urgency",
+            "3. Create unified inbox - in progress, no urgency",
+            "**Messages:**",
+            "**Issues to Address Later:**",
+            "No immediate action required - all current work is in review or awaiting feedback."
+          ]
+        },
+        {
+          "name": "eBay Permissions Fix — 4:08 PM",
+          "items": [],
+          "subsections": [],
+          "rawText": [
+            "**Root cause found:** `scripts/ebay-api.js` writes to `token-cache.json` without explicit permissions. When token refreshes, it was inheriting restrictive permissions.",
+            "**Fix:** Added explicit `mode: 0o644` to writeFileSync + chmodSync on parent directory after write.",
+            "**Commit:** bf4e46f",
+            "This should prevent future permission resets. If it happens again, it's something external (macOS security, backup software, etc)."
+          ]
+        },
+        {
+          "name": "Repack Image Matching System (Planned)",
+          "items": [
+            "Browse API returns `image.imageUrl` and `additionalImages[].imageUrl`",
+            "Storage: ~50-100KB per card image",
+            "pHash comparison is fast (64-bit integer comparison)",
+            "Need new columns: `listing_image_url`, `listing_image_path` (Supabase Storage), `image_phash`"
+          ],
+          "subsections": [],
+          "rawText": [
+            "**Discussed with Matthew & Max**",
+            "**Goal:** Reduce Justin's card search time during arrival check-in",
+            "**Flow:**",
+            "1. eBay import pulls listing photos via Browse API (tested, works)",
+            "2. Download & store images in Supabase Storage (eBay deletes after ~90 days)",
+            "3. Compute perceptual hash (pHash) for each image, store on card record",
+            "4. Justin snaps photo of arrived card → compute pHash → compare against all incoming cards",
+            "5. App returns top matches sorted by similarity → Justin taps to confirm",
+            "**Technical notes:**",
+            "**Status:** Approved for implementation"
+          ]
+        }
+      ],
+      "tasks_completed": [
+        {
+          "name": "MC check-in: Working, 6 pending tasks, 10 unread messages",
+          "status": "done",
+          "category": "organization"
+        },
+        {
+          "name": "Git sync: Complete",
+          "status": "done",
+          "category": "general"
+        }
+      ],
+      "reports_generated": [],
+      "key_actions": [
+        {
+          "description": "MC check-in: ✅ Working, 6 pending tasks, 10 unread messages",
+          "category": "general"
+        },
+        {
+          "description": "Cron sync: ⚠️ Authentication issue (34 crons synced but auth required error)",
+          "category": "automation"
+        },
+        {
+          "description": "Business monitors: ❌ Permission denied on `/Users/clawdbot/clawd/.credentials/ebay/api-keys.json`",
+          "category": "integration"
+        },
+        {
+          "description": "Mostly acknowledgments from Big Brother (SimpleTexting API fixes) and Wit (Shopify tokens)",
+          "category": "integration"
+        },
+        {
+          "description": "Cron sync authentication error needs investigation",
+          "category": "automation"
+        },
+        {
+          "description": "Browse API returns `image.imageUrl` and `additionalImages[].imageUrl`",
+          "category": "integration"
+        }
+      ],
+      "interactions": [],
+      "todoist_activity": [],
+      "infrastructure": [],
+      "stats": {
+        "sections_count": 3,
+        "tasks_completed_count": 2,
+        "reports_count": 0,
+        "key_actions_count": 6,
         "todoist_count": 0
       }
     }
