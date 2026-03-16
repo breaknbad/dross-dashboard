@@ -27,7 +27,11 @@
         .stat-card .value { font-size:24px; font-weight:700; margin-top:4px; }
         .chart-container { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:20px; }
         .chart-container h3 { font-size:14px; font-weight:600; margin-bottom:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; }
-        .chart-wrap { position:relative; height:300px; }
+        .chart-wrap { position:relative; height:360px; }
+        .tier-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+        .tier-btn { font-size:12px; padding:6px 12px; border-radius:6px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:var(--muted); cursor:pointer; transition:all 0.2s; }
+        .tier-btn.active { color:var(--text); border-color:var(--accent); background:rgba(255,69,0,0.15); }
+        .tier-btn:hover { border-color:var(--accent); }
         .run-log { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; margin-top:24px; }
         .run-log h3 { font-size:14px; font-weight:600; margin-bottom:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; }
         .run-table { width:100%; border-collapse:collapse; font-size:13px; }
@@ -56,7 +60,17 @@
         <button id="btnAll" onclick="setRange(0)">All</button>
     </div>
     <div class="stats-row" id="statsRow"></div>
-    <div class="chart-container"><h3>EV Ratio Over Time</h3><div class="chart-wrap"><canvas id="evChart"></canvas></div></div>
+    <div class="chart-container">
+        <h3>EV Ratio Over Time</h3>
+        <div class="tier-filters" id="tierFilters">
+            <button class="tier-btn active" data-tier="$75" onclick="toggleTier(this)">$75 Packs</button>
+            <button class="tier-btn active" data-tier="$150" onclick="toggleTier(this)">$150 Packs</button>
+            <button class="tier-btn active" data-tier="$250" onclick="toggleTier(this)">$250 Packs</button>
+            <button class="tier-btn active" data-tier="$500" onclick="toggleTier(this)">$500 Packs</button>
+            <button class="tier-btn active" data-tier="$1,000" onclick="toggleTier(this)">$1,000 Packs</button>
+        </div>
+        <div class="chart-wrap"><canvas id="evChart"></canvas></div>
+    </div>
     <div class="chart-container"><h3>Cards Remaining</h3><div class="chart-wrap"><canvas id="cardsChart"></canvas></div></div>
     <div class="chart-container"><h3>Chase &amp; Grail Odds</h3><div class="chart-wrap"><canvas id="oddsChart"></canvas></div></div>
     <div class="run-log"><h3>Recent Scrape Runs</h3><div style="overflow-x:auto"><table class="run-table"><thead><tr><th>Time (EST)</th><th>Packs</th><th>+EV</th><th>Top EV</th><th>Top Pack</th></tr></thead><tbody id="runBody"></tbody></table></div></div>
@@ -65,8 +79,18 @@
 const SB="https://mibyrqopfzaueqsdrlzq.supabase.co";
 const AK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1pYnlycW9wZnphdWVxc2RybHpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyMDczNTIsImV4cCI6MjA4Njc4MzM1Mn0.WHPYozl9dGcir6KwRW3fUZPARuvwws_BI3sNB_h1piE";
 let allData=[],rangeDays=1,selectedPack="all",evChart,cardsChart,oddsChart;
-const CC=["#FF4500","#b388ff","#26de81","#ff8c5a","#4fc3f7","#ffd54f","#ff6b6b","#a29bfe","#fd79a8","#00cec9","#e17055","#6c5ce7","#81ecec","#fab1a0","#74b9ff"];
-const cDef={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{color:"#888",font:{size:11},boxWidth:12}}},scales:{x:{type:"time",time:{tooltipFormat:"MMM d, h:mm a"},grid:{color:"rgba(255,255,255,0.04)"},ticks:{color:"#666",font:{size:10},maxTicksLimit:10}},y:{grid:{color:"rgba(255,255,255,0.04)"},ticks:{color:"#666",font:{size:10}}}},interaction:{mode:"nearest",intersect:false},elements:{point:{radius:0,hoverRadius:4},line:{borderWidth:2,tension:0.3}}};
+let activeTiers=new Set(["$75","$150","$250","$500","$1,000"]);
+// Sport-based colors so same sport = same color family
+const SPORT_COLORS={
+    "Football":"#FF4500","Basketball":"#4fc3f7","Baseball":"#26de81","Pokemon":"#ffd54f",
+    "Mixed Sport":"#b388ff","OG Pokemon":"#e17055","Mixed Sport Gem":"#fd79a8"
+};
+const TIER_DASH={"$75":[],"$150":[6,3],"$250":[2,2],"$500":[10,5],"$1,000":[1,0]};
+function packColor(title){for(const[sport,c]of Object.entries(SPORT_COLORS)){if(title.startsWith(sport))return c;}return"#888";}
+function packTier(title){if(title.includes("$1,000")||title.includes("Infinity"))return"$1,000";if(title.includes("$500")||title.includes("Ultra"))return"$500";if(title.includes("$250")||title.includes("Mega"))return"$250";if(title.includes("$150")||title.includes("Super")||title.includes("$149"))return"$150";return"$75";}
+function toggleTier(btn){const t=btn.dataset.tier;if(activeTiers.has(t)){activeTiers.delete(t);btn.classList.remove("active");}else{activeTiers.add(t);btn.classList.add("active");}render();}
+
+const cDef={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{color:"#888",font:{size:10},boxWidth:10,padding:8,usePointStyle:true,pointStyle:"line"}}},scales:{x:{type:"time",time:{tooltipFormat:"MMM d, h:mm a"},grid:{color:"rgba(255,255,255,0.04)"},ticks:{color:"#666",font:{size:10},maxTicksLimit:12}},y:{grid:{color:"rgba(255,255,255,0.04)"},ticks:{color:"#666",font:{size:10}}}},interaction:{mode:"nearest",intersect:false},elements:{point:{radius:0,hoverRadius:4},line:{borderWidth:2,tension:0.3}}};
 
 async function fetchData(){
     let u=SB+"/rest/v1/ir_pack_snapshots?select=scraped_at,pack_title,total_cards,chase_count,grail_count,chase_odds_pct,grail_odds_pct,ev_cents,ev_ratio,is_positive_ev&order=scraped_at.asc";
@@ -114,16 +138,38 @@ function renderStats(data){
 }
 function renderOverviewCharts(byTime,times){
     const lt=times[times.length-1];
-    const top=(byTime[lt]||[]).sort((a,b)=>(b.ev_ratio||0)-(a.ev_ratio||0)).slice(0,8).map(p=>p.pack_title);
-    const evDs=top.map((pk,i)=>({label:pk.replace(/: /g," "),data:times.map(t=>{const r=(byTime[t]||[]).find(x=>x.pack_title===pk);return r?{x:new Date(t),y:r.ev_ratio}:null;}).filter(Boolean),borderColor:CC[i%CC.length],backgroundColor:"transparent"}));
+    const allPacks=[...new Set((byTime[lt]||[]).map(p=>p.pack_title))].filter(t=>activeTiers.has(packTier(t)));
+    // Sort by sport then tier for consistent ordering
+    allPacks.sort((a,b)=>a.localeCompare(b));
+    const evDs=allPacks.map(pk=>{
+        const color=packColor(pk);const tier=packTier(pk);
+        const dash=TIER_DASH[tier]||[];
+        // Lighten/darken based on tier for contrast
+        const alpha=tier==="$1,000"?1:tier==="$500"?0.85:tier==="$250"?0.7:tier==="$150"?0.55:0.4;
+        return{
+            label:pk.replace(": ","  "),
+            data:times.map(t=>{const r=(byTime[t]||[]).find(x=>x.pack_title===pk);return r?{x:new Date(t),y:r.ev_ratio}:null;}).filter(Boolean),
+            borderColor:color,borderDash:dash,borderWidth:tier==="$1,000"||tier==="$500"?2.5:1.5,
+            backgroundColor:"transparent",hidden:false
+        };
+    });
     if(evChart)evChart.destroy();
-    evChart=new Chart(document.getElementById("evChart"),{type:"line",data:{datasets:evDs},options:{...cDef,scales:{...cDef.scales,y:{...cDef.scales.y,title:{display:true,text:"EV Ratio",color:"#666"}}}}});
-    const cDs=[{label:"Total Cards",data:times.map(t=>({x:new Date(t),y:(byTime[t]||[]).reduce((s,r)=>s+(r.total_cards||0),0)})),borderColor:"#4fc3f7",backgroundColor:"rgba(79,195,247,0.1)",fill:true}];
+    evChart=new Chart(document.getElementById("evChart"),{type:"line",data:{datasets:evDs},options:{...cDef,
+        plugins:{...cDef.plugins,legend:{display:true,position:"bottom",labels:{color:"#888",font:{size:10},boxWidth:20,padding:6,usePointStyle:false},maxHeight:80}},
+        scales:{...cDef.scales,y:{...cDef.scales.y,title:{display:true,text:"EV Ratio",color:"#666"}}}}});
+    // Cards chart - by tier
+    const tiers=["$75","$150","$250","$500","$1,000"].filter(t=>activeTiers.has(t));
+    const tierColors={"$75":"#888","$150":"#ff8c5a","$250":"#ffd54f","$500":"#4fc3f7","$1,000":"#b388ff"};
+    const cDs=tiers.map(tier=>({
+        label:tier+" Packs",
+        data:times.map(t=>({x:new Date(t),y:(byTime[t]||[]).filter(r=>packTier(r.pack_title)===tier).reduce((s,r)=>s+(r.total_cards||0),0)})),
+        borderColor:tierColors[tier],backgroundColor:"transparent",borderWidth:2
+    }));
     if(cardsChart)cardsChart.destroy();
-    cardsChart=new Chart(document.getElementById("cardsChart"),{type:"line",data:{datasets:cDs},options:{...cDef,plugins:{...cDef.plugins,legend:{display:false}}}});
+    cardsChart=new Chart(document.getElementById("cardsChart"),{type:"line",data:{datasets:cDs},options:cDef});
     const oDs=[
-        {label:"Avg Chase %",data:times.map(t=>{const rr=byTime[t]||[];return{x:new Date(t),y:rr.length?(rr.reduce((s,r)=>s+(r.chase_odds_pct||0),0)/rr.length):null};}),borderColor:"#ff8c5a",backgroundColor:"transparent"},
-        {label:"Avg Grail %",data:times.map(t=>{const rr=byTime[t]||[];return{x:new Date(t),y:rr.length?(rr.reduce((s,r)=>s+(r.grail_odds_pct||0),0)/rr.length):null};}),borderColor:"#b388ff",backgroundColor:"transparent"}
+        {label:"Avg Chase %",data:times.map(t=>{const rr=(byTime[t]||[]).filter(r=>activeTiers.has(packTier(r.pack_title)));return{x:new Date(t),y:rr.length?(rr.reduce((s,r)=>s+(r.chase_odds_pct||0),0)/rr.length):null};}),borderColor:"#ff8c5a",backgroundColor:"rgba(255,140,90,0.08)",fill:true,borderWidth:2},
+        {label:"Avg Grail %",data:times.map(t=>{const rr=(byTime[t]||[]).filter(r=>activeTiers.has(packTier(r.pack_title)));return{x:new Date(t),y:rr.length?(rr.reduce((s,r)=>s+(r.grail_odds_pct||0),0)/rr.length):null};}),borderColor:"#b388ff",backgroundColor:"rgba(179,136,255,0.08)",fill:true,borderWidth:2}
     ];
     if(oddsChart)oddsChart.destroy();
     oddsChart=new Chart(document.getElementById("oddsChart"),{type:"line",data:{datasets:oDs},options:{...cDef,scales:{...cDef.scales,y:{...cDef.scales.y,title:{display:true,text:"%",color:"#666"}}}}});
