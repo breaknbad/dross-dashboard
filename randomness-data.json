@@ -2,9 +2,9 @@
   "overall": {
     "verdict": "Insufficient Data",
     "confidence": 0.3,
-    "timestamp": "2026-04-18T21:01:30.537Z",
+    "timestamp": "2026-04-19T01:01:35.379Z",
     "packsAnalyzed": 54,
-    "totalSnapshots": 4423
+    "totalSnapshots": 4437
   },
   "packAnalysis": [
     {
@@ -72,11 +72,11 @@
           "sport": "pokemon",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.8546102185187245,
+          "confidence": 0.8546028568761425,
           "details": {
-            "observations": 4417,
-            "grail_velocity_correlation": 0.8206861606911148,
-            "chase_velocity_correlation": 0.8546102185187245,
+            "observations": 4431,
+            "grail_velocity_correlation": 0.8206788716689393,
+            "chase_velocity_correlation": 0.8546028568761425,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -88,9 +88,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.561178165264373,
-        "significant_deviations": 156,
-        "total_observations": 178
+        "average_deviation_pct": 12.534776185650324,
+        "significant_deviations": 158,
+        "total_observations": 180
       },
       "allTests": {
         "depletion_rate": {
@@ -100,9 +100,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 12.561178165264373,
-            "significant_deviations": 156,
-            "total_observations": 178
+            "average_deviation_pct": 12.534776185650324,
+            "significant_deviations": 158,
+            "total_observations": 180
           }
         },
         "chi_square": {
@@ -149,9 +149,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 2914,
-            "grail_velocity_correlation": 0.34533088222606156,
-            "chase_velocity_correlation": 0.3751926360168417
+            "observations": 2928,
+            "grail_velocity_correlation": 0.34532843337909286,
+            "chase_velocity_correlation": 0.3751887915228311
           }
         }
       }
@@ -223,9 +223,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.6091197363289347,
-            "chase_velocity_correlation": 0.6060332717864699
+            "observations": 2927,
+            "grail_velocity_correlation": 0.6091090831790549,
+            "chase_velocity_correlation": 0.6060229968375163
           }
         }
       }
@@ -236,9 +236,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.192215094460556,
-        "significant_deviations": 1056,
-        "total_observations": 1128
+        "average_deviation_pct": 12.131244409255707,
+        "significant_deviations": 1068,
+        "total_observations": 1140
       },
       "allTests": {
         "depletion_rate": {
@@ -248,9 +248,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 12.192215094460556,
-            "significant_deviations": 1056,
-            "total_observations": 1128
+            "average_deviation_pct": 12.131244409255707,
+            "significant_deviations": 1068,
+            "total_observations": 1140
           }
         },
         "chi_square": {
@@ -295,11 +295,11 @@
           "sport": "basketball",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.7306289148741328,
+          "confidence": 0.7301727678803502,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.6986185276070362,
-            "chase_velocity_correlation": 0.7306289148741328,
+            "observations": 2927,
+            "grail_velocity_correlation": 0.6981837647206548,
+            "chase_velocity_correlation": 0.7301727678803502,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -311,9 +311,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.059221132335217,
-        "significant_deviations": 297,
-        "total_observations": 314
+        "average_deviation_pct": 11.066292496563555,
+        "significant_deviations": 307,
+        "total_observations": 324
       },
       "allTests": {
         "depletion_rate": {
@@ -323,9 +323,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 11.059221132335217,
-            "significant_deviations": 297,
-            "total_observations": 314
+            "average_deviation_pct": 11.066292496563555,
+            "significant_deviations": 307,
+            "total_observations": 324
           }
         },
         "chi_square": {
@@ -343,10 +343,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 60,
-            "mean_gap_hours": 28.317090522598864,
-            "std_dev_hours": 60.9792679271244,
-            "coefficient_of_variation": 2.153443973294467,
+            "hit_events": 61,
+            "mean_gap_hours": 27.871596898148145,
+            "std_dev_hours": 60.56571644015039,
+            "coefficient_of_variation": 2.173026420462278,
             "pattern_type": "High clustering detected"
           }
         },
@@ -357,12 +357,12 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "early_pct": 50,
-            "middle_pct": 22.22222222222222,
-            "late_pct": 27.77777777777778,
-            "total_grails_pulled": 18,
-            "observations": 15,
-            "chi_square": 2.333333333333333
+            "early_pct": 52.63157894736842,
+            "middle_pct": 21.052631578947366,
+            "late_pct": 26.31578947368421,
+            "total_grails_pulled": 19,
+            "observations": 16,
+            "chi_square": 3.2631578947368425
           }
         },
         "velocity_correlation": {
@@ -372,9 +372,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.5244169007548594,
-            "chase_velocity_correlation": 0.5407431378876282
+            "observations": 2927,
+            "grail_velocity_correlation": 0.524407646669668,
+            "chase_velocity_correlation": 0.5406912081155876
           }
         }
       }
@@ -385,9 +385,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.82961789543843,
-        "significant_deviations": 1213,
-        "total_observations": 1352
+        "average_deviation_pct": 13.79986258809481,
+        "significant_deviations": 1219,
+        "total_observations": 1358
       },
       "allTests": {
         "depletion_rate": {
@@ -397,9 +397,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 13.82961789543843,
-            "significant_deviations": 1213,
-            "total_observations": 1352
+            "average_deviation_pct": 13.79986258809481,
+            "significant_deviations": 1219,
+            "total_observations": 1358
           }
         },
         "chi_square": {
@@ -417,10 +417,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 277,
-            "mean_gap_hours": 6.292254691022544,
-            "std_dev_hours": 25.750261139482483,
-            "coefficient_of_variation": 4.092374260727493,
+            "hit_events": 278,
+            "mean_gap_hours": 6.27909997192138,
+            "std_dev_hours": 25.70466754568958,
+            "coefficient_of_variation": 4.093686620795122,
             "pattern_type": "High clustering detected"
           }
         },
@@ -446,9 +446,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.4784882834847612,
-            "chase_velocity_correlation": 0.5032753873871438
+            "observations": 2927,
+            "grail_velocity_correlation": 0.4784892231372633,
+            "chase_velocity_correlation": 0.5032754912731509
           }
         }
       }
@@ -459,9 +459,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.12392767424872,
-        "significant_deviations": 745,
-        "total_observations": 810
+        "average_deviation_pct": 13.110810558996892,
+        "significant_deviations": 751,
+        "total_observations": 816
       },
       "allTests": {
         "depletion_rate": {
@@ -471,9 +471,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 13.12392767424872,
-            "significant_deviations": 745,
-            "total_observations": 810
+            "average_deviation_pct": 13.110810558996892,
+            "significant_deviations": 751,
+            "total_observations": 816
           }
         },
         "chi_square": {
@@ -491,10 +491,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 123,
-            "mean_gap_hours": 13.872322042349715,
-            "std_dev_hours": 38.75303101152292,
-            "coefficient_of_variation": 2.793550415944559,
+            "hit_events": 125,
+            "mean_gap_hours": 13.712592551523285,
+            "std_dev_hours": 38.46195591909844,
+            "coefficient_of_variation": 2.8048639069951684,
             "pattern_type": "High clustering detected"
           }
         },
@@ -518,11 +518,11 @@
           "sport": "baseball",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.7577236321888867,
+          "confidence": 0.7577099791655532,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.7577236321888867,
-            "chase_velocity_correlation": 0.7490024025354106,
+            "observations": 2927,
+            "grail_velocity_correlation": 0.7577099791655532,
+            "chase_velocity_correlation": 0.7490020448782203,
             "pattern_type": "Grail hits correlate with buying velocity"
           }
         }
@@ -534,9 +534,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.78138660340254,
-        "significant_deviations": 856,
-        "total_observations": 926
+        "average_deviation_pct": 12.724422689451155,
+        "significant_deviations": 868,
+        "total_observations": 940
       },
       "allTests": {
         "depletion_rate": {
@@ -546,9 +546,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 12.78138660340254,
-            "significant_deviations": 856,
-            "total_observations": 926
+            "average_deviation_pct": 12.724422689451155,
+            "significant_deviations": 868,
+            "total_observations": 940
           }
         },
         "chi_square": {
@@ -566,10 +566,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 178,
-            "mean_gap_hours": 9.66074873509102,
-            "std_dev_hours": 32.156224803365475,
-            "coefficient_of_variation": 3.3285437480185647,
+            "hit_events": 182,
+            "mean_gap_hours": 9.549526246163289,
+            "std_dev_hours": 31.823523256018085,
+            "coefficient_of_variation": 3.3324714164541738,
             "pattern_type": "High clustering detected"
           }
         },
@@ -580,12 +580,12 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.9,
           "details": {
-            "early_pct": 87.8048780487805,
-            "middle_pct": 7.317073170731707,
-            "late_pct": 4.878048780487805,
-            "total_grails_pulled": 41,
-            "observations": 33,
-            "chi_square": 54.78048780487805
+            "early_pct": 88.09523809523809,
+            "middle_pct": 7.142857142857142,
+            "late_pct": 4.761904761904762,
+            "total_grails_pulled": 42,
+            "observations": 34,
+            "chi_square": 56.714285714285715
           }
         },
         "velocity_correlation": {
@@ -595,9 +595,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.3787521118352287,
-            "chase_velocity_correlation": 0.4332237873170237
+            "observations": 2927,
+            "grail_velocity_correlation": 0.3787435698615262,
+            "chase_velocity_correlation": 0.4332236340949347
           }
         }
       }
@@ -608,9 +608,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.873497009017091,
-        "significant_deviations": 1196,
-        "total_observations": 1342
+        "average_deviation_pct": 11.836496291494775,
+        "significant_deviations": 1205,
+        "total_observations": 1352
       },
       "allTests": {
         "depletion_rate": {
@@ -620,9 +620,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 11.873497009017091,
-            "significant_deviations": 1196,
-            "total_observations": 1342
+            "average_deviation_pct": 11.836496291494775,
+            "significant_deviations": 1205,
+            "total_observations": 1352
           }
         },
         "chi_square": {
@@ -640,10 +640,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 257,
-            "mean_gap_hours": 6.801954036458328,
-            "std_dev_hours": 27.825706149866605,
-            "coefficient_of_variation": 4.090840073414406,
+            "hit_events": 258,
+            "mean_gap_hours": 6.78167364245568,
+            "std_dev_hours": 27.77341337800333,
+            "coefficient_of_variation": 4.095362714615448,
             "pattern_type": "High clustering detected"
           }
         },
@@ -667,11 +667,11 @@
           "sport": "baseball",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.8580463688833189,
+          "confidence": 0.8580036150829863,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.8361286820038445,
-            "chase_velocity_correlation": 0.8580463688833189,
+            "observations": 2927,
+            "grail_velocity_correlation": 0.8360798285299548,
+            "chase_velocity_correlation": 0.8580036150829863,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -683,9 +683,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.925572001587847,
-        "significant_deviations": 1118,
-        "total_observations": 1226
+        "average_deviation_pct": 13.013484898344116,
+        "significant_deviations": 1132,
+        "total_observations": 1240
       },
       "allTests": {
         "depletion_rate": {
@@ -695,9 +695,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 12.925572001587847,
-            "significant_deviations": 1118,
-            "total_observations": 1226
+            "average_deviation_pct": 13.013484898344116,
+            "significant_deviations": 1132,
+            "total_observations": 1240
           }
         },
         "chi_square": {
@@ -715,10 +715,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 199,
-            "mean_gap_hours": 8.738588786475875,
-            "std_dev_hours": 30.099883904986743,
-            "coefficient_of_variation": 3.4444788100763257,
+            "hit_events": 201,
+            "mean_gap_hours": 8.675235725000004,
+            "std_dev_hours": 29.95593581846468,
+            "coefficient_of_variation": 3.4530399827797957,
             "pattern_type": "High clustering detected"
           }
         },
@@ -729,12 +729,12 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.9,
           "details": {
-            "early_pct": 88.67924528301887,
-            "middle_pct": 7.547169811320755,
-            "late_pct": 3.7735849056603774,
-            "total_grails_pulled": 53,
-            "observations": 40,
-            "chi_square": 73.1698113207547
+            "early_pct": 88.88888888888889,
+            "middle_pct": 7.4074074074074066,
+            "late_pct": 3.7037037037037033,
+            "total_grails_pulled": 54,
+            "observations": 41,
+            "chi_square": 75.11111111111111
           }
         },
         "velocity_correlation": {
@@ -742,11 +742,11 @@
           "sport": "basketball",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.749577872206205,
+          "confidence": 0.7492708860864832,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.7022223615251749,
-            "chase_velocity_correlation": 0.749577872206205,
+            "observations": 2927,
+            "grail_velocity_correlation": 0.7021590902314141,
+            "chase_velocity_correlation": 0.7492708860864832,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -758,9 +758,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.69928497066843,
-        "significant_deviations": 193,
-        "total_observations": 210
+        "average_deviation_pct": 12.665942659624388,
+        "significant_deviations": 195,
+        "total_observations": 212
       },
       "allTests": {
         "depletion_rate": {
@@ -770,9 +770,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 12.69928497066843,
-            "significant_deviations": 193,
-            "total_observations": 210
+            "average_deviation_pct": 12.665942659624388,
+            "significant_deviations": 195,
+            "total_observations": 212
           }
         },
         "chi_square": {
@@ -819,9 +819,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.4869241008899971,
-            "chase_velocity_correlation": 0.44655895676656865
+            "observations": 2927,
+            "grail_velocity_correlation": 0.48692083044409534,
+            "chase_velocity_correlation": 0.44655549399470246
           }
         }
       }
@@ -832,9 +832,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.013880486262163,
-        "significant_deviations": 524,
-        "total_observations": 564
+        "average_deviation_pct": 12.991605290197633,
+        "significant_deviations": 526,
+        "total_observations": 566
       },
       "allTests": {
         "depletion_rate": {
@@ -844,9 +844,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 13.013880486262163,
-            "significant_deviations": 524,
-            "total_observations": 564
+            "average_deviation_pct": 12.991605290197633,
+            "significant_deviations": 526,
+            "total_observations": 566
           }
         },
         "chi_square": {
@@ -891,11 +891,11 @@
           "sport": "football",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.7435956777223517,
+          "confidence": 0.7435918300483415,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.6712295886050076,
-            "chase_velocity_correlation": 0.7435956777223517,
+            "observations": 2927,
+            "grail_velocity_correlation": 0.6712257987104059,
+            "chase_velocity_correlation": 0.7435918300483415,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -907,9 +907,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.698999133329405,
-        "significant_deviations": 631,
-        "total_observations": 678
+        "average_deviation_pct": 12.687281488819613,
+        "significant_deviations": 633,
+        "total_observations": 680
       },
       "allTests": {
         "depletion_rate": {
@@ -919,9 +919,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 12.698999133329405,
-            "significant_deviations": 631,
-            "total_observations": 678
+            "average_deviation_pct": 12.687281488819613,
+            "significant_deviations": 633,
+            "total_observations": 680
           }
         },
         "chi_square": {
@@ -968,9 +968,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.5464596430432263,
-            "chase_velocity_correlation": 0.43954751134432535
+            "observations": 2927,
+            "grail_velocity_correlation": 0.5464600714853507,
+            "chase_velocity_correlation": 0.43954821613754264
           }
         }
       }
@@ -1042,9 +1042,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 2913,
-            "grail_velocity_correlation": 0.33072040538374875,
-            "chase_velocity_correlation": 0.3755204470893094
+            "observations": 2927,
+            "grail_velocity_correlation": 0.3307181740897405,
+            "chase_velocity_correlation": 0.3755182944893881
           }
         }
       }
@@ -1055,9 +1055,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.50770584552546,
-        "significant_deviations": 1497,
-        "total_observations": 1600
+        "average_deviation_pct": 11.545391388582548,
+        "significant_deviations": 1505,
+        "total_observations": 1608
       },
       "allTests": {
         "depletion_rate": {
@@ -1067,9 +1067,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 11.50770584552546,
-            "significant_deviations": 1497,
-            "total_observations": 1600
+            "average_deviation_pct": 11.545391388582548,
+            "significant_deviations": 1505,
+            "total_observations": 1608
           }
         },
         "chi_square": {
@@ -1087,10 +1087,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 334,
-            "mean_gap_hours": 5.211641061895231,
-            "std_dev_hours": 23.072583704316635,
-            "coefficient_of_variation": 4.427124475822249,
+            "hit_events": 336,
+            "mean_gap_hours": 5.202657092868992,
+            "std_dev_hours": 23.004807748865044,
+            "coefficient_of_variation": 4.421742071065288,
             "pattern_type": "High clustering detected"
           }
         },
@@ -1101,12 +1101,12 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.9,
           "details": {
-            "early_pct": 52.80898876404494,
-            "middle_pct": 25.842696629213485,
-            "late_pct": 21.34831460674157,
-            "total_grails_pulled": 89,
-            "observations": 67,
-            "chi_square": 15.46067415730337
+            "early_pct": 53.333333333333336,
+            "middle_pct": 25.555555555555554,
+            "late_pct": 21.11111111111111,
+            "total_grails_pulled": 90,
+            "observations": 68,
+            "chi_square": 16.46666666666667
           }
         },
         "velocity_correlation": {
@@ -1114,11 +1114,11 @@
           "sport": "pokemon",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.7561405228837605,
+          "confidence": 0.7561113912320212,
           "details": {
-            "observations": 2912,
-            "grail_velocity_correlation": 0.7561405228837605,
-            "chase_velocity_correlation": 0.7486956820024805,
+            "observations": 2926,
+            "grail_velocity_correlation": 0.7561113912320212,
+            "chase_velocity_correlation": 0.7486753806785181,
             "pattern_type": "Grail hits correlate with buying velocity"
           }
         }
@@ -1130,9 +1130,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.632852894535505,
-        "significant_deviations": 223,
-        "total_observations": 244
+        "average_deviation_pct": 12.648935912365577,
+        "significant_deviations": 227,
+        "total_observations": 248
       },
       "allTests": {
         "depletion_rate": {
@@ -1142,9 +1142,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 12.632852894535505,
-            "significant_deviations": 223,
-            "total_observations": 244
+            "average_deviation_pct": 12.648935912365577,
+            "significant_deviations": 227,
+            "total_observations": 248
           }
         },
         "chi_square": {
@@ -1162,10 +1162,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 58,
-            "mean_gap_hours": 29.245716652046788,
-            "std_dev_hours": 58.10085899352862,
-            "coefficient_of_variation": 1.986645076432496,
+            "hit_events": 59,
+            "mean_gap_hours": 28.814598089080462,
+            "std_dev_hours": 57.68970554340109,
+            "coefficient_of_variation": 2.0020999552051046,
             "pattern_type": "High clustering detected"
           }
         },
@@ -1191,9 +1191,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 2912,
-            "grail_velocity_correlation": 0.06763907736770002,
-            "chase_velocity_correlation": 0.07339738153289763
+            "observations": 2926,
+            "grail_velocity_correlation": 0.0676253873415747,
+            "chase_velocity_correlation": 0.07350784369800686
           }
         }
       }
@@ -1204,9 +1204,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.340835468589493,
-        "significant_deviations": 396,
-        "total_observations": 420
+        "average_deviation_pct": 11.458311964337058,
+        "significant_deviations": 402,
+        "total_observations": 426
       },
       "allTests": {
         "depletion_rate": {
@@ -1216,9 +1216,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 11.340835468589493,
-            "significant_deviations": 396,
-            "total_observations": 420
+            "average_deviation_pct": 11.458311964337058,
+            "significant_deviations": 402,
+            "total_observations": 426
           }
         },
         "chi_square": {
@@ -1236,10 +1236,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 60,
-            "mean_gap_hours": 28.742068709981158,
-            "std_dev_hours": 58.87692216762987,
-            "coefficient_of_variation": 2.0484580550454217,
+            "hit_events": 61,
+            "mean_gap_hours": 29.06605087499999,
+            "std_dev_hours": 58.437231282970274,
+            "coefficient_of_variation": 2.0104977980766123,
             "pattern_type": "High clustering detected"
           }
         },
@@ -1263,11 +1263,11 @@
           "sport": "basketball",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.962364099190911,
+          "confidence": 0.9617485267069493,
           "details": {
-            "observations": 2912,
-            "grail_velocity_correlation": 0.9550004317993486,
-            "chase_velocity_correlation": 0.962364099190911,
+            "observations": 2926,
+            "grail_velocity_correlation": 0.9544165496753846,
+            "chase_velocity_correlation": 0.9617485267069493,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -1279,9 +1279,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.005706951348298,
-        "significant_deviations": 940,
-        "total_observations": 984
+        "average_deviation_pct": 13.001796418638557,
+        "significant_deviations": 950,
+        "total_observations": 994
       },
       "allTests": {
         "depletion_rate": {
@@ -1291,9 +1291,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 13.005706951348298,
-            "significant_deviations": 940,
-            "total_observations": 984
+            "average_deviation_pct": 13.001796418638557,
+            "significant_deviations": 950,
+            "total_observations": 994
           }
         },
         "chi_square": {
@@ -1311,10 +1311,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 174,
-            "mean_gap_hours": 9.874424996788695,
-            "std_dev_hours": 32.32663905879465,
-            "coefficient_of_variation": 3.273774328055328,
+            "hit_events": 175,
+            "mean_gap_hours": 9.839102594189015,
+            "std_dev_hours": 32.2369605633556,
+            "coefficient_of_variation": 3.276412686497932,
             "pattern_type": "High clustering detected"
           }
         },
@@ -1340,9 +1340,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 2911,
-            "grail_velocity_correlation": 0.05956167295335447,
-            "chase_velocity_correlation": 0.05891902004446373
+            "observations": 2925,
+            "grail_velocity_correlation": 0.059550416204725544,
+            "chase_velocity_correlation": 0.0589055672655667
           }
         }
       }
@@ -1353,9 +1353,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.634525068653197,
-        "significant_deviations": 230,
-        "total_observations": 246
+        "average_deviation_pct": 12.483663360669393,
+        "significant_deviations": 236,
+        "total_observations": 252
       },
       "allTests": {
         "depletion_rate": {
@@ -1365,9 +1365,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 12.634525068653197,
-            "significant_deviations": 230,
-            "total_observations": 246
+            "average_deviation_pct": 12.483663360669393,
+            "significant_deviations": 236,
+            "total_observations": 252
           }
         },
         "chi_square": {
@@ -1385,10 +1385,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 45,
-            "mean_gap_hours": 38.60186497474749,
-            "std_dev_hours": 79.53050655985595,
-            "coefficient_of_variation": 2.060276274524122,
+            "hit_events": 47,
+            "mean_gap_hours": 37.10804623792273,
+            "std_dev_hours": 78.10113863731357,
+            "coefficient_of_variation": 2.1046955190407672,
             "pattern_type": "High clustering detected"
           }
         },
@@ -1414,9 +1414,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 2911,
-            "grail_velocity_correlation": 0.5596644689641637,
-            "chase_velocity_correlation": 0.5832731116340809
+            "observations": 2925,
+            "grail_velocity_correlation": 0.5596058297590061,
+            "chase_velocity_correlation": 0.5832943818422419
           }
         }
       }
@@ -1427,9 +1427,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.366836120778466,
-        "significant_deviations": 1265,
-        "total_observations": 1362
+        "average_deviation_pct": 13.271478450244397,
+        "significant_deviations": 1277,
+        "total_observations": 1378
       },
       "allTests": {
         "depletion_rate": {
@@ -1439,9 +1439,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 13.366836120778466,
-            "significant_deviations": 1265,
-            "total_observations": 1362
+            "average_deviation_pct": 13.271478450244397,
+            "significant_deviations": 1277,
+            "total_observations": 1378
           }
         },
         "chi_square": {
@@ -1459,10 +1459,10 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "hit_events": 260,
-            "mean_gap_hours": 6.661394370441865,
-            "std_dev_hours": 26.365066923189854,
-            "coefficient_of_variation": 3.957890113844288,
+            "hit_events": 264,
+            "mean_gap_hours": 6.574278722010979,
+            "std_dev_hours": 26.17325008560463,
+            "coefficient_of_variation": 3.981159179937933,
             "pattern_type": "High clustering detected"
           }
         },
@@ -1473,12 +1473,12 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.9,
           "details": {
-            "early_pct": 56.451612903225815,
-            "middle_pct": 29.03225806451613,
-            "late_pct": 14.516129032258066,
-            "total_grails_pulled": 62,
-            "observations": 51,
-            "chi_square": 16.87096774193548
+            "early_pct": 57.14285714285714,
+            "middle_pct": 28.57142857142857,
+            "late_pct": 14.285714285714285,
+            "total_grails_pulled": 63,
+            "observations": 52,
+            "chi_square": 18
           }
         },
         "velocity_correlation": {
@@ -1486,11 +1486,11 @@
           "sport": "baseball",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.8596597947480211,
+          "confidence": 0.8587788485149191,
           "details": {
-            "observations": 2909,
-            "grail_velocity_correlation": 0.8596597947480211,
-            "chase_velocity_correlation": 0.8521203992988302,
+            "observations": 2923,
+            "grail_velocity_correlation": 0.8587788485149191,
+            "chase_velocity_correlation": 0.8512418848733159,
             "pattern_type": "Grail hits correlate with buying velocity"
           }
         }
@@ -2417,9 +2417,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 441,
+            "observations": 455,
             "grail_velocity_correlation": 0,
-            "chase_velocity_correlation": 0.4956519670945047
+            "chase_velocity_correlation": 0.49575448076264833
           }
         }
       }
@@ -2430,9 +2430,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 9.535556511060536,
-        "significant_deviations": 363,
-        "total_observations": 412
+        "average_deviation_pct": 9.67422202451753,
+        "significant_deviations": 382,
+        "total_observations": 432
       },
       "allTests": {
         "depletion_rate": {
@@ -2442,9 +2442,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 9.535556511060536,
-            "significant_deviations": 363,
-            "total_observations": 412
+            "average_deviation_pct": 9.67422202451753,
+            "significant_deviations": 382,
+            "total_observations": 432
           }
         },
         "chi_square": {
@@ -2454,15 +2454,15 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.95,
           "details": {
-            "total_hits": 76,
-            "expected_per_window": 19,
+            "total_hits": 88,
+            "expected_per_window": 22,
             "observed_hits": [
               45,
-              50,
-              33,
-              -52
+              51,
+              34,
+              -42
             ],
-            "chi_square": 361.7894736842105,
+            "chi_square": 255,
             "degrees_freedom": 3
           }
         },
@@ -2473,10 +2473,10 @@
           "verdict": "Appears Random",
           "confidence": 0.6,
           "details": {
-            "hit_events": 107,
-            "mean_gap_hours": 1.0789000969601676,
-            "std_dev_hours": 1.0519209438942572,
-            "coefficient_of_variation": 0.9749938357203554
+            "hit_events": 113,
+            "mean_gap_hours": 1.0638935441468254,
+            "std_dev_hours": 1.03438561868921,
+            "coefficient_of_variation": 0.972264212317146
           }
         },
         "grail_timing": {
@@ -2486,12 +2486,12 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "early_pct": 47.82608695652174,
-            "middle_pct": 30.434782608695656,
-            "late_pct": 21.73913043478261,
-            "total_grails_pulled": 23,
-            "observations": 20,
-            "chi_square": 2.434782608695652
+            "early_pct": 45.83333333333333,
+            "middle_pct": 33.33333333333333,
+            "late_pct": 20.833333333333336,
+            "total_grails_pulled": 24,
+            "observations": 21,
+            "chi_square": 2.25
           }
         },
         "velocity_correlation": {
@@ -2499,11 +2499,11 @@
           "sport": "other",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.948496286031538,
+          "confidence": 0.9457300635301301,
           "details": {
-            "observations": 441,
-            "grail_velocity_correlation": 0.9478517767515047,
-            "chase_velocity_correlation": 0.948496286031538,
+            "observations": 455,
+            "grail_velocity_correlation": 0.9448918139246592,
+            "chase_velocity_correlation": 0.9457300635301301,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -2515,9 +2515,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.136113942803087,
-        "significant_deviations": 221,
-        "total_observations": 252
+        "average_deviation_pct": 12.081420132229836,
+        "significant_deviations": 223,
+        "total_observations": 254
       },
       "allTests": {
         "depletion_rate": {
@@ -2527,9 +2527,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 12.136113942803087,
-            "significant_deviations": 221,
-            "total_observations": 252
+            "average_deviation_pct": 12.081420132229836,
+            "significant_deviations": 223,
+            "total_observations": 254
           }
         },
         "chi_square": {
@@ -2539,15 +2539,15 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.95,
           "details": {
-            "total_hits": 10,
-            "expected_per_window": 2.5,
+            "total_hits": 6,
+            "expected_per_window": 1.5,
             "observed_hits": [
-              10,
-              17,
-              -30,
-              13
+              12,
+              15,
+              -27,
+              6
             ],
-            "chi_square": 573.2,
+            "chi_square": 750,
             "degrees_freedom": 3
           }
         },
@@ -2586,9 +2586,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 439,
-            "grail_velocity_correlation": 0.4772587559510581,
-            "chase_velocity_correlation": 0.4850116793839662
+            "observations": 453,
+            "grail_velocity_correlation": 0.46801041193693127,
+            "chase_velocity_correlation": 0.475665263058205
           }
         }
       }
@@ -2663,9 +2663,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 437,
-            "grail_velocity_correlation": 0.017348492438270524,
-            "chase_velocity_correlation": 0.09249650490677276
+            "observations": 451,
+            "grail_velocity_correlation": 0.01745639057155932,
+            "chase_velocity_correlation": 0.09269349383686248
           }
         }
       }
@@ -2676,9 +2676,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.408091323079093,
-        "significant_deviations": 203,
-        "total_observations": 232
+        "average_deviation_pct": 13.12147099194342,
+        "significant_deviations": 217,
+        "total_observations": 248
       },
       "allTests": {
         "depletion_rate": {
@@ -2688,9 +2688,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 13.408091323079093,
-            "significant_deviations": 203,
-            "total_observations": 232
+            "average_deviation_pct": 13.12147099194342,
+            "significant_deviations": 217,
+            "total_observations": 248
           }
         },
         "chi_square": {
@@ -2708,10 +2708,10 @@
           "verdict": "Appears Random",
           "confidence": 0.6,
           "details": {
-            "hit_events": 63,
-            "mean_gap_hours": 1.835540766129032,
-            "std_dev_hours": 2.6869393391579095,
-            "coefficient_of_variation": 1.4638407322461109
+            "hit_events": 66,
+            "mean_gap_hours": 1.791812858974359,
+            "std_dev_hours": 2.6338777005614804,
+            "coefficient_of_variation": 1.4699513330142764
           }
         },
         "grail_timing": {
@@ -2721,12 +2721,12 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.9,
           "details": {
-            "early_pct": 81.25,
-            "middle_pct": 12.5,
-            "late_pct": 6.25,
-            "total_grails_pulled": 16,
-            "observations": 16,
-            "chi_square": 16.625
+            "early_pct": 82.35294117647058,
+            "middle_pct": 11.76470588235294,
+            "late_pct": 5.88235294117647,
+            "total_grails_pulled": 17,
+            "observations": 17,
+            "chi_square": 18.470588235294116
           }
         },
         "velocity_correlation": {
@@ -2734,11 +2734,11 @@
           "sport": "other",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.9785515429579152,
+          "confidence": 0.9782132725085164,
           "details": {
-            "observations": 437,
-            "grail_velocity_correlation": 0.9768205677982725,
-            "chase_velocity_correlation": 0.9785515429579152,
+            "observations": 451,
+            "grail_velocity_correlation": 0.9763999710235974,
+            "chase_velocity_correlation": 0.9782132725085164,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -2750,9 +2750,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.475518518518513,
-        "significant_deviations": 165,
-        "total_observations": 180
+        "average_deviation_pct": 11.680762411347512,
+        "significant_deviations": 173,
+        "total_observations": 188
       },
       "allTests": {
         "depletion_rate": {
@@ -2762,9 +2762,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 11.475518518518513,
-            "significant_deviations": 165,
-            "total_observations": 180
+            "average_deviation_pct": 11.680762411347512,
+            "significant_deviations": 173,
+            "total_observations": 188
           }
         },
         "chi_square": {
@@ -2782,10 +2782,10 @@
           "verdict": "Appears Random",
           "confidence": 0.6,
           "details": {
-            "hit_events": 30,
-            "mean_gap_hours": 3.8702886206896547,
-            "std_dev_hours": 5.758960840159702,
-            "coefficient_of_variation": 1.4879926032838091
+            "hit_events": 32,
+            "mean_gap_hours": 3.809049086021505,
+            "std_dev_hours": 5.578491276246896,
+            "coefficient_of_variation": 1.4645364631080529
           }
         },
         "grail_timing": {
@@ -2808,11 +2808,11 @@
           "sport": "pokemon",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.9956075974130055,
+          "confidence": 0.9923862657306917,
           "details": {
-            "observations": 437,
-            "grail_velocity_correlation": 0.9954113067423734,
-            "chase_velocity_correlation": 0.9956075974130055,
+            "observations": 451,
+            "grail_velocity_correlation": 0.9922249614607145,
+            "chase_velocity_correlation": 0.9923862657306917,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -2872,9 +2872,9 @@
           "verdict": "Inconclusive",
           "confidence": 0.4,
           "details": {
-            "observations": 433,
+            "observations": 447,
             "grail_velocity_correlation": 0,
-            "chase_velocity_correlation": 0.4947470775264439
+            "chase_velocity_correlation": 0.4948554292535539
           }
         }
       }
@@ -2885,9 +2885,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 16.198347193347193,
-        "significant_deviations": 71,
-        "total_observations": 74
+        "average_deviation_pct": 16.485288780986455,
+        "significant_deviations": 83,
+        "total_observations": 86
       },
       "allTests": {
         "depletion_rate": {
@@ -2897,9 +2897,9 @@
           "verdict": "Possible Pattern Detected",
           "confidence": 0.8,
           "details": {
-            "average_deviation_pct": 16.198347193347193,
-            "significant_deviations": 71,
-            "total_observations": 74
+            "average_deviation_pct": 16.485288780986455,
+            "significant_deviations": 83,
+            "total_observations": 86
           }
         },
         "chi_square": {
@@ -2909,15 +2909,15 @@
           "verdict": "Appears Random",
           "confidence": 0.8,
           "details": {
-            "total_hits": 18,
-            "expected_per_window": 4.5,
+            "total_hits": 22,
+            "expected_per_window": 5.5,
             "observed_hits": [
               3,
               2,
-              7,
-              6
+              8,
+              9
             ],
-            "chi_square": 3.7777777777777777,
+            "chi_square": 6.727272727272727,
             "degrees_freedom": 3
           }
         },
@@ -2928,10 +2928,10 @@
           "verdict": "Appears Random",
           "confidence": 0.6,
           "details": {
-            "hit_events": 17,
-            "mean_gap_hours": 6.285743854166666,
-            "std_dev_hours": 6.972033276142167,
-            "coefficient_of_variation": 1.1091818944420677
+            "hit_events": 19,
+            "mean_gap_hours": 6.088961157407407,
+            "std_dev_hours": 6.61124381516596,
+            "coefficient_of_variation": 1.085775330841646
           }
         },
         "grail_timing": {
@@ -2949,9 +2949,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 433,
-            "grail_velocity_correlation": 0.031360815590502286,
-            "chase_velocity_correlation": 0.11290196283789347
+            "observations": 447,
+            "grail_velocity_correlation": 0.016702092153509155,
+            "chase_velocity_correlation": 0.07479784888529314
           }
         }
       }
@@ -3008,11 +3008,11 @@
           "sport": "other",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.9730015596506523,
+          "confidence": 0.9730009017700679,
           "details": {
-            "observations": 427,
+            "observations": 441,
             "grail_velocity_correlation": 0,
-            "chase_velocity_correlation": 0.9730015596506523,
+            "chase_velocity_correlation": 0.9730009017700679,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -3070,11 +3070,11 @@
           "sport": "pokemon",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.9178573377856496,
+          "confidence": 0.9178676792477919,
           "details": {
-            "observations": 427,
-            "grail_velocity_correlation": 0.5588078806623139,
-            "chase_velocity_correlation": 0.9178573377856496,
+            "observations": 441,
+            "grail_velocity_correlation": 0.5588537212220964,
+            "chase_velocity_correlation": 0.9178676792477919,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -3084,11 +3084,11 @@
       "name": "Misc: $25",
       "sport": "other",
       "verdict": "Possible Pattern Detected",
-      "confidence": 0.7552742616033755,
+      "confidence": 0.7540650406504065,
       "details": {
-        "average_deviation_pct": 9.316221831700732,
-        "significant_deviations": 358,
-        "total_observations": 474
+        "average_deviation_pct": 9.15997697390679,
+        "significant_deviations": 371,
+        "total_observations": 492
       },
       "allTests": {
         "depletion_rate": {
@@ -3096,11 +3096,11 @@
           "sport": "other",
           "test_type": "depletion_rate",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.7552742616033755,
+          "confidence": 0.7540650406504065,
           "details": {
-            "average_deviation_pct": 9.316221831700732,
-            "significant_deviations": 358,
-            "total_observations": 474
+            "average_deviation_pct": 9.15997697390679,
+            "significant_deviations": 371,
+            "total_observations": 492
           }
         },
         "chi_square": {
@@ -3118,10 +3118,10 @@
           "verdict": "Appears Random",
           "confidence": 0.6,
           "details": {
-            "hit_events": 152,
-            "mean_gap_hours": 0.7643835430463576,
-            "std_dev_hours": 1.101007521667036,
-            "coefficient_of_variation": 1.4403862193043881
+            "hit_events": 159,
+            "mean_gap_hours": 0.7541523857243317,
+            "std_dev_hours": 1.077390478477247,
+            "coefficient_of_variation": 1.4286111121195468
           }
         },
         "grail_timing": {
@@ -3129,14 +3129,14 @@
           "sport": "other",
           "test_type": "grail_timing",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.8771428571428572,
+          "confidence": 0.9,
           "details": {
-            "early_pct": 50,
-            "middle_pct": 24.285714285714285,
-            "late_pct": 25.71428571428571,
-            "total_grails_pulled": 70,
-            "observations": 54,
-            "chi_square": 8.771428571428572
+            "early_pct": 50.70422535211267,
+            "middle_pct": 23.943661971830984,
+            "late_pct": 25.352112676056336,
+            "total_grails_pulled": 71,
+            "observations": 55,
+            "chi_square": 9.661971830985914
           }
         },
         "velocity_correlation": {
@@ -3144,11 +3144,11 @@
           "sport": "other",
           "test_type": "velocity_correlation",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.9248371392620133,
+          "confidence": 0.924321087710326,
           "details": {
-            "observations": 421,
-            "grail_velocity_correlation": 0.9226557536479963,
-            "chase_velocity_correlation": 0.9248371392620133,
+            "observations": 435,
+            "grail_velocity_correlation": 0.9221299696012204,
+            "chase_velocity_correlation": 0.924321087710326,
             "pattern_type": "Chase hits correlate with buying velocity"
           }
         }
@@ -3200,7 +3200,7 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 419,
+            "observations": 433,
             "grail_velocity_correlation": 0,
             "chase_velocity_correlation": 0
           }
@@ -3277,9 +3277,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 391,
-            "grail_velocity_correlation": 0.20019786207462226,
-            "chase_velocity_correlation": 0.39209572307805546
+            "observations": 395,
+            "grail_velocity_correlation": 0.2002533007916422,
+            "chase_velocity_correlation": 0.392179069199762
           }
         }
       }
@@ -3354,9 +3354,93 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 363,
-            "grail_velocity_correlation": 0.178360011901433,
-            "chase_velocity_correlation": 0.11294250585000828
+            "observations": 365,
+            "grail_velocity_correlation": 0.17838711056161305,
+            "chase_velocity_correlation": 0.11302837866955243
+          }
+        }
+      }
+    },
+    {
+      "name": "Mixed Sport Vintage: $150",
+      "sport": "mixed",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 11.20247184588121,
+        "significant_deviations": 92,
+        "total_observations": 98
+      },
+      "allTests": {
+        "depletion_rate": {
+          "pack_name": "Mixed Sport Vintage: $150",
+          "sport": "mixed",
+          "test_type": "depletion_rate",
+          "verdict": "Possible Pattern Detected",
+          "confidence": 0.8,
+          "details": {
+            "average_deviation_pct": 11.20247184588121,
+            "significant_deviations": 92,
+            "total_observations": 98
+          }
+        },
+        "chi_square": {
+          "pack_name": "Mixed Sport Vintage: $150",
+          "sport": "mixed",
+          "test_type": "chi_square_temporal",
+          "verdict": "Appears Random",
+          "confidence": 0.8,
+          "details": {
+            "total_hits": 36,
+            "expected_per_window": 9,
+            "observed_hits": [
+              12,
+              5,
+              9,
+              10
+            ],
+            "chi_square": 2.888888888888889,
+            "degrees_freedom": 3
+          }
+        },
+        "clustering": {
+          "pack_name": "Mixed Sport Vintage: $150",
+          "sport": "mixed",
+          "test_type": "clustering",
+          "verdict": "Appears Random",
+          "confidence": 0.6,
+          "details": {
+            "hit_events": 23,
+            "mean_gap_hours": 2.382097108585859,
+            "std_dev_hours": 3.0313898352123636,
+            "coefficient_of_variation": 1.2725718965386594
+          }
+        },
+        "grail_timing": {
+          "pack_name": "Mixed Sport Vintage: $150",
+          "sport": "mixed",
+          "test_type": "grail_timing",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "early_pct": 60,
+            "middle_pct": 20,
+            "late_pct": 20,
+            "total_grails_pulled": 5,
+            "observations": 5,
+            "chi_square": 1.6
+          }
+        },
+        "velocity_correlation": {
+          "pack_name": "Mixed Sport Vintage: $150",
+          "sport": "mixed",
+          "test_type": "velocity_correlation",
+          "verdict": "Appears Random",
+          "confidence": 0.7,
+          "details": {
+            "observations": 213,
+            "grail_velocity_correlation": 0.017122813033407912,
+            "chase_velocity_correlation": 0.20319755214299065
           }
         }
       }
@@ -3415,86 +3499,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 203,
+            "observations": 205,
             "grail_velocity_correlation": 0,
             "chase_velocity_correlation": 0
-          }
-        }
-      }
-    },
-    {
-      "name": "Mixed Sport Vintage: $150",
-      "sport": "mixed",
-      "verdict": "Possible Pattern Detected",
-      "confidence": 0.8,
-      "details": {
-        "average_deviation_pct": 11.491100962123982,
-        "significant_deviations": 87,
-        "total_observations": 92
-      },
-      "allTests": {
-        "depletion_rate": {
-          "pack_name": "Mixed Sport Vintage: $150",
-          "sport": "mixed",
-          "test_type": "depletion_rate",
-          "verdict": "Possible Pattern Detected",
-          "confidence": 0.8,
-          "details": {
-            "average_deviation_pct": 11.491100962123982,
-            "significant_deviations": 87,
-            "total_observations": 92
-          }
-        },
-        "chi_square": {
-          "pack_name": "Mixed Sport Vintage: $150",
-          "sport": "mixed",
-          "test_type": "chi_square_temporal",
-          "verdict": "Possible Pattern Detected",
-          "confidence": 0.7125995543495047,
-          "details": {
-            "total_hits": 29,
-            "expected_per_window": 7.25,
-            "observed_hits": [
-              12,
-              1,
-              11,
-              5
-            ],
-            "chi_square": 11.13793103448276,
-            "degrees_freedom": 3
-          }
-        },
-        "clustering": {
-          "pack_name": "Mixed Sport Vintage: $150",
-          "sport": "mixed",
-          "test_type": "clustering",
-          "verdict": "Appears Random",
-          "confidence": 0.6,
-          "details": {
-            "hit_events": 21,
-            "mean_gap_hours": 2.4616725416666667,
-            "std_dev_hours": 3.1506891220655375,
-            "coefficient_of_variation": 1.2798977397425795
-          }
-        },
-        "grail_timing": {
-          "pack_name": "Mixed Sport Vintage: $150",
-          "sport": "mixed",
-          "test_type": "grail_timing",
-          "verdict": "Insufficient Data",
-          "confidence": 0,
-          "details": {}
-        },
-        "velocity_correlation": {
-          "pack_name": "Mixed Sport Vintage: $150",
-          "sport": "mixed",
-          "test_type": "velocity_correlation",
-          "verdict": "Appears Random",
-          "confidence": 0.7,
-          "details": {
-            "observations": 199,
-            "grail_velocity_correlation": 0.02304291467903182,
-            "chase_velocity_correlation": 0.30656876670434896
           }
         }
       }
@@ -3503,11 +3510,11 @@
       "name": "GOAT's: $100",
       "sport": "other",
       "verdict": "Possible Pattern Detected",
-      "confidence": 0.7291666666666666,
+      "confidence": 0.7244897959183674,
       "details": {
-        "average_deviation_pct": 10.819806998556999,
-        "significant_deviations": 70,
-        "total_observations": 96
+        "average_deviation_pct": 10.755933386341551,
+        "significant_deviations": 71,
+        "total_observations": 98
       },
       "allTests": {
         "depletion_rate": {
@@ -3515,11 +3522,11 @@
           "sport": "other",
           "test_type": "depletion_rate",
           "verdict": "Possible Pattern Detected",
-          "confidence": 0.7291666666666666,
+          "confidence": 0.7244897959183674,
           "details": {
-            "average_deviation_pct": 10.819806998556999,
-            "significant_deviations": 70,
-            "total_observations": 96
+            "average_deviation_pct": 10.755933386341551,
+            "significant_deviations": 71,
+            "total_observations": 98
           }
         },
         "chi_square": {
@@ -3533,11 +3540,11 @@
             "expected_per_window": 6.75,
             "observed_hits": [
               18,
-              6,
-              2,
+              7,
+              1,
               1
             ],
-            "chi_square": 27.074074074074073,
+            "chi_square": 28.555555555555557,
             "degrees_freedom": 3
           }
         },
@@ -3570,9 +3577,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 187,
-            "grail_velocity_correlation": 0.038950897606466084,
-            "chase_velocity_correlation": 0.2285271023145671
+            "observations": 201,
+            "grail_velocity_correlation": 0.04130387935717074,
+            "chase_velocity_correlation": 0.2322769022667056
           }
         }
       }
@@ -3647,9 +3654,9 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 167,
-            "grail_velocity_correlation": 0.02167508337068307,
-            "chase_velocity_correlation": 0.043462520149131635
+            "observations": 181,
+            "grail_velocity_correlation": 0.02261520362220061,
+            "chase_velocity_correlation": 0.045086261461612834
           }
         }
       }
@@ -3700,7 +3707,7 @@
           "verdict": "Appears Random",
           "confidence": 0.7,
           "details": {
-            "observations": 165,
+            "observations": 175,
             "grail_velocity_correlation": 0,
             "chase_velocity_correlation": 0
           }
@@ -3866,9 +3873,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.561178165264373,
-        "significant_deviations": 156,
-        "total_observations": 178
+        "average_deviation_pct": 12.534776185650324,
+        "significant_deviations": 158,
+        "total_observations": 180
       }
     },
     {
@@ -3890,9 +3897,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.192215094460556,
-        "significant_deviations": 1056,
-        "total_observations": 1128
+        "average_deviation_pct": 12.131244409255707,
+        "significant_deviations": 1068,
+        "total_observations": 1140
       }
     },
     {
@@ -3902,9 +3909,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.059221132335217,
-        "significant_deviations": 297,
-        "total_observations": 314
+        "average_deviation_pct": 11.066292496563555,
+        "significant_deviations": 307,
+        "total_observations": 324
       }
     },
     {
@@ -3914,9 +3921,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.82961789543843,
-        "significant_deviations": 1213,
-        "total_observations": 1352
+        "average_deviation_pct": 13.79986258809481,
+        "significant_deviations": 1219,
+        "total_observations": 1358
       }
     },
     {
@@ -3926,9 +3933,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.12392767424872,
-        "significant_deviations": 745,
-        "total_observations": 810
+        "average_deviation_pct": 13.110810558996892,
+        "significant_deviations": 751,
+        "total_observations": 816
       }
     },
     {
@@ -3938,9 +3945,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.78138660340254,
-        "significant_deviations": 856,
-        "total_observations": 926
+        "average_deviation_pct": 12.724422689451155,
+        "significant_deviations": 868,
+        "total_observations": 940
       }
     },
     {
@@ -3950,9 +3957,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.873497009017091,
-        "significant_deviations": 1196,
-        "total_observations": 1342
+        "average_deviation_pct": 11.836496291494775,
+        "significant_deviations": 1205,
+        "total_observations": 1352
       }
     },
     {
@@ -3962,9 +3969,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.925572001587847,
-        "significant_deviations": 1118,
-        "total_observations": 1226
+        "average_deviation_pct": 13.013484898344116,
+        "significant_deviations": 1132,
+        "total_observations": 1240
       }
     },
     {
@@ -3974,9 +3981,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.69928497066843,
-        "significant_deviations": 193,
-        "total_observations": 210
+        "average_deviation_pct": 12.665942659624388,
+        "significant_deviations": 195,
+        "total_observations": 212
       }
     },
     {
@@ -3986,9 +3993,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.013880486262163,
-        "significant_deviations": 524,
-        "total_observations": 564
+        "average_deviation_pct": 12.991605290197633,
+        "significant_deviations": 526,
+        "total_observations": 566
       }
     },
     {
@@ -3998,9 +4005,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.698999133329405,
-        "significant_deviations": 631,
-        "total_observations": 678
+        "average_deviation_pct": 12.687281488819613,
+        "significant_deviations": 633,
+        "total_observations": 680
       }
     },
     {
@@ -4022,9 +4029,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.50770584552546,
-        "significant_deviations": 1497,
-        "total_observations": 1600
+        "average_deviation_pct": 11.545391388582548,
+        "significant_deviations": 1505,
+        "total_observations": 1608
       }
     },
     {
@@ -4034,9 +4041,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.632852894535505,
-        "significant_deviations": 223,
-        "total_observations": 244
+        "average_deviation_pct": 12.648935912365577,
+        "significant_deviations": 227,
+        "total_observations": 248
       }
     },
     {
@@ -4046,9 +4053,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.340835468589493,
-        "significant_deviations": 396,
-        "total_observations": 420
+        "average_deviation_pct": 11.458311964337058,
+        "significant_deviations": 402,
+        "total_observations": 426
       }
     },
     {
@@ -4058,9 +4065,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.005706951348298,
-        "significant_deviations": 940,
-        "total_observations": 984
+        "average_deviation_pct": 13.001796418638557,
+        "significant_deviations": 950,
+        "total_observations": 994
       }
     },
     {
@@ -4070,9 +4077,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.634525068653197,
-        "significant_deviations": 230,
-        "total_observations": 246
+        "average_deviation_pct": 12.483663360669393,
+        "significant_deviations": 236,
+        "total_observations": 252
       }
     },
     {
@@ -4082,9 +4089,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.366836120778466,
-        "significant_deviations": 1265,
-        "total_observations": 1362
+        "average_deviation_pct": 13.271478450244397,
+        "significant_deviations": 1277,
+        "total_observations": 1378
       }
     },
     {
@@ -4250,9 +4257,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 9.535556511060536,
-        "significant_deviations": 363,
-        "total_observations": 412
+        "average_deviation_pct": 9.67422202451753,
+        "significant_deviations": 382,
+        "total_observations": 432
       }
     },
     {
@@ -4262,9 +4269,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 12.136113942803087,
-        "significant_deviations": 221,
-        "total_observations": 252
+        "average_deviation_pct": 12.081420132229836,
+        "significant_deviations": 223,
+        "total_observations": 254
       }
     },
     {
@@ -4286,9 +4293,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 13.408091323079093,
-        "significant_deviations": 203,
-        "total_observations": 232
+        "average_deviation_pct": 13.12147099194342,
+        "significant_deviations": 217,
+        "total_observations": 248
       }
     },
     {
@@ -4298,9 +4305,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 11.475518518518513,
-        "significant_deviations": 165,
-        "total_observations": 180
+        "average_deviation_pct": 11.680762411347512,
+        "significant_deviations": 173,
+        "total_observations": 188
       }
     },
     {
@@ -4322,9 +4329,9 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.8,
       "details": {
-        "average_deviation_pct": 16.198347193347193,
-        "significant_deviations": 71,
-        "total_observations": 74
+        "average_deviation_pct": 16.485288780986455,
+        "significant_deviations": 83,
+        "total_observations": 86
       }
     },
     {
@@ -4356,11 +4363,11 @@
       "sport": "other",
       "test_type": "depletion_rate",
       "verdict": "Possible Pattern Detected",
-      "confidence": 0.7552742616033755,
+      "confidence": 0.7540650406504065,
       "details": {
-        "average_deviation_pct": 9.316221831700732,
-        "significant_deviations": 358,
-        "total_observations": 474
+        "average_deviation_pct": 9.15997697390679,
+        "significant_deviations": 371,
+        "total_observations": 492
       }
     },
     {
@@ -4388,6 +4395,18 @@
       }
     },
     {
+      "pack_name": "Mixed Sport Vintage: $150",
+      "sport": "mixed",
+      "test_type": "depletion_rate",
+      "verdict": "Possible Pattern Detected",
+      "confidence": 0.8,
+      "details": {
+        "average_deviation_pct": 11.20247184588121,
+        "significant_deviations": 92,
+        "total_observations": 98
+      }
+    },
+    {
       "pack_name": "Fire Pack: $250",
       "sport": "other",
       "test_type": "depletion_rate",
@@ -4400,27 +4419,15 @@
       }
     },
     {
-      "pack_name": "Mixed Sport Vintage: $150",
-      "sport": "mixed",
-      "test_type": "depletion_rate",
-      "verdict": "Possible Pattern Detected",
-      "confidence": 0.8,
-      "details": {
-        "average_deviation_pct": 11.491100962123982,
-        "significant_deviations": 87,
-        "total_observations": 92
-      }
-    },
-    {
       "pack_name": "GOAT's: $100",
       "sport": "other",
       "test_type": "depletion_rate",
       "verdict": "Possible Pattern Detected",
-      "confidence": 0.7291666666666666,
+      "confidence": 0.7244897959183674,
       "details": {
-        "average_deviation_pct": 10.819806998556999,
-        "significant_deviations": 70,
-        "total_observations": 96
+        "average_deviation_pct": 10.755933386341551,
+        "significant_deviations": 71,
+        "total_observations": 98
       }
     },
     {
@@ -4528,12 +4535,12 @@
       "verdict": "Appears Random",
       "confidence": 0.7,
       "details": {
-        "early_pct": 50,
-        "middle_pct": 22.22222222222222,
-        "late_pct": 27.77777777777778,
-        "total_grails_pulled": 18,
-        "observations": 15,
-        "chi_square": 2.333333333333333
+        "early_pct": 52.63157894736842,
+        "middle_pct": 21.052631578947366,
+        "late_pct": 26.31578947368421,
+        "total_grails_pulled": 19,
+        "observations": 16,
+        "chi_square": 3.2631578947368425
       }
     },
     {
@@ -4573,12 +4580,12 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.9,
       "details": {
-        "early_pct": 87.8048780487805,
-        "middle_pct": 7.317073170731707,
-        "late_pct": 4.878048780487805,
-        "total_grails_pulled": 41,
-        "observations": 33,
-        "chi_square": 54.78048780487805
+        "early_pct": 88.09523809523809,
+        "middle_pct": 7.142857142857142,
+        "late_pct": 4.761904761904762,
+        "total_grails_pulled": 42,
+        "observations": 34,
+        "chi_square": 56.714285714285715
       }
     },
     {
@@ -4603,12 +4610,12 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.9,
       "details": {
-        "early_pct": 88.67924528301887,
-        "middle_pct": 7.547169811320755,
-        "late_pct": 3.7735849056603774,
-        "total_grails_pulled": 53,
-        "observations": 40,
-        "chi_square": 73.1698113207547
+        "early_pct": 88.88888888888889,
+        "middle_pct": 7.4074074074074066,
+        "late_pct": 3.7037037037037033,
+        "total_grails_pulled": 54,
+        "observations": 41,
+        "chi_square": 75.11111111111111
       }
     },
     {
@@ -4678,12 +4685,12 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.9,
       "details": {
-        "early_pct": 52.80898876404494,
-        "middle_pct": 25.842696629213485,
-        "late_pct": 21.34831460674157,
-        "total_grails_pulled": 89,
-        "observations": 67,
-        "chi_square": 15.46067415730337
+        "early_pct": 53.333333333333336,
+        "middle_pct": 25.555555555555554,
+        "late_pct": 21.11111111111111,
+        "total_grails_pulled": 90,
+        "observations": 68,
+        "chi_square": 16.46666666666667
       }
     },
     {
@@ -4753,12 +4760,12 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.9,
       "details": {
-        "early_pct": 56.451612903225815,
-        "middle_pct": 29.03225806451613,
-        "late_pct": 14.516129032258066,
-        "total_grails_pulled": 62,
-        "observations": 51,
-        "chi_square": 16.87096774193548
+        "early_pct": 57.14285714285714,
+        "middle_pct": 28.57142857142857,
+        "late_pct": 14.285714285714285,
+        "total_grails_pulled": 63,
+        "observations": 52,
+        "chi_square": 18
       }
     },
     {
@@ -4858,12 +4865,12 @@
       "verdict": "Appears Random",
       "confidence": 0.7,
       "details": {
-        "early_pct": 47.82608695652174,
-        "middle_pct": 30.434782608695656,
-        "late_pct": 21.73913043478261,
-        "total_grails_pulled": 23,
-        "observations": 20,
-        "chi_square": 2.434782608695652
+        "early_pct": 45.83333333333333,
+        "middle_pct": 33.33333333333333,
+        "late_pct": 20.833333333333336,
+        "total_grails_pulled": 24,
+        "observations": 21,
+        "chi_square": 2.25
       }
     },
     {
@@ -4888,12 +4895,12 @@
       "verdict": "Possible Pattern Detected",
       "confidence": 0.9,
       "details": {
-        "early_pct": 81.25,
-        "middle_pct": 12.5,
-        "late_pct": 6.25,
-        "total_grails_pulled": 16,
-        "observations": 16,
-        "chi_square": 16.625
+        "early_pct": 82.35294117647058,
+        "middle_pct": 11.76470588235294,
+        "late_pct": 5.88235294117647,
+        "total_grails_pulled": 17,
+        "observations": 17,
+        "chi_square": 18.470588235294116
       }
     },
     {
@@ -4916,14 +4923,29 @@
       "sport": "other",
       "test_type": "grail_timing",
       "verdict": "Possible Pattern Detected",
-      "confidence": 0.8771428571428572,
+      "confidence": 0.9,
       "details": {
-        "early_pct": 50,
-        "middle_pct": 24.285714285714285,
-        "late_pct": 25.71428571428571,
-        "total_grails_pulled": 70,
-        "observations": 54,
-        "chi_square": 8.771428571428572
+        "early_pct": 50.70422535211267,
+        "middle_pct": 23.943661971830984,
+        "late_pct": 25.352112676056336,
+        "total_grails_pulled": 71,
+        "observations": 55,
+        "chi_square": 9.661971830985914
+      }
+    },
+    {
+      "pack_name": "Mixed Sport Vintage: $150",
+      "sport": "mixed",
+      "test_type": "grail_timing",
+      "verdict": "Appears Random",
+      "confidence": 0.7,
+      "details": {
+        "early_pct": 60,
+        "middle_pct": 20,
+        "late_pct": 20,
+        "total_grails_pulled": 5,
+        "observations": 5,
+        "chi_square": 1.6
       }
     }
   ],
@@ -5024,7 +5046,7 @@
     "Need more data points for conclusive analysis"
   ],
   "statisticalNotes": [
-    "Analyzed 54 packs across 4423 snapshots",
+    "Analyzed 54 packs across 4437 snapshots",
     "Chi-square tests use 95% confidence intervals",
     "Correlation analysis requires minimum 5 observations per pack",
     "Pattern detection threshold: 40% of tests showing non-random behavior",
@@ -5035,126 +5057,146 @@
   "metadata": {
     "script_version": "1.0.0",
     "node_version": "v22.22.0",
-    "execution_time_ms": 439,
+    "execution_time_ms": 424,
     "cli_args": []
   },
   "packStats": {
+    "fb41093f-743e-4179-bb80-0dbbc8fed8e1": {
+      "repack_id": "fb41093f-743e-4179-bb80-0dbbc8fed8e1",
+      "pack_title": "Debut Packs: Pokemon",
+      "samples": 88,
+      "avg_grail_odds": 2.1500000000000035,
+      "median_grail_odds": 2.15,
+      "stddev_grail_odds": 3.552713678800501e-15,
+      "avg_chase_odds": 15.769999999999987,
+      "median_chase_odds": 15.77,
+      "max_total_cards": 5200,
+      "min_total_cards": 5200,
+      "grails_pulled_observed": 0,
+      "chases_pulled_observed": 0,
+      "packs_ripped_observed": 0,
+      "rips_per_grail": null,
+      "rips_per_chase": null,
+      "avg_gap_between_grails": null,
+      "max_gap_between_grails": null,
+      "grail_gap_samples": 0
+    },
+    "32393f61-13b7-4248-8af9-b4cd3ff0d30b": {
+      "repack_id": "32393f61-13b7-4248-8af9-b4cd3ff0d30b",
+      "pack_title": "Stars of Today: $250",
+      "samples": 223,
+      "avg_grail_odds": 1.502914798206279,
+      "median_grail_odds": 1.52,
+      "stddev_grail_odds": 0.4516348250104049,
+      "avg_chase_odds": 20.91125560538118,
+      "median_chase_odds": 20.37,
+      "max_total_cards": 146,
+      "min_total_cards": 27,
+      "grails_pulled_observed": 2,
+      "chases_pulled_observed": 20,
+      "packs_ripped_observed": 119,
+      "rips_per_grail": 59.5,
+      "rips_per_chase": 5.95,
+      "avg_gap_between_grails": 15,
+      "max_gap_between_grails": 17,
+      "grail_gap_samples": 2
+    },
     "c7873518-5352-40ff-b662-f1a5d14b0fbb": {
       "repack_id": "c7873518-5352-40ff-b662-f1a5d14b0fbb",
       "pack_title": "Mixed Sport Vintage: $150",
-      "samples": 99,
-      "avg_grail_odds": 1.422929292929293,
+      "samples": 106,
+      "avg_grail_odds": 1.4279000000000002,
       "median_grail_odds": 1.24,
-      "stddev_grail_odds": 0.38503903127679234,
-      "avg_chase_odds": 14.751313131313134,
-      "median_chase_odds": 14.52,
+      "stddev_grail_odds": 0.3862882214098689,
+      "avg_chase_odds": 14.853490566037737,
+      "median_chase_odds": 14.56,
       "max_total_cards": 243,
-      "min_total_cards": 61,
-      "grails_pulled_observed": 4,
-      "chases_pulled_observed": 25,
-      "packs_ripped_observed": 182,
-      "rips_per_grail": 45.5,
-      "rips_per_chase": 7.28,
-      "avg_gap_between_grails": 39.75,
+      "min_total_cards": 31,
+      "grails_pulled_observed": 5,
+      "chases_pulled_observed": 31,
+      "packs_ripped_observed": 212,
+      "rips_per_grail": 42.4,
+      "rips_per_chase": 6.838709677419355,
+      "avg_gap_between_grails": 42.4,
       "max_gap_between_grails": 103,
-      "grail_gap_samples": 4
+      "grail_gap_samples": 5
     },
     "5fe3d20c-5871-459b-9b4a-af1b04e3266d": {
       "repack_id": "5fe3d20c-5871-459b-9b4a-af1b04e3266d",
       "pack_title": "Basketball: Mega Pack $250",
       "samples": 500,
-      "avg_grail_odds": 1.4028448275862153,
+      "avg_grail_odds": 1.4076077586206974,
       "median_grail_odds": 1.43,
-      "stddev_grail_odds": 0.3737907077000447,
-      "avg_chase_odds": 14.294719999999947,
+      "stddev_grail_odds": 0.3766694008358134,
+      "avg_chase_odds": 14.343139999999948,
       "median_chase_odds": 12.65,
-      "max_total_cards": 692,
+      "max_total_cards": 690,
       "min_total_cards": 88,
-      "grails_pulled_observed": 11,
-      "chases_pulled_observed": 73,
-      "packs_ripped_observed": 643,
-      "rips_per_grail": 58.45454545454545,
-      "rips_per_chase": 8.808219178082192,
-      "avg_gap_between_grails": 88.57142857142857,
+      "grails_pulled_observed": 12,
+      "chases_pulled_observed": 78,
+      "packs_ripped_observed": 665,
+      "rips_per_grail": 55.416666666666664,
+      "rips_per_chase": 8.525641025641026,
+      "avg_gap_between_grails": 81.75,
       "max_gap_between_grails": 441,
-      "grail_gap_samples": 7
-    },
-    "df9a9151-885e-4cc3-ac5b-ef47ba583bb4": {
-      "repack_id": "df9a9151-885e-4cc3-ac5b-ef47ba583bb4",
-      "pack_title": "Misc. $50",
-      "samples": 220,
-      "avg_grail_odds": 2.0453110047846867,
-      "median_grail_odds": 1.94,
-      "stddev_grail_odds": 0.4382948952905411,
-      "avg_chase_odds": 13.926181818181815,
-      "median_chase_odds": 14.17,
-      "max_total_cards": 1001,
-      "min_total_cards": 16,
-      "grails_pulled_observed": 23,
-      "chases_pulled_observed": 190,
-      "packs_ripped_observed": 1355,
-      "rips_per_grail": 58.91304347826087,
-      "rips_per_chase": 7.131578947368421,
-      "avg_gap_between_grails": 64.6,
-      "max_gap_between_grails": 245,
-      "grail_gap_samples": 20
-    },
-    "32393f61-13b7-4248-8af9-b4cd3ff0d30b": {
-      "repack_id": "32393f61-13b7-4248-8af9-b4cd3ff0d30b",
-      "pack_title": "Stars of Today: $250",
-      "samples": 216,
-      "avg_grail_odds": 1.471805555555557,
-      "median_grail_odds": 1.52,
-      "stddev_grail_odds": 0.41024380642476066,
-      "avg_chase_odds": 20.841851851851864,
-      "median_chase_odds": 20.18,
-      "max_total_cards": 146,
-      "min_total_cards": 50,
-      "grails_pulled_observed": 2,
-      "chases_pulled_observed": 16,
-      "packs_ripped_observed": 96,
-      "rips_per_grail": 48,
-      "rips_per_chase": 6,
-      "avg_gap_between_grails": 15,
-      "max_gap_between_grails": 17,
-      "grail_gap_samples": 2
+      "grail_gap_samples": 8
     },
     "fcfa0b54-3a83-43f2-8aa2-ffd93f89ee9b": {
       "repack_id": "fcfa0b54-3a83-43f2-8aa2-ffd93f89ee9b",
       "pack_title": "Misc. $100",
-      "samples": 218,
-      "avg_grail_odds": 1.469371727748691,
+      "samples": 225,
+      "avg_grail_odds": 1.4892929292929293,
       "median_grail_odds": 1.57,
-      "stddev_grail_odds": 0.4337352958252982,
-      "avg_chase_odds": 17.349447004608297,
-      "median_chase_odds": 17.24,
+      "stddev_grail_odds": 0.43855306746197553,
+      "avg_chase_odds": 17.294241071428566,
+      "median_chase_odds": 17.085,
       "max_total_cards": 1203,
       "min_total_cards": 23,
-      "grails_pulled_observed": 16,
-      "chases_pulled_observed": 116,
-      "packs_ripped_observed": 770,
-      "rips_per_grail": 48.125,
-      "rips_per_chase": 6.637931034482759,
-      "avg_gap_between_grails": 46,
+      "grails_pulled_observed": 17,
+      "chases_pulled_observed": 118,
+      "packs_ripped_observed": 815,
+      "rips_per_grail": 47.94117647058823,
+      "rips_per_chase": 6.906779661016949,
+      "avg_gap_between_grails": 46.11764705882353,
       "max_gap_between_grails": 94,
-      "grail_gap_samples": 16
+      "grail_gap_samples": 17
+    },
+    "df9a9151-885e-4cc3-ac5b-ef47ba583bb4": {
+      "repack_id": "df9a9151-885e-4cc3-ac5b-ef47ba583bb4",
+      "pack_title": "Misc. $50",
+      "samples": 227,
+      "avg_grail_odds": 2.0422685185185165,
+      "median_grail_odds": 1.94,
+      "stddev_grail_odds": 0.4316129762080129,
+      "avg_chase_odds": 13.86066079295154,
+      "median_chase_odds": 14.12,
+      "max_total_cards": 1001,
+      "min_total_cards": 16,
+      "grails_pulled_observed": 24,
+      "chases_pulled_observed": 201,
+      "packs_ripped_observed": 1409,
+      "rips_per_grail": 58.708333333333336,
+      "rips_per_chase": 7.009950248756219,
+      "avg_gap_between_grails": 65.85714285714286,
+      "max_gap_between_grails": 245,
+      "grail_gap_samples": 21
     },
     "4141fc53-e7af-4d48-8b30-f992c491232a": {
       "repack_id": "4141fc53-e7af-4d48-8b30-f992c491232a",
       "pack_title": "GOAT's: $100",
-      "samples": 93,
+      "samples": 100,
       "avg_grail_odds": 2.6397142857142866,
       "median_grail_odds": 2.8,
       "stddev_grail_odds": 0.6118332439213701,
-      "avg_chase_odds": 13.42236559139785,
+      "avg_chase_odds": 13.5267,
       "median_chase_odds": 13.04,
       "max_total_cards": 173,
-      "min_total_cards": 14,
+      "min_total_cards": 13,
       "grails_pulled_observed": 4,
       "chases_pulled_observed": 22,
-      "packs_ripped_observed": 159,
-      "rips_per_grail": 39.75,
-      "rips_per_chase": 7.2272727272727275,
+      "packs_ripped_observed": 160,
+      "rips_per_grail": 40,
+      "rips_per_chase": 7.2727272727272725,
       "avg_gap_between_grails": 28.25,
       "max_gap_between_grails": 61,
       "grail_gap_samples": 4
@@ -5163,30 +5205,30 @@
       "repack_id": "dd5f577b-2f82-4826-8fea-c0d774b28853",
       "pack_title": "Baseball: Ultra Pack $500",
       "samples": 500,
-      "avg_grail_odds": 1.5584400000000072,
+      "avg_grail_odds": 1.5621600000000078,
       "median_grail_odds": 1.47,
-      "stddev_grail_odds": 0.44726722035043076,
-      "avg_chase_odds": 11.045700000000046,
+      "stddev_grail_odds": 0.44745875161851517,
+      "avg_chase_odds": 11.108260000000044,
       "median_chase_odds": 10.47,
       "max_total_cards": 352,
       "min_total_cards": 92,
-      "grails_pulled_observed": 4,
+      "grails_pulled_observed": 5,
       "chases_pulled_observed": 26,
-      "packs_ripped_observed": 229,
-      "rips_per_grail": 57.25,
-      "rips_per_chase": 8.807692307692308,
-      "avg_gap_between_grails": 57.25,
+      "packs_ripped_observed": 239,
+      "rips_per_grail": 47.8,
+      "rips_per_chase": 9.192307692307692,
+      "avg_gap_between_grails": 47,
       "max_gap_between_grails": 156,
-      "grail_gap_samples": 4
+      "grail_gap_samples": 5
     },
     "bd8407c5-e834-4837-b8f1-fc489c4ce383": {
       "repack_id": "bd8407c5-e834-4837-b8f1-fc489c4ce383",
       "pack_title": "Basketball: Infinity Pack $1,000",
       "samples": 500,
-      "avg_grail_odds": 1.9721645021644962,
+      "avg_grail_odds": 1.962316017316012,
       "median_grail_odds": 2.11,
-      "stddev_grail_odds": 0.5602446811966776,
-      "avg_chase_odds": 14.673060000000035,
+      "stddev_grail_odds": 0.5646613777846221,
+      "avg_chase_odds": 14.672640000000023,
       "median_chase_odds": 13.68,
       "max_total_cards": 98,
       "min_total_cards": 63,
@@ -5203,31 +5245,31 @@
       "repack_id": "8bea4c34-f295-45a6-a759-8e1812cb42c2",
       "pack_title": "Pokemon: Ultra Pack $500",
       "samples": 500,
-      "avg_grail_odds": 2.188357142857149,
+      "avg_grail_odds": 2.168000000000006,
       "median_grail_odds": 1.62,
-      "stddev_grail_odds": 0.9320218248371598,
-      "avg_chase_odds": 15.964666666666696,
-      "median_chase_odds": 16.22,
+      "stddev_grail_odds": 0.9352296891291313,
+      "avg_chase_odds": 15.935976190476211,
+      "median_chase_odds": 16.2,
       "max_total_cards": 998,
       "min_total_cards": 1,
       "grails_pulled_observed": 19,
-      "chases_pulled_observed": 121,
-      "packs_ripped_observed": 985,
-      "rips_per_grail": 51.8421052631579,
-      "rips_per_chase": 8.140495867768594,
-      "avg_gap_between_grails": 96,
+      "chases_pulled_observed": 118,
+      "packs_ripped_observed": 975,
+      "rips_per_grail": 51.31578947368421,
+      "rips_per_chase": 8.26271186440678,
+      "avg_gap_between_grails": 94.9,
       "max_gap_between_grails": 670,
       "grail_gap_samples": 10
     },
     "8ed6d8a7-e410-4ea3-b623-0f689ad4bc13": {
       "repack_id": "8ed6d8a7-e410-4ea3-b623-0f689ad4bc13",
       "pack_title": "Instant Rips 500: Signature",
-      "samples": 83,
-      "avg_grail_odds": 2.0686746987951845,
+      "samples": 90,
+      "avg_grail_odds": 2.0470000000000033,
       "median_grail_odds": 2.11,
-      "stddev_grail_odds": 0.27464663423606406,
-      "avg_chase_odds": 15.169999999999987,
-      "median_chase_odds": 15.05,
+      "stddev_grail_odds": 0.2741064270193849,
+      "avg_chase_odds": 15.239999999999991,
+      "median_chase_odds": 15.315000000000001,
       "max_total_cards": 100,
       "min_total_cards": 56,
       "grails_pulled_observed": 1,
@@ -5239,22 +5281,42 @@
       "max_gap_between_grails": 43,
       "grail_gap_samples": 1
     },
+    "c5bb7288-bf56-48f6-96ee-a5b512cee2ed": {
+      "repack_id": "c5bb7288-bf56-48f6-96ee-a5b512cee2ed",
+      "pack_title": "Baseball: $75",
+      "samples": 500,
+      "avg_grail_odds": 2.409999999999998,
+      "median_grail_odds": 2.36,
+      "stddev_grail_odds": 0.4313149175944825,
+      "avg_chase_odds": 15.822568421052631,
+      "median_chase_odds": 15.85,
+      "max_total_cards": 668,
+      "min_total_cards": 1,
+      "grails_pulled_observed": 20,
+      "chases_pulled_observed": 165,
+      "packs_ripped_observed": 1086,
+      "rips_per_grail": 54.3,
+      "rips_per_chase": 6.581818181818182,
+      "avg_gap_between_grails": 70.13333333333334,
+      "max_gap_between_grails": 242,
+      "grail_gap_samples": 15
+    },
     "d3f9111d-c4a0-4cbe-94ce-7091c0a71bc2": {
       "repack_id": "d3f9111d-c4a0-4cbe-94ce-7091c0a71bc2",
       "pack_title": "Baseball: Infinity Pack $1,000",
       "samples": 500,
-      "avg_grail_odds": 1.8336494845360825,
+      "avg_grail_odds": 1.8350721649484532,
       "median_grail_odds": 1.61,
-      "stddev_grail_odds": 0.5678093923183083,
-      "avg_chase_odds": 19.345410821643327,
+      "stddev_grail_odds": 0.5668991846121082,
+      "avg_chase_odds": 19.19515030060123,
       "median_chase_odds": 22.22,
       "max_total_cards": 250,
       "min_total_cards": 7,
       "grails_pulled_observed": 5,
-      "chases_pulled_observed": 39,
-      "packs_ripped_observed": 233,
-      "rips_per_grail": 46.6,
-      "rips_per_chase": 5.9743589743589745,
+      "chases_pulled_observed": 42,
+      "packs_ripped_observed": 248,
+      "rips_per_grail": 49.6,
+      "rips_per_chase": 5.904761904761905,
       "avg_gap_between_grails": 43.8,
       "max_gap_between_grails": 78,
       "grail_gap_samples": 5
@@ -5262,11 +5324,11 @@
     "31b609c5-6bbc-4998-bf55-85b165b88f0b": {
       "repack_id": "31b609c5-6bbc-4998-bf55-85b165b88f0b",
       "pack_title": "Pokemon: Promos $150",
-      "samples": 181,
+      "samples": 182,
       "avg_grail_odds": 0.9670547945205483,
       "median_grail_odds": 0.94,
       "stddev_grail_odds": 0.16122037928311247,
-      "avg_chase_odds": 22.994530386740333,
+      "avg_chase_odds": 23.005549450549452,
       "median_chase_odds": 22.86,
       "max_total_cards": 126,
       "min_total_cards": 60,
@@ -5279,194 +5341,174 @@
       "max_gap_between_grails": 66,
       "grail_gap_samples": 1
     },
-    "c5bb7288-bf56-48f6-96ee-a5b512cee2ed": {
-      "repack_id": "c5bb7288-bf56-48f6-96ee-a5b512cee2ed",
-      "pack_title": "Baseball: $75",
-      "samples": 500,
-      "avg_grail_odds": 2.42194736842105,
-      "median_grail_odds": 2.39,
-      "stddev_grail_odds": 0.4257178425206575,
-      "avg_chase_odds": 15.85048421052631,
-      "median_chase_odds": 15.88,
-      "max_total_cards": 668,
-      "min_total_cards": 1,
-      "grails_pulled_observed": 20,
-      "chases_pulled_observed": 163,
-      "packs_ripped_observed": 1064,
-      "rips_per_grail": 53.2,
-      "rips_per_chase": 6.52760736196319,
-      "avg_gap_between_grails": 70.46666666666667,
-      "max_gap_between_grails": 247,
-      "grail_gap_samples": 15
-    },
     "775dfe0e-c7b7-4bae-8fae-949258a69c22": {
       "repack_id": "775dfe0e-c7b7-4bae-8fae-949258a69c22",
       "pack_title": "Football: Infinity Pack $1,000",
       "samples": 500,
-      "avg_grail_odds": 2.36006423982869,
+      "avg_grail_odds": 2.3790578158458207,
       "median_grail_odds": 2.15,
-      "stddev_grail_odds": 0.3923936811576246,
-      "avg_chase_odds": 15.769559118236595,
+      "stddev_grail_odds": 0.40591395127985486,
+      "avg_chase_odds": 15.764448897795722,
       "median_chase_odds": 14.89,
       "max_total_cards": 100,
       "min_total_cards": 18,
       "grails_pulled_observed": 2,
       "chases_pulled_observed": 21,
-      "packs_ripped_observed": 138,
-      "rips_per_grail": 69,
-      "rips_per_chase": 6.571428571428571,
+      "packs_ripped_observed": 139,
+      "rips_per_grail": 69.5,
+      "rips_per_chase": 6.619047619047619,
       "avg_gap_between_grails": 76,
       "max_gap_between_grails": 76,
       "grail_gap_samples": 1
-    },
-    "500aca55-1ac0-4154-9381-66701cc8aad4": {
-      "repack_id": "500aca55-1ac0-4154-9381-66701cc8aad4",
-      "pack_title": "Misc: $25",
-      "samples": 210,
-      "avg_grail_odds": 2.8572413793103437,
-      "median_grail_odds": 2.44,
-      "stddev_grail_odds": 1.4613422342641287,
-      "avg_chase_odds": 19.844047619047622,
-      "median_chase_odds": 15.645,
-      "max_total_cards": 1216,
-      "min_total_cards": 2,
-      "grails_pulled_observed": 70,
-      "chases_pulled_observed": 456,
-      "packs_ripped_observed": 3411,
-      "rips_per_grail": 48.72857142857143,
-      "rips_per_chase": 7.480263157894737,
-      "avg_gap_between_grails": 63.166666666666664,
-      "max_gap_between_grails": 225,
-      "grail_gap_samples": 54
     },
     "4cbd75dd-4669-4561-a887-36e38ddac500": {
       "repack_id": "4cbd75dd-4669-4561-a887-36e38ddac500",
       "pack_title": "Pokemon: Infinity Pack $1,000",
       "samples": 500,
-      "avg_grail_odds": 1.5988799999999932,
+      "avg_grail_odds": 1.611019999999992,
       "median_grail_odds": 1.43,
-      "stddev_grail_odds": 0.42422911922686196,
-      "avg_chase_odds": 14.143540000000124,
+      "stddev_grail_odds": 0.4233310283926738,
+      "avg_chase_odds": 14.088160000000112,
       "median_chase_odds": 14.77,
       "max_total_cards": 213,
       "min_total_cards": 67,
       "grails_pulled_observed": 1,
-      "chases_pulled_observed": 13,
-      "packs_ripped_observed": 82,
-      "rips_per_grail": 82,
-      "rips_per_chase": 6.3076923076923075,
+      "chases_pulled_observed": 14,
+      "packs_ripped_observed": 85,
+      "rips_per_grail": 85,
+      "rips_per_chase": 6.071428571428571,
       "avg_gap_between_grails": 81,
       "max_gap_between_grails": 81,
       "grail_gap_samples": 1
     },
-    "2f9248fc-cab1-47e0-b9e7-62a33d6e2796": {
-      "repack_id": "2f9248fc-cab1-47e0-b9e7-62a33d6e2796",
-      "pack_title": "Pokemon: $99",
-      "samples": 218,
-      "avg_grail_odds": 1.6957377049180349,
-      "median_grail_odds": 1.7,
-      "stddev_grail_odds": 0.24409390168669542,
-      "avg_chase_odds": 12.994908256880741,
-      "median_chase_odds": 12.934999999999999,
-      "max_total_cards": 993,
-      "min_total_cards": 25,
-      "grails_pulled_observed": 7,
-      "chases_pulled_observed": 33,
-      "packs_ripped_observed": 283,
-      "rips_per_grail": 40.42857142857143,
-      "rips_per_chase": 8.575757575757576,
-      "avg_gap_between_grails": 45.166666666666664,
-      "max_gap_between_grails": 105,
-      "grail_gap_samples": 6
+    "500aca55-1ac0-4154-9381-66701cc8aad4": {
+      "repack_id": "500aca55-1ac0-4154-9381-66701cc8aad4",
+      "pack_title": "Misc: $25",
+      "samples": 217,
+      "avg_grail_odds": 2.814419889502761,
+      "median_grail_odds": 2.3,
+      "stddev_grail_odds": 1.448710732002346,
+      "avg_chase_odds": 19.616221198156687,
+      "median_chase_odds": 15.04,
+      "max_total_cards": 1216,
+      "min_total_cards": 2,
+      "grails_pulled_observed": 71,
+      "chases_pulled_observed": 490,
+      "packs_ripped_observed": 3596,
+      "rips_per_grail": 50.647887323943664,
+      "rips_per_chase": 7.338775510204082,
+      "avg_gap_between_grails": 64.01818181818182,
+      "max_gap_between_grails": 225,
+      "grail_gap_samples": 55
     },
     "77667e71-06f0-43a3-91be-c59527044bc3": {
       "repack_id": "77667e71-06f0-43a3-91be-c59527044bc3",
       "pack_title": "Football: Ultra Pack $500",
       "samples": 500,
-      "avg_grail_odds": 1.853360000000007,
+      "avg_grail_odds": 1.8564400000000079,
       "median_grail_odds": 1.71,
-      "stddev_grail_odds": 0.28517347422227,
-      "avg_chase_odds": 13.564899999999994,
+      "stddev_grail_odds": 0.2839297913217281,
+      "avg_chase_odds": 13.653099999999997,
       "median_chase_odds": 12.42,
       "max_total_cards": 491,
-      "min_total_cards": 110,
+      "min_total_cards": 108,
       "grails_pulled_observed": 6,
       "chases_pulled_observed": 40,
-      "packs_ripped_observed": 381,
-      "rips_per_grail": 63.5,
-      "rips_per_chase": 9.525,
+      "packs_ripped_observed": 383,
+      "rips_per_grail": 63.833333333333336,
+      "rips_per_chase": 9.575,
       "avg_gap_between_grails": 124.33333333333333,
       "max_gap_between_grails": 273,
       "grail_gap_samples": 3
+    },
+    "2f9248fc-cab1-47e0-b9e7-62a33d6e2796": {
+      "repack_id": "2f9248fc-cab1-47e0-b9e7-62a33d6e2796",
+      "pack_title": "Pokemon: $99",
+      "samples": 225,
+      "avg_grail_odds": 1.6821052631578977,
+      "median_grail_odds": 1.69,
+      "stddev_grail_odds": 0.24949167157006555,
+      "avg_chase_odds": 12.994133333333343,
+      "median_chase_odds": 12.94,
+      "max_total_cards": 993,
+      "min_total_cards": 25,
+      "grails_pulled_observed": 7,
+      "chases_pulled_observed": 35,
+      "packs_ripped_observed": 292,
+      "rips_per_grail": 41.714285714285715,
+      "rips_per_chase": 8.342857142857143,
+      "avg_gap_between_grails": 45.166666666666664,
+      "max_gap_between_grails": 105,
+      "grail_gap_samples": 6
     },
     "74589cb1-b791-4edd-ad34-4ba71980a5ec": {
       "repack_id": "74589cb1-b791-4edd-ad34-4ba71980a5ec",
       "pack_title": "Baseball: Super Pack $150",
       "samples": 500,
-      "avg_grail_odds": 1.875234042553191,
-      "median_grail_odds": 1.83,
-      "stddev_grail_odds": 0.2916472813407403,
-      "avg_chase_odds": 15.199278557114203,
+      "avg_grail_odds": 1.8808723404255325,
+      "median_grail_odds": 1.8450000000000002,
+      "stddev_grail_odds": 0.291074832596565,
+      "avg_chase_odds": 15.226913827655281,
       "median_chase_odds": 13.07,
-      "max_total_cards": 786,
+      "max_total_cards": 777,
       "min_total_cards": 20,
-      "grails_pulled_observed": 24,
-      "chases_pulled_observed": 180,
-      "packs_ripped_observed": 1329,
-      "rips_per_grail": 55.375,
-      "rips_per_chase": 7.383333333333334,
-      "avg_gap_between_grails": 76.76470588235294,
+      "grails_pulled_observed": 25,
+      "chases_pulled_observed": 187,
+      "packs_ripped_observed": 1382,
+      "rips_per_grail": 55.28,
+      "rips_per_chase": 7.390374331550802,
+      "avg_gap_between_grails": 76.77777777777777,
       "max_gap_between_grails": 441,
-      "grail_gap_samples": 17
-    },
-    "8f49d2cf-1e36-40ac-b8ee-814391c74108": {
-      "repack_id": "8f49d2cf-1e36-40ac-b8ee-814391c74108",
-      "pack_title": "Basketball: $75",
-      "samples": 500,
-      "avg_grail_odds": 1.95559241706161,
-      "median_grail_odds": 2.07,
-      "stddev_grail_odds": 0.6837383335441022,
-      "avg_chase_odds": 15.477735470941878,
-      "median_chase_odds": 15.72,
-      "max_total_cards": 440,
-      "min_total_cards": 2,
-      "grails_pulled_observed": 11,
-      "chases_pulled_observed": 88,
-      "packs_ripped_observed": 567,
-      "rips_per_grail": 51.54545454545455,
-      "rips_per_chase": 6.443181818181818,
-      "avg_gap_between_grails": 57.333333333333336,
-      "max_gap_between_grails": 174,
-      "grail_gap_samples": 9
+      "grail_gap_samples": 18
     },
     "12c0e59f-765e-4ca7-882e-d6d3000bd46c": {
       "repack_id": "12c0e59f-765e-4ca7-882e-d6d3000bd46c",
       "pack_title": "Pokemon: Mega Pack $250",
       "samples": 500,
-      "avg_grail_odds": 1.6293925233644853,
-      "median_grail_odds": 1.55,
-      "stddev_grail_odds": 0.7605455525569746,
-      "avg_chase_odds": 12.799360000000013,
-      "median_chase_odds": 12.77,
+      "avg_grail_odds": 1.5980140186915879,
+      "median_grail_odds": 1.545,
+      "stddev_grail_odds": 0.733534223978269,
+      "avg_chase_odds": 12.744500000000011,
+      "median_chase_odds": 12.73,
       "max_total_cards": 1001,
       "min_total_cards": 59,
-      "grails_pulled_observed": 22,
-      "chases_pulled_observed": 120,
-      "packs_ripped_observed": 979,
-      "rips_per_grail": 44.5,
-      "rips_per_chase": 8.158333333333333,
-      "avg_gap_between_grails": 64.76923076923077,
+      "grails_pulled_observed": 23,
+      "chases_pulled_observed": 115,
+      "packs_ripped_observed": 967,
+      "rips_per_grail": 42.04347826086956,
+      "rips_per_chase": 8.408695652173913,
+      "avg_gap_between_grails": 68.78571428571429,
       "max_gap_between_grails": 289,
-      "grail_gap_samples": 13
+      "grail_gap_samples": 14
+    },
+    "8f49d2cf-1e36-40ac-b8ee-814391c74108": {
+      "repack_id": "8f49d2cf-1e36-40ac-b8ee-814391c74108",
+      "pack_title": "Basketball: $75",
+      "samples": 500,
+      "avg_grail_odds": 1.988483412322274,
+      "median_grail_odds": 2.08,
+      "stddev_grail_odds": 0.6864270246365509,
+      "avg_chase_odds": 15.481462925851693,
+      "median_chase_odds": 15.72,
+      "max_total_cards": 440,
+      "min_total_cards": 2,
+      "grails_pulled_observed": 12,
+      "chases_pulled_observed": 89,
+      "packs_ripped_observed": 575,
+      "rips_per_grail": 47.916666666666664,
+      "rips_per_chase": 6.46067415730337,
+      "avg_gap_between_grails": 57.5,
+      "max_gap_between_grails": 174,
+      "grail_gap_samples": 10
     },
     "9b8baf24-408e-4b1d-8fa3-447af36fd5e0": {
       "repack_id": "9b8baf24-408e-4b1d-8fa3-447af36fd5e0",
       "pack_title": "Vintage Pokemon: $500",
-      "samples": 213,
+      "samples": 220,
       "avg_grail_odds": 1.3096000000000005,
       "median_grail_odds": 1.28,
       "stddev_grail_odds": 0.06440372660025202,
-      "avg_chase_odds": 13.653708920187787,
+      "avg_chase_odds": 13.673954545454539,
       "median_chase_odds": 13.79,
       "max_total_cards": 78,
       "min_total_cards": 56,
@@ -5483,19 +5525,19 @@
       "repack_id": "38426242-455c-4957-9f66-78280eabe50f",
       "pack_title": "Football: $75",
       "samples": 500,
-      "avg_grail_odds": 1.5338676844783723,
+      "avg_grail_odds": 1.5238422391857511,
       "median_grail_odds": 1.62,
-      "stddev_grail_odds": 0.39533578705731465,
-      "avg_chase_odds": 14.312144288577171,
+      "stddev_grail_odds": 0.4037310035198298,
+      "avg_chase_odds": 14.352865731462948,
       "median_chase_odds": 14.63,
       "max_total_cards": 439,
       "min_total_cards": 39,
       "grails_pulled_observed": 15,
-      "chases_pulled_observed": 78,
-      "packs_ripped_observed": 528,
-      "rips_per_grail": 35.2,
-      "rips_per_chase": 6.769230769230769,
-      "avg_gap_between_grails": 42.416666666666664,
+      "chases_pulled_observed": 79,
+      "packs_ripped_observed": 531,
+      "rips_per_grail": 35.4,
+      "rips_per_chase": 6.7215189873417724,
+      "avg_gap_between_grails": 42.166666666666664,
       "max_gap_between_grails": 145,
       "grail_gap_samples": 12
     },
@@ -5503,31 +5545,31 @@
       "repack_id": "4ee02ed0-2a56-4b9e-b151-fc95acef6994",
       "pack_title": "Baseball: Mega Pack $250",
       "samples": 500,
-      "avg_grail_odds": 1.9165931863727432,
-      "median_grail_odds": 1.61,
-      "stddev_grail_odds": 0.8554716127342011,
-      "avg_chase_odds": 13.33927855711425,
-      "median_chase_odds": 13.1,
-      "max_total_cards": 731,
+      "avg_grail_odds": 1.9083166332665307,
+      "median_grail_odds": 1.6,
+      "stddev_grail_odds": 0.8606547653933478,
+      "avg_chase_odds": 13.360661322645306,
+      "median_chase_odds": 13.11,
+      "max_total_cards": 712,
       "min_total_cards": 57,
       "grails_pulled_observed": 17,
       "chases_pulled_observed": 120,
-      "packs_ripped_observed": 897,
-      "rips_per_grail": 52.76470588235294,
-      "rips_per_chase": 7.475,
-      "avg_gap_between_grails": 68.15384615384616,
+      "packs_ripped_observed": 889,
+      "rips_per_grail": 52.294117647058826,
+      "rips_per_chase": 7.408333333333333,
+      "avg_gap_between_grails": 66.6923076923077,
       "max_gap_between_grails": 448,
       "grail_gap_samples": 13
     },
     "252f8a2a-063d-44de-b3c4-daf632e3b7b2": {
       "repack_id": "252f8a2a-063d-44de-b3c4-daf632e3b7b2",
       "pack_title": "Pokemon: $49",
-      "samples": 219,
-      "avg_grail_odds": 0.9087912087912086,
-      "median_grail_odds": 0.7,
-      "stddev_grail_odds": 0.41406809219941093,
-      "avg_chase_odds": 12.524566210045673,
-      "median_chase_odds": 12.26,
+      "samples": 226,
+      "avg_grail_odds": 0.8919576719576717,
+      "median_grail_odds": 0.69,
+      "stddev_grail_odds": 0.41530109980512003,
+      "avg_chase_odds": 12.45345132743364,
+      "median_chase_odds": 12.2,
       "max_total_cards": 746,
       "min_total_cards": 265,
       "grails_pulled_observed": 15,
@@ -5543,50 +5585,30 @@
       "repack_id": "cb91fc8d-1c2d-45c2-9a12-b86b2a84607e",
       "pack_title": "Football: Mega Pack $250",
       "samples": 500,
-      "avg_grail_odds": 1.6639400000000002,
+      "avg_grail_odds": 1.6568999999999996,
       "median_grail_odds": 1.74,
-      "stddev_grail_odds": 0.2983760653939939,
-      "avg_chase_odds": 11.695440000000008,
+      "stddev_grail_odds": 0.30320123680486594,
+      "avg_chase_odds": 11.692860000000005,
       "median_chase_odds": 11.76,
-      "max_total_cards": 939,
-      "min_total_cards": 83,
+      "max_total_cards": 938,
+      "min_total_cards": 82,
       "grails_pulled_observed": 15,
       "chases_pulled_observed": 105,
       "packs_ripped_observed": 856,
       "rips_per_grail": 57.06666666666667,
       "rips_per_chase": 8.152380952380952,
-      "avg_gap_between_grails": 120.71428571428571,
+      "avg_gap_between_grails": 120.57142857142857,
       "max_gap_between_grails": 611,
       "grail_gap_samples": 7
-    },
-    "65c882c7-8bd9-46c9-a085-1a2d05a6aa5b": {
-      "repack_id": "65c882c7-8bd9-46c9-a085-1a2d05a6aa5b",
-      "pack_title": "Basketball: Ultra Pack $500",
-      "samples": 500,
-      "avg_grail_odds": 1.5948000000000007,
-      "median_grail_odds": 1.62,
-      "stddev_grail_odds": 0.08584730630602194,
-      "avg_chase_odds": 12.927320000000034,
-      "median_chase_odds": 12.91,
-      "max_total_cards": 933,
-      "min_total_cards": 385,
-      "grails_pulled_observed": 9,
-      "chases_pulled_observed": 67,
-      "packs_ripped_observed": 548,
-      "rips_per_grail": 60.888888888888886,
-      "rips_per_chase": 8.17910447761194,
-      "avg_gap_between_grails": 125.75,
-      "max_gap_between_grails": 407,
-      "grail_gap_samples": 4
     },
     "dc3f760f-e3fb-41c4-9349-45469cb9c6f4": {
       "repack_id": "dc3f760f-e3fb-41c4-9349-45469cb9c6f4",
       "pack_title": "Pop Pack: $250",
-      "samples": 216,
-      "avg_grail_odds": 1.7199537037036992,
+      "samples": 223,
+      "avg_grail_odds": 1.7221524663677084,
       "median_grail_odds": 1.72,
-      "stddev_grail_odds": 0.033242900734525876,
-      "avg_chase_odds": 14.693055555555619,
+      "stddev_grail_odds": 0.03492251616325258,
+      "avg_chase_odds": 14.708340807174956,
       "median_chase_odds": 14.66,
       "max_total_cards": 126,
       "min_total_cards": 112,
@@ -5599,14 +5621,34 @@
       "max_gap_between_grails": null,
       "grail_gap_samples": 0
     },
+    "65c882c7-8bd9-46c9-a085-1a2d05a6aa5b": {
+      "repack_id": "65c882c7-8bd9-46c9-a085-1a2d05a6aa5b",
+      "pack_title": "Basketball: Ultra Pack $500",
+      "samples": 500,
+      "avg_grail_odds": 1.5941600000000002,
+      "median_grail_odds": 1.62,
+      "stddev_grail_odds": 0.08590398360960962,
+      "avg_chase_odds": 12.936420000000034,
+      "median_chase_odds": 12.91,
+      "max_total_cards": 933,
+      "min_total_cards": 382,
+      "grails_pulled_observed": 9,
+      "chases_pulled_observed": 68,
+      "packs_ripped_observed": 551,
+      "rips_per_grail": 61.22222222222222,
+      "rips_per_chase": 8.102941176470589,
+      "avg_gap_between_grails": 125.75,
+      "max_gap_between_grails": 407,
+      "grail_gap_samples": 4
+    },
     "98b3355b-b30e-4679-bd9c-7cdbb9b1142b": {
       "repack_id": "98b3355b-b30e-4679-bd9c-7cdbb9b1142b",
       "pack_title": "Soccer: Super Pack $250",
-      "samples": 218,
+      "samples": 225,
       "avg_grail_odds": 1.3283206106870227,
       "median_grail_odds": 1.32,
       "stddev_grail_odds": 0.12641355053318332,
-      "avg_chase_odds": 17.143807339449598,
+      "avg_chase_odds": 17.15613333333338,
       "median_chase_odds": 17.24,
       "max_total_cards": 85,
       "min_total_cards": 57,
@@ -5622,11 +5664,11 @@
     "ca687a75-6865-4183-a21c-548f8415be1b": {
       "repack_id": "ca687a75-6865-4183-a21c-548f8415be1b",
       "pack_title": "Vintage Pokemon: $1,000",
-      "samples": 209,
+      "samples": 216,
       "avg_grail_odds": 0,
       "median_grail_odds": 0,
       "stddev_grail_odds": 0,
-      "avg_chase_odds": 11.900000000000045,
+      "avg_chase_odds": 11.900000000000047,
       "median_chase_odds": 11.9,
       "max_total_cards": 42,
       "min_total_cards": 42,
@@ -5642,11 +5684,11 @@
     "bfb9dc0f-15d0-4c95-8c51-3fdea3d9fc69": {
       "repack_id": "bfb9dc0f-15d0-4c95-8c51-3fdea3d9fc69",
       "pack_title": "Soccer: Super Pack $150",
-      "samples": 213,
+      "samples": 220,
       "avg_grail_odds": 0,
       "median_grail_odds": 0,
       "stddev_grail_odds": 0,
-      "avg_chase_odds": 17.202769953051646,
+      "avg_chase_odds": 17.212227272727283,
       "median_chase_odds": 17.07,
       "max_total_cards": 48,
       "min_total_cards": 40,
@@ -5663,30 +5705,30 @@
       "repack_id": "f147af39-a73f-477e-95da-a7763a4c5b58",
       "pack_title": "Basketball: Super Pack $150",
       "samples": 500,
-      "avg_grail_odds": 1.5484399999999996,
-      "median_grail_odds": 1.58,
-      "stddev_grail_odds": 0.33275271058249833,
-      "avg_chase_odds": 12.45386000000003,
-      "median_chase_odds": 12.35,
-      "max_total_cards": 866,
-      "min_total_cards": 460,
+      "avg_grail_odds": 1.5379799999999995,
+      "median_grail_odds": 1.57,
+      "stddev_grail_odds": 0.3348464119562876,
+      "avg_chase_odds": 12.436640000000029,
+      "median_chase_odds": 12.34,
+      "max_total_cards": 860,
+      "min_total_cards": 450,
       "grails_pulled_observed": 14,
-      "chases_pulled_observed": 85,
-      "packs_ripped_observed": 543,
-      "rips_per_grail": 38.785714285714285,
-      "rips_per_chase": 6.3882352941176475,
-      "avg_gap_between_grails": 34.785714285714285,
-      "max_gap_between_grails": 86,
+      "chases_pulled_observed": 84,
+      "packs_ripped_observed": 547,
+      "rips_per_grail": 39.07142857142857,
+      "rips_per_chase": 6.511904761904762,
+      "avg_gap_between_grails": 34.357142857142854,
+      "max_gap_between_grails": 80,
       "grail_gap_samples": 14
     },
     "d77898f0-a064-4d3d-a860-af641651d186": {
       "repack_id": "d77898f0-a064-4d3d-a860-af641651d186",
       "pack_title": "Pop Pack: $150",
-      "samples": 220,
+      "samples": 227,
       "avg_grail_odds": 0,
       "median_grail_odds": 0,
       "stddev_grail_odds": 0,
-      "avg_chase_odds": 14.011363636363644,
+      "avg_chase_odds": 13.935154185022029,
       "median_chase_odds": 12.9,
       "max_total_cards": 36,
       "min_total_cards": 26,
@@ -5703,18 +5745,18 @@
       "repack_id": "d55af7f2-222f-464e-83fc-4155c7699aa5",
       "pack_title": "Pokemon: Super Pack $150",
       "samples": 500,
-      "avg_grail_odds": 0.9247600000000045,
-      "median_grail_odds": 0.84,
-      "stddev_grail_odds": 0.3014301617290481,
-      "avg_chase_odds": 9.681300000000007,
-      "median_chase_odds": 10.2,
+      "avg_grail_odds": 0.9104800000000047,
+      "median_grail_odds": 0.83,
+      "stddev_grail_odds": 0.2941227118058042,
+      "avg_chase_odds": 9.620500000000002,
+      "median_chase_odds": 10.17,
       "max_total_cards": 806,
       "min_total_cards": 460,
       "grails_pulled_observed": 7,
-      "chases_pulled_observed": 40,
-      "packs_ripped_observed": 236,
-      "rips_per_grail": 33.714285714285715,
-      "rips_per_chase": 5.9,
+      "chases_pulled_observed": 41,
+      "packs_ripped_observed": 242,
+      "rips_per_grail": 34.57142857142857,
+      "rips_per_chase": 5.902439024390244,
       "avg_gap_between_grails": 24.857142857142858,
       "max_gap_between_grails": 68,
       "grail_gap_samples": 7
@@ -5723,19 +5765,19 @@
       "repack_id": "d84a98eb-e303-41b6-b5a0-e140ef749a77",
       "pack_title": "Football: Super Pack $150",
       "samples": 500,
-      "avg_grail_odds": 3.799676113360311,
-      "median_grail_odds": 1.975,
-      "stddev_grail_odds": 2.6652297635791844,
-      "avg_chase_odds": 12.620772357723538,
+      "avg_grail_odds": 3.821950718685819,
+      "median_grail_odds": 1.96,
+      "stddev_grail_odds": 2.677782667431863,
+      "avg_chase_odds": 12.588288659793776,
       "median_chase_odds": 14.62,
       "max_total_cards": 603,
       "min_total_cards": 1,
       "grails_pulled_observed": 32,
-      "chases_pulled_observed": 204,
-      "packs_ripped_observed": 1361,
-      "rips_per_grail": 42.53125,
-      "rips_per_chase": 6.671568627450981,
-      "avg_gap_between_grails": 68.05,
+      "chases_pulled_observed": 202,
+      "packs_ripped_observed": 1356,
+      "rips_per_grail": 42.375,
+      "rips_per_chase": 6.712871287128713,
+      "avg_gap_between_grails": 67.8,
       "max_gap_between_grails": 600,
       "grail_gap_samples": 20
     },
@@ -5743,41 +5785,41 @@
       "repack_id": "5e62f657-7cc5-4111-9f47-75ba61ec8ec8",
       "pack_title": "Pokemon: $75",
       "samples": 500,
-      "avg_grail_odds": 1.9002523659305977,
-      "median_grail_odds": 1.81,
-      "stddev_grail_odds": 0.4585210755134229,
-      "avg_chase_odds": 12.664826732673257,
+      "avg_grail_odds": 1.9182903225806431,
+      "median_grail_odds": 1.82,
+      "stddev_grail_odds": 0.4474861463740197,
+      "avg_chase_odds": 12.674231738035255,
       "median_chase_odds": 12.26,
       "max_total_cards": 987,
       "min_total_cards": 2,
       "grails_pulled_observed": 17,
       "chases_pulled_observed": 127,
-      "packs_ripped_observed": 1039,
-      "rips_per_grail": 61.11764705882353,
-      "rips_per_chase": 8.181102362204724,
-      "avg_gap_between_grails": 62.875,
+      "packs_ripped_observed": 1033,
+      "rips_per_grail": 60.76470588235294,
+      "rips_per_chase": 8.133858267716535,
+      "avg_gap_between_grails": 62.5,
       "max_gap_between_grails": 200,
       "grail_gap_samples": 16
     },
-    "a9d53ef2-085b-4373-a600-a341a2e20682": {
-      "repack_id": "a9d53ef2-085b-4373-a600-a341a2e20682",
-      "pack_title": "Pop Pack: $75",
-      "samples": 195,
-      "avg_grail_odds": 2.3976923076923073,
-      "median_grail_odds": 2.56,
-      "stddev_grail_odds": 0.2860111306643595,
-      "avg_chase_odds": 17.880160000000014,
-      "median_chase_odds": 17.65,
-      "max_total_cards": 49,
+    "b0c86f04-095f-4218-b2ad-89661251c794": {
+      "repack_id": "b0c86f04-095f-4218-b2ad-89661251c794",
+      "pack_title": "Fire Pack: $250",
+      "samples": 103,
+      "avg_grail_odds": 0,
+      "median_grail_odds": 0,
+      "stddev_grail_odds": 0,
+      "avg_chase_odds": 0,
+      "median_chase_odds": 0,
+      "max_total_cards": 2,
       "min_total_cards": 1,
-      "grails_pulled_observed": 1,
-      "chases_pulled_observed": 7,
-      "packs_ripped_observed": 49,
-      "rips_per_grail": 49,
-      "rips_per_chase": 7,
-      "avg_gap_between_grails": 15,
-      "max_gap_between_grails": 15,
-      "grail_gap_samples": 1
+      "grails_pulled_observed": 0,
+      "chases_pulled_observed": 0,
+      "packs_ripped_observed": 2,
+      "rips_per_grail": null,
+      "rips_per_chase": null,
+      "avg_gap_between_grails": null,
+      "max_gap_between_grails": null,
+      "grail_gap_samples": 0
     }
   }
 }
